@@ -5,7 +5,8 @@
         <el-menu-item index="/home" @click="handleNavClick('home')">首页</el-menu-item>
         <el-menu-item index="/utils" @click="handleNavClick('utils')">工具</el-menu-item>
         <el-menu-item index="/tags" @click="handleNavClick('tags')">标签</el-menu-item>
-        <el-menu-item index="/template" @click="handleNavClick('home')">模板</el-menu-item>
+        <el-menu-item index="/template" @click="handleNavClick('template')">模板</el-menu-item>
+        <el-menu-item index="/web" @click="handleNavClick('web')">Web</el-menu-item>
     </el-menu>
 </template>
 

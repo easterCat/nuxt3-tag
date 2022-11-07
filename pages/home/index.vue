@@ -7,23 +7,11 @@
                     <el-container>
                         <el-main>
                             <el-row :gutter="20">
-                                <el-col
-                                    v-for="(tem, tIndex) in templatesList"
-                                    :key="tIndex"
-                                    :span="6"
-                                >
-                                    <el-card
-                                        :body-style="{ padding: '0px' }"
-                                        @click="cardClick(tem)"
-                                    >
-                                        <img v-lazy="tem?.preview" class="image" />
-                                        <div style="padding: 14px">
-                                            <span>{{ tem?.author }}</span>
-                                            <div class="bottom">
-                                                <time class="time">{{ tem?.name }}</time>
-                                            </div>
-                                        </div>
-                                    </el-card>
+                                <el-col :span="6">
+                                    <PcAnimationButton
+                                        buttonText="Tags添加逗号"
+                                        :buttonStyle="4"
+                                    ></PcAnimationButton>
                                 </el-col>
                             </el-row>
                         </el-main>
@@ -119,7 +107,7 @@ const cardClick = (tem: any) => {
 
 .max-width-limit {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
 }
 
 .time {

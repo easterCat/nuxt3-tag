@@ -61,7 +61,7 @@ const menuItemClick = (key: number) => {
 
 .max-width-limit {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
 }
 
 .image {
