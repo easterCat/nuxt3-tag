@@ -18,10 +18,10 @@
                                         <div class="item">
                                             <div class="logo">
                                                 <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
+                                                    data-original="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
                                                     width="100%"
                                                     class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
+                                                    src="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
                                                 />
                                                 腾讯 AlloyTeam 团队
                                             </div>
@@ -788,10 +788,10 @@
                                         <div class="item">
                                             <div class="logo">
                                                 <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
+                                                    data-original="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
                                                     width="100%"
                                                     class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
+                                                    src="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
                                                 />
                                                 AlloyTeam 前端技术大会
                                             </div>
