@@ -89,7 +89,7 @@ const menuClick = (menu: any, index: number) => {
 // };
 
 const tagsSplit = () => {
-    textAreaTags.value = textArea.value.split(",");
+    textAreaTags.value = textArea.value.replace(',,',',').split(",");
     filterTextArea.value = textArea.value.replace(/\ /g, ", ");
 };
 

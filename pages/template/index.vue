@@ -144,10 +144,8 @@ const cardClick = (tem: any) => {
     width: 100%;
     height: 280px;
     display: block;
-
-    img {
-        object-fit: contain;
-    }
+    background: black;
+    object-fit: contain;
 }
 
 :deep(.el-col) {
