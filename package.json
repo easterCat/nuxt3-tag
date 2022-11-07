@@ -4,7 +4,7 @@
     "scripts": {
         "build": "nuxt build",
         "dev": "nuxt dev",
-        "generate": "nuxt generate",
+        "generate": "nuxt generate && node bin.js",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare"
     },
