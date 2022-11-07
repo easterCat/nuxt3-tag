@@ -12,7 +12,7 @@
                                 <div v-for="(menu, mIndex) in menuList" class="menu-item"
                                     :class="{ 'menu-item-active': mIndex === menuActive }" :key="mIndex"
                                     @click="menuClick(menu, mIndex)">
-                                    <img v-lazy="img" alt="" /><span>{{ menu?.name }}</span>
+                                    <img v-lazy="menu?.bg" alt="" /><span>{{ menu?.name }}</span>
                                 </div>
                             </div>
                         </el-aside>
@@ -26,6 +26,9 @@
                                     <!-- <el-button shadow="always" @click="tagsFormat">
                                         Tags美化
                                     </el-button> -->
+                                    <el-button shadow="always" @click="tagsSplit">
+                                        Tags分离
+                                    </el-button>
                                     <el-button shadow="always" @click="tagsAddComma">
                                         Tags加逗号
                                     </el-button>
@@ -38,17 +41,23 @@
                                 </div>
                                 <div class="tags-con">
                                     <el-tag v-for="(tag, tIndex) in textAreaTags" :key="tIndex" round size="large"
-                                        effect="dark" style="
-                                            margin-right: 8px !important;
-                                            margin-bottom: 8px !important;
-                                        ">{{ tag }}</el-tag>
+                                        effect="dark"
+                                        style="margin-right: 8px !important;margin-bottom: 8px !important;">
+                                        {{ tag }}
+                                    </el-tag>
                                 </div>
-                                <el-link href="https://danbooru.donmai.us/" target="_blank" type="primary">https://danbooru.donmai.us/</el-link>
-                                <el-link href="https://gelbooru.com/index.php" target="_blank" type="primary">https://gelbooru.com/index.php</el-link>
-                                <el-link href="https://aibooru.online/" target="_blank" type="primary">https://aibooru.online/</el-link>
-                                <el-link href="https://aitag.top/" target="_blank" type="primary">https://aitag.top/</el-link>
-                                <el-link href="https://noveltags.com/" target="_blank" type="primary">https://noveltags.com/</el-link>
-                                <el-link href="https://tags.novelai.dev/" target="_blank" type="primary">https://tags.novelai.dev/</el-link>
+                                <el-link href="https://danbooru.donmai.us/" target="_blank" type="primary">
+                                    https://danbooru.donmai.us/</el-link>
+                                <el-link href="https://gelbooru.com/index.php" target="_blank" type="primary">
+                                    https://gelbooru.com/index.php</el-link>
+                                <el-link href="https://aibooru.online/" target="_blank" type="primary">
+                                    https://aibooru.online/</el-link>
+                                <el-link href="https://aitag.top/" target="_blank" type="primary">https://aitag.top/
+                                </el-link>
+                                <el-link href="https://noveltags.com/" target="_blank" type="primary">
+                                    https://noveltags.com/</el-link>
+                                <el-link href="https://tags.novelai.dev/" target="_blank" type="primary">
+                                    https://tags.novelai.dev/</el-link>
                             </div>
                         </el-main>
                     </el-container>
@@ -60,7 +69,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { utilMenus } from "@/assets/json/utilmenus.js";
+import { utilMenus } from "~~/assets/json/utils.js";
 const img = ref("https://image.lexica.art/md/82a37c02-9f1d-4280-b725-2716c759165e");
 const initActive = 5;
 const textArea = ref("");
@@ -78,6 +87,11 @@ const menuClick = (menu: any, index: number) => {
 // const tagsFormat = () => {
 //     filterTextArea.value = textArea.value.replace(",", ", ");
 // };
+
+const tagsSplit = () => {
+    textAreaTags.value = textArea.value.split(",");
+    filterTextArea.value = textArea.value.replace(/\ /g, ", ");
+};
 
 const tagsAddComma = () => {
     textAreaTags.value = textArea.value.split(/\ /g);
