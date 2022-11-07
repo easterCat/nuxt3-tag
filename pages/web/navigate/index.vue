@@ -2,7 +2,9 @@
     <NuxtLayout>
         <div class="navigate-page">
             <el-container>
-                <el-header> <AppHeader /></el-header>
+                <el-header>
+                    <AppHeader />
+                </el-header>
                 <div class="max-width-limit">
                     <el-container>
                         <el-main width="1000px">
@@ -17,12 +19,9 @@
                                     <a target="_blank" href="http://www.alloyteam.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
-                                                />
+                                                <img data-original="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
+                                                    width="100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg" />
                                                 腾讯 AlloyTeam 团队
                                             </div>
 
@@ -35,12 +34,8 @@
                                     <a target="_blank" href="https://isux.tencent.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/isux-favicon.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/isux-favicon.jpg"
-                                                />
+                                                <img width="100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/isux-favicon.jpg" />
                                                 ISUX
                                             </div>
 
@@ -53,12 +48,8 @@
                                     <a target="_blank" href="http://fex.baidu.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/fex-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/fex-favicon.png"
-                                                />
+                                                <img width="100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/fex-favicon.png" />
                                                 FEX
                                             </div>
 
@@ -69,15 +60,10 @@
                                     <a target="_blank" href="http://taobaofed.org/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/fed-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/fed-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/fed-favicon.png" />
                                                 淘宝前端团队（FED）
                                             </div>
-
                                             <div class="desc">用技术为体验提供无限可能</div>
                                         </div>
                                     </a>
@@ -85,12 +71,8 @@
                                     <a target="_blank" href="https://aotu.io/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/aotu-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/aotu-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/aotu-favicon.png" />
                                                 凹凸实验室
                                             </div>
 
@@ -101,12 +83,8 @@
                                     <a target="_blank" href="https://75team.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/75team-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/75team-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/75team-favicon.png" />
                                                 奇舞团
                                             </div>
 
@@ -117,12 +95,8 @@
                                     <a target="_blank" href="http://www.aliued.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/aliued-favicon.ico"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/aliued-favicon.ico"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/aliued-favicon.ico" />
                                                 阿里巴巴国际UED团队
                                             </div>
 
@@ -135,12 +109,8 @@
                                     <a target="_blank" href="http://efe.baidu.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/efe-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/efe-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/efe-favicon.png" />
                                                 EFE
                                             </div>
 
@@ -162,12 +132,8 @@
                                     <a target="_blank" href="https://juejin.im/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/gold-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/gold-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/gold-favicon.png" />
                                                 掘金
                                             </div>
 
@@ -178,12 +144,8 @@
                                     <a target="_blank" href="http://stackoverflow.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/stackoverflow-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/stackoverflow-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/stackoverflow-favicon.png" />
                                                 Stack Overflow
                                             </div>
 
@@ -194,12 +156,8 @@
                                     <a target="_blank" href="https://github.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/github-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/github-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/github-favicon.png" />
                                                 GitHub
                                             </div>
 
@@ -212,12 +170,8 @@
                                     <a target="_blank" href="https://segmentfault.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/segmentfault-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/segmentfault-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/segmentfault-favicon.png" />
                                                 SegmentFault
                                             </div>
 
@@ -230,12 +184,8 @@
                                     <a target="_blank" href="https://www.v2ex.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/v2ex-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/v2ex-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/v2ex-favicon.png" />
                                                 V2EX
                                             </div>
 
@@ -246,12 +196,8 @@
                                     <a target="_blank" href="https://www.smashingmagazine.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/smashingmagazine-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/smashingmagazine-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/smashingmagazine-favicon.png" />
                                                 Smashingmagazine
                                             </div>
 
@@ -262,12 +208,8 @@
                                     <a target="_blank" href="https://cnodejs.org/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/cnodejs-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/cnodejs-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/cnodejs-favicon.png" />
                                                 CNode
                                             </div>
 
@@ -278,12 +220,8 @@
                                     <a target="_blank" href="http://www.jstips.co/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/jstips-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/jstips-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/jstips-favicon.png" />
                                                 JS Tips
                                             </div>
 
@@ -303,12 +241,8 @@
                                     <a target="_blank" href="https://www.docschina.org/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/docschina.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/docschina.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/docschina.png" />
                                                 印记中文
                                             </div>
 
@@ -321,12 +255,8 @@
                                     <a target="_blank" href="http://www.w3cplus.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/w3cplus-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/w3cplus-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/w3cplus-favicon.png" />
                                                 W3cplus
                                             </div>
 
@@ -339,12 +269,8 @@
                                     <a target="_blank" href="http://www.html5dw.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/html5dw-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/html5dw-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/html5dw-favicon.png" />
                                                 HTML5梦工厂
                                             </div>
 
@@ -355,12 +281,8 @@
                                     <a target="_blank" href="https://w3ctech.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/w3ctech-favicon.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/w3ctech-favicon.jpg"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/w3ctech-favicon.jpg" />
                                                 w3ctech
                                             </div>
 
@@ -371,12 +293,8 @@
                                     <a target="_blank" href="http://www.daqianduan.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/daqianduan-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/daqianduan-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/daqianduan-favicon.png" />
                                                 大前端
                                             </div>
 
@@ -398,12 +316,8 @@
                                     <a target="_blank" href="https://facebook.github.io/react/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/react-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/react-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/react-favicon.png" />
                                                 React
                                             </div>
 
@@ -414,12 +328,8 @@
                                     <a target="_blank" href="https://cn.vuejs.org/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/vue-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/vue-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/vue-favicon.png" />
                                                 Vue
                                             </div>
 
@@ -432,12 +342,8 @@
                                     <a target="_blank" href="http://www.jquery123.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/jquery.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/jquery.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/jquery.png" />
                                                 jQuery
                                             </div>
 
@@ -448,12 +354,8 @@
                                     <a target="_blank" href="http://www.bootcss.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/bootstrap-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/bootstrap-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/bootstrap-favicon.png" />
                                                 Bootstrap
                                             </div>
 
@@ -464,12 +366,8 @@
                                     <a target="_blank" href="https://reactnative.cn/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/react-native.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/react-native.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/react-native.png" />
                                                 React Native
                                             </div>
 
@@ -480,12 +378,8 @@
                                     <a target="_blank" href="http://reactivex.io/rxjs/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/rxjs-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/rxjs-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/rxjs-favicon.png" />
                                                 RxJs
                                             </div>
 
@@ -507,12 +401,8 @@
                                     <a target="_blank" href="https://coding.net">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/coding.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/coding.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/coding.png" />
                                                 Coding
                                             </div>
 
@@ -532,12 +422,8 @@
                                     <a target="_blank" href="https://d3js.org/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/d3-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/d3-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/d3-favicon.png" />
                                                 D3
                                             </div>
 
@@ -548,12 +434,8 @@
                                     <a target="_blank" href="https://threejs.org/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/threejs-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/threejs-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/threejs-favicon.png" />
                                                 Threejs
                                             </div>
 
@@ -564,12 +446,8 @@
                                     <a target="_blank" href="http://echarts.baidu.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/echarts-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/echarts-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/echarts-favicon.png" />
                                                 Echarts
                                             </div>
 
@@ -580,12 +458,8 @@
                                     <a target="_blank" href="http://www.highcharts.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/highcharts-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/highcharts-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/highcharts-favicon.png" />
                                                 Highcharts
                                             </div>
 
@@ -608,12 +482,8 @@
                                     <a target="_blank" href="http://phaser.io/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/phaserjs.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/phaserjs.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/phaserjs.png" />
                                                 PhaserJS
                                             </div>
 
@@ -624,12 +494,8 @@
                                     <a target="_blank" href="http://www.cocos.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/cocos2dx.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/cocos2dx.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/cocos2dx.png" />
                                                 Cocos2d-x
                                             </div>
 
@@ -642,12 +508,8 @@
                                     <a target="_blank" href="https://www.egret.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/egret.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/egret.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/egret.png" />
                                                 白鹭引擎
                                             </div>
 
@@ -669,12 +531,8 @@
                                     <a target="_blank" href="https://css-tricks.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/css-tricks-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/css-tricks-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/css-tricks-favicon.png" />
                                                 CSS-Tricks
                                             </div>
 
@@ -687,12 +545,8 @@
                                     <a target="_blank" href="http://csswizardry.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/css-wizardry-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/css-wizardry-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/css-wizardry-favicon.png" />
                                                 Css Wizardry
                                             </div>
 
@@ -702,18 +556,11 @@
                                         </div>
                                     </a>
 
-                                    <a
-                                        target="_blank"
-                                        href="http://sass.bootcss.com/docs/sass-reference/"
-                                    >
+                                    <a target="_blank" href="http://sass.bootcss.com/docs/sass-reference/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/sass-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/sass-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/sass-favicon.png" />
                                                 Sass
                                             </div>
 
@@ -726,12 +573,8 @@
                                     <a target="_blank" href="http://less.bootcss.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/less-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/less-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/less-favicon.png" />
                                                 Less
                                             </div>
 
@@ -744,12 +587,8 @@
                                     <a target="_blank" href="http://stylus-lang.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/stylus-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/stylus-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/stylus-favicon.png" />
                                                 Stylus
                                             </div>
 
@@ -769,12 +608,8 @@
                                     <a target="_blank" href="https://tfc.tencent.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/qqlog.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/qqlog.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/qqlog.png" />
                                                 腾讯 Web 前端大会
                                             </div>
 
@@ -787,12 +622,9 @@
                                     <a target="_blank" href="http://ac.alloyteam.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
-                                                />
+                                                <img data-original="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg"
+                                                    width="100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/alloyteam-favicon.jpg" />
                                                 AlloyTeam 前端技术大会
                                             </div>
 
@@ -805,12 +637,8 @@
                                     <a target="_blank" href="http://2016.html5dw.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/iweb.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/iweb.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/iweb.png" />
                                                 iWeb峰会
                                             </div>
 
@@ -823,12 +651,8 @@
                                     <a target="_blank" href="http://d2forum.alibaba-inc.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/d2.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/d2.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/d2.png" />
                                                 D2前端技术论坛
                                             </div>
 
@@ -841,12 +665,8 @@
                                     <a target="_blank" href="https://css.w3ctech.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/css-conf.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/css-conf.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/css-conf.png" />
                                                 中国CSS开发者大会
                                             </div>
 
@@ -857,12 +677,8 @@
                                     <a target="_blank" href="https://fequan.com/feday">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/feday.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/feday.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/feday.png" />
                                                 前端开发者大会
                                             </div>
 
@@ -873,12 +689,8 @@
                                     <a target="_blank" href="https://fequan.com/feday">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/vueconf.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/vueconf.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/vueconf.png" />
                                                 Vue.js开发者大会
                                             </div>
 
@@ -889,12 +701,8 @@
                                     <a target="_blank" href="http://jsconf.cn/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/js-conf.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/js-conf.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/js-conf.png" />
                                                 中国JS开发者大会
                                             </div>
 
@@ -916,12 +724,8 @@
                                     <a target="_blank" href="http://koa.bootcss.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/koa.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/koa.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/koa.png" />
                                                 Koa
                                             </div>
 
@@ -932,12 +736,8 @@
                                     <a target="_blank" href="http://www.expressjs.com.cn/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/express.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/express.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/express.png" />
                                                 Express
                                             </div>
 
@@ -959,12 +759,8 @@
                                     <a target="_blank" href="https://www.sublimetext.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/sublime-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/sublime-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/sublime-favicon.png" />
                                                 Sublime
                                             </div>
 
@@ -977,12 +773,8 @@
                                     <a target="_blank" href="https://www.jetbrains.com/webstorm/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/webstorm-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/webstorm-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/webstorm-favicon.png" />
                                                 WebStorm
                                             </div>
 
@@ -1002,12 +794,8 @@
                                     <a target="_blank" href="http://www.telerik.com/fiddler">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/fiddler-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/fiddler-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/fiddler-favicon.png" />
                                                 Fiddler
                                             </div>
 
@@ -1018,12 +806,8 @@
                                     <a target="_blank" href="https://www.charlesproxy.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/charles-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/charles-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/charles-favicon.png" />
                                                 Charles
                                             </div>
 
@@ -1045,12 +829,8 @@
                                     <a target="_blank" href="https://webpack.js.org/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/webpack-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/webpack-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/webpack-favicon.png" />
                                                 Webpack
                                             </div>
 
@@ -1061,12 +841,8 @@
                                     <a target="_blank" href="http://www.gulpjs.com.cn/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/gulp-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/gulp-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/gulp-favicon.png" />
                                                 Gulp
                                             </div>
 
@@ -1077,12 +853,8 @@
                                     <a target="_blank" href="http://browserify.org/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/browserify.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/browserify.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/browserify.png" />
                                                 Browserify
                                             </div>
 
@@ -1093,12 +865,8 @@
                                     <a target="_blank" href="http://yeoman.io/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/yeoman-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/yeoman-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/yeoman-favicon.png" />
                                                 Yeoman
                                             </div>
 
@@ -1111,12 +879,8 @@
                                     <a target="_blank" href="http://www.gruntjs.net">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/grunt-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/grunt-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/grunt-favicon.png" />
                                                 Grunt
                                             </div>
 
@@ -1127,12 +891,8 @@
                                     <a target="_blank" href="https://babeljs.io/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/babel-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/babel-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/babel-favicon.png" />
                                                 Babel
                                             </div>
 
@@ -1143,12 +903,8 @@
                                     <a target="_blank" href="https://fex-team.github.io/fis3/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/fis-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/fis-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/fis-favicon.png" />
                                                 FIS3
                                             </div>
 
@@ -1170,12 +926,8 @@
                                     <a target="_blank" href="http://codepen.io/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/codepen.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/codepen.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/codepen.png" />
                                                 CodePen
                                             </div>
 
@@ -1186,12 +938,8 @@
                                     <a target="_blank" href="http://caniuse.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/caniuse.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/caniuse.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/caniuse.png" />
                                                 Can I use
                                             </div>
 
@@ -1208,18 +956,11 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <a
-                                        target="_blank"
-                                        href="http://www.bootcss.com/p/font-awesome/"
-                                    >
+                                    <a target="_blank" href="http://www.bootcss.com/p/font-awesome/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/font-awesome-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/font-awesome-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/font-awesome-favicon.png" />
                                                 Font Awesome
                                             </div>
 
@@ -1230,12 +971,8 @@
                                     <a target="_blank" href="http://iconfont.cn/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/iconfont-favicon.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/iconfont-favicon.jpg"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/iconfont-favicon.jpg" />
                                                 Iconfont
                                             </div>
 
@@ -1246,12 +983,8 @@
                                     <a target="_blank" href="https://icomoon.io/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/icomoon-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/icomoon-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/icomoon-favicon.png" />
                                                 IcoMoon
                                             </div>
 
@@ -1271,12 +1004,8 @@
                                     <a target="_blank" href="http://www.uigreat.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/uigreat-favicon.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/uigreat-favicon.jpg"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/uigreat-favicon.jpg" />
                                                 UIGREAT
                                             </div>
 
@@ -1287,12 +1016,8 @@
                                     <a target="_blank" href="http://huaban.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/huaban-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/huaban-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/huaban-favicon.png" />
                                                 花瓣
                                             </div>
 
@@ -1303,12 +1028,8 @@
                                     <a target="_blank" href="https://dribbble.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/dribbble-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/dribbble-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/dribbble-favicon.png" />
                                                 Dribbble
                                             </div>
 
@@ -1319,12 +1040,8 @@
                                     <a target="_blank" href="https://www.behance.net/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/behance-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/behance-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/behance-favicon.png" />
                                                 Behance
                                             </div>
 
@@ -1335,12 +1052,8 @@
                                     <a target="_blank" href="https://www.pinterest.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/pinterest-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/pinterest-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/pinterest-favicon.png" />
                                                 Pinterest
                                             </div>
 
@@ -1351,12 +1064,8 @@
                                     <a target="_blank" href="http://www.zcool.com.cn/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/zcool-favicon.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/zcool-favicon.jpg"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/zcool-favicon.jpg" />
                                                 站酷
                                             </div>
 
@@ -1367,12 +1076,8 @@
                                     <a target="_blank" href="https://thefwa.com/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/thefwa-favicon.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/thefwa-favicon.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/thefwa-favicon.png" />
                                                 FWA
                                             </div>
 
@@ -1392,11 +1097,8 @@
                                     <div class="item">
                                         <p class="title">腾讯AlloyTeam</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/alloyteam-qrcode.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/alloyteam-qrcode.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/alloyteam-qrcode.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：AlloyTeam</p>
@@ -1406,11 +1108,8 @@
                                     <div class="item">
                                         <p class="title">印记中文</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/docchina-qr.jpg"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/docchina-qr.jpg"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/docchina-qr.jpg" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：docshina</p>
@@ -1420,11 +1119,8 @@
                                     <div class="item">
                                         <p class="title">奇舞周刊</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/75team-qrcode.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/75team-qrcode.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/75team-qrcode.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：75team</p>
@@ -1434,11 +1130,8 @@
                                     <div class="item">
                                         <p class="title">前端大全</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/front-dev-qrcode.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/front-dev-qrcode.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/front-dev-qrcode.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：FrontDev</p>
@@ -1448,11 +1141,8 @@
                                     <div class="item">
                                         <p class="title">前端外刊评论</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/front-end-magazine-qrcode.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/front-end-magazine-qrcode.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/front-end-magazine-qrcode.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：FrontendMagazine</p>
@@ -1462,11 +1152,8 @@
                                     <div class="item">
                                         <p class="title">前端早读课</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/fe-zaoduke-qrcode.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/fe-zaoduke-qrcode.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/fe-zaoduke-qrcode.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：FeZaoDuKe</p>
@@ -1476,11 +1163,8 @@
                                     <div class="item">
                                         <p class="title">前端之巅</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/front-show.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/front-show.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/front-show.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：frontshow</p>
@@ -1490,11 +1174,8 @@
                                     <div class="item">
                                         <p class="title">凹凸实验室</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/o2-qrcode.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/o2-qrcode.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/o2-qrcode.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：AOTULabs</p>
@@ -1504,11 +1185,8 @@
                                     <div class="item">
                                         <p class="title">Node地下铁</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/node-subway-qrcode.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/node-subway-qrcode.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/node-subway-qrcode.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：Node-Subway</p>
@@ -1518,11 +1196,8 @@
                                     <div class="item">
                                         <p class="title">FEX</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/fex-qrcode.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/fex-qrcode.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/fex-qrcode.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：baidu-front-end</p>
@@ -1532,11 +1207,8 @@
                                     <div class="item">
                                         <p class="title">W3cplus</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/w3cplus-qrcode.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/w3cplus-qrcode.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/w3cplus-qrcode.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：W3cplus</p>
@@ -1546,11 +1218,8 @@
                                     <div class="item">
                                         <p class="title">w3ctech</p>
                                         <div class="logo">
-                                            <img
-                                                data-original=" http://www.alloyteam.com/nav/static/images/w3ctech-qrcode.png"
-                                                class="loaded"
-                                                src=" http://www.alloyteam.com/nav/static/images/w3ctech-qrcode.png"
-                                            />
+                                            <img class=" loaded"
+                                                src="http://www.alloyteam.com/nav/static/images/w3ctech-qrcode.png" />
                                         </div>
                                         <div class="desc">
                                             <p>微信号：w3ctech</p>
@@ -1569,12 +1238,8 @@
                                     <a target="_blank" href="https://github.com/kinvix">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/kinvix.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/kinvix.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/kinvix.png" />
                                                 TAT.Kinvix
                                             </div>
 
@@ -1587,12 +1252,8 @@
                                     <a target="_blank" href="https://github.com/dntzhang">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/dntzhang.jpeg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/dntzhang.jpeg"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/dntzhang.jpeg" />
                                                 dntzhang
                                             </div>
 
@@ -1605,12 +1266,8 @@
                                     <a target="_blank" href="https://github.com/tj">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/tj.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/tj.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/tj.png" />
                                                 TJ Holowaychuk
                                             </div>
 
@@ -1623,12 +1280,8 @@
                                     <a target="_blank" href="https://github.com/yyx990803">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/yyx990803.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/yyx990803.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/yyx990803.png" />
                                                 尤雨溪
                                             </div>
 
@@ -1639,12 +1292,8 @@
                                     <a target="_blank" href="https://github.com/lifesinger">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/lifesinger.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/lifesinger.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/lifesinger.png" />
                                                 玉伯
                                             </div>
 
@@ -1657,12 +1306,8 @@
                                     <a target="_blank" href="https://github.com/wintercn">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/winter.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/winter.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/winter.png" />
                                                 winter
                                             </div>
 
@@ -1673,12 +1318,8 @@
                                     <a target="_blank" href="https://github.com/BYVoid">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/byvoid.png"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/byvoid.png"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/byvoid.png" />
                                                 BYVod
                                             </div>
 
@@ -1697,18 +1338,11 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <a
-                                        target="_blank"
-                                        href="https://book.douban.com/subject/6854549/"
-                                    >
+                                    <a target="_blank" href="https://book.douban.com/subject/6854549/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/define-guild.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/define-guild.jpg"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/define-guild.jpg" />
                                                 JavaScript权威指南
                                             </div>
 
@@ -1716,18 +1350,11 @@
                                         </div>
                                     </a>
 
-                                    <a
-                                        target="_blank"
-                                        href="https://book.douban.com/subject/10546125//"
-                                    >
+                                    <a target="_blank" href="https://book.douban.com/subject/10546125//">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/professional-javascript.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/professional-javascript.jpg"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/professional-javascript.jpg" />
                                                 JavaScript高级程序设计
                                             </div>
 
@@ -1735,18 +1362,11 @@
                                         </div>
                                     </a>
 
-                                    <a
-                                        target="_blank"
-                                        href="https://book.douban.com/subject/26382780/"
-                                    >
+                                    <a target="_blank" href="https://book.douban.com/subject/26382780/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/js-design-pattern.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/js-design-pattern.jpg"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/js-design-pattern.jpg" />
                                                 JavaScript设计模式与开发实践
                                             </div>
 
@@ -1756,18 +1376,11 @@
                                         </div>
                                     </a>
 
-                                    <a
-                                        target="_blank"
-                                        href="https://book.douban.com/subject/10746113/"
-                                    >
+                                    <a target="_blank" href="https://book.douban.com/subject/10746113/">
                                         <div class="item">
                                             <div class="logo">
-                                                <img
-                                                    data-original=" http://www.alloyteam.com/nav/static/images/http-guide.jpg"
-                                                    width="100%"
-                                                    class="loaded"
-                                                    src=" http://www.alloyteam.com/nav/static/images/http-guide.jpg"
-                                                />
+                                                <img width=" 100%" class="loaded"
+                                                    src="http://www.alloyteam.com/nav/static/images/http-guide.jpg" />
                                                 HTTP权威指南
                                             </div>
 
@@ -1799,7 +1412,7 @@
     }
 
     .sub-category {
-        > div {
+        >div {
             padding: 12px 0 0 2.1%;
             font-size: 18px;
         }
@@ -1829,13 +1442,15 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         padding: 0 0.1rem;
-        > img {
+
+        >img {
             width: 30px;
             height: 30px;
             border-radius: 50%;
             vertical-align: middle;
         }
     }
+
     .desc {
         color: gray;
         font-size: 12px;

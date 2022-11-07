@@ -2,36 +2,26 @@
     <NuxtLayout>
         <div class="utils-page">
             <el-container>
-                <el-header> <AppHeader /></el-header>
+                <el-header>
+                    <AppHeader />
+                </el-header>
                 <div class="max-width-limit">
                     <el-container>
                         <el-aside width="200px">
                             <div class="menu-list">
-                                <div
-                                    v-for="(menu, mIndex) in menuList"
-                                    class="menu-item"
-                                    :class="{ 'menu-item-active': mIndex === menuActive }"
-                                    :key="mIndex"
-                                    @click="menuClick(menu, mIndex)"
-                                >
+                                <div v-for="(menu, mIndex) in menuList" class="menu-item"
+                                    :class="{ 'menu-item-active': mIndex === menuActive }" :key="mIndex"
+                                    @click="menuClick(menu, mIndex)">
                                     <img v-lazy="img" alt="" /><span>{{ menu?.name }}</span>
                                 </div>
                             </div>
                         </el-aside>
                         <el-main width="800px">
                             <div class="tranfer-con">
-                                <el-input
-                                    v-model="textArea"
-                                    :autosize="{ minRows: 6, maxRows: 10 }"
-                                    type="textarea"
-                                    placeholder="Please input"
-                                />
-                                <el-input
-                                    v-model="filterTextArea"
-                                    :autosize="{ minRows: 6, maxRows: 10 }"
-                                    type="textarea"
-                                    placeholder="Please input"
-                                />
+                                <el-input v-model="textArea" :autosize="{ minRows: 6, maxRows: 10 }" type="textarea"
+                                    placeholder="Please input" />
+                                <el-input v-model="filterTextArea" :autosize="{ minRows: 6, maxRows: 10 }"
+                                    type="textarea" placeholder="Please input" />
                                 <div class="button-con">
                                     <!-- <el-button shadow="always" @click="tagsFormat">
                                         Tags美化
@@ -47,19 +37,18 @@
                                     </el-button>
                                 </div>
                                 <div class="tags-con">
-                                    <el-tag
-                                        v-for="(tag, tIndex) in textAreaTags"
-                                        :key="tIndex"
-                                        round
-                                        size="large"
-                                        effect="dark"
-                                        style="
+                                    <el-tag v-for="(tag, tIndex) in textAreaTags" :key="tIndex" round size="large"
+                                        effect="dark" style="
                                             margin-right: 8px !important;
                                             margin-bottom: 8px !important;
-                                        "
-                                        >{{ tag }}</el-tag
-                                    >
+                                        ">{{ tag }}</el-tag>
                                 </div>
+                                <el-link href="https://danbooru.donmai.us/" target="_blank" type="primary">https://danbooru.donmai.us/</el-link>
+                                <el-link href="https://gelbooru.com/index.php" target="_blank" type="primary">https://gelbooru.com/index.php</el-link>
+                                <el-link href="https://aibooru.online/" target="_blank" type="primary">https://aibooru.online/</el-link>
+                                <el-link href="https://aitag.top/" target="_blank" type="primary">https://aitag.top/</el-link>
+                                <el-link href="https://noveltags.com/" target="_blank" type="primary">https://noveltags.com/</el-link>
+                                <el-link href="https://tags.novelai.dev/" target="_blank" type="primary">https://tags.novelai.dev/</el-link>
                             </div>
                         </el-main>
                     </el-container>
@@ -140,7 +129,7 @@ const circleToMedium = () => {
         color: rgb(74, 71, 71);
         cursor: pointer;
 
-        > img {
+        >img {
             width: 40px;
             height: 40px;
             border-radius: 12px;
