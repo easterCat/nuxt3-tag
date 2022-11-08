@@ -2,28 +2,24 @@
     <NuxtLayout>
         <el-drawer title="常用网站" visible.sync="true">
             <div>
-                111
                 <PcLinkList></PcLinkList>
             </div>
         </el-drawer>
-        <PcFixMenu></PcFixMenu>
+       
         <div class="utils-page page">
             <AppHeader />
             <div class="content">
                 <AppBanner />
                 <div class="max-width-limit">
-                    <div class="area-title">按类别浏览</div>
+                    <PcAreaTitle title="按类别浏览"></PcAreaTitle>
                     <div class="menu-list">
-                        <div
-                            v-for="(menu, mIndex) in menuList"
-                            class="menu-item"
-                            :class="{ 'menu-item-active': mIndex === menuActive }"
-                            :key="mIndex"
-                            @click="menuClick(menu, mIndex)"
-                        >
+                        <div v-for="(menu, mIndex) in menuList" class="menu-item"
+                            :class="{ 'menu-item-active': mIndex === menuActive }" :key="mIndex"
+                            @click="menuClick(menu, mIndex)">
                             <img v-lazy="menu?.bg" alt="" /><span>{{ menu?.name }}</span>
                         </div>
                     </div>
+                    <PcAreaTitle title="当前工具"></PcAreaTitle>
                     <PromptBeautiful></PromptBeautiful>
                 </div>
             </div>
@@ -36,7 +32,7 @@ import { ref } from "vue";
 import { utilMenus } from "~/assets/json/utils.js";
 import PromptBeautiful from "~/pages/utils/components/promptBeautiful.vue";
 
-const initActive = 5;
+const initActive = 0;
 const menuActive = ref(initActive);
 const menuList = ref(utilMenus);
 const menuChilds = ref(menuList.value[initActive]?.childs);
@@ -48,16 +44,6 @@ const menuClick = (menu: any, index: number) => {
 </script>
 
 <style lang="scss" scoped>
-.area-title {
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-left: 2px;
-}
-
 .menu-list {
     width: 100%;
     height: 100%;
@@ -79,7 +65,7 @@ const menuClick = (menu: any, index: number) => {
         cursor: pointer;
         margin-right: 30px;
 
-        > img {
+        >img {
             width: 100px;
             height: 100px;
             border-radius: 10px;

@@ -1,14 +1,9 @@
 <template>
     <div class="page-fix-menu">
-        <el-button type="success" icon="el-icon-link" circle @click="linkButtonClick"></el-button>
+        <el-button type="success" icon="Link" circle @click="linkButtonClick"></el-button>
 
         <ClientOnly>
-            <el-drawer
-                title="常用网站"
-                :visible.sync="drawer"
-                :direction="direction"
-                :before-close="handleClose"
-            >
+            <el-drawer v-model="drawer" title="常用网站" :direction="direction" :before-close="handleClose">
                 <div>
                     <PcLinkList></PcLinkList>
                 </div>

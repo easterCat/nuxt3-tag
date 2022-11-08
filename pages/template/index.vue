@@ -6,15 +6,8 @@
                 <el-container>
                     <el-main>
                         <el-row :gutter="20">
-                            <el-col
-                                v-for="(tem, tIndex) in templatesList"
-                                :key="tIndex"
-                                :xs="24"
-                                :sm="12"
-                                :md="6"
-                                :lg="6"
-                                :xl="4"
-                            >
+                            <el-col v-for="(tem, tIndex) in templatesList" :key="tIndex" :xs="24" :sm="12" :md="6"
+                                :lg="6" :xl="4">
                                 <el-card :body-style="{ padding: '0px' }" @click="cardClick(tem)">
                                     <img v-lazy="tem?.preview" class="image" />
                                     <div style="padding: 14px">
@@ -33,45 +26,20 @@
             <ClientOnly>
                 <el-dialog v-model="dialogVisible" title="模板信息" width="800px">
                     <el-descriptions :column="1" border>
-                        <el-descriptions-item
-                            label="Username"
-                            label-align="right"
-                            align="center"
-                            label-class-name="description-label"
-                            >{{ currentTem?.name }}</el-descriptions-item
-                        >
+                        <el-descriptions-item label="Username" label-align="right" align="center"
+                            label-class-name="description-label">{{ currentTem?.name }}</el-descriptions-item>
 
-                        <el-descriptions-item
-                            label="正向标签"
-                            label-align="right"
-                            align="center"
-                            label-class-name="description-label"
-                            >{{ currentTem?.prompt }}</el-descriptions-item
-                        >
+                        <el-descriptions-item label="正向标签" label-align="right" align="center"
+                            label-class-name="description-label">{{ currentTem?.prompt }}</el-descriptions-item>
 
-                        <el-descriptions-item
-                            label="负面标签"
-                            label-align="right"
-                            align="center"
-                            label-class-name="description-label"
-                            >{{ currentTem?.nprompt }}</el-descriptions-item
-                        >
+                        <el-descriptions-item label="负面标签" label-align="right" align="center"
+                            label-class-name="description-label">{{ currentTem?.nprompt }}</el-descriptions-item>
 
-                        <el-descriptions-item
-                            label="step"
-                            label-align="right"
-                            align="center"
-                            label-class-name="description-label"
-                            >{{ currentTem?.step }}</el-descriptions-item
-                        >
+                        <el-descriptions-item label="step" label-align="right" align="center"
+                            label-class-name="description-label">{{ currentTem?.step }}</el-descriptions-item>
 
-                        <el-descriptions-item
-                            label="scale"
-                            label-align="right"
-                            align="center"
-                            label-class-name="description-label"
-                            >{{ currentTem?.scale }}</el-descriptions-item
-                        >
+                        <el-descriptions-item label="scale" label-align="right" align="center"
+                            label-class-name="description-label">{{ currentTem?.scale }}</el-descriptions-item>
                     </el-descriptions>
                     <template #footer>
                         <span class="dialog-footer">
@@ -81,14 +49,14 @@
                             </el-button>
                         </span>
                     </template>
-                </el-dialog></ClientOnly
-            >
+                </el-dialog>
+            </ClientOnly>
         </div>
     </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import { templates } from "~~/assets/json/templates";
 
 const templatesList = ref(templates);
@@ -132,8 +100,8 @@ const cardClick = (tem: any) => {
     width: 100%;
     height: 280px;
     display: block;
-    background: black;
-    object-fit: cover;
+    background: rgb(148, 148, 148);
+    object-fit: contain;
 }
 
 :deep(.el-col) {
@@ -143,5 +111,9 @@ const cardClick = (tem: any) => {
 
 :deep(.description-label) {
     width: 120px;
+}
+
+:deep(.el-card) {
+    border-radius: 10px;
 }
 </style>

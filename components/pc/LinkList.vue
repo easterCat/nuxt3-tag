@@ -1,26 +1,34 @@
 <template>
     <div class="link-list">
-        <el-link href="https://danbooru.donmai.us/" target="_blank" type="primary">
-            https://danbooru.donmai.us/</el-link
-        >
-        <el-link href="https://gelbooru.com/index.php" target="_blank" type="primary">
-            https://gelbooru.com/index.php</el-link
-        >
-        <el-link href="https://aibooru.online/" target="_blank" type="primary">
-            https://aibooru.online/</el-link
-        >
-        <el-link href="https://aitag.top/" target="_blank" type="primary"
-            >https://aitag.top/
-        </el-link>
-        <el-link href="https://noveltags.com/" target="_blank" type="primary">
-            https://noveltags.com/</el-link
-        >
-        <el-link href="https://tags.novelai.dev/" target="_blank" type="primary">
-            https://tags.novelai.dev/</el-link
-        >
+        <div class="link-item" v-for="(link, lIndex) in linkList" :key="lIndex">
+            <el-link :href="link?.href" target="_blank" type="primary">{{ link.name }} ({{ link.href }})
+            </el-link>
+        </div>
     </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { links, } from "@/assets/json/links.js"
+import { onMounted, Ref } from 'vue'
 
-<style scoped></style>
+interface LinkItem {
+    name: string,
+    href: string
+}
+
+const linkList: Ref<LinkItem[]> = ref([{ name: '', href: '' }])
+
+
+onMounted(() => {
+    linkList.value = [...links]
+})
+</script>
+
+<style scoped>
+.link-item {
+    width: 100%;
+    color: grey;
+    line-height: 30px;
+    cursor: pointer;
+}
+</style>

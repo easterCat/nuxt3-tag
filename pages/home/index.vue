@@ -71,10 +71,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import { templates } from "~~/assets/json/templates";
 
-const templatesList = ref(templates);
 const dialogVisible = ref(false);
 let currentTem = ref({
     name: "",
@@ -85,12 +84,6 @@ let currentTem = ref({
     author: "",
     preview: "",
 });
-
-const cardClick = (tem: any) => {
-    currentTem.value = { ...tem };
-    dialogVisible.value = true;
-    console.log(currentTem);
-};
 </script>
 
 <style lang="scss" scoped>

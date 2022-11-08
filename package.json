@@ -15,8 +15,10 @@
         "sass-loader": "^13.1.0"
     },
     "dependencies": {
+        "@element-plus/icons-vue": "^2.0.10",
         "element-plus": "^2.2.19",
         "store": "^2.0.12",
+        "vue3-clipboard": "^1.0.0",
         "vue3-lazyload": "^0.3.6"
     }
 }
