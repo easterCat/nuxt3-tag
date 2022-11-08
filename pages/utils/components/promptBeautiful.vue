@@ -84,14 +84,14 @@ onMounted(() => {
 
 // methods
 const promptFormat = () => {
-    formatTextArea.value = textArea.value.replace(/^[ ]{0,}[,]{0,}[ ]{0,}/g, ", ");
-    promptList.value = formatTextArea.value.split(",").map(i => i.trim());
+    formatTextArea.value = textArea.value.replace(/\s*，+|,+\s*/g, ",");
+    promptList.value = formatTextArea.value.split(",").filter(i => !!i).map(i => i.trim());
     saveData(textArea.value);
 };
 
 const tagsAddComma = () => {
-    formatTextArea.value = textArea.value.replace(/\ /g, ", ");
-    promptList.value = formatTextArea.value.split(",").filter(i=>!!i).map(i => i.trim());
+    formatTextArea.value = textArea.value.replace(/^\s*/g, ", ");
+    promptList.value = formatTextArea.value.split(",").filter(i => !!i).map(i => i.trim());
     saveData(textArea.value);
 };
 
