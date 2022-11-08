@@ -18,10 +18,10 @@
                 Prompt空格加逗号
             </el-button>
             <el-button shadow="always" type="warning" size="large" @click="mediumToCircle">
-                Prompt中括号转圆括号
+                Prompt中括号转圆括号(先格式化)
             </el-button>
             <el-button shadow="always" type="warning" size="large" @click="circleToMedium">
-                Prompt圆括号转中括号
+                Prompt圆括号转中括号(先格式化)
             </el-button>
             <el-button shadow="always" type="warning" size="large" @click="clearPrompt">
                 一键清空
@@ -37,7 +37,7 @@
             </el-tag>
             <div>
                 <el-button shadow="always" type="warning" size="large" @click="tagsReplacePrompt">
-                    当前tag替换prompt
+                    当前tags替换prompt
                 </el-button>
             </div>
         </div>
@@ -84,7 +84,7 @@ onMounted(() => {
 
 // methods
 const promptFormat = () => {
-    formatTextArea.value = textArea.value.replace(/\s*，+|,+\s*/g, ",");
+    formatTextArea.value = textArea.value.replace(/\s*(，+|,+)\s*/g, ",");
     promptList.value = formatTextArea.value.split(",").filter(i => !!i).map(i => i.trim());
     saveData(textArea.value);
 };
@@ -97,13 +97,13 @@ const tagsAddComma = () => {
 
 const mediumToCircle = () => {
     formatTextArea.value = textArea.value.replace(/\{/g, "(").replace(/\}/g, ")");
-    promptList.value = formatTextArea.value.split(/\ /g).map(i => i.trim());
+    promptList.value = formatTextArea.value.split(/,/g).filter(i => !!i).map(i => i.trim());
     saveData(textArea.value);
 };
 
 const circleToMedium = () => {
     formatTextArea.value = textArea.value.replace(/\(/g, "{").replace(/\)/g, "}");
-    promptList.value = formatTextArea.value.split(/\ /g).map(i => i.trim());
+    promptList.value = formatTextArea.value.split(/,/g).filter(i => !!i).map(i => i.trim());
     saveData(textArea.value);
 };
 
