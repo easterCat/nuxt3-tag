@@ -84,7 +84,7 @@ onMounted(() => {
 
 // methods
 const promptFormat = () => {
-    formatTextArea.value = textArea.value.replace(/\ /g, ", ");
+    formatTextArea.value = textArea.value.replace(/^[ ]{0,}[,]{0,}[ ]{0,}/g, ", ");
     promptList.value = formatTextArea.value.split(",").map(i => i.trim());
     saveData(textArea.value);
 };
