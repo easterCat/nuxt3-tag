@@ -1,7 +1,7 @@
 export const links = [
     {
         name: "gelbooru标签大全",
-        href: "https://gelbooru.com/index.php/",
+        href: "https://gelbooru.com/",
     },
     {
         name: "danbooru标签大全",

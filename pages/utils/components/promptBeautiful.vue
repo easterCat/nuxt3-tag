@@ -41,6 +41,7 @@
                 </el-button>
             </div>
         </div>
+
         <div class="tags-con" v-else>
             <p class="no-data">暂无列表</p>
         </div>
@@ -90,7 +91,7 @@ const promptFormat = () => {
 
 const tagsAddComma = () => {
     formatTextArea.value = textArea.value.replace(/\ /g, ", ");
-    promptList.value = formatTextArea.value.split(",").map(i => i.trim());
+    promptList.value = formatTextArea.value.split(",").filter(i=>!!i).map(i => i.trim());
     saveData(textArea.value);
 };
 
