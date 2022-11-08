@@ -90,7 +90,7 @@ const promptFormat = () => {
 };
 
 const tagsAddComma = () => {
-    formatTextArea.value = textArea.value.replace(/^\s*/g, ", ");
+    formatTextArea.value = textArea.value.replace(/\s+/g, ", ");
     promptList.value = formatTextArea.value.split(",").filter(i => !!i).map(i => i.trim());
     saveData(textArea.value);
 };
