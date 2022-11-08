@@ -1,22 +1,20 @@
 <template>
     <NuxtLayout>
-        <div class="web-page">
-            <el-container>
-                <el-header> <AppHeader /></el-header>
-                <div class="max-width-limit">
-                    <el-container>
-                        <el-main width="1000px">
-                            <el-row :gutter="20">
-                                <el-col :span="6">
-                                    <el-button type="primary" @click="cardClick('navigate')">
-                                        web前端导航
-                                    </el-button>
-                                </el-col>
-                            </el-row>
-                        </el-main>
-                    </el-container>
-                </div>
-            </el-container>
+        <div class="web-page page">
+            <AppHeader />
+            <div class="content">
+                <el-container>
+                    <el-main>
+                        <el-row :gutter="20">
+                            <el-col :span="6">
+                                <el-button type="primary" @click="cardClick('navigate')">
+                                    web前端导航
+                                </el-button>
+                            </el-col>
+                        </el-row>
+                    </el-main>
+                </el-container>
+            </div>
         </div>
     </NuxtLayout>
 </template>
@@ -31,16 +29,6 @@ const cardClick = (p: String) => {
 </script>
 
 <style lang="scss" scoped>
-.web-page {
-    display: flex;
-    justify-content: center;
-}
-
-.max-width-limit {
-    max-width: 1000px;
-    margin: 20px auto 0 auto;
-}
-
 .image {
     width: 100%;
     height: 0;

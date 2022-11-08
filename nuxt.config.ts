@@ -1,5 +1,6 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+    ssr: false,
     app: {
         baseURL: '/stable-diffution-utils-project',
         head: {
@@ -20,4 +21,8 @@ export default defineNuxtConfig({
             }
         }
     },
+    css: [
+        '@/assets/scss/index.scss',
+        '@/assets/scss/layout.scss',
+    ]
 })

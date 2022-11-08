@@ -9,12 +9,14 @@
         "postinstall": "nuxt prepare"
     },
     "devDependencies": {
+        "@types/store": "^2.0.2",
         "nuxt": "3.0.0-rc.13",
         "sass": "^1.56.0",
         "sass-loader": "^13.1.0"
     },
     "dependencies": {
         "element-plus": "^2.2.19",
+        "store": "^2.0.12",
         "vue3-lazyload": "^0.3.6"
     }
 }

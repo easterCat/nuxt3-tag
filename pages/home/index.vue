@@ -1,77 +1,71 @@
 <template>
     <NuxtLayout>
-        <div class="home-page">
-            <el-container>
-                <el-header> <AppHeader /></el-header>
-                <div class="max-width-limit">
-                    <el-container>
-                        <el-main>
-                            <el-row :gutter="20">
-                                <el-col :span="6">
-                                    <PcAnimationButton
-                                        buttonText="Tags添加逗号"
-                                        :buttonStyle="4"
-                                    ></PcAnimationButton>
-                                </el-col>
-                            </el-row>
-                        </el-main>
-                    </el-container>
-                </div>
+        <div class="home-page page">
+            <AppHeader />
+            <div class="content">
+                <el-row :gutter="20">
+                    <el-col :span="6">
+                        <PcAnimationButton
+                            buttonText="Tags添加逗号"
+                            :buttonStyle="4"
+                        ></PcAnimationButton>
+                    </el-col>
+                </el-row>
+            </div>
 
-                <ClientOnly>
-                    <el-dialog v-model="dialogVisible" title="模板信息" width="800px">
-                        <el-descriptions :column="1" border>
-                            <el-descriptions-item
-                                label="Username"
-                                label-align="right"
-                                align="center"
-                                label-class-name="description-label"
-                                >{{ currentTem?.name }}</el-descriptions-item
-                            >
+            <ClientOnly>
+                <el-dialog v-model="dialogVisible" title="模板信息" width="800px">
+                    <el-descriptions :column="1" border>
+                        <el-descriptions-item
+                            label="Username"
+                            label-align="right"
+                            align="center"
+                            label-class-name="description-label"
+                            >{{ currentTem?.name }}</el-descriptions-item
+                        >
 
-                            <el-descriptions-item
-                                label="正向标签"
-                                label-align="right"
-                                align="center"
-                                label-class-name="description-label"
-                                >{{ currentTem?.prompt }}</el-descriptions-item
-                            >
+                        <el-descriptions-item
+                            label="正向标签"
+                            label-align="right"
+                            align="center"
+                            label-class-name="description-label"
+                            >{{ currentTem?.prompt }}</el-descriptions-item
+                        >
 
-                            <el-descriptions-item
-                                label="负面标签"
-                                label-align="right"
-                                align="center"
-                                label-class-name="description-label"
-                                >{{ currentTem?.nprompt }}</el-descriptions-item
-                            >
+                        <el-descriptions-item
+                            label="负面标签"
+                            label-align="right"
+                            align="center"
+                            label-class-name="description-label"
+                            >{{ currentTem?.nprompt }}</el-descriptions-item
+                        >
 
-                            <el-descriptions-item
-                                label="step"
-                                label-align="right"
-                                align="center"
-                                label-class-name="description-label"
-                                >{{ currentTem?.step }}</el-descriptions-item
-                            >
+                        <el-descriptions-item
+                            label="step"
+                            label-align="right"
+                            align="center"
+                            label-class-name="description-label"
+                            >{{ currentTem?.step }}</el-descriptions-item
+                        >
 
-                            <el-descriptions-item
-                                label="scale"
-                                label-align="right"
-                                align="center"
-                                label-class-name="description-label"
-                                >{{ currentTem?.scale }}</el-descriptions-item
-                            >
-                        </el-descriptions>
-                        <template #footer>
-                            <span class="dialog-footer">
-                                <el-button @click="dialogVisible = false">取消</el-button>
-                                <el-button type="primary" @click="dialogVisible = false">
-                                    确定
-                                </el-button>
-                            </span>
-                        </template>
-                    </el-dialog></ClientOnly
-                >
-            </el-container>
+                        <el-descriptions-item
+                            label="scale"
+                            label-align="right"
+                            align="center"
+                            label-class-name="description-label"
+                            >{{ currentTem?.scale }}</el-descriptions-item
+                        >
+                    </el-descriptions>
+                    <template #footer>
+                        <span class="dialog-footer">
+                            <el-button @click="dialogVisible = false">取消</el-button>
+                            <el-button type="primary" @click="dialogVisible = false">
+                                确定
+                            </el-button>
+                        </span>
+                    </template>
+                </el-dialog></ClientOnly
+            >
         </div>
     </NuxtLayout>
 </template>
@@ -100,16 +94,6 @@ const cardClick = (tem: any) => {
 </script>
 
 <style lang="scss" scoped>
-.home-page {
-    display: flex;
-    justify-content: center;
-}
-
-.max-width-limit {
-    max-width: 1000px;
-    margin: 20px auto 0 auto;
-}
-
 .time {
     font-size: 12px;
     color: #999;

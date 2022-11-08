@@ -1,42 +1,48 @@
 <template>
     <NuxtLayout>
-        <div class="tags-page">
-            <el-container>
-                <el-header> <AppHeader /></el-header>
-                <div class="max-width-limit">
-                    <el-container>
-                        <el-aside width="200px">
-                            <el-menu active-text-color="#ffd04b" default-active="0">
-                                <el-menu-item
-                                    v-for="(m, mIndex) in tagsMenus"
-                                    :index="mIndex + ''"
-                                    :key="mIndex"
-                                    @click="menuItemClick(mIndex)"
-                                >
-                                    <el-icon><icon-menu /></el-icon>
-                                    <span>{{ m?.name }}</span>
-                                </el-menu-item>
-                            </el-menu>
-                        </el-aside>
-                        <el-main width="800px">
-                            <el-row :gutter="20">
-                                <el-col v-for="(o, index) in tagsLists" :key="index" :span="6">
-                                    <el-card :body-style="{ padding: '0px' }">
-                                        <img
-                                            src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-                                            class="image"
-                                        />
-                                        <div style="padding: 14px">
-                                            <p>{{ o?.zh }}</p>
-                                            <p>{{ o?.en }}</p>
-                                        </div>
-                                    </el-card>
-                                </el-col>
-                            </el-row>
-                        </el-main>
-                    </el-container>
-                </div>
-            </el-container>
+        <div class="tags-page page">
+            <AppHeader />
+            <div class="content">
+                <el-container>
+                    <el-aside width="200px">
+                        <el-menu active-text-color="#ffd04b" default-active="0">
+                            <el-menu-item
+                                v-for="(m, mIndex) in tagsMenus"
+                                :index="mIndex + ''"
+                                :key="mIndex"
+                                @click="menuItemClick(mIndex)"
+                            >
+                                <el-icon><icon-menu /></el-icon>
+                                <span>{{ m?.name }}</span>
+                            </el-menu-item>
+                        </el-menu>
+                    </el-aside>
+                    <el-main width="800px">
+                        <el-row :gutter="20">
+                            <el-col
+                                v-for="(o, index) in tagsLists"
+                                :key="index"
+                                :xs="12"
+                                :sm="8"
+                                :md="6"
+                                :lg="4"
+                                :xl="4"
+                            >
+                                <el-card :body-style="{ padding: '0px' }">
+                                    <img
+                                        src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                                        class="image"
+                                    />
+                                    <div style="padding: 14px">
+                                        <p>{{ o?.zh }}</p>
+                                        <p>{{ o?.en }}</p>
+                                    </div>
+                                </el-card>
+                            </el-col>
+                        </el-row>
+                    </el-main>
+                </el-container>
+            </div>
         </div>
     </NuxtLayout>
 </template>
@@ -54,16 +60,6 @@ const menuItemClick = (key: number) => {
 </script>
 
 <style lang="scss" scoped>
-.tags-page {
-    display: flex;
-    justify-content: center;
-}
-
-.max-width-limit {
-    max-width: 1000px;
-    margin: 20px auto 0 auto;
-}
-
 .image {
     width: 100%;
     height: 0;
