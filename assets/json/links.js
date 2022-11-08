@@ -39,4 +39,8 @@ export const links = [
         name: "AI相关的图片生成资源",
         href: "https://lexica.art/",
     },
+    {
+        name: "pixiv插画网站",
+        href: "https://www.pixiv.net/",
+    },
 ];

@@ -3,24 +3,20 @@
         <div class="template-page page">
             <AppHeader />
             <div class="content">
-                <el-container>
-                    <el-main>
-                        <el-row :gutter="20">
-                            <el-col v-for="(tem, tIndex) in templatesList" :key="tIndex" :xs="24" :sm="12" :md="6"
-                                :lg="6" :xl="4">
-                                <el-card :body-style="{ padding: '0px' }" @click="cardClick(tem)">
-                                    <img v-lazy="tem?.preview" class="image" />
-                                    <div style="padding: 14px">
-                                        <span>{{ tem?.author }}</span>
-                                        <div class="bottom">
-                                            <time class="time">{{ tem?.name }}</time>
-                                        </div>
-                                    </div>
-                                </el-card>
-                            </el-col>
-                        </el-row>
-                    </el-main>
-                </el-container>
+                <el-row :gutter="20">
+                    <el-col v-for="(tem, tIndex) in templatesList" :key="tIndex" :xs="24" :sm="12" :md="6" :lg="6"
+                        :xl="4">
+                        <el-card :body-style="{ padding: '0px' }" @click="cardClick(tem)">
+                            <img v-lazy="tem?.preview" class="image" />
+                            <div style="padding: 14px">
+                                <span>{{ tem?.author }}</span>
+                                <div class="bottom">
+                                    <time class="time">{{ tem?.name }}</time>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+                </el-row>
             </div>
 
             <ClientOnly>

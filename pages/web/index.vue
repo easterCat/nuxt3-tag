@@ -3,17 +3,13 @@
         <div class="web-page page">
             <AppHeader />
             <div class="content">
-                <el-container>
-                    <el-main>
-                        <el-row :gutter="20">
-                            <el-col :span="6">
-                                <el-button type="primary" @click="cardClick('navigate')">
-                                    web前端导航
-                                </el-button>
-                            </el-col>
-                        </el-row>
-                    </el-main>
-                </el-container>
+                <el-row :gutter="20">
+                    <el-col :span="6">
+                        <el-button type="primary" @click="cardClick('navigate')">
+                            web前端导航
+                        </el-button>
+                    </el-col>
+                </el-row>
             </div>
         </div>
     </NuxtLayout>
