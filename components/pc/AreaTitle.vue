@@ -1,18 +1,22 @@
 <template>
-    <div class="area-title">{{ title }}</div>
+  <div class="area-title">
+    <AppAnimate enterName="animate__fadeInUp"
+      ><span>{{ title }}</span></AppAnimate
+    >
+  </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
+  defineProps({
     title: {
-        type: String,
-        default: "",
+      type: String,
+      default: '',
     },
-});
+  });
 </script>
 
 <style lang="scss" scoped>
-.area-title {
+  .area-title {
     width: 100%;
     height: 40px;
     line-height: 40px;
@@ -21,5 +25,5 @@ defineProps({
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 1px;
-}
+  }
 </style>

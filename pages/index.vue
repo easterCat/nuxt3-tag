@@ -1,10 +1,10 @@
 <template>
-    <div></div>
+  <div></div>
 </template>
 
 <script lang="ts" setup>
-const router = useRouter();
-router.replace({ path: "/home" });
+  const router = useRouter();
+  router.replace({ path: '/home' });
 </script>
 
 <style scoped></style>

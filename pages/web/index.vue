@@ -1,46 +1,42 @@
 <template>
-    <NuxtLayout>
-        <div class="web-page page">
-            <AppHeader />
-            <div class="content">
-                <el-row :gutter="20">
-                    <el-col :span="6">
-                        <el-button type="primary" @click="cardClick('navigate')">
-                            web前端导航
-                        </el-button>
-                    </el-col>
-                </el-row>
-            </div>
-        </div>
-    </NuxtLayout>
+  <NuxtLayout>
+    <div class="web-page page">
+      <AppHeader />
+      <div class="content">
+        <el-row :gutter="20">
+          <el-button type="primary" @click="cardClick('navigate')"> web前端导航 </el-button>
+        </el-row>
+      </div>
+    </div>
+  </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
-const router = useRouter();
-const cardClick = (p: String) => {
+  const router = useRouter();
+  const cardClick = (p: String) => {
     router.push({
-        path: `/web/${p}`,
+      path: `/web/${p}`,
     });
-};
+  };
 </script>
 
 <style lang="scss" scoped>
-.image {
+  .image {
     width: 100%;
     height: 0;
     display: block;
 
     img {
-        object-fit: contain;
+      object-fit: contain;
     }
-}
+  }
 
-:deep(.el-col) {
+  :deep(.el-col) {
     margin-bottom: 20px;
     border-radius: 8px;
-}
+  }
 
-:deep(.description-label) {
+  :deep(.description-label) {
     width: 120px;
-}
+  }
 </style>

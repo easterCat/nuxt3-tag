@@ -2,28 +2,28 @@ a,
 a:link,
 a:visited,
 a:hover {
-    text-decoration: none;
-    color: #333;
+  text-decoration: none;
+  color: #333;
 }
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 button,
 input,
 select,
 textarea {
-    background-color: transparent;
-    border-style: none;
+  background-color: transparent;
+  border-style: none;
 }
 
 button,
@@ -31,83 +31,83 @@ input,
 optgroup,
 select,
 textarea {
-    font: inherit;
+  font: inherit;
 }
 
 html,
 body,
 #__nuxt,
 #__layout {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    /* font-family: 'PingFang SC'; */
-    font-family: "PingFang SC", "Microsoft Yahei", "Courier New", Courier, monospace,
-        "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    overflow-x: hidden;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /* font-family: 'PingFang SC'; */
+  font-family: 'PingFang SC', 'Microsoft Yahei', 'Courier New', Courier, monospace, 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 html {
-    box-sizing: border-box;
-    overflow-y: scroll;
-    -webkit-text-size-adjust: 100%;
-    word-break: normal;
-    -moz-tab-size: 4;
-    tab-size: 4;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  word-break: normal;
+  -moz-tab-size: 4;
+  tab-size: 4;
 }
 
 *,
 ::before,
 ::after {
-    background-repeat: no-repeat;
-    /* Set `background-repeat: no-repeat` to all elements and pseudo elements */
-    box-sizing: inherit;
+  background-repeat: no-repeat;
+  /* Set `background-repeat: no-repeat` to all elements and pseudo elements */
+  box-sizing: inherit;
 }
 
 ::before,
 ::after {
-    text-decoration: inherit;
-    /* Inherit text-decoration and vertical align to ::before and ::after pseudo elements */
-    vertical-align: inherit;
+  text-decoration: inherit;
+  /* Inherit text-decoration and vertical align to ::before and ::after pseudo elements */
+  vertical-align: inherit;
 }
 
 * {
-    padding: 0;
-    /* Reset `padding` and `margin` of all elements */
-    margin: 0;
+  padding: 0;
+  /* Reset `padding` and `margin` of all elements */
+  margin: 0;
 }
 
 body {
-    background-color: #1a1741;
+  background-color: #1a1741;
 }
 img {
-    image-rendering: -moz-crisp-edges; /* Firefox */
-    image-rendering: -o-crisp-edges; /* Opera */
-    image-rendering: -webkit-optimize-contrast; /*Webkit (non-standard naming) */
-    image-rendering: crisp-edges;
-    -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /*Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
 }
 
 :root {
-    --primary-color: #7d6df8;
-    --header-item-color: rgba(255, 255, 255, 0.6);
-    --header-text-color: #aba1e5;
-    --modal-main-color: #8467ff;
-    --page-content-color: #c3bfff;
-    --page-body-width: 81.25rem;
-    --header-height: 5rem;
-    --footer-height: 5.625rem;
+  --primary-color: #7d6df8;
+  --header-item-color: rgba(255, 255, 255, 0.6);
+  --header-text-color: #aba1e5;
+  --modal-main-color: #8467ff;
+  --page-content-color: #c3bfff;
+  --page-body-width: 81.25rem;
+  --header-height: 5rem;
+  --footer-height: 5.625rem;
 }
