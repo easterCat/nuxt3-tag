@@ -1,32 +1,38 @@
 <template>
-    <div class="banner-con">
-        <div class="banner-image">
-            <img src="@/assets/imgs/banner/banner.jpeg" alt="" />
-        </div>
-        <div class="banner-message">完全基于Github Page的静态资源网站,记录使用</div>
-        <div class="banner-search">
-            <el-input
-                class="input-style"
-                v-model="input"
-                size="large"
-                placeholder="Please Input"
-                :prefix-icon="Search"
-                clearable
-            />
-        </div>
-        <div class="banner-tips">基于nuxt3,vue3,element plus</div>
+  <div class="banner-con">
+    <div class="banner-image">
+      <img src="@/assets/imgs/banner/banner.jpeg" alt="" />
     </div>
+    <AppAnimate>
+      <div class="banner-message">完全基于Github Page的静态资源网站,记录使用</div>
+    </AppAnimate>
+    <AppAnimate delay="200">
+      <div class="banner-search">
+        <el-input
+          class="input-style"
+          v-model="input"
+          size="large"
+          placeholder="Please Input"
+          :prefix-icon="Search"
+          clearable
+        />
+      </div>
+    </AppAnimate>
+    <AppAnimate delay="400">
+      <div class="banner-tips">基于nuxt3,vue3,element plus</div>
+    </AppAnimate>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import { Search } from "@element-plus/icons-vue";
+  import { ref } from 'vue';
+  import { Search } from '@element-plus/icons-vue';
 
-const input = ref("");
+  const input = ref('');
 </script>
 
 <style lang="scss" scoped>
-.banner-con {
+  .banner-con {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,35 +46,43 @@ const input = ref("");
     border-radius: 10px;
 
     .banner-image {
+      width: 100%;
+      height: 344px;
+      object-fit: cover;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: -1;
+
+      > img {
         width: 100%;
-        height: 344px;
-        object-fit: contain;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 0;
-        z-index: -1;
+        height: 100%;
+        filter: blur(6px);
+      }
     }
 
     .banner-message {
-        height: 32px;
-        font-size: 32px;
-        margin: 16px;
-        color: #fff;
+      font-size: 32px;
+      margin: 16px;
+      color: #fff;
     }
-    .banner-search {
-        margin: 16px;
-    }
-    .banner-tips {
-        height: 32px;
-        font-size: 16px;
-        margin: 16px;
-        color: #fff;
-    }
-}
 
-.input-style {
-    width: 500px;
-}
+    .banner-search {
+      max-width: 300px;
+      width: 100%;
+      margin: 16px;
+    }
+
+    .input-style {
+      width: 100%;
+    }
+
+    .banner-tips {
+      font-size: 16px;
+      margin: 16px;
+      color: #fff;
+    }
+  }
 </style>
