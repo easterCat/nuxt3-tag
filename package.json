@@ -3,10 +3,11 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --port 7089",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "preview": "nuxt preview --port 7089",
     "postinstall": "nuxt prepare",
+    "pm2": "pm2 start npm --watch-delay 1 --name stable -- run dev",
     "format": "prettier --write .",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 && pretty-quick --check --branch dev",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json && pretty-quick --branch dev",
