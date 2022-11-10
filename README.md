@@ -44,6 +44,8 @@ yarn generate
 
 > 将打包出的dist发布到github page即可
 
+<https://eastercat.github.io/stable-diffution-utils-project/home>
+
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
 
 ## Production部署服务端渲染(没用上)
