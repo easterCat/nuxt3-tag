@@ -1,11 +1,8 @@
-# Nuxt3开发的web应用程序
+# Nuxt3 开发的 web 应用程序
 
-项目由nuxt3 + vue3 + ts + element-plus构成
+项目由 nuxt3 + vue3 + ts + element-plus 构成
 
- [nuxt 3 documentation](https://v3.nuxtjs.org)
- [element-plus](https://element-plus.gitee.io/zh-CN/component/button.html)
- [vue 3 documentation](https://cn.vuejs.org/guide/introduction.html#api-styles)
- [关TypeScript的所有知识](https://www.tslang.cn/docs/home.html)
+[nuxt 3 documentation](https://v3.nuxtjs.org) [element-plus](https://element-plus.gitee.io/zh-CN/component/button.html) [vue 3 documentation](https://cn.vuejs.org/guide/introduction.html#api-styles) [关 TypeScript 的所有知识](https://www.tslang.cn/docs/home.html)
 
 ## Setup
 
@@ -25,16 +22,17 @@ pnpm install --shamefully-hoist
 ## Development Server
 
 Start the development server on
-Local:    <http://localhost:7089/stable-diffution-utils-project/>
-Network:  <http://172.18.234.34:7089/stable-diffution-utils-project/>
 
-> 为了使用github page的二级页面, 需要变更baseURL: '/stable-diffution-utils-project'
+- Local: <http://localhost:7089/stable-diffution-utils-project/>
+- Network: <http://172.18.234.34:7089/stable-diffution-utils-project/>
+
+> 为了使用 github page 的二级页面, 需要变更 baseURL: '/stable-diffution-utils-project'
 
 ```bash
 yarn dev
 ```
 
-## Production静态页面
+## Production 静态页面
 
 Build the application for production:
 
@@ -42,13 +40,13 @@ Build the application for production:
 yarn generate
 ```
 
-> 将打包出的dist发布到github page即可
+> 将打包出的 dist 发布到 github page 即可
 
-<https://eastercat.github.io/stable-diffution-utils-project/home>
+github page <https://eastercat.github.io/stable-diffution-utils-project/home>
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
 
-## Production部署服务端渲染(没用上)
+## Production 部署服务端渲染(没用上)
 
 Build the application for production:
 

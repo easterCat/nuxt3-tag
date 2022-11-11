@@ -23,34 +23,81 @@
 
     <div class="button-con">
       <AppAnimate :delay="0">
-        <el-button shadow="always" type="warning" size="large" @click="promptFormat"> Prompt格式化(常规) </el-button>
+        <PcAnimationButton
+          :buttonStyle="1"
+          buttonColor="144, 147, 153"
+          buttonAngel="145deg"
+          buttonWidth="160px"
+          buttonText="Prompt格式化(常规)"
+          @submit="promptFormat"
+        >
+        </PcAnimationButton>
       </AppAnimate>
       <AppAnimate :delay="100">
-        <el-button shadow="always" type="warning" size="large" @click="clearPrompt"> 一键清空 </el-button>
+        <PcAnimationButton
+          :buttonStyle="1"
+          buttonColor="144, 147, 153"
+          buttonAngel="145deg"
+          buttonWidth="90px"
+          buttonText="一键清空"
+          @submit="clearPrompt"
+        >
+        </PcAnimationButton>
       </AppAnimate>
       <AppAnimate :delay="100">
-        <el-button shadow="always" type="warning" size="large" @click="mediumToCircle">
-          Prompt中括号转圆括号(先格式化)
-        </el-button>
+        <PcAnimationButton
+          :buttonStyle="1"
+          buttonColor="144, 147, 153"
+          buttonAngel="145deg"
+          buttonWidth="260px"
+          buttonText="Prompt中括号转圆括号(先格式化)"
+          @submit="mediumToCircle"
+        >
+        </PcAnimationButton>
       </AppAnimate>
       <AppAnimate :delay="200">
-        <el-button shadow="always" type="warning" size="large" @click="circleToMedium">
-          Prompt圆括号转中括号(先格式化)
-        </el-button>
+        <PcAnimationButton
+          :buttonStyle="1"
+          buttonColor="144, 147, 153"
+          buttonAngel="145deg"
+          buttonWidth="260px"
+          buttonText="Prompt圆括号转中括号(先格式化)"
+          @submit="circleToMedium"
+        >
+        </PcAnimationButton>
       </AppAnimate>
       <AppAnimate :delay="200">
-        <el-button shadow="always" type="warning" size="large" @click="addHighQualityPrompt"> Prompt起手式 </el-button>
+        <PcAnimationButton
+          :buttonStyle="1"
+          buttonColor="144, 147, 153"
+          buttonAngel="145deg"
+          buttonWidth="130px"
+          buttonText="Prompt起手式"
+          @submit="addHighQualityPrompt"
+        >
+        </PcAnimationButton>
       </AppAnimate>
-
       <AppAnimate :delay="300">
-        <el-button shadow="always" type="warning" size="large" @click="tagsAddComma">
-          Prompt空格加逗号(多用于danbooru标签)
-        </el-button>
+        <PcAnimationButton
+          :buttonStyle="1"
+          buttonColor="144, 147, 153"
+          buttonAngel="145deg"
+          buttonWidth="320px"
+          buttonText="Prompt空格加逗号(多用于danbooru标签)"
+          @submit="tagsAddComma"
+        >
+        </PcAnimationButton>
       </AppAnimate>
       <AppAnimate :delay="300">
-        <el-button shadow="always" type="warning" size="large" @click="promotRemoveLine">
-          Prompt去除下划线(多用于danbooru标签)
-        </el-button>
+        <PcAnimationButton
+          :buttonStyle="1"
+          buttonColor="144, 147, 153"
+          buttonAngel="145deg"
+          buttonWidth="310px"
+          buttonText="Prompt去除下划线(多用于danbooru标签)"
+          @submit="promotRemoveLine"
+        >
+        </PcAnimationButton>
       </AppAnimate>
     </div>
 
@@ -88,7 +135,9 @@
             <p>{{ history }}</p>
             <div class="history-button">
               <el-button type="info" icon="Check" @click="setHistory(history)">选择</el-button>
-              <el-button type="success" icon="DocumentCopy" @click="copyHistory(history)">复制</el-button>
+              <el-button type="success" icon="DocumentCopy" @click="copyHistory(history)"
+                >复制</el-button
+              >
               <el-button type="danger" icon="Delete" @click="removeHistory(hIndex)">删除</el-button>
             </div>
           </div>
@@ -166,12 +215,21 @@
   };
 
   const addHighQualityPrompt = () => {
-    formatTextArea.value = textArea.value.replace(/\s*(，+|,+)\s*/g, ',');
-    promptList.value = formatTextArea.value
-      .split(',')
-      .filter((i) => !!i)
-      .map((i) => i.trim());
-    saveData(textArea.value);
+    if (textArea.value.includes('msaterpiece')) {
+      return ElMessage({
+        showClose: true,
+        message: '请不要重复添加',
+        type: 'warning',
+      });
+    } else {
+      textArea.value = 'masterpiece, best quality, ' + textArea.value;
+      formatTextArea.value = textArea.value.replace(/\s*(，+|,+)\s*/g, ',');
+      promptList.value = formatTextArea.value
+        .split(',')
+        .filter((i) => !!i)
+        .map((i) => i.trim());
+      saveData(textArea.value);
+    }
   };
 
   const clearPrompt = () => {
@@ -217,7 +275,9 @@
   };
 
   const getData = () => {
-    promptHistory.value = JSON.parse($store.get(key));
+    if ($store.get(key)) {
+      promptHistory.value = JSON.parse($store.get(key));
+    }
   };
 
   const removeTag = (index: number) => {
@@ -238,7 +298,6 @@
   const copyHistory = (data: string) => {
     copyText(data, undefined, (error: any, event: any) => {
       if (error) {
-        alert('Can not copy');
         console.log(error);
       } else {
         alert('Copied');
@@ -265,10 +324,11 @@
 
   .button-con {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
-    > button {
+    .animation-button {
+      margin-right: 10px;
       margin-bottom: 10px;
     }
   }

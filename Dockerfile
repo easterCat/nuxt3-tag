@@ -15,4 +15,4 @@ RUN yarn \
     && yarn -v \ 
     && yarn pm2 
 
-CMD [ "npm run pm2", "--skip-torch-cuda-test","--listen" ]
+CMD [ "pm2 start app.js", "--skip-torch-cuda-test","--listen" ]

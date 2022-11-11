@@ -78,6 +78,7 @@
 
   const templatesList = ref(templates);
   const dialogVisible = ref(false);
+
   let currentTem = ref({
     name: '',
     prompt: '',

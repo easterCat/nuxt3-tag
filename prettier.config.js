@@ -1,5 +1,6 @@
 module.exports = {
-  printWidth: 120,
+  printWidth: 100,
+  tabWidth: 2,
   semi: true,
   vueIndentScriptAndStyle: true,
   singleQuote: true,
