@@ -44,8 +44,8 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(ElAvatar);
   nuxtApp.vueApp.use(ElBadge);
 
-  // 全局注册 element 图标
-  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    nuxtApp.vueApp.component(key, component);
-  }
+  // 全局注册 element 图标, 优化到config里面自动导入
+  //   for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  //     nuxtApp.vueApp.component(key, component);
+  //   }
 });

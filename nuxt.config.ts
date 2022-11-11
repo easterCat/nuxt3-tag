@@ -1,4 +1,7 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
+import AutoImport from 'unplugin-auto-import/vite';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+
 export default defineNuxtConfig({
   ssr: false,
   app: {
@@ -26,15 +29,38 @@ export default defineNuxtConfig({
     build: {
       rollupOptions: {
         output: {
-          manualChunks(id) {
+          manualChunks(id: any): any {
             if (id.includes('node_modules')) {
-              return 'vendor';
+              return id.toString().split('node_modules/')[1].split('/')[0].toString();
             }
           },
         },
       },
+      //terserOptions: {
+      // compress: {
+      //   生产环境时移除console
+      //   drop_console: true,
+      //   drop_debugger: true,
+      // },
+      //},
       minify: false,
     },
+    plugins: [
+      AutoImport({
+        resolvers: [
+          // Auto import icon components
+          // 自动导入图标组件
+          IconsResolver({
+            prefix: 'Icon',
+          }),
+        ],
+
+        // dts: path.resolve(pathSrc, 'auto-imports.d.ts'),
+      }),
+      Icons({
+        autoInstall: true,
+      }),
+    ],
   },
   css: ['@/assets/scss/index.scss', '@/assets/scss/layout.scss'],
   postcss: {
