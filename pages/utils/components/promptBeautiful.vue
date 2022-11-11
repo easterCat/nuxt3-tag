@@ -2,7 +2,7 @@
   <div class="tranfer-con">
     <el-row :gutter="20">
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <AppAnimate :delay="100">
+        <AppAnimate   enterName="animate__fadeInUp" :delay="100">
           <el-input
             v-model="textArea"
             type="textarea"
@@ -15,7 +15,7 @@
         </AppAnimate>
       </el-col>
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <AppAnimate :delay="200">
+        <AppAnimate  enterName="animate__fadeInUp" :delay="200">
           <el-input
             v-model="formatTextArea"
             type="textarea"
@@ -26,9 +26,8 @@
         </AppAnimate>
       </el-col>
     </el-row>
-
+    <AppAnimate enterName="animate__fadeInUp" :delay="300">
     <div class="button-con">
-      <AppAnimate enterName="animate__fadeInUp" :delay="100">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -38,8 +37,6 @@
           @submit="promptFormat"
         >
         </PcAnimationButton>
-      </AppAnimate>
-      <AppAnimate enterName="animate__fadeInUp" :delay="200">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -49,8 +46,6 @@
           @submit="clearPrompt"
         >
         </PcAnimationButton>
-      </AppAnimate>
-      <AppAnimate enterName="animate__fadeInUp" :delay="200">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -60,8 +55,6 @@
           @submit="mediumToCircle"
         >
         </PcAnimationButton>
-      </AppAnimate>
-      <AppAnimate enterName="animate__fadeInUp" :delay="300">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -71,8 +64,6 @@
           @submit="circleToMedium"
         >
         </PcAnimationButton>
-      </AppAnimate>
-      <AppAnimate enterName="animate__fadeInUp" :delay="300">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -82,8 +73,6 @@
           @submit="addHighQualityPrompt"
         >
         </PcAnimationButton>
-      </AppAnimate>
-      <AppAnimate enterName="animate__fadeInUp" :delay="400">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -93,8 +82,6 @@
           @submit="tagsAddComma"
         >
         </PcAnimationButton>
-      </AppAnimate>
-      <AppAnimate enterName="animate__fadeInUp" :delay="400">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -104,8 +91,8 @@
           @submit="promotRemoveLine"
         >
         </PcAnimationButton>
-      </AppAnimate>
     </div>
+</AppAnimate>
 
     <PcAreaTitle title="Prompt列表"></PcAreaTitle>
     <div class="tags-con" v-if="promptList && promptList?.length">
