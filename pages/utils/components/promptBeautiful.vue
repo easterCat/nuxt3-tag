@@ -2,7 +2,7 @@
   <div class="tranfer-con">
     <el-row :gutter="20">
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <AppAnimate   enterName="animate__fadeInUp" :delay="100">
+        <AppAnimate enterName="animate__fadeInUp" :delay="100">
           <el-input
             v-model="textArea"
             type="textarea"
@@ -15,7 +15,7 @@
         </AppAnimate>
       </el-col>
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <AppAnimate  enterName="animate__fadeInUp" :delay="200">
+        <AppAnimate enterName="animate__fadeInUp" :delay="100">
           <el-input
             v-model="formatTextArea"
             type="textarea"
@@ -27,7 +27,7 @@
       </el-col>
     </el-row>
     <AppAnimate enterName="animate__fadeInUp" :delay="300">
-    <div class="button-con">
+      <div class="button-con">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -91,8 +91,8 @@
           @submit="promotRemoveLine"
         >
         </PcAnimationButton>
-    </div>
-</AppAnimate>
+      </div>
+    </AppAnimate>
 
     <PcAreaTitle title="Prompt列表"></PcAreaTitle>
     <div class="tags-con" v-if="promptList && promptList?.length">

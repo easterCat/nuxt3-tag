@@ -5,7 +5,8 @@ export default defineNuxtConfig({
     baseURL: '/stable-diffution-utils-project',
     head: {
       charset: 'utf-8',
-      viewport: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no',
+      viewport:
+        'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no',
       title: 'Stable Diffusion Utils',
       meta: [
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
@@ -32,6 +33,7 @@ export default defineNuxtConfig({
           },
         },
       },
+      minify: false,
     },
   },
   css: ['@/assets/scss/index.scss', '@/assets/scss/layout.scss'],
