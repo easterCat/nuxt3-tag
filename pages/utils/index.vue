@@ -14,7 +14,7 @@
           <PcAreaTitle title="按类别浏览"></PcAreaTitle>
           <div class="menu-list">
             <template v-for="(menu, mIndex) in menuList" :key="mIndex">
-              <AppAnimate :delay="mIndex * 100">
+              <AppAnimate enterName="animate__fadeInUp" :delay="mIndex * 100">
                 <div
                   class="menu-item"
                   :class="{ 'menu-item-active': mIndex === menuActive }"

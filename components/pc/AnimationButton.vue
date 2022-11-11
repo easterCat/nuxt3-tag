@@ -24,12 +24,12 @@
 
 <script setup lang="ts">
   // https://codepen.io/yuhomyan/pen/OJMejWJ
-  // 特效按钮使用定位较多,自适应宽度暂时无法实现
   const emit = defineEmits(['submit']);
 
   const props = defineProps({
     // buttonStyle value 1-16
     buttonStyle: { type: Number, default: 1 },
+    // 特效按钮使用定位较多,现使用传参宽度
     buttonWidth: { type: String, default: '' },
     buttonText: { type: String, default: '' },
     // 输入颜色值 "233, 233, 233"
@@ -53,6 +53,11 @@
 </script>
 
 <style lang="scss" scoped>
+  .animation-button {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
   .custom-btn {
     color: #fff;
     border-radius: 4px;
@@ -113,8 +118,8 @@
 
   /* 1 */
   .btn-1 {
-    background: rgb(6, 14, 131);
-    background: linear-gradient(0deg, rgba(6, 14, 131, 1) 0%, rgba(12, 25, 180, 1) 100%);
+    // background: rgb(6, 14, 131);
+    // background: linear-gradient(0deg, rgba(6, 14, 131, 1) 0%, rgba(12, 25, 180, 1) 100%);
     border: none;
   }
   .btn-1:hover {
@@ -142,7 +147,6 @@
     background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
     width: 100%;
     height: 40px;
-    line-height: 42px;
     border: none;
   }
   .btn-3 span {
@@ -209,7 +213,6 @@
   .btn-4 {
     background-color: #4dccc6;
     background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
-    line-height: 42px;
     border: none;
   }
   .btn-4:hover {
@@ -311,7 +314,6 @@
   .btn-6 {
     background: rgb(247, 150, 192);
     background: radial-gradient(circle, rgba(247, 150, 192, 1) 0%, rgba(118, 174, 241, 1) 100%);
-    line-height: 42px;
     border: none;
   }
   .btn-6 span {
@@ -383,7 +385,6 @@
   /* 7 */
   .btn-7 {
     background: linear-gradient(0deg, rgba(255, 151, 0, 1) 0%, rgba(251, 75, 2, 1) 100%);
-    line-height: 42px;
     border: none;
   }
   .btn-7 span {

@@ -15,6 +15,8 @@ import {
   ElLink,
   ElDialog,
   ElTag,
+  ElAvatar,
+  ElBadge,
 } from 'element-plus';
 import { ID_INJECTION_KEY } from 'element-plus';
 import 'element-plus/dist/index.css';
@@ -39,6 +41,8 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(ElLink);
   nuxtApp.vueApp.use(ElDialog);
   nuxtApp.vueApp.use(ElTag);
+  nuxtApp.vueApp.use(ElAvatar);
+  nuxtApp.vueApp.use(ElBadge);
 
   // 全局注册 element 图标
   for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

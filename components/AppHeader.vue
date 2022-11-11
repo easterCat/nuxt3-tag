@@ -1,7 +1,12 @@
 <template>
-  <header>
+  <header class="fix-header header">
     <div class="header-menu">
-      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false">
+      <el-menu
+        :default-active="activeIndex"
+        class="el-menu-demo"
+        mode="horizontal"
+        :ellipsis="false"
+      >
         <el-menu-item index="0">Stable Diffusion</el-menu-item>
         <div class="flex-grow" />
         <el-menu-item index="/home" @click="handleNavClick('home')">首页</el-menu-item>
@@ -16,11 +21,8 @@
         <!-- <el-icon size="20" color="#e6a23c">
                     <ShoppingCart />
                 </el-icon> -->
-
         <el-badge :value="1">
-          <el-icon size="20" color="#e6a23c">
-            <ShoppingCartFull />
-          </el-icon>
+          <el-button size="small" type="success" icon="ShoppingCartFull" circle></el-button>
         </el-badge>
       </div>
       <div>
@@ -33,11 +35,13 @@
 <script lang="ts" setup>
   import { ref } from 'vue';
 
+  //data
   const router = useRouter();
   const route = useRoute();
   const path = ref(route.path);
   const activeIndex = ref(path ?? '/home');
 
+  //methods
   const handleNavClick = (link: string) => {
     router.push({ path: `/${link}` });
   };
@@ -46,8 +50,8 @@
 <style lang="scss" scoped>
   header {
     position: sticky;
-    top: 0;
-    z-index: 3;
+    top: 0px;
+    z-index: 2001;
     display: flex;
     background: #fff;
 
@@ -56,7 +60,7 @@
     }
 
     .user-info {
-      width: 130px;
+      width: 150px;
       display: flex;
       justify-content: space-between;
       align-items: center;

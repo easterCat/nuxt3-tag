@@ -22,7 +22,7 @@
     },
     leaveName: {
       type: String,
-      default: 'animate__bounceOut',
+      default: 'animate__fadeOut',
     },
     delay: {
       type: [String, Number],
@@ -38,12 +38,15 @@
     },
   });
 
+  // data
   const show = ref(false);
 
+  // mounted
   onMounted(() => {
     show.value = true;
   });
 
+  // methods
   const enterAninateClass = computed(() => {
     return `animate__animated ${props.enterName} animate__delay__${Number(props.delay)}`;
   });

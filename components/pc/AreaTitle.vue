@@ -1,6 +1,6 @@
 <template>
   <div class="area-title">
-    <AppAnimate
+    <AppAnimate enterName="animate__fadeInUp"
       ><span>{{ title }}</span></AppAnimate
     >
   </div>

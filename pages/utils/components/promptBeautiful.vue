@@ -2,7 +2,7 @@
   <div class="tranfer-con">
     <el-row :gutter="20">
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <AppAnimate :delay="0">
+        <AppAnimate :delay="100">
           <el-input
             v-model="textArea"
             type="textarea"
@@ -15,14 +15,20 @@
         </AppAnimate>
       </el-col>
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <AppAnimate :delay="100">
-          <el-input v-model="formatTextArea" type="textarea" placeholder="输出prompt" :rows="10" />
+        <AppAnimate :delay="200">
+          <el-input
+            v-model="formatTextArea"
+            type="textarea"
+            placeholder="输出prompt"
+            :rows="10"
+            @click="copyFormatPrompt"
+          />
         </AppAnimate>
       </el-col>
     </el-row>
 
     <div class="button-con">
-      <AppAnimate :delay="0">
+      <AppAnimate enterName="animate__fadeInUp" :delay="100">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -33,7 +39,7 @@
         >
         </PcAnimationButton>
       </AppAnimate>
-      <AppAnimate :delay="100">
+      <AppAnimate enterName="animate__fadeInUp" :delay="200">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -44,29 +50,29 @@
         >
         </PcAnimationButton>
       </AppAnimate>
-      <AppAnimate :delay="100">
+      <AppAnimate enterName="animate__fadeInUp" :delay="200">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
           buttonAngel="145deg"
-          buttonWidth="260px"
-          buttonText="Prompt中括号转圆括号(先格式化)"
+          buttonWidth="200px"
+          buttonText="中括号转圆括号(先格式化)"
           @submit="mediumToCircle"
         >
         </PcAnimationButton>
       </AppAnimate>
-      <AppAnimate :delay="200">
+      <AppAnimate enterName="animate__fadeInUp" :delay="300">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
           buttonAngel="145deg"
-          buttonWidth="260px"
-          buttonText="Prompt圆括号转中括号(先格式化)"
+          buttonWidth="200px"
+          buttonText="圆括号转中括号(先格式化)"
           @submit="circleToMedium"
         >
         </PcAnimationButton>
       </AppAnimate>
-      <AppAnimate :delay="200">
+      <AppAnimate enterName="animate__fadeInUp" :delay="300">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
@@ -77,24 +83,24 @@
         >
         </PcAnimationButton>
       </AppAnimate>
-      <AppAnimate :delay="300">
+      <AppAnimate enterName="animate__fadeInUp" :delay="400">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
           buttonAngel="145deg"
-          buttonWidth="320px"
-          buttonText="Prompt空格加逗号(多用于danbooru标签)"
+          buttonWidth="200px"
+          buttonText="空格加逗号(用于danbooru)"
           @submit="tagsAddComma"
         >
         </PcAnimationButton>
       </AppAnimate>
-      <AppAnimate :delay="300">
+      <AppAnimate enterName="animate__fadeInUp" :delay="400">
         <PcAnimationButton
           :buttonStyle="1"
           buttonColor="144, 147, 153"
           buttonAngel="145deg"
-          buttonWidth="310px"
-          buttonText="Prompt去除下划线(多用于danbooru标签)"
+          buttonWidth="200px"
+          buttonText="去除下划线(用于danbooru)"
           @submit="promotRemoveLine"
         >
         </PcAnimationButton>
@@ -130,14 +136,12 @@
 
     <div class="history-con" v-if="promptHistory && promptHistory?.length">
       <template v-for="(history, hIndex) in promptHistory" :key="hIndex">
-        <AppAnimate :delay="hIndex * 100">
+        <AppAnimate enterName="animate__fadeInUp" :delay="hIndex * 100">
           <div class="history-item">
             <p>{{ history }}</p>
             <div class="history-button">
               <el-button type="info" icon="Check" @click="setHistory(history)">选择</el-button>
-              <el-button type="success" icon="DocumentCopy" @click="copyHistory(history)"
-                >复制</el-button
-              >
+              <el-button type="success" icon="DocumentCopy" @click="copy(history)">复制</el-button>
               <el-button type="danger" icon="Delete" @click="removeHistory(hIndex)">删除</el-button>
             </div>
           </div>
@@ -215,7 +219,7 @@
   };
 
   const addHighQualityPrompt = () => {
-    if (textArea.value.includes('msaterpiece')) {
+    if (textArea.value.includes('masterpiece')) {
       return ElMessage({
         showClose: true,
         message: '请不要重复添加',
@@ -241,6 +245,10 @@
   const tagsReplacePrompt = () => {
     textArea.value = promptList.value.join(', ');
     formatTextArea.value = promptList.value.join(', ');
+  };
+
+  const copyFormatPrompt = () => {
+    copy(formatTextArea.value);
   };
 
   const saveData = (data: string) => {
@@ -295,13 +303,16 @@
     $store.set('prompt_history', JSON.stringify(promptHistory.value));
   };
 
-  const copyHistory = (data: string) => {
+  const copy = (data: string) => {
     copyText(data, undefined, (error: any, event: any) => {
       if (error) {
         console.log(error);
       } else {
-        alert('Copied');
-        console.log(event);
+        return ElMessage({
+          showClose: true,
+          message: '复制成功',
+          type: 'success',
+        });
       }
     });
   };
@@ -328,7 +339,6 @@
     flex-wrap: wrap;
 
     .animation-button {
-      margin-right: 10px;
       margin-bottom: 10px;
     }
   }

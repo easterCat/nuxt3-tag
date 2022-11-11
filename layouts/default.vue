@@ -7,7 +7,8 @@
 
 <style scoped lang="scss">
   .default-layout {
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    // overflow: hidden;
   }
 </style>
