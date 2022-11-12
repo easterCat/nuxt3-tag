@@ -2,7 +2,10 @@
 
 项目由 nuxt3 + vue3 + ts + element-plus 构成
 
-[nuxt 3 documentation](https://v3.nuxtjs.org) [element-plus](https://element-plus.gitee.io/zh-CN/component/button.html) [vue 3 documentation](https://cn.vuejs.org/guide/introduction.html#api-styles) [关 TypeScript 的所有知识](https://www.tslang.cn/docs/home.html)
+- [nuxt 3 documentation](https://v3.nuxtjs.org)
+- [element-plus](https://element-plus.gitee.io/zh-CN/component/button.html)
+- [vue 3 documentation](https://cn.vuejs.org/guide/introduction.html#api-styles)
+- [关 TypeScript 的所有知识](https://www.tslang.cn/docs/home.html)
 
 ## Setup
 
@@ -42,7 +45,7 @@ yarn generate
 
 > 将打包出的 dist 发布到 github page 即可
 
-github page <https://eastercat.github.io/stable-diffution-utils-project/home>
+github page <https://eastercat.github.io/stable-diffution-utils-project/pc/home>
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
 
