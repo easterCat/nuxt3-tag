@@ -7,15 +7,16 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview --port 7089",
     "postinstall": "nuxt prepare",
-    "pm2": "pm2 start npm --watch-delay 1 --name stable -- run dev",
+    "pm2": "pm2 start .output/server/index.mjs --watch-delay 1 --name stable",
     "format": "prettier --write .",
-    "analyze": "npx nuxi analyze .",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 && pretty-quick --check --branch dev",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json && pretty-quick --branch dev",
     "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
-    "lint:prettier": "prettier --write  \"./**/*.{js,json,tsx,css,less,scss,vue,html,md}\""
+    "lint:prettier": "prettier --write  \"./**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
+    "analyze": "npx nuxi analyze ."
   },
   "devDependencies": {
+    "@iconify-json/ep": "^1.1.8",
     "@types/store": "^2.0.2",
     "@typescript-eslint/eslint-plugin": "~5.40.1",
     "@typescript-eslint/parser": "~5.40.1",
@@ -34,11 +35,15 @@
     "prettier": "^2.7.1",
     "sass": "^1.56.0",
     "sass-loader": "^13.1.0",
+    "unplugin-auto-import": "^0.11.4",
+    "unplugin-icons": "^0.14.13",
+    "unplugin-vue-components": "^0.22.9",
     "vue-eslint-parser": "~9.1.0"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
     "animate.css": "^4.1.1",
+    "axios": "^1.1.3",
     "element-plus": "^2.2.19",
     "store": "^2.0.12",
     "v-viewer": "^1.6.4",

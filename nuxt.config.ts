@@ -1,9 +1,17 @@
 import AutoImport from 'unplugin-auto-import/vite';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 export default defineNuxtConfig({
   ssr: false,
+  css: [
+    '@/assets/scss/index.scss',
+    '@/assets/scss/layout.scss',
+    '@/assets/scss/flex.scss',
+    '@/assets/scss/page.scss',
+  ],
   app: {
     baseURL: '/stable-diffution-utils-project',
     head: {
@@ -16,6 +24,15 @@ export default defineNuxtConfig({
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
         { name: 'description', content: 'My amazing site.' },
       ],
+    },
+  },
+  nitro: {
+    // nuxt3当前不支持vite的server
+    devProxy: {
+      '/stable-diffution-utils-project/lexica': {
+        target: 'https://lexica.art/api',
+        changeOrigin: true,
+      },
     },
   },
   vite: {
@@ -36,33 +53,32 @@ export default defineNuxtConfig({
           },
         },
       },
-      //terserOptions: {
-      // compress: {
-      //   生产环境时移除console
-      //   drop_console: true,
-      //   drop_debugger: true,
-      // },
-      //},
-      minify: false,
+      minify: 'terser',
     },
     plugins: [
       AutoImport({
         resolvers: [
-          // Auto import icon components
-          // 自动导入图标组件
+          ElementPlusResolver(),
           IconsResolver({
             prefix: 'Icon',
           }),
         ],
-
-        // dts: path.resolve(pathSrc, 'auto-imports.d.ts'),
+        dts: './types/auto-imports.d.ts',
+      }),
+      Components({
+        resolvers: [
+          IconsResolver({
+            enabledCollections: ['ep'],
+          }),
+          ElementPlusResolver(),
+        ],
+        dts: './types/components.d.ts',
       }),
       Icons({
         autoInstall: true,
       }),
     ],
   },
-  css: ['@/assets/scss/index.scss', '@/assets/scss/layout.scss'],
   postcss: {
     config: true,
     plugins: {

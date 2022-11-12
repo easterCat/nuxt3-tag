@@ -5,6 +5,7 @@
     </photo-consumer>
   </photo-provider>
 </template>
+
 <script setup lang="ts">
-  const sourceImageURLs = ref([]);
+const sourceImageURLs = ref([]);
 </script>

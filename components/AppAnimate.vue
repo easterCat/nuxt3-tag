@@ -1,9 +1,5 @@
 <template>
-  <transition
-    :enter-active-class="enterAninateClass"
-    leave-active-class="animate__animated animate__bounceOut"
-    :duration="{ enter: enterDuration, leave: leaveDuration }"
-  >
+  <transition :name="name" :duration="{ enter: enterDuration, leave: leaveDuration }">
     <template v-if="show">
       <slot></slot>
     </template>
@@ -11,55 +7,45 @@
 </template>
 
 <script setup lang="ts">
-  // https://animate.style/
-  import { computed, onMounted } from 'vue';
+// https://animate.style/
+import { onMounted, Ref } from 'vue';
 
-  // props
-  const props = defineProps({
-    enterName: {
-      type: String,
-      default: 'animate__fadeIn',
-    },
-    leaveName: {
-      type: String,
-      default: 'animate__fadeOut',
-    },
-    delay: {
-      type: [String, Number],
-      default: '0', // 100ms
-    },
-    enterDuration: {
-      type: Number,
-      default: 800, // 100ms
-    },
-    leaveDuration: {
-      type: Number,
-      default: 800, // 100ms
-    },
-  });
+// props
+defineProps({
+  name: {
+    type: String,
+    default: 'fadeIn',
+  },
+  enterDuration: {
+    type: Number,
+    default: 800, // 100ms
+  },
+  leaveDuration: {
+    type: Number,
+    default: 800, // 100ms
+  },
+});
 
-  // data
-  const show = ref(false);
+//data
+const show: Ref<boolean> = ref(false);
 
-  // mounted
-  onMounted(() => {
-    show.value = true;
-  });
-
-  // methods
-  const enterAninateClass = computed(() => {
-    return `animate__animated ${props.enterName} animate__delay__${Number(props.delay)}`;
-  });
-
-  const leaveAninateClass = computed(() => {
-    return `animate__animated ${props.leaveName} animate__delay__${Number(props.delay)}`;
-  });
+onMounted(() => {
+  show.value = true;
+});
 </script>
 
 <style lang="scss" scoped>
-  @for $i from 0 through 30 {
-    .animate__delay__#{(100 * $i)} {
-      animation-delay: 100ms * $i;
-    }
-  }
+.fadeIn-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.fadeIn-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.fadeIn-enter-from,
+.fadeIn-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
 </style>

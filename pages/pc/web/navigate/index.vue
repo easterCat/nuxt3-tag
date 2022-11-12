@@ -25,7 +25,7 @@
                       腾讯 AlloyTeam 团队
                     </div>
 
-                    <div class="desc"> 腾讯Web前端团队，代表作品WebQQ，致力于前端技术的研究 </div>
+                    <div class="desc">腾讯Web前端团队，代表作品WebQQ，致力于前端技术的研究</div>
                   </div>
                 </a>
 
@@ -40,7 +40,7 @@
                       ISUX
                     </div>
 
-                    <div class="desc"> 腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站 </div>
+                    <div class="desc">腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站</div>
                   </div>
                 </a>
 
@@ -114,7 +114,7 @@
                       阿里巴巴国际UED团队
                     </div>
 
-                    <div class="desc"> 在更新的屏幕里创造出更好的产品和更优的体验 </div>
+                    <div class="desc">在更新的屏幕里创造出更好的产品和更优的体验</div>
                   </div>
                 </a>
 
@@ -129,7 +129,7 @@
                       EFE
                     </div>
 
-                    <div class="desc"> 由百度多个遵循统一技术体系的前端团队所组成 </div>
+                    <div class="desc">由百度多个遵循统一技术体系的前端团队所组成</div>
                   </div>
                 </a>
               </div>
@@ -198,7 +198,7 @@
                       SegmentFault
                     </div>
 
-                    <div class="desc"> 一个专注于解决编程问题，提高开发技能的社区。 </div>
+                    <div class="desc">一个专注于解决编程问题，提高开发技能的社区。</div>
                   </div>
                 </a>
 
@@ -297,7 +297,7 @@
                       W3cplus
                     </div>
 
-                    <div class="desc"> W3cplus是一个致力于推广国内前端行业的技术博客 </div>
+                    <div class="desc">W3cplus是一个致力于推广国内前端行业的技术博客</div>
                   </div>
                 </a>
 
@@ -342,7 +342,7 @@
                       大前端
                     </div>
 
-                    <div class="desc"> 旨在更完善的为各位前端爱好者提供阅读和自我提升服务。 </div>
+                    <div class="desc">旨在更完善的为各位前端爱好者提供阅读和自我提升服务。</div>
                   </div>
                 </a>
               </div>
@@ -388,7 +388,11 @@
                 <a target="_blank" href="http://www.jquery123.com/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/jquery.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/jquery.png"
+                      />
                       jQuery
                     </div>
 
@@ -437,7 +441,7 @@
                       RxJs
                     </div>
 
-                    <div class="desc"> 提供强大的数据流组合和控制能力的Reactive编程库 </div>
+                    <div class="desc">提供强大的数据流组合和控制能力的Reactive编程库</div>
                   </div>
                 </a>
               </div>
@@ -453,7 +457,11 @@
                 <a target="_blank" href="https://coding.net">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/coding.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/coding.png"
+                      />
                       Coding
                     </div>
 
@@ -526,7 +534,7 @@
                       Highcharts
                     </div>
 
-                    <div class="desc"> 兼容 IE6+、支持移动端、图表类型丰富的HTML5交互性图表库 </div>
+                    <div class="desc">兼容 IE6+、支持移动端、图表类型丰富的HTML5交互性图表库</div>
                   </div>
                 </a>
               </div>
@@ -542,7 +550,11 @@
                 <a target="_blank" href="http://phaser.io/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/phaserjs.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/phaserjs.png"
+                      />
                       PhaserJS
                     </div>
 
@@ -553,7 +565,11 @@
                 <a target="_blank" href="http://www.cocos.com/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/cocos2dx.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/cocos2dx.png"
+                      />
                       Cocos2d-x
                     </div>
 
@@ -564,11 +580,15 @@
                 <a target="_blank" href="https://www.egret.com/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/egret.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/egret.png"
+                      />
                       白鹭引擎
                     </div>
 
-                    <div class="desc"> 为移动领域提供完整高效的游戏及应用解决方案 </div>
+                    <div class="desc">为移动领域提供完整高效的游戏及应用解决方案</div>
                   </div>
                 </a>
               </div>
@@ -592,7 +612,7 @@
                       CSS-Tricks
                     </div>
 
-                    <div class="desc"> 一个关于运用CSS技术进行网络开发和设计的小技巧的交流网站 </div>
+                    <div class="desc">一个关于运用CSS技术进行网络开发和设计的小技巧的交流网站</div>
                   </div>
                 </a>
 
@@ -607,7 +627,7 @@
                       Css Wizardry
                     </div>
 
-                    <div class="desc"> Front-end Architecture and Performance Engineering </div>
+                    <div class="desc">Front-end Architecture and Performance Engineering</div>
                   </div>
                 </a>
 
@@ -622,7 +642,7 @@
                       Sass
                     </div>
 
-                    <div class="desc"> Sass 是成熟、稳定、强大的 CSS 扩展语言 </div>
+                    <div class="desc">Sass 是成熟、稳定、强大的 CSS 扩展语言</div>
                   </div>
                 </a>
 
@@ -637,7 +657,7 @@
                       Less
                     </div>
 
-                    <div class="desc"> 一种将css赋予了动态语言特性的动态样式语言 </div>
+                    <div class="desc">一种将css赋予了动态语言特性的动态样式语言</div>
                   </div>
                 </a>
 
@@ -668,11 +688,17 @@
                 <a target="_blank" href="https://tfc.tencent.com/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/qqlog.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/qqlog.png"
+                      />
                       腾讯 Web 前端大会
                     </div>
 
-                    <div class="desc"> 腾讯主办，力争为参会者带来最具实践价值、最接地气的Web前端开发经验。 </div>
+                    <div class="desc">
+                      腾讯主办，力争为参会者带来最具实践价值、最接地气的Web前端开发经验。
+                    </div>
                   </div>
                 </a>
 
@@ -697,7 +723,11 @@
                 <a target="_blank" href="http://2016.html5dw.com/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/iweb.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/iweb.png"
+                      />
                       iWeb峰会
                     </div>
 
@@ -710,18 +740,26 @@
                 <a target="_blank" href="http://d2forum.alibaba-inc.com/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/d2.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/d2.png"
+                      />
                       D2前端技术论坛
                     </div>
 
-                    <div class="desc"> 阿里巴巴举办，分享技术的乐趣，探讨行业的发展。 </div>
+                    <div class="desc">阿里巴巴举办，分享技术的乐趣，探讨行业的发展。</div>
                   </div>
                 </a>
 
                 <a target="_blank" href="https://css.w3ctech.com/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/css-conf.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/css-conf.png"
+                      />
                       中国CSS开发者大会
                     </div>
 
@@ -732,7 +770,11 @@
                 <a target="_blank" href="https://fequan.com/feday">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/feday.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/feday.png"
+                      />
                       前端开发者大会
                     </div>
 
@@ -743,7 +785,11 @@
                 <a target="_blank" href="https://fequan.com/feday">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/vueconf.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/vueconf.png"
+                      />
                       Vue.js开发者大会
                     </div>
 
@@ -754,11 +800,15 @@
                 <a target="_blank" href="http://jsconf.cn/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/js-conf.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/js-conf.png"
+                      />
                       中国JS开发者大会
                     </div>
 
-                    <div class="desc"> 一场专注于JavaScript和Node.js技术的国际性大会 </div>
+                    <div class="desc">一场专注于JavaScript和Node.js技术的国际性大会</div>
                   </div>
                 </a>
               </div>
@@ -774,7 +824,11 @@
                 <a target="_blank" href="http://koa.bootcss.com/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/koa.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/koa.png"
+                      />
                       Koa
                     </div>
 
@@ -785,11 +839,15 @@
                 <a target="_blank" href="http://www.expressjs.com.cn/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/express.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/express.png"
+                      />
                       Express
                     </div>
 
-                    <div class="desc"> 基于 Node.js 平台，快速、开放、极简的 web 开发框架。 </div>
+                    <div class="desc">基于 Node.js 平台，快速、开放、极简的 web 开发框架。</div>
                   </div>
                 </a>
               </div>
@@ -813,7 +871,7 @@
                       Sublime
                     </div>
 
-                    <div class="desc"> 超轻量且强大的跨平台文本编辑器，拥有海量插件 </div>
+                    <div class="desc">超轻量且强大的跨平台文本编辑器，拥有海量插件</div>
                   </div>
                 </a>
 
@@ -997,7 +1055,11 @@
                 <a target="_blank" href="http://codepen.io/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/codepen.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/codepen.png"
+                      />
                       CodePen
                     </div>
 
@@ -1008,7 +1070,11 @@
                 <a target="_blank" href="http://caniuse.com/">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/caniuse.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/caniuse.png"
+                      />
                       Can I use
                     </div>
 
@@ -1196,7 +1262,10 @@
                 <div class="item">
                   <p class="title">腾讯AlloyTeam</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/alloyteam-qrcode.png" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/alloyteam-qrcode.png"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：AlloyTeam</p>
@@ -1206,7 +1275,10 @@
                 <div class="item">
                   <p class="title">印记中文</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/docchina-qr.jpg" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/docchina-qr.jpg"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：docshina</p>
@@ -1216,7 +1288,10 @@
                 <div class="item">
                   <p class="title">奇舞周刊</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/75team-qrcode.png" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/75team-qrcode.png"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：75team</p>
@@ -1226,7 +1301,10 @@
                 <div class="item">
                   <p class="title">前端大全</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/front-dev-qrcode.png" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/front-dev-qrcode.png"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：FrontDev</p>
@@ -1249,7 +1327,10 @@
                 <div class="item">
                   <p class="title">前端早读课</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/fe-zaoduke-qrcode.png" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/fe-zaoduke-qrcode.png"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：FeZaoDuKe</p>
@@ -1259,7 +1340,10 @@
                 <div class="item">
                   <p class="title">前端之巅</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/front-show.png" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/front-show.png"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：frontshow</p>
@@ -1269,7 +1353,10 @@
                 <div class="item">
                   <p class="title">凹凸实验室</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/o2-qrcode.png" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/o2-qrcode.png"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：AOTULabs</p>
@@ -1279,7 +1366,10 @@
                 <div class="item">
                   <p class="title">Node地下铁</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/node-subway-qrcode.png" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/node-subway-qrcode.png"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：Node-Subway</p>
@@ -1289,7 +1379,10 @@
                 <div class="item">
                   <p class="title">FEX</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/fex-qrcode.png" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/fex-qrcode.png"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：baidu-front-end</p>
@@ -1299,7 +1392,10 @@
                 <div class="item">
                   <p class="title">W3cplus</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/w3cplus-qrcode.png" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/w3cplus-qrcode.png"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：W3cplus</p>
@@ -1309,7 +1405,10 @@
                 <div class="item">
                   <p class="title">w3ctech</p>
                   <div class="logo">
-                    <img class="loaded" src="http://www.alloyteam.com/nav/static/images/w3ctech-qrcode.png" />
+                    <img
+                      class="loaded"
+                      src="http://www.alloyteam.com/nav/static/images/w3ctech-qrcode.png"
+                    />
                   </div>
                   <div class="desc">
                     <p>微信号：w3ctech</p>
@@ -1328,11 +1427,17 @@
                 <a target="_blank" href="https://github.com/kinvix">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/kinvix.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/kinvix.png"
+                      />
                       TAT.Kinvix
                     </div>
 
-                    <div class="desc"> 腾讯AlloyTeam负责人；HTML5梦工场深圳负责人；腾讯WebQQ架构师； </div>
+                    <div class="desc">
+                      腾讯AlloyTeam负责人；HTML5梦工场深圳负责人；腾讯WebQQ架构师；
+                    </div>
                   </div>
                 </a>
 
@@ -1356,7 +1461,11 @@
                 <a target="_blank" href="https://github.com/tj">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/tj.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/tj.png"
+                      />
                       TJ Holowaychuk
                     </div>
 
@@ -1399,7 +1508,11 @@
                 <a target="_blank" href="https://github.com/wintercn">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/winter.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/winter.png"
+                      />
                       winter
                     </div>
 
@@ -1410,11 +1523,15 @@
                 <a target="_blank" href="https://github.com/BYVoid">
                   <div class="item">
                     <div class="logo">
-                      <img width=" 100%" class="loaded" src="http://www.alloyteam.com/nav/static/images/byvoid.png" />
+                      <img
+                        width=" 100%"
+                        class="loaded"
+                        src="http://www.alloyteam.com/nav/static/images/byvoid.png"
+                      />
                       BYVod
                     </div>
 
-                    <div class="desc"> 《Node.js 开发指南》作者，就职于Facebook。 </div>
+                    <div class="desc">《Node.js 开发指南》作者，就职于Facebook。</div>
                   </div>
                 </a>
               </div>
@@ -1468,7 +1585,7 @@
                       JavaScript设计模式与开发实践
                     </div>
 
-                    <div class="desc"> 本书将教会你如何把经典的设计模式应用到JavaScript语言中 </div>
+                    <div class="desc">本书将教会你如何把经典的设计模式应用到JavaScript语言中</div>
                   </div>
                 </a>
 
@@ -1498,67 +1615,67 @@
 <script lang="ts" setup></script>
 
 <style lang="scss" scoped>
-  .navigate-page {
-    display: flex;
-    justify-content: center;
+.navigate-page {
+  display: flex;
+  justify-content: center;
 
-    .fe {
-      overflow: hidden;
-      background: #fff;
-      margin: 20px 30px;
-      padding-bottom: 20px;
-    }
+  .fe {
+    overflow: hidden;
+    background: #fff;
+    margin: 20px 30px;
+    padding-bottom: 20px;
+  }
 
-    .sub-category {
-      > div {
-        padding: 12px 0 0 2.1%;
-        font-size: 18px;
-      }
-    }
-
-    .item {
-      width: 20%;
-      border-radius: 6px;
-      background: #fff;
-      padding: 10px;
-      width: 20%;
-      min-width: 200px;
-      margin: 22px 0 0 2.1%;
-      float: left;
-      overflow: hidden;
-      border: 1px solid #e4ecf3;
-      box-shadow: 1px 2px 3px #f2f6f8;
-    }
-
-    .logo {
-      height: 40px;
-      position: relative;
-      font-size: 14px;
-      font-weight: 700;
-      color: #3273dc;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      padding: 0 0.1rem;
-
-      > img {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        vertical-align: middle;
-      }
-    }
-
-    .desc {
-      color: gray;
-      font-size: 12px;
-      padding-top: 10px;
-      height: 35px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+  .sub-category {
+    > div {
+      padding: 12px 0 0 2.1%;
+      font-size: 18px;
     }
   }
+
+  .item {
+    width: 20%;
+    border-radius: 6px;
+    background: #fff;
+    padding: 10px;
+    width: 20%;
+    min-width: 200px;
+    margin: 22px 0 0 2.1%;
+    float: left;
+    overflow: hidden;
+    border: 1px solid #e4ecf3;
+    box-shadow: 1px 2px 3px #f2f6f8;
+  }
+
+  .logo {
+    height: 40px;
+    position: relative;
+    font-size: 14px;
+    font-weight: 700;
+    color: #3273dc;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 0.1rem;
+
+    > img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+  }
+
+  .desc {
+    color: gray;
+    font-size: 12px;
+    padding-top: 10px;
+    height: 35px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
 </style>

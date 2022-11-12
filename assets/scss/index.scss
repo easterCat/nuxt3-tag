@@ -50,8 +50,8 @@ body,
 
 html {
   /* font-family: 'PingFang SC'; */
-  font-family: 'PingFang SC', 'Microsoft Yahei', 'Courier New', Courier, monospace, 'Helvetica Neue', Helvetica, Arial,
-    sans-serif;
+  font-family: 'PingFang SC', 'Microsoft Yahei', 'Courier New', Courier, monospace, 'Helvetica Neue',
+    Helvetica, Arial, sans-serif;
   font-size: 16px;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
@@ -110,4 +110,9 @@ img {
   --page-body-width: 81.25rem;
   --header-height: 5rem;
   --footer-height: 5.625rem;
+}
+
+ul,
+ol {
+  list-style: none; /*清除列表风格*/
 }

@@ -20,6 +20,11 @@ export const links = [
     hot: true,
   },
   {
+    name: 'lexica国外AI相关的图片生成资源',
+    href: 'https://lexica.art/',
+    hot: true,
+  },
+  {
     name: 'aibooru标签大全',
     href: 'https://aibooru.online/',
   },
@@ -46,10 +51,6 @@ export const links = [
   {
     name: 'AI相关的社区资源',
     href: 'https://draw.dianas.cyou/',
-  },
-  {
-    name: 'AI相关的图片生成资源',
-    href: 'https://lexica.art/',
   },
 
   {

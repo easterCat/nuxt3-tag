@@ -5,10 +5,12 @@
   </div>
 </template>
 
+<script lang="ts" setup></script>
+
 <style scoped lang="scss">
-  .default-layout {
-    height: 100%;
-    width: 100%;
-    // overflow: hidden;
-  }
+.default-layout {
+  height: 100%;
+  width: 100%;
+  // overflow: hidden;
+}
 </style>
