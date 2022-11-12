@@ -6,6 +6,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 export default defineNuxtConfig({
   ssr: false,
+  sourcemap: false,
   css: [
     '@/assets/scss/index.scss',
     '@/assets/scss/layout.scss',
@@ -47,8 +48,31 @@ export default defineNuxtConfig({
       rollupOptions: {
         output: {
           manualChunks(id: any): any {
+            // 通过analyze分析得出entry中的大文件，进行抽离
+
+            // vue3-photo-preview
+            // if (id.includes('node_modules/vue3-photo-preview')) {
+            //   return 'vue3-photo-preview';
+            // }
+
+            // element-plus
+            if (id.includes('node_modules/element-plus')) {
+              return 'element-plus';
+            }
+
+            // lodash-es
+            if (id.includes('node_modules/lodash-es')) {
+              return 'lodash-es';
+            }
+
+            // vue-router
+            // if (id.includes('node_modules/vue-router')) {
+            //   return 'vue-router';
+            // }
+
+            // default
             if (id.includes('node_modules')) {
-              return id.toString().split('node_modules/')[1].split('/')[0].toString();
+              return 'vendor';
             }
           },
         },

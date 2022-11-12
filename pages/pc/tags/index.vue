@@ -8,7 +8,6 @@
         <div class="type-list">
           <PcAnimationButton
             v-for="(m, mIndex) in tagsMenus"
-            v-animate="{ direction: 'fadeIn' }"
             :index="mIndex + ''"
             :key="mIndex"
             :buttonStyle="1"
@@ -34,7 +33,7 @@
             :lg="4"
             :xl="4"
           >
-            <el-card :body-style="{ padding: '0px' }" v-animate="{ direction: 'fadeIn' }">
+            <el-card :body-style="{ padding: '0px' }">
               <img
                 v-if="showImage"
                 src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
