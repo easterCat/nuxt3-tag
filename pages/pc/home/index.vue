@@ -125,7 +125,8 @@ let currentTem = ref({
   preview: '',
 });
 
-const result = await getLexicaImages('/lexica/v1/search', 'get', { q: 'cat' });
+// const result = await getLexicaImages('/lexica/v1/search', 'get', { q: 'cat' });
+const result = reactive({ images: [] });
 const images: IImageItem[] = toRaw(result.images);
 const len = images.length - 1;
 

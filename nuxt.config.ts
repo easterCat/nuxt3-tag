@@ -6,7 +6,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 export default defineNuxtConfig({
   ssr: false,
-  sourcemap: false,
+  //   sourcemap: false,
   css: [
     '@/assets/scss/index.scss',
     '@/assets/scss/layout.scss',
@@ -61,9 +61,9 @@ export default defineNuxtConfig({
             }
 
             // lodash-es
-            if (id.includes('node_modules/lodash-es')) {
-              return 'lodash-es';
-            }
+            // if (id.includes('node_modules/lodash-es')) {
+            //   return 'lodash-es';
+            // }
 
             // vue-router
             // if (id.includes('node_modules/vue-router')) {

@@ -8,9 +8,7 @@ export const getLexicaImages = async (url: any, method?: any, params?: any) => {
     params,
     method,
   });
-
-  watch(result, newValue => {});
-
+  watch(result, (newValue) => {});
   if (result.value) {
     return result.value;
   }

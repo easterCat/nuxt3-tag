@@ -1102,9 +1102,9 @@
     vue-demi "*"
 
 "@vueuse/head@~1.0.0-rc.14":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-1.0.0.tgz#cd56ce7f6cf094d9e3431226fdc612a859bfc050"
-  integrity sha512-wighjD6iLxEitpg6EDeS5dGDB9tcOSMhpblrAOKR6qBP93U3cjG72n0LhlBUD9miu41lNxXFVGHgSc6BVJ9BMg==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-1.0.3.tgz#ca2b10e899077563372314beb6f863c285069849"
+  integrity sha512-RV8jeydEKzIwGZUpRJoYAyf7L6HpNA8ZfBgKSq/fxQkg8lpSe8PxRPhvd9PAFhjSeDEeZ//eIA04wPaQyeZ77Q==
   dependencies:
     "@unhead/schema" "^0.5.1"
     "@unhead/ssr" "^0.5.1"
