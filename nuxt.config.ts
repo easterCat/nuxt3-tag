@@ -9,7 +9,7 @@ import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-i
 
 export default defineNuxtConfig({
     ssr: false,
-    sourcemap: true,
+    sourcemap: false,
     css: [
         '@/assets/scss/index.scss',
         '@/assets/scss/layout.scss',
@@ -66,7 +66,7 @@ export default defineNuxtConfig({
 
                         // vue3-photo-preview
                         // if (id.includes('node_modules/vue3-photo-preview')) {
-                        //   return 'vue3-photo-preview';
+                        //     return 'vue3-photo-preview';
                         // }
 
                         // element-plus
@@ -74,14 +74,24 @@ export default defineNuxtConfig({
                             return 'element-plus';
                         }
 
-                        // lodash-es
+                        // vuedraggable
+                        if (id.includes('node_modules/vuedraggable')) {
+                            return 'vuedraggable';
+                        }
+
+                        // sortablejs
+                        if (id.includes('node_modules/sortablejs')) {
+                            return 'sortablejs';
+                        }
+
+                        // lodash - es;
                         // if (id.includes('node_modules/lodash-es')) {
-                        //   return 'lodash-es';
+                        //     return 'lodash-es';
                         // }
 
                         // vue-router
                         // if (id.includes('node_modules/vue-router')) {
-                        //   return 'vue-router';
+                        //     return 'vue-router';
                         // }
 
                         // default
