@@ -1,34 +1,57 @@
-import axios from 'axios';
+import { uuid } from 'vue-uuid';
 
-const api = axios.create({
-  baseURL: '', // 所有请求的公共地址部分
-  timeout: 3000, // 请求超时时间 这里的意思是当请求时间超过5秒还未取得结果时 提示用户请求超时
-});
+// 后端返回的数据类型
+// export interface ResOptions<T> {
+//   data?: T;
+//   code?: number;
+//   msg?: string;
+// }
 
-// interceptors axios的拦截器对象
-api.interceptors.request.use(
-  config => {
-    // config 请求的所有信息
-    // console.log(config);
-    return config; // 将配置完成的config对象返回出去 如果不返回 请求讲不会进行
-  },
-  err => {
-    // 请求发生错误时的相关处理 抛出错误
-    Promise.reject(err);
-  },
-);
+const fetch = (url: string, options?: any): Promise<any> => {
+    const { $config } = useNuxtApp();
+    const { VITE_API_HOST } = $config.public;
+    const reqUrl = VITE_API_HOST ?? '' + url;
+    // 不设置key，始终拿到的都是第一个请求的值，参数一样则不会进行第二次请求
+    const key = uuid.v4();
+    return new Promise((resolve, reject) => {
+        useFetch(reqUrl, { ...options, key })
+            .then(({ data, error }) => {
+                if (error.value) {
+                    reject(error.value);
+                    return;
+                }
+                const value = data.value;
+                if (!value) {
+                    throw createError({
+                        statusCode: 500,
+                        statusMessage: reqUrl,
+                        message: 'error',
+                    });
+                } else {
+                    resolve(value);
+                }
+            })
+            .catch((err: any) => {
+                console.error(err);
+                reject(err);
+            });
+    });
+};
 
-api.interceptors.response.use(
-  res => {
-    // 我们一般在这里处理，请求成功后的错误状态码 例如状态码是500，404，403
-    // res 是所有相应的信息
-    console.log(res);
-    return Promise.resolve(res);
-  },
-  err => {
-    // 服务器响应发生错误时的处理
-    Promise.reject(err);
-  },
-);
+export default class Request {
+    get = (url: string, params?: any) => {
+        return fetch(url, { method: 'get', params });
+    };
 
-export default api;
+    post = (url: string, body?: any) => {
+        return fetch(url, { method: 'post', body });
+    };
+
+    put = (url: string, body?: any) => {
+        return fetch(url, { method: 'put', body });
+    };
+
+    delete = (url: string, body?: any) => {
+        return fetch(url, { method: 'delete', body });
+    };
+}

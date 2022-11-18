@@ -1,54 +1,64 @@
 <template>
-  <NuxtLayout>
-    <div class="tags-page page">
-      <AppHeader />
-      <div class="content">
-        <AppBanner />
-        <pc-area-title title="标签类别"></pc-area-title>
-        <div class="type-list">
-          <PcAnimationButton
-            v-for="(m, mIndex) in tagsMenus"
-            :index="mIndex + ''"
-            :key="mIndex"
-            :buttonStyle="1"
-            buttonSize="larger"
-            :buttonColor="mIndex === tagActive ? '241, 119, 71' : '245, 190, 171'"
-            buttonAngel="145deg"
-            buttonWidth="130px"
-            :buttonText="m?.name"
-            @submit="menuItemClick(mIndex)"
-          ></PcAnimationButton>
+    <NuxtLayout>
+        <div class="tags-page page">
+            <AppHeader />
+            <div class="content">
+                <AppBanner placeholder="搜索标签" @searchChange="searchChange" />
+                <pc-area-title title="标签类别"></pc-area-title>
+                <div class="type-list">
+                    <PcAnimationButton
+                        v-for="(m, mIndex) in tagsMenus"
+                        :index="mIndex + ''"
+                        :key="mIndex"
+                        :buttonStyle="1"
+                        buttonSize="larger"
+                        :buttonColor="mIndex === tagActive ? '241, 119, 71' : '245, 190, 171'"
+                        buttonAngel="145deg"
+                        buttonWidth="130px"
+                        :buttonText="m?.name"
+                        @submit="menuItemClick(mIndex)"
+                    ></PcAnimationButton>
+                </div>
+                <pc-area-title title="标签列表">
+                    <template v-slot:titleSide>
+                        <el-switch
+                            v-model="showImage"
+                            size="large"
+                            inline-prompt
+                            inactive-text="隐藏Image"
+                            active-text="开启Image"
+                            class="title-side"
+                        />
+                    </template>
+                </pc-area-title>
+
+                <div class="tag-list">
+                    <div class="tag-item" v-for="(o, oIndex) in tagsLists" :key="oIndex">
+                        <div class="image-con" v-if="showImage">
+                            <img
+                                src="https://image.lexica.art/md/6612175d-e172-4ae2-87a1-da2d4e7d2f6b"
+                            />
+                        </div>
+
+                        <div class="text-con">
+                            <p class="zh">{{ o?.zh }}</p>
+                            <p class="en">{{ o?.en }}</p>
+                        </div>
+                        <div>
+                            <el-button size="small" circle @click="addShop(o?.en)">
+                                <slot name="icon">
+                                    <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                                </slot>
+                            </el-button>
+                            <el-button size="small" circle @click="copy(o?.en)">
+                                <slot name="icon"><i-ep-document-copy></i-ep-document-copy></slot>
+                            </el-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="flex justify-between">
-          <pc-area-title title="标签列表"></pc-area-title>
-          <el-switch v-model="showImage" size="large" inactive-text="Image" />
-        </div>
-        <el-row :gutter="20">
-          <el-col
-            v-for="(o, index) in tagsLists"
-            :key="index"
-            :xs="12"
-            :sm="8"
-            :md="6"
-            :lg="4"
-            :xl="4"
-          >
-            <el-card :body-style="{ padding: '0px' }">
-              <img
-                v-if="showImage"
-                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-                class="image"
-              />
-              <div style="padding: 14px">
-                <p>{{ o?.zh }}</p>
-                <p>{{ o?.en }}</p>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </div>
-    </div>
-  </NuxtLayout>
+    </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
@@ -59,18 +69,79 @@ const tagsMenus = ref(tags.class);
 const tagsLists = ref(tagsMenus.value[0].data);
 const tagActive: Ref<number> = ref(0);
 const showImage: Ref<boolean> = ref(false);
+const searchText: Ref<string> = ref('');
+const { copy } = useCopy();
+const { addShop } = useShop();
 
 const menuItemClick = (key: number) => {
-  tagsLists.value = tagsMenus.value[key].data;
-  tagActive.value = key;
+    tagsLists.value = tagsMenus.value[key].data;
+    tagActive.value = key;
 };
+
+const searchChange = (val: any) => {
+    searchText.value = val;
+};
+
+onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
-.type-list .animation-button {
-  margin-bottom: 10px;
+.tags-page {
+    padding-bottom: 130px;
 }
-:deep(.el-col) {
-  margin-bottom: 10px;
+
+.type-list .animation-button {
+    margin-bottom: 10px;
+}
+
+.title-side {
+    margin-left: 10px;
+    --el-switch-on-color: #13ce66;
+    --el-switch-off-color: #ff4949;
+}
+
+.eh-title-side-tip {
+    font-size: 12px;
+    color: rgb(138, 138, 138);
+    margin-left: 10px;
+}
+
+.tag-list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .tag-item {
+        padding: 8px 20px;
+        background: white;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 8px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        margin-right: 15px;
+        cursor: pointer;
+
+        .text-con {
+            margin-bottom: 8px;
+        }
+
+        .image-con {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .zh {
+            color: rgb(49, 49, 49);
+            margin-bottom: 4px;
+        }
+    }
 }
 </style>
