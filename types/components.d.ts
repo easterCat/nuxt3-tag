@@ -43,6 +43,7 @@ declare module '@vue/runtime-core' {
     IEpDeleteFilled: typeof import('~icons/ep/delete-filled')['default']
     IEpDocumentCopy: typeof import('~icons/ep/document-copy')['default']
     IEpFlag: typeof import('~icons/ep/flag')['default']
+    IEpGuide: typeof import('~icons/ep/guide')['default']
     IEpHomeFilled: typeof import('~icons/ep/home-filled')['default']
     IEpLink: typeof import('~icons/ep/link')['default']
     IEpMinus: typeof import('~icons/ep/minus')['default']

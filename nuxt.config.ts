@@ -5,8 +5,6 @@ import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import';
 
-// console.log('process.env.npm_lifecycle_script', process.env.npm_lifecycle_script);
-
 export default defineNuxtConfig({
     ssr: false,
     sourcemap: false,
@@ -42,13 +40,13 @@ export default defineNuxtConfig({
     nitro: {
         // nuxt3当前不支持vite的server
         // devProxy: process.env.VUE_APP_OPEN_PROXY
-        //   ? {
-        //       '/stable-diffution-utils-project/lexica': {
-        //         target: process.env.VUE_APP_LEXICA_API,
-        //         changeOrigin: true,
-        //       },
-        //     }
-        //   : {},
+        //     ? {
+        //           '/stable-diffution-utils-project/api': {
+        //               target: process.env.FLASK_BASE_API,
+        //               changeOrigin: true,
+        //           },
+        //       }
+        //     : {},
     },
     vite: {
         css: {

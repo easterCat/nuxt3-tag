@@ -10,6 +10,7 @@
                     <i-ep-delete @click="clearShop" />
                     <i-ep-copy-document @click="copyShop" />
                     <i-ep-plus @click="createNewShopItem" />
+                    <i-ep-guide @click="translatePrompt" />
                 </div>
                 <div class="header-right">
                     <el-radio-group v-model="radio" class="ml-4">
@@ -144,12 +145,14 @@ const dragOptions = reactive({
     ghostClass: 'ghost',
 });
 const router = useRouter();
+const { ShopApi } = useApi();
 const radio = ref('1');
 const itemActive = ref(1);
 const typeActive = ref(0);
 const { copy } = useCopy();
 const {
     addShop,
+    shop,
     shopList,
     onlySetShop,
     initShop,
@@ -173,6 +176,11 @@ const goBack = () => {
 
 const goHome = () => {
     router.replace('/pc/home');
+};
+
+const translatePrompt = async () => {
+    const result = await ShopApi.translate({ text: shop, type: 1 });
+    console.log('result :>> ', result);
 };
 
 const changeItem = (active: number) => {
@@ -210,7 +218,7 @@ onMounted(() => {
     }
 
     .header-center {
-        width: 100px;
+        width: 130px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -241,7 +249,7 @@ onMounted(() => {
     }
 
     .left {
-        width: 300px;
+        width: 296px;
         height: calc(100vh - 51px);
         background: rgb(37, 46, 65);
         border-right: 2px solid rgb(24, 29, 40);
@@ -249,7 +257,7 @@ onMounted(() => {
         overflow-y: auto;
     }
     .right {
-        width: 400px;
+        width: 380px;
         height: calc(100vh - 51px);
         background: rgb(37, 46, 65);
         border-left: 2px solid rgb(24, 29, 40);
@@ -341,7 +349,7 @@ onMounted(() => {
     }
     .type-item {
         color: rgb(192, 199, 219);
-        padding: 10px 10px;
+        padding: 8px;
         cursor: pointer;
         font-size: 14px;
     }

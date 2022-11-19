@@ -1,10 +1,9 @@
 import Request from '~~/utils/request';
 
 class EhtagsApi extends Request {
-    getEhtags(params?: any) {
+    getEhtags() {
         return this.get(
             'https://raw.githubusercontent.com/scooderic/exhentai-tags-chinese-translation/master/dist/ehtags-cn.json',
-            params,
         );
     }
 }
