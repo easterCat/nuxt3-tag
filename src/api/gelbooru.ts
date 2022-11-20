@@ -1,4 +1,4 @@
-import Request from '~~/utils/request';
+import Request from '~~/src/utils/request';
 
 class GelbooruApi extends Request {
     getList(body?: any) {

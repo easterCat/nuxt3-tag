@@ -1,4 +1,4 @@
-import Request from '~~/utils/request';
+import Request from '~~/src/utils/request';
 
 class LexicaApi extends Request {
     getList(params?: any) {

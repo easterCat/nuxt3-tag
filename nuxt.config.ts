@@ -8,6 +8,7 @@ import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-i
 export default defineNuxtConfig({
     ssr: false,
     sourcemap: false,
+    srcDir: 'src/',
     css: [
         '@/assets/scss/index.scss',
         '@/assets/scss/layout.scss',
@@ -16,24 +17,27 @@ export default defineNuxtConfig({
         '@/assets/scss/box.scss',
     ],
     app: {
-        baseURL: '/stable-diffution-utils-project',
+        baseURL: '/stable-diffution-utils-nuxt',
+        // baseURL: '/',
+        buildAssetsDir: '/_nuxt/',
+        cdnURL: '',
         pageTransition: {
             name: 'fade',
-            mode: 'out-in', // default
+            mode: 'out-in',
         },
         layoutTransition: {
             name: 'fade',
-            mode: 'out-in', // default
+            mode: 'out-in',
         },
         head: {
             charset: 'utf-8',
             viewport:
                 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no',
-            title: 'Stable Diffusion Utils',
+            title: 'AI绘画的辅助工具',
             meta: [
                 { name: 'apple-mobile-web-app-capable', content: 'yes' },
                 { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-                { name: 'description', content: 'My amazing site.' },
+                { name: 'description', content: 'AI绘画的辅助工具.' },
             ],
         },
     },
@@ -41,7 +45,7 @@ export default defineNuxtConfig({
         // nuxt3当前不支持vite的server
         // devProxy: process.env.VUE_APP_OPEN_PROXY
         //     ? {
-        //           '/stable-diffution-utils-project/api': {
+        //           '/stable-diffution-utils-nuxt/api': {
         //               target: process.env.FLASK_BASE_API,
         //               changeOrigin: true,
         //           },
@@ -62,11 +66,6 @@ export default defineNuxtConfig({
                     manualChunks(id: any): any {
                         // 通过analyze分析得出entry中的大文件，进行抽离
 
-                        // vue3-photo-preview
-                        // if (id.includes('node_modules/vue3-photo-preview')) {
-                        //     return 'vue3-photo-preview';
-                        // }
-
                         // element-plus
                         if (id.includes('node_modules/element-plus')) {
                             return 'element-plus';
@@ -85,11 +84,6 @@ export default defineNuxtConfig({
                         // lodash - es;
                         // if (id.includes('node_modules/lodash-es')) {
                         //     return 'lodash-es';
-                        // }
-
-                        // vue-router
-                        // if (id.includes('node_modules/vue-router')) {
-                        //     return 'vue-router';
                         // }
 
                         // default

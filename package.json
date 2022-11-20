@@ -1,5 +1,5 @@
 {
-    "name": "stable-diffution-utils-project",
+    "name": "stable-diffution-utils-nuxt",
     "private": true,
     "scripts": {
         "build": "nuxt build",
@@ -52,7 +52,6 @@
         "vue-uuid": "^3.0.0",
         "vue3-clipboard": "^1.0.0",
         "vue3-lazyload": "^0.3.6",
-        "vue3-photo-preview": "^0.2.6",
         "vuedraggable": "^4.1.0"
     }
 }

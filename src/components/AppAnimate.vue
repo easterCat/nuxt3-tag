@@ -36,11 +36,11 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .fadeIn-enter-active {
-    transition: all 0.5s ease-out;
+    transition: all 0.4s ease-in-out;
 }
 
 .fadeIn-leave-active {
-    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+    transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .fadeIn-enter-from,

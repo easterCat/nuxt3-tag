@@ -123,7 +123,7 @@ let currentTableData = reactive([]);
 let tableData = reactive([]);
 let nameList = reactive({ data: [] });
 
-const worker = new Worker('/stable-diffution-utils-project/worker.js');
+const worker = new Worker('/stable-diffution-utils-nuxt/worker.js');
 
 worker.onmessage = function (e) {
     const { type, data } = e.data;

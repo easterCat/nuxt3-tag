@@ -1,4 +1,4 @@
-import Request from '~~/utils/request';
+import Request from '~~/src/utils/request';
 
 class EhtagsApi extends Request {
     getEhtags() {

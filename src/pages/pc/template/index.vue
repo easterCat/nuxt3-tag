@@ -97,7 +97,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { templates } from '~~/assets/json/templates';
+import { templates } from '@/assets/json/templates';
 
 const templatesList = ref(templates);
 const dialogVisible = ref(false);

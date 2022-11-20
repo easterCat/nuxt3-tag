@@ -1,4 +1,4 @@
-import Request from '~~/utils/request';
+import Request from '~~/src/utils/request';
 
 class EhttApi extends Request {
     // https://ehtt.fly.dev/swagger
