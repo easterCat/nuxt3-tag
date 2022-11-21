@@ -98,18 +98,19 @@
                             <template #item="{ element }">
                                 <div class="shop-item">
                                     <div>
-                                        <span>{{ element }}</span>
+                                        <span>{{ element.text }}</span>
+                                        <span class="tran-text">{{ element.translateText }}</span>
                                         <i-ep-plus
                                             class="add"
-                                            @click="addOneCircle(element)"
+                                            @click="addOneCircle(element.text)"
                                         ></i-ep-plus>
                                         <i-ep-minus
                                             class="minus"
-                                            @click="removeOneCircle(element)"
+                                            @click="removeOneCircle(element.text)"
                                         ></i-ep-minus>
                                         <i-ep-delete-filled
                                             class="remove"
-                                            @click="removeShopByName(element)"
+                                            @click="removeShopByName(element.text)"
                                         ></i-ep-delete-filled>
                                     </div>
                                 </div>
@@ -184,15 +185,16 @@ import { uuid } from 'vue-uuid';
 defineProps(['modelValue']);
 
 // data
+const config = useRuntimeConfig();
+const token = config.public.GELBOORU_TOKEN;
 const dragOptions = reactive({
     animation: 400,
     group: 'people',
     disabled: false,
     ghostClass: 'ghost',
 });
-const { GelbooruApi } = useApi();
+const { GelbooruApi, ShopApi } = useApi();
 const router = useRouter();
-const { ShopApi } = useApi();
 const radio = ref('1');
 const importText = ref('');
 const showImport = ref(false);
@@ -219,7 +221,7 @@ const category: Ref<any[]> = ref<any[]>([]);
 const gtags: Ref<any[]> = ref<any[]>([]);
 
 watch(shopList, (newValue) => {
-    onlySetShop(newValue.join(', '));
+    onlySetShop(newValue.map((i: any) => i.text).join(', '));
 });
 
 const goBack = () => {
@@ -241,7 +243,10 @@ const confirmImport = () => {
 
 const translatePrompt = async () => {
     const result = await ShopApi.translate({ text: shop, type: 1 });
-    console.log('result :>> ', result);
+    const translateList = result.data.translateText.split('，');
+    shopList.value = shopList.value.map((item: any, index: number) => {
+        return { text: item.text, translateText: translateList[index] };
+    });
 };
 
 const initGelbooru = async () => {
@@ -263,7 +268,7 @@ const changeTypeItem = async (active: number, id?: number) => {
         typeActive.value = active;
     } else if (itemActive.value === 2) {
         const result = await GelbooruApi.getTagsById({
-            token: 'b8d9e7d1fa1dcc3e5116760c093be229',
+            token: token,
             page: 1,
             limit: 100,
             category_id: id,
@@ -299,7 +304,7 @@ onMounted(() => {
     }
 
     .header-center {
-        width: 160px;
+        width: 170px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -355,7 +360,7 @@ onMounted(() => {
     }
 
     .back {
-        width: 60px;
+        width: 70px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -367,7 +372,7 @@ onMounted(() => {
         }
 
         svg:last-child {
-            font-size: 20px;
+            font-size: 21px;
             transform: translateY(-1px);
         }
     }
@@ -389,7 +394,7 @@ onMounted(() => {
         color: rgb(19, 24, 31);
         background: rgb(192, 199, 219);
         margin-right: 16px;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
         border-radius: 4px;
         box-shadow: rgba(17, 17, 26, 0.15) 0px 3px 8px;
         cursor: pointer;
@@ -399,6 +404,15 @@ onMounted(() => {
             font-size: 14px;
             margin-left: 8px;
             transform: translateY(3px);
+        }
+
+        .tran-text {
+            position: absolute;
+            left: 0;
+            top: -18px;
+            color: rgb(192, 199, 219);
+            font-size: 10px;
+            margin-left: 6px;
         }
     }
 

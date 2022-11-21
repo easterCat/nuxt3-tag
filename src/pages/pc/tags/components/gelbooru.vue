@@ -66,7 +66,9 @@ import { debounce } from '~/utils/index';
 const props = defineProps({
     searchText: { type: String, default: '' },
 });
-
+// data
+const config = useRuntimeConfig();
+const token = config.public.GELBOORU_TOKEN;
 const { GelbooruApi } = useApi();
 const { copy } = useCopy();
 const { addShop } = useShop();
@@ -101,7 +103,7 @@ watch(showGelbooru, async (newValue) => {
 watch(selectValue, async (newValue) => {
     if (newValue) {
         const result = await GelbooruApi.getTagsById({
-            token: 'b8d9e7d1fa1dcc3e5116760c093be229',
+            token: token,
             page: 1,
             limit: 100,
             category_id: newValue,
@@ -118,7 +120,7 @@ if (showGelbooru.value) {
 
 async function getAllTags() {
     const result = await GelbooruApi.getTagsById({
-        token: 'b8d9e7d1fa1dcc3e5116760c093be229',
+        token: token,
         page: 1,
         limit: 100,
         category_id: 1100,

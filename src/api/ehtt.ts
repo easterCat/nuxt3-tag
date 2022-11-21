@@ -12,7 +12,6 @@ class EhttApi extends Request {
         );
     }
 
-    // https://github.com/EhTagTranslation/DatabaseReleases/tree/fd4a5e4ffddaebf8dd526b5d5b349efdd39d7604
     getAllJsonData() {
         return this.get(
             'https://raw.githubusercontent.com/EhTagTranslation/DatabaseReleases/master/db.full.json',

@@ -90,7 +90,6 @@
                     </span>
                 </template>
             </el-dialog>
-            <PcImageView></PcImageView>
         </div>
     </NuxtLayout>
 </template>

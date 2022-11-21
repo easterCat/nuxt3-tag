@@ -48,7 +48,7 @@
                         <template #item="{ element }">
                             <div class="shop-item">
                                 <div>
-                                    <span>{{ element }}</span>
+                                    <span>{{ element.text }}</span>
                                     <i-ep-plus
                                         class="add"
                                         @click="addOneCircle(element)"
@@ -99,7 +99,7 @@ const {
 } = useShop();
 
 watch(shopList, (newValue) => {
-    onlySetShop(newValue.join(', '));
+    onlySetShop(newValue.map((i: any) => i.text || '').join(', '));
 });
 
 const shopEvent = () => {

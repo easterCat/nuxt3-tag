@@ -11,7 +11,7 @@ export const useShop = () => {
     const initShop = () => {
         shop.value = $store.get(key) || '';
         if (!!shop.value) {
-            shopList.value = shop.value.split(',').map((i) => i.trim());
+            _shopToList();
         } else {
             shopList.value = [];
         }
@@ -19,13 +19,13 @@ export const useShop = () => {
 
     const onlySetShop = (data: string) => {
         shop.value = data;
-        $store.set(key, shop.value);
+        _setStore();
     };
 
     const setShop = (data: string) => {
         shop.value = data;
-        shopList.value = shop.value.split(',').map((i) => i.trim());
-        $store.set(key, shop.value);
+        _shopToList();
+        _setStore();
         return message('初始化购物车');
     };
 
@@ -50,47 +50,47 @@ export const useShop = () => {
         if (shop.value.includes(data)) {
             return warnMessage('购物车已存在该标签');
         }
-        shopList.value.push(data);
-        shop.value = shopList.value.join(',');
-        $store.set(key, shop.value);
+        shopList.value.push({ text: data });
+        _listToShop();
+        _setStore();
         return message('添加购物车成功');
     };
 
     const removeShop = (index: number) => {
         shopList.value.splice(index, 1);
-        shop.value = shopList.value.join(',');
-        $store.set(key, shop.value);
+        _listToShop();
+        _setStore();
         return message('删除成功');
     };
 
     const removeShopByName = (name: number) => {
         const findIndex = shopList.value.findIndex((i) => {
-            return i === name;
+            return i.text === name;
         });
         shopList.value.splice(findIndex, 1);
-        shop.value = shopList.value.join(',');
-        $store.set(key, shop.value);
+        _listToShop();
+        _setStore();
         return message('删除成功');
     };
 
     const addOneCircle = (name: any) => {
         const findIndex = shopList.value.findIndex((i) => {
-            return i === name;
+            return i.text === name;
         });
         const newName = `(${name})`;
         shopList.value.splice(findIndex, 1, newName);
-        shop.value = shopList.value.join(',');
-        $store.set(key, shop.value);
+        _listToShop();
+        _setStore();
     };
 
     const removeOneCircle = (name: any) => {
         const findIndex = shopList.value.findIndex((i) => {
-            return i === name;
+            return i.text === name;
         });
         const newName = name.replace('(', '').replace(')', '');
         shopList.value.splice(findIndex, 1, newName);
-        shop.value = shopList.value.join(',');
-        $store.set(key, shop.value);
+        _listToShop();
+        _setStore();
     };
 
     const createNewShopItem = () => {
@@ -99,9 +99,9 @@ export const useShop = () => {
             cancelButtonText: 'Cancel',
         })
             .then(({ value }) => {
-                shopList.value.push(value);
-                shop.value = shopList.value.join(',');
-                $store.set(key, shop.value);
+                shopList.value.push({ text: value });
+                _listToShop();
+                _setStore();
             })
             .catch(() => {
                 console.log('取消创建 :>> ');
@@ -111,6 +111,20 @@ export const useShop = () => {
     const copyShop = () => {
         copy(shop.value);
     };
+
+    function _setStore() {
+        $store.set(key, shop.value);
+    }
+
+    function _listToShop() {
+        shop.value = shopList.value.map((i) => i.text).join(',');
+    }
+
+    function _shopToList() {
+        shopList.value = shop.value.split(',').map((i) => {
+            return { text: i.trim() };
+        });
+    }
 
     initShop();
 

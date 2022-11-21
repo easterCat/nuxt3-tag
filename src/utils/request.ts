@@ -1,12 +1,5 @@
 import { uuid } from 'vue-uuid';
 
-// 后端返回的数据类型
-// export interface ResOptions<T> {
-//   data?: T;
-//   code?: number;
-//   msg?: string;
-// }
-
 const fetch = (url: string, options?: any): Promise<any> => {
     const { $config } = useNuxtApp();
     const { VITE_API_HOST } = $config.public;

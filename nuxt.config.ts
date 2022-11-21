@@ -18,9 +18,6 @@ export default defineNuxtConfig({
     ],
     app: {
         baseURL: '/stable-diffution-utils-nuxt',
-        // baseURL: '/',
-        buildAssetsDir: '/_nuxt/',
-        cdnURL: '',
         pageTransition: {
             name: 'fade',
             mode: 'out-in',
@@ -39,6 +36,12 @@ export default defineNuxtConfig({
                 { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
                 { name: 'description', content: 'AI绘画的辅助工具.' },
             ],
+        },
+    },
+    runtimeConfig: {
+        public: {
+            FLASK_BASE_API: process.env.FLASK_BASE_API,
+            GELBOORU_TOKEN: process.env.GELBOORU_TOKEN,
         },
     },
     nitro: {
