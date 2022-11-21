@@ -1,13 +1,12 @@
 <template>
     <NuxtLayout>
-        <div class="utils-page page">
+        <div class="web-page page">
             <AppHeader />
             <div class="content">
                 <div class="max-width-limit">
                     <app-animate name="fadeIn">
-                        <pc-area-title title="按类别浏览"></pc-area-title>
+                        <pc-area-title title="导航类别"></pc-area-title>
                     </app-animate>
-
                     <div class="menu-list">
                         <template v-for="(menu, mIndex) in menuList" :key="mIndex">
                             <app-animate name="fadeIn">
@@ -15,7 +14,7 @@
                                     class="menu-item"
                                     :class="{ 'menu-item-active': mIndex === menuActive }"
                                     :key="mIndex"
-                                    @click="menuClick(menu, mIndex)"
+                                    @click="menuClick(mIndex)"
                                 >
                                     <nuxt-img :src="menu?.bg" loading="lazy" />
                                     <span>{{ menu?.name }}</span>
@@ -24,9 +23,11 @@
                         </template>
                     </div>
                     <app-animate name="fadeIn">
-                        <pc-area-title title="当前工具"></pc-area-title>
+                        <pc-area-title title="当前导航"></pc-area-title>
                     </app-animate>
-                    <PromptBeautiful></PromptBeautiful>
+                    <Navigate v-if="menuActive === 0"></Navigate>
+                    <DesignSite v-if="menuActive === 1"></DesignSite>
+                    <PdfSite v-if="menuActive === 2"></PdfSite>
                 </div>
             </div>
         </div>
@@ -34,18 +35,32 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { utilMenus } from '~/assets/json/utils.js';
-import PromptBeautiful from './components/promptBeautiful.vue';
+import DesignSite from './designSite/index.vue';
+import Navigate from './navigate/index.vue';
+import PdfSite from './pdfSite/index.vue';
 
+const menuList = ref([
+    {
+        name: 'web前端导航',
+        childs: [],
+        bg: 'https://image.lexica.art/md/8088e6f6-96fe-4e64-bfb2-b72fbb763d64',
+    },
+    {
+        name: '设计师网站导航',
+        childs: [],
+        bg: 'https://image.lexica.art/md/8fe3855d-49ca-4d98-8c9a-787ff30ea24b',
+    },
+    {
+        name: '电子书导航',
+        childs: [],
+        bg: 'https://image.lexica.art/md/cf829111-8217-44f9-aa9f-fa7e8aed7701',
+    },
+]);
 const initActive = 0;
 const menuActive = ref(initActive);
-const menuList = ref(utilMenus);
-const menuChilds = ref(menuList.value[initActive]?.childs);
 
-const menuClick = (menu: any, index: number) => {
+const menuClick = (index: number) => {
     menuActive.value = index;
-    menuChilds.value = menu?.childs;
 };
 </script>
 

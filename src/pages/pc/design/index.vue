@@ -4,14 +4,56 @@
             <div class="header">
                 <div class="back">
                     <i-ep-arrow-left-bold @click="goBack"></i-ep-arrow-left-bold>
-                    <i-ep-home-filled @click="goHome"></i-ep-home-filled>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="返回首页"
+                        placement="bottom"
+                    >
+                        <i-ep-home-filled @click="goHome"></i-ep-home-filled>
+                    </el-tooltip>
                 </div>
                 <div class="header-center">
-                    <i-ep-shopping-trolley @click="importShop" />
-                    <i-ep-delete @click="clearShop" />
-                    <i-ep-copy-document @click="copyShop" />
-                    <i-ep-plus @click="createNewShopItem" />
-                    <i-ep-guide @click="translatePrompt" />
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="导入标签"
+                        placement="bottom"
+                    >
+                        <i-ep-shopping-trolley @click="importShop" />
+                    </el-tooltip>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="新建标签"
+                        placement="bottom"
+                    >
+                        <i-ep-plus @click="createNewShopItem" />
+                    </el-tooltip>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="复制标签"
+                        placement="bottom"
+                    >
+                        <i-ep-copy-document @click="copyShop" />
+                    </el-tooltip>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="翻译标签"
+                        placement="bottom"
+                    >
+                        <i-ep-guide @click="translatePrompt" />
+                    </el-tooltip>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="清空标签"
+                        placement="bottom"
+                    >
+                        <i-ep-delete @click="clearShop" />
+                    </el-tooltip>
                 </div>
                 <div class="header-right">
                     <el-radio-group v-model="radio" class="ml-4">
@@ -98,18 +140,23 @@
                             <template #item="{ element }">
                                 <div class="shop-item">
                                     <div>
-                                        <span>{{ element }}</span>
+                                        <span>{{ element.text }}</span>
+                                        <span class="tran-text">{{ element.translateText }}</span>
                                         <i-ep-plus
                                             class="add"
-                                            @click="addOneCircle(element)"
+                                            @click="addOneCircle(element.text)"
                                         ></i-ep-plus>
                                         <i-ep-minus
                                             class="minus"
-                                            @click="removeOneCircle(element)"
+                                            @click="removeOneCircle(element.text)"
                                         ></i-ep-minus>
+                                        <i-ep-edit-pen
+                                            class="remove"
+                                            @click="renameShopName(element.text)"
+                                        ></i-ep-edit-pen>
                                         <i-ep-delete-filled
                                             class="remove"
-                                            @click="removeShopByName(element)"
+                                            @click="removeShopByName(element.text)"
                                         ></i-ep-delete-filled>
                                     </div>
                                 </div>
@@ -177,22 +224,25 @@
 
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
-import { tags } from '~/assets/json/tags';
 import draggable from 'vuedraggable';
 import { uuid } from 'vue-uuid';
 
 defineProps(['modelValue']);
 
 // data
+const { DefaultTagsApi } = useApi();
+const result = await DefaultTagsApi.getTags();
+const tags = JSON.parse(result);
+const config = useRuntimeConfig();
+const token = config.public.GELBOORU_TOKEN;
 const dragOptions = reactive({
     animation: 400,
     group: 'people',
     disabled: false,
     ghostClass: 'ghost',
 });
-const { GelbooruApi } = useApi();
+const { GelbooruApi, ShopApi } = useApi();
 const router = useRouter();
-const { ShopApi } = useApi();
 const radio = ref('1');
 const importText = ref('');
 const showImport = ref(false);
@@ -201,7 +251,7 @@ const typeActive = ref(0);
 const { copy } = useCopy();
 const {
     addShop,
-    shop,
+    renameShopName,
     shopList,
     onlySetShop,
     initShop,
@@ -219,7 +269,7 @@ const category: Ref<any[]> = ref<any[]>([]);
 const gtags: Ref<any[]> = ref<any[]>([]);
 
 watch(shopList, (newValue) => {
-    onlySetShop(newValue.join(', '));
+    onlySetShop(newValue.map((i: any) => i.text).join(', '));
 });
 
 const goBack = () => {
@@ -239,9 +289,13 @@ const confirmImport = () => {
     showImport.value = false;
 };
 
-const translatePrompt = async () => {
-    const result = await ShopApi.translate({ text: shop, type: 1 });
-    console.log('result :>> ', result);
+const translatePrompt = () => {
+    shopList.value.forEach((item: any, index: number) => {
+        setTimeout(async () => {
+            const result = await ShopApi.translate({ text: item.text, type: 1 });
+            shopList.value[index] = { text: item.text, translateText: result.data.translateText };
+        }, index * 100);
+    });
 };
 
 const initGelbooru = async () => {
@@ -263,7 +317,7 @@ const changeTypeItem = async (active: number, id?: number) => {
         typeActive.value = active;
     } else if (itemActive.value === 2) {
         const result = await GelbooruApi.getTagsById({
-            token: 'b8d9e7d1fa1dcc3e5116760c093be229',
+            token: token,
             page: 1,
             limit: 100,
             category_id: id,
@@ -299,7 +353,7 @@ onMounted(() => {
     }
 
     .header-center {
-        width: 160px;
+        width: 180px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -312,6 +366,7 @@ onMounted(() => {
     }
 
     .header-right {
+        padding-right: 10px;
         :deep(.el-radio__inner) {
             background: rgb(184, 194, 211);
         }
@@ -355,11 +410,11 @@ onMounted(() => {
     }
 
     .back {
-        width: 60px;
+        width: 70px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-left: 20px;
+        margin-left: 10px;
         svg {
             font-size: 18px;
             color: rgb(135, 150, 179);
@@ -367,7 +422,7 @@ onMounted(() => {
         }
 
         svg:last-child {
-            font-size: 20px;
+            font-size: 21px;
             transform: translateY(-1px);
         }
     }
@@ -389,7 +444,7 @@ onMounted(() => {
         color: rgb(19, 24, 31);
         background: rgb(192, 199, 219);
         margin-right: 16px;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
         border-radius: 4px;
         box-shadow: rgba(17, 17, 26, 0.15) 0px 3px 8px;
         cursor: pointer;
@@ -399,6 +454,15 @@ onMounted(() => {
             font-size: 14px;
             margin-left: 8px;
             transform: translateY(3px);
+        }
+
+        .tran-text {
+            position: absolute;
+            left: 0;
+            top: -18px;
+            color: rgb(192, 199, 219);
+            font-size: 10px;
+            margin-left: 6px;
         }
     }
 

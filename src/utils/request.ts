@@ -1,21 +1,15 @@
 import { uuid } from 'vue-uuid';
 
-// 后端返回的数据类型
-// export interface ResOptions<T> {
-//   data?: T;
-//   code?: number;
-//   msg?: string;
-// }
-
 const fetch = (url: string, options?: any): Promise<any> => {
     const { $config } = useNuxtApp();
     const { VITE_API_HOST } = $config.public;
     const reqUrl = VITE_API_HOST ?? '' + url;
     // 不设置key，始终拿到的都是第一个请求的值，参数一样则不会进行第二次请求
     const key = uuid.v4();
-    return new Promise((resolve, reject) => {
+
+    return new Promise(async (resolve, reject) => {
         useFetch(reqUrl, { ...options, key })
-            .then(({ data, error }) => {
+            .then(({ data, error }: any) => {
                 if (error.value) {
                     reject(error.value);
                     return;

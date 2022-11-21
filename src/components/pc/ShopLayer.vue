@@ -48,18 +48,18 @@
                         <template #item="{ element }">
                             <div class="shop-item">
                                 <div>
-                                    <span>{{ element }}</span>
+                                    <span>{{ element.text }}</span>
                                     <i-ep-plus
                                         class="add"
-                                        @click="addOneCircle(element)"
+                                        @click="addOneCircle(element.text)"
                                     ></i-ep-plus>
                                     <i-ep-minus
                                         class="minus"
-                                        @click="removeOneCircle(element)"
+                                        @click="removeOneCircle(element.text)"
                                     ></i-ep-minus>
                                     <i-ep-delete-filled
                                         class="remove"
-                                        @click="removeShopByName(element)"
+                                        @click="removeShopByName(element.text)"
                                     ></i-ep-delete-filled>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@ const {
 } = useShop();
 
 watch(shopList, (newValue) => {
-    onlySetShop(newValue.join(', '));
+    onlySetShop(newValue.map((i: any) => i.text || '').join(', '));
 });
 
 const shopEvent = () => {

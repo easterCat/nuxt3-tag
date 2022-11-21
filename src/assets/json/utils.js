@@ -25,7 +25,7 @@ export const utilMenus = [
     //     bg: "https://image.lexica.art/md/7cb6a14b-1212-49ac-8444-b1585b0ee383",
     // },
     {
-        name: 'SD',
+        name: '标签',
         childs: [{ name: 'Tags添加逗号', components: '' }],
         bg: 'https://image.lexica.art/md/2133ab7a-ace5-4b65-90e5-a74c4d2c872b',
     },

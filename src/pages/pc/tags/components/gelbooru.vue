@@ -2,14 +2,6 @@
     <div class="eh-con">
         <pc-area-title title="Gelbooru标签列表">
             <template v-slot:titleSide>
-                <!-- <el-switch
-                    v-model="showGelbooru"
-                    size="large"
-                    inline-prompt
-                    inactive-text="关闭"
-                    active-text="全局搜索"
-                    class="title-side"
-                /> -->
                 <span class="eh-title-side-tip">(分类不好用,用搜索)</span>
             </template>
         </pc-area-title>
@@ -66,7 +58,9 @@ import { debounce } from '~/utils/index';
 const props = defineProps({
     searchText: { type: String, default: '' },
 });
-
+// data
+const config = useRuntimeConfig();
+const token = config.public.GELBOORU_TOKEN;
 const { GelbooruApi } = useApi();
 const { copy } = useCopy();
 const { addShop } = useShop();
@@ -74,7 +68,6 @@ const category: Ref<any[]> = ref<any[]>([]);
 const allTags: Ref<any[]> = ref<any[]>([]);
 const tags: Ref<any[]> = ref<any[]>([]);
 const tableTags: Ref<any[]> = ref<any[]>([]);
-const showGelbooru: Ref<boolean> = ref(false);
 const selectValue: Ref<any> = ref(1100);
 const currentPage: Ref<number> = ref(1);
 const pageSize: Ref<number> = ref(100);
@@ -92,16 +85,10 @@ watch(
     },
 );
 
-watch(showGelbooru, async (newValue) => {
-    if (newValue && !allTags.value.length) {
-        getAllTags();
-    }
-});
-
 watch(selectValue, async (newValue) => {
     if (newValue) {
         const result = await GelbooruApi.getTagsById({
-            token: 'b8d9e7d1fa1dcc3e5116760c093be229',
+            token: token,
             page: 1,
             limit: 100,
             category_id: newValue,
@@ -111,23 +98,6 @@ watch(selectValue, async (newValue) => {
         setTableData();
     }
 });
-
-if (showGelbooru.value) {
-    getAllTags();
-}
-
-async function getAllTags() {
-    const result = await GelbooruApi.getTagsById({
-        token: 'b8d9e7d1fa1dcc3e5116760c093be229',
-        page: 1,
-        limit: 100,
-        category_id: 1100,
-    });
-    allTags.value = allTags.value.concat(result.data);
-    tags.value = allTags.value;
-    total.value = allTags.value.length;
-    setTableData();
-}
 
 const handleSizeChange = (val: number) => {
     pageSize.value = val;
@@ -152,9 +122,16 @@ const searchTag = debounce(async (val?: any) => {
     const result = await GelbooruApi.searchTags({
         token: 'b8d9e7d1fa1dcc3e5116760c093be229',
         keyword: val,
+        page: 2,
+        limit: 100,
     });
     tags.value = result.data;
-    total.value = result.data.length;
+    if (result.data.length == 100) {
+        total.value = result.data.length + 1;
+    } else {
+        total.value = result.data.length;
+    }
+
     setTableData();
 }, 1500);
 

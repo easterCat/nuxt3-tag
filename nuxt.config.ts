@@ -15,12 +15,11 @@ export default defineNuxtConfig({
         '@/assets/scss/flex.scss',
         '@/assets/scss/page.scss',
         '@/assets/scss/box.scss',
+        '@/assets/scss/media.scss',
     ],
+    modules: ['@nuxt/image-edge'],
     app: {
         baseURL: '/stable-diffution-utils-nuxt',
-        // baseURL: '/',
-        buildAssetsDir: '/_nuxt/',
-        cdnURL: '',
         pageTransition: {
             name: 'fade',
             mode: 'out-in',
@@ -39,6 +38,13 @@ export default defineNuxtConfig({
                 { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
                 { name: 'description', content: 'AI绘画的辅助工具.' },
             ],
+        },
+    },
+    runtimeConfig: {
+        public: {
+            API_DATA_FROM: process.env.API_DATA_FROM,
+            FLASK_BASE_API: process.env.FLASK_BASE_API,
+            GELBOORU_TOKEN: process.env.GELBOORU_TOKEN,
         },
     },
     nitro: {
