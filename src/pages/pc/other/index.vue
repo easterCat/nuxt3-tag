@@ -27,6 +27,7 @@
                     </app-animate>
                     <Navigate v-if="menuActive === 0"></Navigate>
                     <DesignSite v-if="menuActive === 1"></DesignSite>
+                    <PdfSite v-if="menuActive === 2"></PdfSite>
                 </div>
             </div>
         </div>
@@ -36,15 +37,21 @@
 <script lang="ts" setup>
 import DesignSite from './designSite/index.vue';
 import Navigate from './navigate/index.vue';
+import PdfSite from './pdfSite/index.vue';
 
 const menuList = ref([
     {
         name: 'web前端导航',
-        childs: [{ name: 'web前端导航', components: '' }],
+        childs: [],
         bg: 'https://image.lexica.art/md/2133ab7a-ace5-4b65-90e5-a74c4d2c872b',
     },
     {
         name: '设计师网站导航',
+        childs: [],
+        bg: 'https://image.lexica.art/md/6e21e7a1-93f4-42a7-8ffd-b2e8ec743771',
+    },
+    {
+        name: '电子书导航',
         childs: [],
         bg: 'https://image.lexica.art/md/6e21e7a1-93f4-42a7-8ffd-b2e8ec743771',
     },

@@ -1626,19 +1626,17 @@
 
     .sub-category {
         > div {
-            padding: 12px 0 0 2.1%;
+            padding: 12px 0 0 20px;
             font-size: 18px;
         }
     }
 
     .item {
-        width: 20%;
         border-radius: 6px;
         background: #fff;
         padding: 10px;
         width: 20%;
-        min-width: 200px;
-        margin: 22px 0 0 2.1%;
+        margin: 22px 0 0 20px;
         float: left;
         overflow: hidden;
         border: 1px solid #e4ecf3;
