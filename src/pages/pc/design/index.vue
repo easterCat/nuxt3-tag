@@ -4,14 +4,56 @@
             <div class="header">
                 <div class="back">
                     <i-ep-arrow-left-bold @click="goBack"></i-ep-arrow-left-bold>
-                    <i-ep-home-filled @click="goHome"></i-ep-home-filled>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="返回首页"
+                        placement="bottom"
+                    >
+                        <i-ep-home-filled @click="goHome"></i-ep-home-filled>
+                    </el-tooltip>
                 </div>
                 <div class="header-center">
-                    <i-ep-shopping-trolley @click="importShop" />
-                    <i-ep-delete @click="clearShop" />
-                    <i-ep-copy-document @click="copyShop" />
-                    <i-ep-plus @click="createNewShopItem" />
-                    <i-ep-guide @click="translatePrompt" />
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="导入标签"
+                        placement="bottom"
+                    >
+                        <i-ep-shopping-trolley @click="importShop" />
+                    </el-tooltip>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="新建标签"
+                        placement="bottom"
+                    >
+                        <i-ep-plus @click="createNewShopItem" />
+                    </el-tooltip>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="复制标签"
+                        placement="bottom"
+                    >
+                        <i-ep-copy-document @click="copyShop" />
+                    </el-tooltip>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="翻译标签"
+                        placement="bottom"
+                    >
+                        <i-ep-guide @click="translatePrompt" />
+                    </el-tooltip>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="清空标签"
+                        placement="bottom"
+                    >
+                        <i-ep-delete @click="clearShop" />
+                    </el-tooltip>
                 </div>
                 <div class="header-right">
                     <el-radio-group v-model="radio" class="ml-4">
@@ -108,6 +150,10 @@
                                             class="minus"
                                             @click="removeOneCircle(element.text)"
                                         ></i-ep-minus>
+                                        <i-ep-edit-pen
+                                            class="remove"
+                                            @click="renameShopName(element.text)"
+                                        ></i-ep-edit-pen>
                                         <i-ep-delete-filled
                                             class="remove"
                                             @click="removeShopByName(element.text)"
@@ -181,7 +227,6 @@ import { ref, Ref } from 'vue';
 import { tags } from '~/assets/json/tags';
 import draggable from 'vuedraggable';
 import { uuid } from 'vue-uuid';
-import { sleep } from '~/utils/index';
 
 defineProps(['modelValue']);
 
@@ -204,7 +249,7 @@ const typeActive = ref(0);
 const { copy } = useCopy();
 const {
     addShop,
-    shop,
+    renameShopName,
     shopList,
     onlySetShop,
     initShop,
@@ -306,7 +351,7 @@ onMounted(() => {
     }
 
     .header-center {
-        width: 170px;
+        width: 180px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -319,6 +364,7 @@ onMounted(() => {
     }
 
     .header-right {
+        padding-right: 10px;
         :deep(.el-radio__inner) {
             background: rgb(184, 194, 211);
         }
@@ -366,7 +412,7 @@ onMounted(() => {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-left: 20px;
+        margin-left: 10px;
         svg {
             font-size: 18px;
             color: rgb(135, 150, 179);

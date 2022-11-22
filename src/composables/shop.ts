@@ -73,6 +73,24 @@ export const useShop = () => {
         return message('删除成功');
     };
 
+    const renameShopName = (name: number) => {
+        ElMessageBox.prompt('请输入新内容', '修改', {
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+        })
+            .then(({ value }) => {
+                const findIndex = shopList.value.findIndex((i) => {
+                    return i.text === name;
+                });
+                shopList.value[findIndex].text = value;
+                _listToShop();
+                _setStore();
+            })
+            .catch(() => {
+                console.log('取消创建 :>> ');
+            });
+    };
+
     const addOneCircle = (name: any) => {
         const findIndex = shopList.value.findIndex((i) => {
             return i.text === name;
@@ -138,6 +156,7 @@ export const useShop = () => {
         addShop,
         removeShop,
         removeShopByName,
+        renameShopName,
         copyShop,
         addOneCircle,
         removeOneCircle,
