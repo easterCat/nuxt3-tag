@@ -43,17 +43,17 @@ const menuList = ref([
     {
         name: 'web前端导航',
         childs: [],
-        bg: 'https://image.lexica.art/md/2133ab7a-ace5-4b65-90e5-a74c4d2c872b',
+        bg: 'https://image.lexica.art/md/8088e6f6-96fe-4e64-bfb2-b72fbb763d64',
     },
     {
         name: '设计师网站导航',
         childs: [],
-        bg: 'https://image.lexica.art/md/6e21e7a1-93f4-42a7-8ffd-b2e8ec743771',
+        bg: 'https://image.lexica.art/md/8fe3855d-49ca-4d98-8c9a-787ff30ea24b',
     },
     {
         name: '电子书导航',
         childs: [],
-        bg: 'https://image.lexica.art/md/6e21e7a1-93f4-42a7-8ffd-b2e8ec743771',
+        bg: 'https://image.lexica.art/md/cf829111-8217-44f9-aa9f-fa7e8aed7701',
     },
 ]);
 const initActive = 0;
