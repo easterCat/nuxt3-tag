@@ -30,7 +30,7 @@
                 </el-menu-item>
                 <el-menu-item index="/pc/utils" @click="handleNavClick('utils')">工具</el-menu-item>
                 <el-menu-item index="/pc/links" @click="handleNavClick('links')">收录</el-menu-item>
-                <!-- <el-menu-item index="/pc/web" @click="handleNavClick('other')">其他</el-menu-item> -->
+                <el-menu-item index="/pc/other" @click="handleNavClick('other')">其他</el-menu-item>
             </el-menu>
         </div>
         <div class="user-info">
