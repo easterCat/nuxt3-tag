@@ -29,3 +29,8 @@ export const debounce = (fn: Function, delay: number): Function => {
         }, delay);
     };
 };
+
+// 强制程序睡眠时间,降低请求触发次数
+export const sleep = (time: number) => {
+    return new Promise((resolve) => setTimeout(resolve, time));
+};

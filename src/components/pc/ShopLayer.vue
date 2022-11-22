@@ -51,15 +51,15 @@
                                     <span>{{ element.text }}</span>
                                     <i-ep-plus
                                         class="add"
-                                        @click="addOneCircle(element)"
+                                        @click="addOneCircle(element.text)"
                                     ></i-ep-plus>
                                     <i-ep-minus
                                         class="minus"
-                                        @click="removeOneCircle(element)"
+                                        @click="removeOneCircle(element.text)"
                                     ></i-ep-minus>
                                     <i-ep-delete-filled
                                         class="remove"
-                                        @click="removeShopByName(element)"
+                                        @click="removeShopByName(element.text)"
                                     ></i-ep-delete-filled>
                                 </div>
                             </div>

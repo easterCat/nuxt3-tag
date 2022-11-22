@@ -166,15 +166,17 @@
                         <p>{{ history?.prompt }}</p>
                         <div class="history-button">
                             <el-button type="info" @click="setHistory(history?.prompt)">
-                                <slot name="icon"><i-ep-check></i-ep-check></slot>
+                                <slot name="icon"><i-ep-check class="m-r-4"></i-ep-check></slot>
                                 选择
                             </el-button>
                             <el-button type="success" @click="copy(history?.prompt)">
-                                <slot name="icon"><i-ep-document-copy></i-ep-document-copy></slot>
+                                <slot name="icon">
+                                    <i-ep-document-copy class="m-r-4"></i-ep-document-copy>
+                                </slot>
                                 复制
                             </el-button>
                             <el-button type="danger" @click="removeHistory(hIndex)">
-                                <slot name="icon"><i-ep-delete></i-ep-delete></slot>
+                                <slot name="icon"><i-ep-delete class="m-r-4"></i-ep-delete></slot>
                                 删除
                             </el-button>
                         </div>
@@ -216,7 +218,7 @@ onMounted(() => {
 
 // methods
 const promptFormat = () => {
-    formatTextArea.value = textArea.value.replace(/\s*(，+|,+)\s*/g, ',');
+    formatTextArea.value = textArea.value.replace(/\s*(，+|,+)\s*/g, ', ');
     promptList.value = formatTextArea.value
         .split(',')
         .filter((i) => !!i)

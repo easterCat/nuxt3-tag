@@ -181,6 +181,7 @@ import { ref, Ref } from 'vue';
 import { tags } from '~/assets/json/tags';
 import draggable from 'vuedraggable';
 import { uuid } from 'vue-uuid';
+import { sleep } from '~/utils/index';
 
 defineProps(['modelValue']);
 
@@ -241,11 +242,12 @@ const confirmImport = () => {
     showImport.value = false;
 };
 
-const translatePrompt = async () => {
-    const result = await ShopApi.translate({ text: shop, type: 1 });
-    const translateList = result.data.translateText.split('，');
-    shopList.value = shopList.value.map((item: any, index: number) => {
-        return { text: item.text, translateText: translateList[index] };
+const translatePrompt = () => {
+    shopList.value.forEach((item: any, index: number) => {
+        setTimeout(async () => {
+            const result = await ShopApi.translate({ text: item.text, type: 1 });
+            shopList.value[index] = { text: item.text, translateText: result.data.translateText };
+        }, index * 100);
     });
 };
 
