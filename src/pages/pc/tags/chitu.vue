@@ -34,23 +34,42 @@
 
                 <div class="tag-list">
                     <div class="tag-item" v-for="(o, oIndex) in tagsLists" :key="oIndex">
-                        <div class="image-con" v-if="showImage">
-                            <img
-                                src="https://image.lexica.art/md/6612175d-e172-4ae2-87a1-da2d4e7d2f6b"
-                            />
+                        <div
+                            class="image-con"
+                            v-if="showImage && tagActive !== 5 && tagActive !== 6"
+                        >
+                            <img v-lazy="o?.fileUrl ?? ''" />
                         </div>
-
                         <div class="text-con">
-                            <p class="zh">{{ o?.zh }}</p>
-                            <p class="en">{{ o?.en }}</p>
+                            <!-- <p class="zh">
+                                {{
+                                    o?.promptZH.length > 12
+                                        ? o?.promptZH.slice(0, 12) + '...'
+                                        : o?.promptZH
+                                }}
+                            </p> -->
+                            <el-tooltip
+                                class="box-item"
+                                effect="dark"
+                                :content="o?.promptEN"
+                                placement="top"
+                            >
+                                <p class="en">
+                                    {{
+                                        o?.promptEN.length > 24
+                                            ? o?.promptEN.slice(0, 24) + '...'
+                                            : o?.promptEN
+                                    }}
+                                </p>
+                            </el-tooltip>
                         </div>
                         <div>
-                            <el-button size="small" circle @click="addShop(o?.en)">
+                            <el-button size="small" circle @click="addShop(o?.promptEN)">
                                 <slot name="icon">
                                     <i-ep-shopping-trolley></i-ep-shopping-trolley>
                                 </slot>
                             </el-button>
-                            <el-button size="small" circle @click="copy(o?.en)">
+                            <el-button size="small" circle @click="copy(o?.promptEN)">
                                 <slot name="icon"><i-ep-document-copy></i-ep-document-copy></slot>
                             </el-button>
                         </div>
@@ -63,34 +82,40 @@
 
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
-import { tags } from '~/assets/json/tags';
 
-const tagsMenus = ref([
-    { name: '参考图' },
-    { name: '人物' },
-    { name: '物体' },
-    { name: '构图' },
-    { name: '画风' },
-    { name: '正面词组' },
-    { name: '负面词组' },
+const tagsMenus = reactive([
+    { name: '参考图', file: import('@/assets/json/NovelAI_cankaotu.json') },
+    { name: '人物', file: import('@/assets/json/NovelAI_huageren.json') },
+    { name: '物体', file: import('@/assets/json/NovelAI_huagewuti.json') },
+    { name: '构图', file: import('@/assets/json/NovelAI_goutu.json') },
+    { name: '画风', file: import('@/assets/json/NovelAI_huafeng.json') },
+    { name: '正面词组', file: import('@/assets/json/NovelAI_zhengmiantag.json') },
+    { name: '负面词组', file: import('@/assets/json/NovelAI_fumiantag.json') },
 ]);
-const tagsLists = ref(tagsMenus.value[0].data);
-const tagActive: Ref<number> = ref(0);
-const showImage: Ref<boolean> = ref(false);
-const searchText: Ref<string> = ref('');
+const tagsLists: Ref<any[]> = ref<any[]>([]);
+const tagActive: Ref<number> = ref<number>(0);
+const showImage: Ref<boolean> = ref<boolean>(true);
+const searchText: Ref<string> = ref<string>('');
 const { copy } = useCopy();
 const { addShop } = useShop();
 
-const menuItemClick = (key: number) => {
-    tagsLists.value = tagsMenus.value[key].data;
+const menuItemClick = async (key: number) => {
     tagActive.value = key;
+    const json = (await tagsMenus[key].file).default;
+    tagsLists.value = json;
+    // setTimeout(() => {
+    //     tagsLists.value = json;
+    // }, 300);
 };
 
 const searchChange = (val: any) => {
     searchText.value = val;
 };
 
-onMounted(() => {});
+onMounted(async () => {
+    const json = (await tagsMenus[0].file).default;
+    tagsLists.value = json;
+});
 </script>
 
 <style lang="scss" scoped>
