@@ -101,11 +101,15 @@ const { addShop } = useShop();
 
 const menuItemClick = async (key: number) => {
     tagActive.value = key;
+    tagsLists.value = [];
     const json = (await tagsMenus[key].file).default;
-    tagsLists.value = json;
-    // setTimeout(() => {
-    //     tagsLists.value = json;
-    // }, 300);
+    const max = Math.ceil(json.length / 30);
+    for (let i = 0; i < max; i++) {
+        setTimeout(() => {
+            console.log('i :>> ', i);
+            tagsLists.value = tagsLists.value.concat(json.slice(i * 30, (i + 1) * 30));
+        }, i * 600);
+    }
 };
 
 const searchChange = (val: any) => {
