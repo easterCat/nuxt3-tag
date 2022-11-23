@@ -6,47 +6,47 @@
                     :buttonStyle="1"
                     buttonColor="245, 108, 108"
                     buttonAngel="145deg"
-                    buttonWidth="160px"
-                    buttonText="Prompt格式化(常规)"
+                    buttonWidth="80px"
+                    buttonText="格式化"
                     @submit="promptFormat"
                 ></PcAnimationButton>
                 <PcAnimationButton
                     :buttonStyle="1"
                     buttonColor="245, 108, 108"
                     buttonAngel="145deg"
-                    buttonWidth="90px"
-                    buttonText="一键清空"
+                    buttonWidth="60px"
+                    buttonText="清空"
                     @submit="clearPrompt"
                 ></PcAnimationButton>
                 <PcAnimationButton
                     :buttonStyle="1"
                     buttonColor="245, 108, 108"
                     buttonAngel="145deg"
-                    buttonWidth="200px"
-                    buttonText="中括号转圆括号(先格式化)"
+                    buttonWidth="80px"
+                    buttonText="{{}}转(())"
                     @submit="mediumToCircle"
                 ></PcAnimationButton>
                 <PcAnimationButton
                     :buttonStyle="1"
                     buttonColor="245, 108, 108"
                     buttonAngel="145deg"
-                    buttonWidth="200px"
-                    buttonText="圆括号转中括号(先格式化)"
+                    buttonWidth="80px"
+                    buttonText="(())转{{}}"
                     @submit="circleToMedium"
                 ></PcAnimationButton>
                 <PcAnimationButton
                     :buttonStyle="1"
                     buttonColor="245, 108, 108"
                     buttonAngel="145deg"
-                    buttonWidth="130px"
-                    buttonText="Prompt起手式"
+                    buttonWidth="80px"
+                    buttonText="起手式"
                     @submit="addHighQualityPrompt"
                 ></PcAnimationButton>
                 <PcAnimationButton
                     :buttonStyle="1"
                     buttonColor="245, 108, 108"
                     buttonAngel="145deg"
-                    buttonWidth="200px"
+                    buttonWidth="190px"
                     buttonText="空格加逗号(用于danbooru)"
                     @submit="tagsAddComma"
                 ></PcAnimationButton>
@@ -54,7 +54,7 @@
                     :buttonStyle="1"
                     buttonColor="245, 108, 108"
                     buttonAngel="145deg"
-                    buttonWidth="200px"
+                    buttonWidth="190px"
                     buttonText="去除下划线(用于danbooru)"
                     @submit="promotRemoveLine"
                 ></PcAnimationButton>
@@ -62,7 +62,7 @@
                     :buttonStyle="1"
                     buttonColor="245, 108, 108"
                     buttonAngel="145deg"
-                    buttonWidth="120px"
+                    buttonWidth="110px"
                     buttonText="购物车导入"
                     @submit="shopImport"
                 ></PcAnimationButton>
@@ -70,7 +70,7 @@
                     :buttonStyle="1"
                     buttonColor="245, 108, 108"
                     buttonAngel="145deg"
-                    buttonWidth="120px"
+                    buttonWidth="110px"
                     buttonText="导出购物车"
                     @submit="exportShop"
                 ></PcAnimationButton>
