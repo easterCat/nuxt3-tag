@@ -19,7 +19,10 @@
                         index="/pc/tags/gelbooru"
                         @click="handleNavClick('tags/gelbooru')"
                     >
-                        gelbooru标签
+                        Gelbooru标签
+                    </el-menu-item>
+                    <el-menu-item index="/pc/tags/chitu" @click="handleNavClick('tags/chitu')">
+                        词图标签
                     </el-menu-item>
                     <el-menu-item index="/pc/tags/eh" @click="handleNavClick('tags/eh')">
                         EH标签(nsfw)

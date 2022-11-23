@@ -1619,7 +1619,7 @@
     .fe {
         overflow: hidden;
         background: #fff;
-        margin: 20px 0;
+        margin-bottom: 24px;
         padding-bottom: 20px;
         border-radius: 10px;
     }
@@ -1631,16 +1631,18 @@
         }
     }
 
+    .title {
+        float: left;
+    }
+
     .item {
         border-radius: 6px;
         background: #fff;
         padding: 10px;
-        width: 20%;
+        width: 300px;
         margin: 22px 0 0 20px;
         float: left;
         overflow: hidden;
-        border: 1px solid #e4ecf3;
-        box-shadow: 1px 2px 3px #f2f6f8;
     }
 
     .logo {
@@ -1655,9 +1657,9 @@
         padding: 0 0.1rem;
 
         > img {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
             vertical-align: middle;
         }
     }
@@ -1665,8 +1667,7 @@
     .desc {
         color: gray;
         font-size: 12px;
-        padding-top: 10px;
-        height: 35px;
+        height: 45px;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
