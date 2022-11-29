@@ -63,8 +63,10 @@
 
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
-import { tags } from '~/assets/json/tags';
 
+const { DefaultTagsApi } = useApi();
+const result = await DefaultTagsApi.getTags();
+const tags = JSON.parse(result);
 const tagsMenus = ref(tags.class);
 const tagsLists = ref(tagsMenus.value[0].data);
 const tagActive: Ref<number> = ref(0);

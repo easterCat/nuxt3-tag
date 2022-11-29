@@ -224,13 +224,15 @@
 
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
-import { tags } from '~/assets/json/tags';
 import draggable from 'vuedraggable';
 import { uuid } from 'vue-uuid';
 
 defineProps(['modelValue']);
 
 // data
+const { DefaultTagsApi } = useApi();
+const result = await DefaultTagsApi.getTags();
+const tags = JSON.parse(result);
 const config = useRuntimeConfig();
 const token = config.public.GELBOORU_TOKEN;
 const dragOptions = reactive({

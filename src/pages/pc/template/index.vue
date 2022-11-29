@@ -11,10 +11,10 @@
                         :sm="12"
                         :md="6"
                         :lg="4"
-                        :xl="3"
+                        :xl="4"
                     >
                         <el-card :body-style="{ padding: '0px' }">
-                            <img v-lazy="tem?.preview" class="image" />
+                            <nuxt-img class="image" :src="tem?.preview" loading="lazy" />
                             <div style="padding: 14px">
                                 <span>{{ tem?.author }}</span>
                                 <div class="bottom">
@@ -29,93 +29,67 @@
                         </el-card>
                     </el-col>
                 </el-row>
+
+                <div class="demo-pagination-block">
+                    <el-pagination
+                        v-model:current-page="pageIndex"
+                        v-model:page-size="pageSize"
+                        :page-sizes="[50, 100]"
+                        :background="true"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="total"
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                    />
+                </div>
             </div>
 
-            <el-dialog v-model="dialogVisible" title="模板信息" width="80%">
-                <el-descriptions :column="1" border>
-                    <el-descriptions-item
-                        label="预览"
-                        label-align="right"
-                        align="center"
-                        label-class-name="description-label"
-                    >
-                        <el-image :src="currentTem?.preview" lazy />
-                    </el-descriptions-item>
-                    <el-descriptions-item
-                        label="正向标签"
-                        label-align="right"
-                        align="center"
-                        label-class-name="description-label"
-                    >
-                        <div class="cp" @click="copy(currentTem?.prompt)">
-                            {{ currentTem?.prompt }}
-                        </div>
-                    </el-descriptions-item>
-                    <el-descriptions-item
-                        label="负面标签"
-                        label-align="right"
-                        align="center"
-                        label-class-name="description-label"
-                    >
-                        <div class="cp" @click="copy(currentTem?.nprompt)">
-                            {{ currentTem?.nprompt }}
-                        </div>
-                    </el-descriptions-item>
-
-                    <el-descriptions-item
-                        label="step"
-                        label-align="right"
-                        align="center"
-                        label-class-name="description-label"
-                    >
-                        {{ currentTem?.step }}
-                    </el-descriptions-item>
-
-                    <el-descriptions-item
-                        label="scale"
-                        label-align="right"
-                        align="center"
-                        label-class-name="description-label"
-                    >
-                        {{ currentTem?.scale }}
-                    </el-descriptions-item>
-                </el-descriptions>
-                <template #footer>
-                    <span class="dialog-footer">
-                        <el-button @click="dialogVisible = false">取消</el-button>
-                        <el-button type="success" @click="dialogVisible = false">确定</el-button>
-                        <el-button type="warning" @click="setShop(currentTem?.prompt)">
-                            加入购物车
-                        </el-button>
-                    </span>
-                </template>
-            </el-dialog>
+            <PcTemplateDetail
+                v-model="showPreview"
+                :currentTemplate="currentTemplate"
+            ></PcTemplateDetail>
         </div>
     </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { templates } from '@/assets/json/templates';
+import { Ref } from 'vue';
 
-const templatesList = ref(templates);
-const dialogVisible = ref(false);
+const pageIndex = ref(1);
+const pageSize = ref(50);
+const total = ref(0);
+const showPreview = ref(false);
+const templatesList: Ref<any[] | null> = ref([]);
+const currentTemplate: Ref<any | null> = ref(null);
 const { copy } = useCopy();
-let currentTem = ref({
-    name: '',
-    prompt: '',
-    nprompt: '',
-    step: '',
-    scale: '',
-    author: '',
-    preview: '',
-});
-
 const { setShop } = useShop();
 
 const cardClick = (tem: any) => {
-    currentTem.value = { ...tem };
-    dialogVisible.value = true;
+    currentTemplate.value = { ...tem };
+    showPreview.value = true;
+};
+
+const loadData = async () => {
+    const { TemplateApi } = useApi();
+    const result: any = await TemplateApi.getTemplates({
+        pageIndex: pageIndex.value,
+        pageSize: pageSize.value,
+    });
+    templatesList.value = result?.templates;
+    total.value = result.total;
+};
+
+loadData();
+
+const handleSizeChange = async (val: number) => {
+    pageIndex.value = 1;
+    pageSize.value = val;
+    loadData();
+};
+
+const handleCurrentChange = async (val: number) => {
+    pageIndex.value = val;
+    loadData();
 };
 </script>
 
@@ -144,7 +118,7 @@ const cardClick = (tem: any) => {
     display: block;
     background: rgb(148, 148, 148);
     object-fit: cover;
-    object-position: center top;
+    object-position: center center;
 }
 
 :deep(.el-col) {
@@ -158,5 +132,12 @@ const cardClick = (tem: any) => {
 
 :deep(.el-card) {
     border-radius: 10px;
+}
+
+.demo-pagination-block {
+    padding: 30px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 </style>

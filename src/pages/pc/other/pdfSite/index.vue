@@ -6112,35 +6112,44 @@
         flex-direction: column;
     }
 
+    .text-gray {
+        color: #3c3c3c;
+        font-size: 16px;
+        position: relative;
+        background: #fff;
+        padding: 10px 0;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-bottom: 1px solid #f1f4f9;
+        margin: 0px !important;
+    }
+
     .row {
+        padding: 0px 15px;
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
+        background: #fff;
+        margin-bottom: 24px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 
     .xe-card {
-        width: 18%;
+        width: 300px;
+        padding: 10px;
         position: relative;
-        height: 72px;
-        margin: 22px 0 0 20px;
-        box-shadow: 1px 2px 3px #f2f6f8;
         box-sizing: border-box;
     }
 
-    .xe-card:hover {
-        box-shadow: 1px 3px 6px #e7e8e8;
-    }
-
     .xe-widget.xe-conversations {
-        position: absolute;
-        background: #fff;
         margin-bottom: 0px;
-        padding: 15px;
-        left: 0;
-        right: 0;
+        padding: 15px 15px 5px 15px;
     }
 
     .xe-comment-entry img {
+        width: 20px;
+        height: 20px;
         float: left;
         display: block;
         background: rgba(136, 136, 136, 0.15);
@@ -6148,10 +6157,19 @@
     }
 
     .overflowClip_1 {
+        margin-left: 32px;
+        color: #8f8f8f;
+        font-size: 12px;
+        height: 30px;
+        line-height: 1.5em;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        display: block !important;
+    }
+
+    .xe-user-name {
+        color: #3c3c3c;
+        font-size: 14px;
     }
 
     .xe-comment p {

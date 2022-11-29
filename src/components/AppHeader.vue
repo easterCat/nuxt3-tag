@@ -15,17 +15,17 @@
                     <el-menu-item index="/pc/tags" @click="handleNavClick('tags')">
                         常规标签
                     </el-menu-item>
+                    <el-menu-item index="/pc/tags/chitu" @click="handleNavClick('tags/chitu')">
+                        词图标签
+                    </el-menu-item>
                     <el-menu-item
                         index="/pc/tags/gelbooru"
                         @click="handleNavClick('tags/gelbooru')"
                     >
                         Gelbooru标签
                     </el-menu-item>
-                    <el-menu-item index="/pc/tags/chitu" @click="handleNavClick('tags/chitu')">
-                        词图标签
-                    </el-menu-item>
                     <el-menu-item index="/pc/tags/eh" @click="handleNavClick('tags/eh')">
-                        EH标签(nsfw)
+                        EHentai标签(H)
                     </el-menu-item>
                 </el-sub-menu>
                 <el-menu-item index="/pc/template" @click="handleNavClick('template')">
@@ -104,7 +104,7 @@ header {
     z-index: 1001;
     display: flex;
     background: #fff;
-    box-shadow: rgba(17, 17, 26, 0.15) 0px 3px 8px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 6px 12px;
 
     .header-menu {
         flex: 1;

@@ -1648,9 +1648,9 @@
     .logo {
         height: 40px;
         position: relative;
-        font-size: 14px;
         font-weight: 700;
-        color: #3273dc;
+        color: #3c3c3c;
+        font-size: 14px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -1661,6 +1661,7 @@
             height: 20px;
             border-radius: 100%;
             vertical-align: middle;
+            margin-right: 8px;
         }
     }
 

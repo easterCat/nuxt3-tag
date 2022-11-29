@@ -16,7 +16,7 @@
                                     :key="mIndex"
                                     @click="menuClick(mIndex)"
                                 >
-                                    <img v-lazy="menu?.bg" alt="" />
+                                    <nuxt-img :src="menu?.bg" loading="lazy" />
                                     <span>{{ menu?.name }}</span>
                                 </div>
                             </app-animate>

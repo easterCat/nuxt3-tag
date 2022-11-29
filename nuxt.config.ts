@@ -15,7 +15,9 @@ export default defineNuxtConfig({
         '@/assets/scss/flex.scss',
         '@/assets/scss/page.scss',
         '@/assets/scss/box.scss',
+        '@/assets/scss/media.scss',
     ],
+    modules: ['@nuxt/image-edge'],
     app: {
         baseURL: '/stable-diffution-utils-nuxt',
         pageTransition: {
@@ -40,6 +42,7 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
+            API_DATA_FROM: process.env.API_DATA_FROM,
             FLASK_BASE_API: process.env.FLASK_BASE_API,
             GELBOORU_TOKEN: process.env.GELBOORU_TOKEN,
         },

@@ -33,12 +33,17 @@
                 </pc-area-title>
 
                 <div class="tag-list">
-                    <div class="tag-item" v-for="(o, oIndex) in tagsLists" :key="oIndex">
+                    <div
+                        class="tag-item ll-media"
+                        v-for="(o, oIndex) in tagsLists"
+                        :key="oIndex"
+                        :data-index="oIndex"
+                    >
                         <div
                             class="image-con"
                             v-if="showImage && tagActive !== 5 && tagActive !== 6"
                         >
-                            <img v-lazy="o?.fileUrl ?? ''" />
+                            <nuxt-img :src="o?.fileUrl ?? ''" loading="lazy" @click="preview(o)" />
                         </div>
                         <div class="text-con">
                             <!-- <p class="zh">
@@ -54,7 +59,14 @@
                                 :content="o?.promptEN"
                                 placement="top"
                             >
-                                <p class="en">
+                                <p class="en" v-if="o?.title">
+                                    {{
+                                        o?.title.length > 24
+                                            ? o?.title.slice(0, 24) + '...'
+                                            : o?.title
+                                    }}
+                                </p>
+                                <p class="en" v-else>
                                     {{
                                         o?.promptEN.length > 24
                                             ? o?.promptEN.slice(0, 24) + '...'
@@ -63,7 +75,7 @@
                                 </p>
                             </el-tooltip>
                         </div>
-                        <div>
+                        <div class="button-con">
                             <el-button size="small" circle @click="addShop(o?.promptEN)">
                                 <slot name="icon">
                                     <i-ep-shopping-trolley></i-ep-shopping-trolley>
@@ -76,11 +88,16 @@
                     </div>
                 </div>
             </div>
+            <PcTemplateDetail
+                v-model="showPreview"
+                :currentTemplate="currentTemplate"
+            ></PcTemplateDetail>
         </div>
     </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
+import { debounce, throttle } from 'lodash';
 import { ref, Ref } from 'vue';
 
 const tagsMenus = reactive([
@@ -96,29 +113,69 @@ const tagsLists: Ref<any[]> = ref<any[]>([]);
 const tagActive: Ref<number> = ref<number>(0);
 const showImage: Ref<boolean> = ref<boolean>(true);
 const searchText: Ref<string> = ref<string>('');
+const currentTemplate: any = ref({});
+const showPreview = ref(false);
 const { copy } = useCopy();
 const { addShop } = useShop();
+let json: any[] = [];
+let index: number = 0;
+let pageSize: number = 50;
+
+const preview = (o: any) => {
+    currentTemplate.value = {
+        author: o.author,
+        n_prompt: o.detagEN,
+        preview: o.fileUrl2,
+        model: o.model,
+        prompt: o.promptEN,
+        prompt_zh: o.promptZH,
+        name: o.title,
+        desc: o.parameter,
+    };
+    showPreview.value = true;
+};
 
 const menuItemClick = async (key: number) => {
+    index = 0;
     tagActive.value = key;
     tagsLists.value = [];
-    const json = (await tagsMenus[key].file).default;
+    json = (await tagsMenus[key].file).default;
     const max = Math.ceil(json.length / 30);
-    for (let i = 0; i < max; i++) {
-        setTimeout(() => {
-            console.log('i :>> ', i);
-            tagsLists.value = tagsLists.value.concat(json.slice(i * 30, (i + 1) * 30));
-        }, i * 600);
-    }
+    setList();
 };
 
 const searchChange = (val: any) => {
     searchText.value = val;
 };
 
+const scrollLoading = async () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+    const windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+    if (scrollHeight - (scrollTop + windowHeight) <= 100) {
+        console.log('触底');
+        index++;
+        setList();
+    }
+};
+
+const setList = () => {
+    tagsLists.value = tagsLists.value.concat(json.slice(index * pageSize, (index + 1) * pageSize));
+    console.log('tagsLists.value :>> ', tagsLists.value);
+};
+
+const throttleScrollLoading = throttle(scrollLoading, 1500);
+
 onMounted(async () => {
-    const json = (await tagsMenus[0].file).default;
-    tagsLists.value = json;
+    index = 0;
+    json = (await tagsMenus[0].file).default;
+    setList();
+    window.addEventListener('scroll', throttleScrollLoading);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', throttleScrollLoading);
 });
 </script>
 
@@ -149,23 +206,24 @@ onMounted(async () => {
     flex-wrap: wrap;
 
     .tag-item {
-        padding: 8px 20px;
-        background: white;
         box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 8px;
         border-radius: 10px;
         margin-bottom: 15px;
-        margin-right: 15px;
+        box-sizing: border-box;
         cursor: pointer;
 
         .text-con {
-            margin-bottom: 8px;
+            padding: 10px 10px 10px 10px;
+        }
+
+        .button-con {
+            padding: 0 10px 10px 10px;
         }
 
         .image-con {
             width: 100%;
-            height: 200px;
+            height: auto;
             object-fit: cover;
-            margin-bottom: 8px;
             border-radius: 10px;
             overflow: hidden;
         }

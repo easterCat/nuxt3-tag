@@ -17,6 +17,7 @@
     },
     "devDependencies": {
         "@iconify-json/ep": "^1.1.8",
+        "@nuxt/image-edge": "^1.0.0-27827328.bc9ddc0",
         "@types/store": "^2.0.2",
         "@typescript-eslint/eslint-plugin": "~5.40.1",
         "@typescript-eslint/parser": "~5.40.1",
@@ -28,7 +29,7 @@
         "eslint-plugin-import": "2.26.0",
         "eslint-plugin-prettier": "~4.2.1",
         "eslint-plugin-vue": "~9.6.0",
-        "nuxt": "3.0.0-rc.13",
+        "nuxt": "3.0.0-rc.14",
         "postcss": "^7.0.39",
         "postcss-import": "^15.0.0",
         "postcss-px-to-viewport-7039": "^1.1.1",
@@ -51,7 +52,6 @@
         "viewerjs": "^1.11.1",
         "vue-uuid": "^3.0.0",
         "vue3-clipboard": "^1.0.0",
-        "vue3-lazyload": "^0.3.6",
         "vuedraggable": "^4.1.0"
     }
 }

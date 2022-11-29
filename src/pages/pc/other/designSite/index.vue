@@ -3548,7 +3548,7 @@
         margin-left: -10px;
         margin-right: -10px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap: wrap;
     }
 
