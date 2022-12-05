@@ -1,16 +1,16 @@
-import { Action, ElMessage, ElMessageBox } from 'element-plus';
+import { Action, ElMessageBox } from 'element-plus';
 
 // 大型项目中，建议使用pinia
 export const useShop = () => {
     const { $store } = useNuxtApp();
     const { copy } = useCopy();
     const key = 'shop';
-    let shop = useState<string>('shop', () => '');
-    let shopList = useState<any[]>('shopList', () => []);
+    const shop = useState<string>('shop', () => '');
+    const shopList = useState<any[]>('shopList', () => []);
 
     const initShop = () => {
         shop.value = $store.get(key) || '';
-        if (!!shop.value) {
+        if (shop.value) {
             _shopToList();
         } else {
             shopList.value = [];
@@ -64,7 +64,7 @@ export const useShop = () => {
     };
 
     const removeShopByName = (name: number) => {
-        const findIndex = shopList.value.findIndex((i) => {
+        const findIndex = shopList.value.findIndex((i: any) => {
             return i.text === name;
         });
         shopList.value.splice(findIndex, 1);
@@ -79,7 +79,7 @@ export const useShop = () => {
             cancelButtonText: 'Cancel',
         })
             .then(({ value }) => {
-                const findIndex = shopList.value.findIndex((i) => {
+                const findIndex = shopList.value.findIndex((i: any) => {
                     return i.text === name;
                 });
                 shopList.value[findIndex].text = value;
@@ -92,7 +92,7 @@ export const useShop = () => {
     };
 
     const addOneCircle = (name: any) => {
-        const findIndex = shopList.value.findIndex((i) => {
+        const findIndex = shopList.value.findIndex((i: any) => {
             return i.text === name;
         });
         const newName = `(${name})`;
@@ -102,7 +102,7 @@ export const useShop = () => {
     };
 
     const removeOneCircle = (name: any) => {
-        const findIndex = shopList.value.findIndex((i) => {
+        const findIndex = shopList.value.findIndex((i: any) => {
             return i.text === name;
         });
         const newName = name.replace('(', '').replace(')', '');
@@ -135,11 +135,11 @@ export const useShop = () => {
     }
 
     function _listToShop() {
-        shop.value = shopList.value.map((i) => i.text).join(',');
+        shop.value = shopList.value.map((i: any) => i.text).join(',');
     }
 
     function _shopToList() {
-        shopList.value = shop.value.split(',').map((i) => {
+        shopList.value = shop.value.split(',').map((i: string) => {
             return { text: i.trim() };
         });
     }

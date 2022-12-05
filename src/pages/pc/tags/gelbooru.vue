@@ -1,13 +1,11 @@
 <template>
-    <NuxtLayout>
-        <div class="tags-page page">
-            <AppHeader />
-            <div class="content">
-                <AppBanner placeholder="搜索标签" @searchChange="searchChange" />
-                <Gelbooru :searchText="searchText"></Gelbooru>
-            </div>
+    <div class="gelbooru-tags-page page">
+        <AppHeader />
+        <div class="content">
+            <AppBanner placeholder="搜索标签" @search-change="searchChange" />
+            <Gelbooru :search-text="searchText"></Gelbooru>
         </div>
-    </NuxtLayout>
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -19,13 +17,13 @@ const searchText: Ref<string> = ref('');
 const searchChange = (val: any) => {
     searchText.value = val;
 };
-
-onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
-.tags-page {
-    padding-bottom: 130px;
+.gelbooru-tags-page {
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-y: scroll;
 }
 
 .type-list .animation-button {
@@ -51,7 +49,7 @@ onMounted(() => {});
 
     .tag-item {
         padding: 8px 20px;
-        background: white;
+        background: #fafaf8;
         box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 8px;
         border-radius: 10px;
         margin-bottom: 15px;

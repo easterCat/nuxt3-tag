@@ -1,64 +1,62 @@
 <template>
-    <NuxtLayout>
-        <div class="tags-page page">
-            <AppHeader />
-            <div class="content">
-                <AppBanner placeholder="搜索标签" @searchChange="searchChange" />
-                <pc-area-title title="标签类别"></pc-area-title>
-                <div class="type-list">
-                    <PcAnimationButton
-                        v-for="(m, mIndex) in tagsMenus"
-                        :index="mIndex + ''"
-                        :key="mIndex"
-                        :buttonStyle="1"
-                        buttonSize="larger"
-                        :buttonColor="mIndex === tagActive ? '241, 119, 71' : '245, 190, 171'"
-                        buttonAngel="145deg"
-                        buttonWidth="130px"
-                        :buttonText="m?.name"
-                        @submit="menuItemClick(mIndex)"
-                    ></PcAnimationButton>
-                </div>
-                <pc-area-title title="标签列表">
-                    <template v-slot:titleSide>
-                        <el-switch
-                            v-model="showImage"
-                            size="large"
-                            inline-prompt
-                            inactive-text="隐藏Image"
-                            active-text="开启Image"
-                            class="title-side"
+    <div class="tags-page page">
+        <AppHeader />
+        <div class="content">
+            <AppBanner placeholder="搜索标签" @search-change="searchChange" />
+            <pc-area-title title="标签类别"></pc-area-title>
+            <div class="type-list">
+                <PcAnimationButton
+                    v-for="(m, mIndex) in tagsMenus"
+                    :key="mIndex"
+                    :index="mIndex + ''"
+                    :button-style="1"
+                    button-size="larger"
+                    :class="[mIndex === tagActive ? 'btn-accent' : 'btn-secondary']"
+                    :button-text="m?.name"
+                    @submit="menuItemClick(mIndex)"
+                ></PcAnimationButton>
+            </div>
+            <pc-area-title title="标签列表">
+                <template #titleSide>
+                    <el-switch
+                        v-model="showImage"
+                        size="large"
+                        inline-prompt
+                        inactive-text="隐藏Image"
+                        active-text="开启Image"
+                        class="title-side"
+                    />
+                </template>
+            </pc-area-title>
+
+            <div class="tag-list">
+                <div v-for="(o, oIndex) in tagsLists" :key="oIndex" class="tag-item">
+                    <div v-if="showImage" class="image-con">
+                        <img
+                            src="https://image.lexica.art/md/6612175d-e172-4ae2-87a1-da2d4e7d2f6b"
                         />
-                    </template>
-                </pc-area-title>
+                    </div>
 
-                <div class="tag-list">
-                    <div class="tag-item" v-for="(o, oIndex) in tagsLists" :key="oIndex">
-                        <div class="image-con" v-if="showImage">
-                            <img
-                                src="https://image.lexica.art/md/6612175d-e172-4ae2-87a1-da2d4e7d2f6b"
-                            />
-                        </div>
-
-                        <div class="text-con">
-                            <p class="zh">{{ o?.zh }}</p>
-                            <p class="en">{{ o?.en }}</p>
-                        </div>
-                        <div>
-                            <el-button size="small" circle @click="addShop(o?.en)">
-                                <slot name="icon">
-                                    <i-ep-shopping-trolley></i-ep-shopping-trolley>
-                                </slot>
-                            </el-button>
-                            <el-button size="small" circle @click="copy(o?.en)">
-                                <slot name="icon"><i-ep-document-copy></i-ep-document-copy></slot>
-                            </el-button>
-                        </div>
+                    <div class="text-con">
+                        <p class="zh">{{ o?.zh }}</p>
+                        <p class="en">{{ o?.en }}</p>
+                    </div>
+                    <div>
+                        <el-button size="small" circle @click="addShop(o?.en)">
+                            <slot name="icon">
+                                <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                            </slot>
+                        </el-button>
+                        <el-button size="small" circle @click="copy(o?.en)">
+                            <slot name="icon">
+                                <i-ep-document-copy></i-ep-document-copy>
+                            </slot>
+                        </el-button>
                     </div>
                 </div>
             </div>
         </div>
-    </NuxtLayout>
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -83,13 +81,13 @@ const menuItemClick = (key: number) => {
 const searchChange = (val: any) => {
     searchText.value = val;
 };
-
-onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
 .tags-page {
-    padding-bottom: 130px;
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-y: scroll;
 }
 
 .type-list .animation-button {
@@ -115,7 +113,7 @@ onMounted(() => {});
 
     .tag-item {
         padding: 8px 20px;
-        background: white;
+        background: #fafaf8;
         box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 8px;
         border-radius: 10px;
         margin-bottom: 15px;

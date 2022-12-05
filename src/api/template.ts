@@ -1,20 +1,17 @@
 import Request from '~~/src/utils/request';
 
-const config = useRuntimeConfig();
-const api = config.public.FLASK_BASE_API;
-const from = config.public.API_DATA_FROM;
-
 class TemplateApi extends Request {
     async getTemplates(params: any) {
-        let url = '';
+        const config = useRuntimeConfig();
+        const from = config.public.API_DATA_FROM;
         if (from === 'github') {
-            url =
+            const url =
                 'https://raw.githubusercontent.com/easterCat/nuxt-utils-assets/main/json/templates.json';
             const result = await this.get(url);
             return { templates: JSON.parse(result), total: null };
         }
         if (from === 'database') {
-            url = `${api}/get_templates`;
+            const url = `/get_templates`;
             const result = await this.get(url, params);
             const { data } = toRaw(result);
             return { templates: data.list, total: data.total };
@@ -22,7 +19,7 @@ class TemplateApi extends Request {
     }
 
     async setIp() {
-        let url = `${api}/set_ip`;
+        const url = `/set_ip`;
         const result = await this.get(url);
         const ip = result.data.ip;
         const { $store } = useNuxtApp();
@@ -31,7 +28,7 @@ class TemplateApi extends Request {
     }
 
     async likeTemplateById(body: any) {
-        let url = `${api}/like_template_by_id`;
+        const url = `/like_template_by_id`;
         const result = await this.post(url, body);
         const { data } = toRaw(result);
         return { like: data.like };

@@ -2,78 +2,25 @@
     <div class="tranfer-con">
         <app-animate name="fadeIn">
             <div class="button-con">
-                <PcAnimationButton
-                    :buttonStyle="1"
-                    buttonColor="245, 108, 108"
-                    buttonAngel="145deg"
-                    buttonWidth="80px"
-                    buttonText="格式化"
-                    @submit="promptFormat"
-                ></PcAnimationButton>
-                <PcAnimationButton
-                    :buttonStyle="1"
-                    buttonColor="245, 108, 108"
-                    buttonAngel="145deg"
-                    buttonWidth="60px"
-                    buttonText="清空"
-                    @submit="clearPrompt"
-                ></PcAnimationButton>
-                <PcAnimationButton
-                    :buttonStyle="1"
-                    buttonColor="245, 108, 108"
-                    buttonAngel="145deg"
-                    buttonWidth="80px"
-                    buttonText="{{}}转(())"
-                    @submit="mediumToCircle"
-                ></PcAnimationButton>
-                <PcAnimationButton
-                    :buttonStyle="1"
-                    buttonColor="245, 108, 108"
-                    buttonAngel="145deg"
-                    buttonWidth="80px"
-                    buttonText="(())转{{}}"
-                    @submit="circleToMedium"
-                ></PcAnimationButton>
-                <PcAnimationButton
-                    :buttonStyle="1"
-                    buttonColor="245, 108, 108"
-                    buttonAngel="145deg"
-                    buttonWidth="80px"
-                    buttonText="起手式"
-                    @submit="addHighQualityPrompt"
-                ></PcAnimationButton>
-                <PcAnimationButton
-                    :buttonStyle="1"
-                    buttonColor="245, 108, 108"
-                    buttonAngel="145deg"
-                    buttonWidth="190px"
-                    buttonText="空格加逗号(用于danbooru)"
-                    @submit="tagsAddComma"
-                ></PcAnimationButton>
-                <PcAnimationButton
-                    :buttonStyle="1"
-                    buttonColor="245, 108, 108"
-                    buttonAngel="145deg"
-                    buttonWidth="190px"
-                    buttonText="去除下划线(用于danbooru)"
-                    @submit="promotRemoveLine"
-                ></PcAnimationButton>
-                <PcAnimationButton
-                    :buttonStyle="1"
-                    buttonColor="245, 108, 108"
-                    buttonAngel="145deg"
-                    buttonWidth="110px"
-                    buttonText="购物车导入"
-                    @submit="shopImport"
-                ></PcAnimationButton>
-                <PcAnimationButton
-                    :buttonStyle="1"
-                    buttonColor="245, 108, 108"
-                    buttonAngel="145deg"
-                    buttonWidth="110px"
-                    buttonText="导出购物车"
-                    @submit="exportShop"
-                ></PcAnimationButton>
+                <button class="btn btn-accent m-r-10 m-b-10" @click="promptFormat">格式化</button>
+                <button class="btn btn-accent m-r-10 m-b-10" @click="clearPrompt">清空</button>
+                <button class="btn btn-accent m-r-10 m-b-10" @click="mediumToCircle">
+                    大括号转圆括号
+                </button>
+                <button class="btn btn-accent m-r-10 m-b-10" @click="circleToMedium">
+                    圆括号转大括号
+                </button>
+                <button class="btn btn-accent m-r-10 m-b-10" @click="addHighQualityPrompt">
+                    起手式
+                </button>
+                <button class="btn btn-accent m-r-10 m-b-10" @click="shopImport">购物车导入</button>
+                <button class="btn btn-accent m-r-10 m-b-10" @click="exportShop">导出购物车</button>
+                <button class="btn btn-secondary m-r-10 m-b-10" @click="tagsAddComma">
+                    空格加逗号(用于danbooru)
+                </button>
+                <button class="btn btn-secondary m-b-10" @click="promotRemoveLine">
+                    去除下划线(用于danbooru)
+                </button>
             </div>
         </app-animate>
         <el-row :gutter="20">
@@ -109,48 +56,40 @@
         </el-row>
 
         <pc-area-title title="Prompt列表"></pc-area-title>
-        <div class="tags-con" v-if="promptList && promptList?.length">
+        <div v-if="promptList && promptList?.length" class="tags-con">
             <div class="m-b-10">
-                <el-button shadow="always" type="warning" size="large" @click="tagsReplacePrompt">
+                <button class="btn btn-md btn-accent" @click="tagsReplacePrompt">
                     当前tags替换prompt
-                </el-button>
+                </button>
             </div>
             <template v-for="(tag, tIndex) in promptList" :key="tIndex">
                 <app-animate name="fadeIn">
-                    <el-tag
-                        class="tag-style"
-                        size="large"
-                        effect="dark"
-                        closable
+                    <button
+                        class="btn btn-sm btn-secondary m-r-10 m-b-10"
                         @close="removeTag(tIndex)"
                     >
                         {{ tag }}
-                    </el-tag>
+                    </button>
                 </app-animate>
             </template>
         </div>
 
-        <div class="tags-con" v-else>
+        <div v-else class="tags-con">
             <p class="no-data">暂无列表</p>
         </div>
 
         <pc-area-title title="Prompt记录">
-            <template v-slot:titleSide>
+            <template #titleSide>
                 <span class="title-side">总数:{{ promptHistoryLength }}条</span>
             </template>
         </pc-area-title>
 
-        <div class="history-con" v-if="promptHistory && promptHistory?.length">
+        <div v-if="promptHistory && promptHistory?.length" class="history-con">
             <app-animate name="fadeIn">
                 <div class="button-con">
-                    <PcAnimationButton
-                        :buttonStyle="1"
-                        buttonColor="245, 108, 108"
-                        buttonAngel="145deg"
-                        buttonWidth="90px"
-                        buttonText="清空历史"
-                        @submit="clearHistory"
-                    ></PcAnimationButton>
+                    <button class="btn btn-md btn-accent m-b-15" @click="clearHistory">
+                        清空历史
+                    </button>
                 </div>
             </app-animate>
             <template v-for="(history, hIndex) in promptHistory" :key="hIndex">
@@ -161,37 +100,42 @@
                                 v-if="hIndex === 0"
                                 style="color: #67c23a; font-size: 12px"
                             ></i-ep-opportunity>
-                            {{ history?.time }}
+                            <span>{{ history?.time }}</span>
                         </p>
                         <p>{{ history?.prompt }}</p>
                         <div class="history-button">
-                            <el-button type="info" @click="setHistory(history?.prompt)">
+                            <button
+                                class="btn btn-sm btn-primary m-r-10"
+                                @click="setHistory(history?.prompt)"
+                            >
                                 <slot name="icon"><i-ep-check class="m-r-4"></i-ep-check></slot>
                                 选择
-                            </el-button>
-                            <el-button type="success" @click="copy(history?.prompt)">
+                            </button>
+                            <button
+                                class="btn btn-sm btn-accent m-r-10"
+                                @click="copy(history?.prompt)"
+                            >
                                 <slot name="icon">
                                     <i-ep-document-copy class="m-r-4"></i-ep-document-copy>
                                 </slot>
                                 复制
-                            </el-button>
-                            <el-button type="danger" @click="removeHistory(hIndex)">
+                            </button>
+                            <button class="btn btn-sm btn-secondary" @click="removeHistory(hIndex)">
                                 <slot name="icon"><i-ep-delete class="m-r-4"></i-ep-delete></slot>
                                 删除
-                            </el-button>
+                            </button>
                         </div>
                     </div>
                 </app-animate>
             </template>
         </div>
-        <div class="tags-con" v-else>
+        <div v-else class="tags-con">
             <p class="no-data">暂无记录</p>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ElMessage } from 'element-plus';
 import { onMounted, Ref } from 'vue';
 import dayjs from 'dayjs';
 
@@ -221,8 +165,8 @@ const promptFormat = () => {
     formatTextArea.value = textArea.value.replace(/\s*(，+|,+)\s*/g, ', ');
     promptList.value = formatTextArea.value
         .split(',')
-        .filter((i) => !!i)
-        .map((i) => i.trim());
+        .filter((i: any) => !!i)
+        .map((i: any) => i.trim());
     saveData(textArea.value);
 };
 
@@ -230,8 +174,8 @@ const tagsAddComma = () => {
     formatTextArea.value = textArea.value.replace(/\s+/g, ', ');
     promptList.value = formatTextArea.value
         .split(',')
-        .filter((i) => !!i)
-        .map((i) => i.trim());
+        .filter((i: any) => !!i)
+        .map((i: any) => i.trim());
     saveData(textArea.value);
 };
 
@@ -239,8 +183,8 @@ const promotRemoveLine = () => {
     formatTextArea.value = textArea.value.replace(/[-_]+/g, ' ');
     promptList.value = formatTextArea.value
         .split(',')
-        .filter((i) => !!i)
-        .map((i) => i.trim());
+        .filter((i: any) => !!i)
+        .map((i: any) => i.trim());
     saveData(textArea.value);
 };
 
@@ -248,8 +192,8 @@ const mediumToCircle = () => {
     formatTextArea.value = textArea.value.replace(/\{/g, '(').replace(/\}/g, ')');
     promptList.value = formatTextArea.value
         .split(/,/g)
-        .filter((i) => !!i)
-        .map((i) => i.trim());
+        .filter((i: any) => !!i)
+        .map((i: any) => i.trim());
     saveData(textArea.value);
 };
 
@@ -257,8 +201,8 @@ const circleToMedium = () => {
     formatTextArea.value = textArea.value.replace(/\(/g, '{').replace(/\)/g, '}');
     promptList.value = formatTextArea.value
         .split(/,/g)
-        .filter((i) => !!i)
-        .map((i) => i.trim());
+        .filter((i: any) => !!i)
+        .map((i: any) => i.trim());
     saveData(textArea.value);
 };
 
@@ -267,8 +211,8 @@ const shopImport = () => {
     formatTextArea.value = textArea.value.replace(/\s*(，+|,+)\s*/g, ',');
     promptList.value = formatTextArea.value
         .split(',')
-        .filter((i) => !!i)
-        .map((i) => i.trim());
+        .filter((i: any) => !!i)
+        .map((i: any) => i.trim());
     saveData(textArea.value);
 };
 
@@ -289,12 +233,12 @@ const addHighQualityPrompt = () => {
             type: 'warning',
         });
     } else {
-        textArea.value = 'masterpiece, best quality, ' + textArea.value;
+        textArea.value = `masterpiece, best quality, ${textArea.value}`;
         formatTextArea.value = textArea.value.replace(/\s*(，+|,+)\s*/g, ',');
         promptList.value = formatTextArea.value
             .split(',')
-            .filter((i) => !!i)
-            .map((i) => i.trim());
+            .filter((i: any) => !!i)
+            .map((i: any) => i.trim());
         saveData(textArea.value);
     }
 };
@@ -333,11 +277,6 @@ const saveData = (data: string) => {
 
     if (find) {
         return;
-        // ElMessage({
-        //   showClose: true,
-        //   message: '重复添加',
-        //   type: 'warning',
-        // });
     }
 
     if (arr && arr.length && arr.length > 100) {
@@ -373,7 +312,7 @@ const setHistory = (data: any) => {
 };
 
 const removeHistory = (index: number) => {
-    let arr = JSON.parse($store.get(key)) ?? [];
+    const arr = JSON.parse($store.get(key)) ?? [];
     arr.splice(index, 1);
     promptHistory.value = [...arr];
     promptHistoryLength.value = 0;
@@ -406,7 +345,7 @@ const removeAllHistory = () => {
     flex-wrap: wrap;
 
     .animation-button {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
 }
 
@@ -417,13 +356,19 @@ const removeAllHistory = () => {
 
 .history-item {
     padding: 20px;
-    background-color: #fee4cb;
+    --tw-bg-opacity: 0.7;
+    background-color: hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity));
     color: gray;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+
+    > p {
+        display: flex;
+        align-items: center;
+    }
 
     .history-button {
-        margin-top: 10px;
+        margin-top: 12px;
     }
 }
 

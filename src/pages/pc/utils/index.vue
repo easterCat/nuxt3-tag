@@ -1,42 +1,40 @@
 <template>
-    <NuxtLayout>
-        <div class="utils-page page">
-            <AppHeader />
-            <div class="content">
-                <div class="max-width-limit">
-                    <app-animate name="fadeIn">
-                        <pc-area-title title="按类别浏览"></pc-area-title>
-                    </app-animate>
+    <div class="utils-page page">
+        <AppHeader />
+        <div class="content">
+            <div class="max-width-limit">
+                <app-animate name="fadeIn">
+                    <pc-area-title title="按类别浏览"></pc-area-title>
+                </app-animate>
 
-                    <div class="menu-list">
-                        <template v-for="(menu, mIndex) in menuList" :key="mIndex">
-                            <app-animate name="fadeIn">
-                                <div
-                                    class="menu-item"
-                                    :class="{ 'menu-item-active': mIndex === menuActive }"
-                                    :key="mIndex"
-                                    @click="menuClick(menu, mIndex)"
-                                >
-                                    <nuxt-img :src="menu?.bg" loading="lazy" />
-                                    <span>{{ menu?.name }}</span>
-                                </div>
-                            </app-animate>
-                        </template>
-                    </div>
-                    <app-animate name="fadeIn">
-                        <pc-area-title title="当前工具"></pc-area-title>
-                    </app-animate>
-                    <PromptBeautiful></PromptBeautiful>
+                <div class="menu-list">
+                    <template v-for="(menu, mIndex) in menuList" :key="mIndex">
+                        <app-animate name="fadeIn">
+                            <div
+                                :key="mIndex"
+                                class="menu-item"
+                                :class="{ 'menu-item-active': mIndex === menuActive }"
+                                @click="menuClick(menu, mIndex)"
+                            >
+                                <nuxt-img :src="menu?.bg" loading="lazy" />
+                                <span>{{ menu?.name }}</span>
+                            </div>
+                        </app-animate>
+                    </template>
                 </div>
+                <app-animate name="fadeIn">
+                    <pc-area-title title="当前工具"></pc-area-title>
+                </app-animate>
+                <PromptBeautiful></PromptBeautiful>
             </div>
         </div>
-    </NuxtLayout>
+    </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { utilMenus } from '~/assets/json/utils.js';
 import PromptBeautiful from './components/promptBeautiful.vue';
+import { utilMenus } from '~/assets/json/utils.js';
 
 const initActive = 0;
 const menuActive = ref(initActive);
@@ -50,6 +48,11 @@ const menuClick = (menu: any, index: number) => {
 </script>
 
 <style lang="scss" scoped>
+.utils-page {
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-y: scroll;
+}
 .menu-list {
     width: 100%;
     height: 100%;
@@ -67,11 +70,12 @@ const menuClick = (menu: any, index: number) => {
         height: 100%;
         font-size: 14px;
         font-weight: bold;
-        color: rgb(74, 71, 71);
-
         cursor: pointer;
         margin-right: 30px;
         border-radius: 10px;
+        --tw-text-opacity: 0.5;
+        --tab-color: hsla(var(--bc) / var(--tw-text-opacity));
+        color: var(--tab-color);
 
         > img {
             width: 100px;
@@ -79,11 +83,12 @@ const menuClick = (menu: any, index: number) => {
             border-radius: 10px;
             margin-bottom: 4px;
             margin-right: 8px;
-            background-color: rgb(122, 119, 119);
         }
 
         &-active {
-            color: rgb(227, 29, 88);
+            --tw-text-opacity: 1;
+            --tab-color: hsla(var(--bc) / var(--tw-text-opacity));
+            color: var(--tab-color);
         }
     }
 }

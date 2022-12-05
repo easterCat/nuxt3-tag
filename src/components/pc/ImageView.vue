@@ -1,6 +1,6 @@
 <template>
     <photo-provider>
-        <photo-consumer v-for="src in sourceImageURLs" :intro="src" :key="src" :src="src">
+        <photo-consumer v-for="src in sourceImageURLs" :key="src" :intro="src" :src="src">
             <img :src="src" class="view-box" />
         </photo-consumer>
     </photo-provider>

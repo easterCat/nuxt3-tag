@@ -1,7 +1,7 @@
 <template>
     <div class="eh-con">
         <pc-area-title title="EH标签列表">
-            <template v-slot:titleSide>
+            <template #titleSide>
                 <el-switch
                     v-model="showHentai"
                     size="large"
@@ -13,8 +13,8 @@
                 <span class="eh-title-side-tip">(577个标签版本,高h,慎重)</span>
             </template>
         </pc-area-title>
-        <div class="tag-list" v-if="showHentai">
-            <div class="tag-item" v-for="(e, eIndex) in ehLists" :key="eIndex" @click="copy(e?.v)">
+        <div v-if="showHentai" class="tag-list">
+            <div v-for="(e, eIndex) in ehLists" :key="eIndex" class="tag-item" @click="copy(e?.v)">
                 <div class="text-con">
                     <p class="zh">{{ e?.k }}</p>
                     <p class="en">{{ e?.v }}</p>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="demo-pagination-block" v-if="showHentai">
+        <div v-if="showHentai" class="demo-pagination-block">
             <el-pagination
                 v-model:current-page="currentPage"
                 v-model:page-size="pageSize"
@@ -109,8 +109,8 @@ onMounted(() => {
 <style lang="scss" scoped>
 .title-side {
     margin-left: 10px;
-    --el-switch-on-color: #13ce66;
-    --el-switch-off-color: #ff4949;
+    --el-switch-on-color: hsl(var(--a) / 1);
+    --el-switch-off-color: hsl(var(--s) / 1);
 }
 
 .eh-title-side-tip {

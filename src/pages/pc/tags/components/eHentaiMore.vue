@@ -1,7 +1,7 @@
 <template>
     <div class="eh-con">
         <pc-area-title title="EH超多标签列表">
-            <template v-slot:titleSide>
+            <template #titleSide>
                 <el-switch
                     v-model="showHentai"
                     size="large"
@@ -13,7 +13,7 @@
                 <span class="eh-title-side-tip">(31813个标签版本,高h,慎重)</span>
             </template>
         </pc-area-title>
-        <div class="flex justify-between m-b-10" v-if="showHentai">
+        <div v-if="showHentai" class="flex justify-between m-b-10">
             <el-select v-model="selectValue" class="m-2" placeholder="命名空间" size="large">
                 <el-option
                     v-for="item in options"
@@ -23,25 +23,49 @@
                 />
             </el-select>
 
-            <el-select v-model="imgShowType" class="m-2" placeholder="命名空间" size="large">
-                <el-option label="隐藏图片" value="hidden" />
-                <el-option label="模糊图片" value="flur" />
-                <el-option label="缩小显示" value="show" />
-                <el-option label="原图显示" value="default" />
-            </el-select>
+            <div class="control-blur-btns">
+                <button
+                    class="btn btn-sm m-r-10"
+                    :class="[imgShowType === 'hidden' ? 'btn-accent' : 'btn-secondary']"
+                    @click="() => (imgShowType = 'hidden')"
+                >
+                    隐藏
+                </button>
+                <button
+                    class="btn btn-sm m-r-10"
+                    :class="[imgShowType === 'flur' ? 'btn-accent' : 'btn-secondary']"
+                    @click="() => (imgShowType = 'flur')"
+                >
+                    模糊
+                </button>
+                <button
+                    class="btn btn-sm m-r-10"
+                    :class="[imgShowType === 'show' ? 'btn-accent' : 'btn-secondary']"
+                    @click="() => (imgShowType = 'show')"
+                >
+                    缩小
+                </button>
+                <button
+                    class="btn btn-sm"
+                    :class="[imgShowType === 'default' ? 'btn-accent' : 'btn-secondary']"
+                    @click="() => (imgShowType = 'default')"
+                >
+                    原图
+                </button>
+            </div>
         </div>
         <el-table
+            v-if="showHentai"
             class="m-b-10"
             :data="tableData"
             border
             stripe
             size="large"
             style="width: 100%"
-            v-if="showHentai"
         >
             <el-table-column prop="namespace" label="命名空间" width="130" />
             <el-table-column prop="key" label="原始标签" width="270">
-                <template v-slot="scope">
+                <template #default="scope">
                     <span class="m-r-12">{{ scope.row?.key || '' }}</span>
                     <el-button size="small" circle @click="addShop(scope.row?.key || '')">
                         <slot name="icon"><i-ep-shopping-trolley></i-ep-shopping-trolley></slot>
@@ -52,12 +76,12 @@
                 </template>
             </el-table-column>
             <el-table-column prop="value" label="名称" width="170">
-                <template v-slot="scope">
+                <template #default="scope">
                     {{ scope.row?.value?.name?.text || '' }}
                 </template>
             </el-table-column>
             <el-table-column prop="value" label="描述">
-                <template v-slot="scope">
+                <template #default="scope">
                     <div
                         class="table-intro"
                         :class="{
@@ -71,7 +95,7 @@
                 </template>
             </el-table-column>
             <el-table-column prop="value" label="数据库页面" width="180">
-                <template v-slot="scope">
+                <template #default="scope">
                     <div
                         v-html="
                             scope.row?.value?.links?.html.replace(/(<a)/g, `<a target='_blank'`) ||
@@ -81,7 +105,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <div class="demo-pagination-block" v-if="showHentai">
+        <div v-if="showHentai" class="demo-pagination-block">
             <el-pagination
                 v-model:current-page="currentPage"
                 v-model:page-size="pageSize"
@@ -107,6 +131,7 @@ const props = defineProps({
 const { EhttApi } = useApi();
 const { copy } = useCopy();
 const { addShop } = useShop();
+const route = useRoute();
 const showHentai: Ref<boolean> = ref(false);
 const openHentai: Ref<boolean> = ref(false);
 const currentPage: Ref<number> = ref(1);
@@ -127,7 +152,6 @@ const worker = new Worker('/stable-diffution-utils-nuxt/worker.js');
 
 worker.onmessage = function (e) {
     const { type, data } = e.data;
-    console.log('接收worker消息 =>' + type);
     if (type === 'all') {
         allTableData = data;
         currentTableData = data;
@@ -153,6 +177,7 @@ worker.onerror = function (e) {
 };
 
 watch(showHentai, (newValue) => {
+    if (route.name !== 'pc-tags-eh') return;
     if (newValue && !openHentai.value) {
         openHentai.value = true;
         initData();
@@ -160,10 +185,12 @@ watch(showHentai, (newValue) => {
 });
 
 watch(props, (newValue) => {
+    if (route.name !== 'pc-tags-eh') return;
     searchTag(newValue.searchText);
 });
 
 watch(selectValue, async (newValue) => {
+    if (route.name !== 'pc-tags-eh') return;
     worker.postMessage({ type: 'select', data: allTableData, select: newValue });
 });
 
@@ -201,15 +228,19 @@ const searchTag = debounce((val?: any) => {
     selectValue.value = '';
     worker.postMessage({ type: 'search', data: allTableData, search: val });
 }, 1500);
-
-onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
 .title-side {
     margin-left: 10px;
-    --el-switch-on-color: #13ce66;
-    --el-switch-off-color: #ff4949;
+    --el-switch-on-color: hsl(var(--a) / 1);
+    --el-switch-off-color: hsl(var(--s) / 1);
+}
+
+.control-blur-btns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .eh-title-side-tip {

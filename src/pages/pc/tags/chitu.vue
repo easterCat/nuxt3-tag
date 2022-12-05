@@ -1,104 +1,95 @@
 <template>
-    <NuxtLayout>
-        <div class="tags-page page">
-            <AppHeader />
-            <div class="content">
-                <AppBanner placeholder="搜索标签" @searchChange="searchChange" />
-                <pc-area-title title="标签类别"></pc-area-title>
-                <div class="type-list">
-                    <PcAnimationButton
-                        v-for="(m, mIndex) in tagsMenus"
-                        :index="mIndex + ''"
-                        :key="mIndex"
-                        :buttonStyle="1"
-                        buttonSize="larger"
-                        :buttonColor="mIndex === tagActive ? '241, 119, 71' : '245, 190, 171'"
-                        buttonAngel="145deg"
-                        buttonWidth="130px"
-                        :buttonText="m?.name"
-                        @submit="menuItemClick(mIndex)"
-                    ></PcAnimationButton>
-                </div>
-                <pc-area-title title="标签列表">
-                    <template v-slot:titleSide>
-                        <el-switch
-                            v-model="showImage"
-                            size="large"
-                            inline-prompt
-                            inactive-text="隐藏Image"
-                            active-text="开启Image"
-                            class="title-side"
-                        />
-                    </template>
-                </pc-area-title>
+    <div class="chitu-tags-page page">
+        <AppHeader />
+        <div class="content">
+            <AppBanner placeholder="搜索标签" @search-change="searchChange" />
+            <pc-area-title title="标签类别"></pc-area-title>
+            <div class="type-list">
+                <PcAnimationButton
+                    v-for="(m, mIndex) in tagsMenus"
+                    :key="mIndex"
+                    :index="mIndex + ''"
+                    :button-style="1"
+                    button-size="larger"
+                    :class="[mIndex === tagActive ? 'btn-accent' : 'btn-secondary']"
+                    :button-text="m?.name"
+                    @submit="menuItemClick(mIndex)"
+                ></PcAnimationButton>
+            </div>
+            <pc-area-title title="标签列表">
+                <template #titleSide>
+                    <el-switch
+                        v-model="showImage"
+                        size="large"
+                        inline-prompt
+                        inactive-text="隐藏Image"
+                        active-text="开启Image"
+                        class="title-side"
+                    />
+                </template>
+            </pc-area-title>
 
-                <div class="tag-list">
-                    <div
-                        class="tag-item ll-media"
-                        v-for="(o, oIndex) in tagsLists"
-                        :key="oIndex"
-                        :data-index="oIndex"
-                    >
-                        <div
-                            class="image-con"
-                            v-if="showImage && tagActive !== 5 && tagActive !== 6"
+            <div class="tag-list">
+                <div
+                    v-for="(o, oIndex) in tagsLists"
+                    :key="oIndex"
+                    class="tag-item-img ll-media bg-base-100"
+                    :data-index="oIndex"
+                >
+                    <div v-if="showImage && tagActive !== 5 && tagActive !== 6" class="image-con">
+                        <nuxt-img :src="o?.fileUrl ?? ''" loading="lazy" @click="preview(o)" />
+                    </div>
+                    <div class="text-con">
+                        <el-tooltip
+                            class="box-item"
+                            effect="dark"
+                            :content="o?.promptEN"
+                            placement="top"
                         >
-                            <nuxt-img :src="o?.fileUrl ?? ''" loading="lazy" @click="preview(o)" />
-                        </div>
-                        <div class="text-con">
-                            <!-- <p class="zh">
+                            <p v-if="o?.title" class="en">
                                 {{
-                                    o?.promptZH.length > 12
-                                        ? o?.promptZH.slice(0, 12) + '...'
-                                        : o?.promptZH
+                                    o?.title.length > 24 ? o?.title.slice(0, 24) + '...' : o?.title
                                 }}
-                            </p> -->
-                            <el-tooltip
-                                class="box-item"
-                                effect="dark"
-                                :content="o?.promptEN"
-                                placement="top"
-                            >
-                                <p class="en" v-if="o?.title">
-                                    {{
-                                        o?.title.length > 24
-                                            ? o?.title.slice(0, 24) + '...'
-                                            : o?.title
-                                    }}
-                                </p>
-                                <p class="en" v-else>
-                                    {{
-                                        o?.promptEN.length > 24
-                                            ? o?.promptEN.slice(0, 24) + '...'
-                                            : o?.promptEN
-                                    }}
-                                </p>
-                            </el-tooltip>
-                        </div>
-                        <div class="button-con">
-                            <el-button size="small" circle @click="addShop(o?.promptEN)">
-                                <slot name="icon">
-                                    <i-ep-shopping-trolley></i-ep-shopping-trolley>
-                                </slot>
-                            </el-button>
-                            <el-button size="small" circle @click="copy(o?.promptEN)">
-                                <slot name="icon"><i-ep-document-copy></i-ep-document-copy></slot>
-                            </el-button>
-                        </div>
+                            </p>
+                            <p v-else class="en">
+                                {{
+                                    o?.promptEN.length > 24
+                                        ? o?.promptEN.slice(0, 24) + '...'
+                                        : o?.promptEN
+                                }}
+                            </p>
+                        </el-tooltip>
+                    </div>
+                    <div class="button-con">
+                        <button
+                            class="btn btn-sm btn-circle btn-accent m-r-10"
+                            @click="addShop(o?.promptEN)"
+                        >
+                            <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                        </button>
+                        <button
+                            class="btn btn-sm btn-circle btn-secondary"
+                            @click="copy(o?.promptEN)"
+                        >
+                            <i-ep-document-copy></i-ep-document-copy>
+                        </button>
                     </div>
                 </div>
             </div>
-            <PcTemplateDetail
-                v-model="showPreview"
-                :currentTemplate="currentTemplate"
-            ></PcTemplateDetail>
         </div>
-    </NuxtLayout>
+        <PcTemplateDetail
+            v-model="showPreview"
+            :current-template="currentTemplate"
+        ></PcTemplateDetail>
+    </div>
 </template>
 
 <script lang="ts" setup>
-import { debounce, throttle } from 'lodash';
 import { ref, Ref } from 'vue';
+import { throttle } from 'lodash';
+
+const { copy } = useCopy();
+const { addShop } = useShop();
 
 const tagsMenus = reactive([
     { name: '参考图', file: import('@/assets/json/NovelAI_cankaotu.json') },
@@ -115,11 +106,10 @@ const showImage: Ref<boolean> = ref<boolean>(true);
 const searchText: Ref<string> = ref<string>('');
 const currentTemplate: any = ref({});
 const showPreview = ref(false);
-const { copy } = useCopy();
-const { addShop } = useShop();
+
 let json: any[] = [];
-let index: number = 0;
-let pageSize: number = 50;
+let index = 0;
+const pageSize = 50;
 
 const preview = (o: any) => {
     currentTemplate.value = {
@@ -140,7 +130,6 @@ const menuItemClick = async (key: number) => {
     tagActive.value = key;
     tagsLists.value = [];
     json = (await tagsMenus[key].file).default;
-    const max = Math.ceil(json.length / 30);
     setList();
 };
 
@@ -162,7 +151,6 @@ const scrollLoading = async () => {
 
 const setList = () => {
     tagsLists.value = tagsLists.value.concat(json.slice(index * pageSize, (index + 1) * pageSize));
-    console.log('tagsLists.value :>> ', tagsLists.value);
 };
 
 const throttleScrollLoading = throttle(scrollLoading, 1500);
@@ -180,8 +168,10 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.tags-page {
-    padding-bottom: 130px;
+.chitu-tags-page {
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-y: scroll;
 }
 
 .type-list .animation-button {
@@ -205,7 +195,7 @@ onUnmounted(() => {
     justify-content: flex-start;
     flex-wrap: wrap;
 
-    .tag-item {
+    .tag-item-img {
         box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 8px;
         border-radius: 10px;
         margin-bottom: 15px;

@@ -1,7 +1,7 @@
 <template>
     <div class="eh-con">
         <pc-area-title title="Gelbooru标签列表">
-            <template v-slot:titleSide>
+            <template #titleSide>
                 <span class="eh-title-side-tip">(分类不好用,用搜索)</span>
             </template>
         </pc-area-title>
@@ -17,7 +17,7 @@
         </div>
         <el-table class="m-b-10" :data="tableTags" border stripe size="large" style="width: 100%">
             <el-table-column prop="name" label="原始标签" width="320">
-                <template v-slot="scope">
+                <template #default="scope">
                     <span class="m-r-12">{{ scope.row?.name || '' }}</span>
                     <el-button size="small" circle @click="addShop(scope.row?.name || '')">
                         <slot name="icon"><i-ep-shopping-trolley></i-ep-shopping-trolley></slot>
@@ -29,7 +29,7 @@
             </el-table-column>
             <el-table-column prop="t_name" label="名称" width="250"></el-table-column>
             <el-table-column prop="t_name" label="NSFW" width="100">
-                <template v-slot="scope">
+                <template #default="scope">
                     {{ scope.row.is_nsfw ? '是' : '否' }}
                 </template>
             </el-table-column>
@@ -65,7 +65,6 @@ const { GelbooruApi } = useApi();
 const { copy } = useCopy();
 const { addShop } = useShop();
 const category: Ref<any[]> = ref<any[]>([]);
-const allTags: Ref<any[]> = ref<any[]>([]);
 const tags: Ref<any[]> = ref<any[]>([]);
 const tableTags: Ref<any[]> = ref<any[]>([]);
 const selectValue: Ref<any> = ref(1100);
@@ -88,7 +87,7 @@ watch(
 watch(selectValue, async (newValue) => {
     if (newValue) {
         const result = await GelbooruApi.getTagsById({
-            token: token,
+            token,
             page: 1,
             limit: 100,
             category_id: newValue,

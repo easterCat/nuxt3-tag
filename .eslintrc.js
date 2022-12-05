@@ -8,24 +8,28 @@ module.exports = {
     parser: 'vue-eslint-parser',
     parserOptions: {
         parser: '@typescript-eslint/parser',
-        ecmaVersion: 2020,
+        ecmaVersion: 'latest',
         sourceType: 'module',
-        jsxPragma: 'React',
         ecmaFeatures: {
             jsx: true,
             tsx: true,
         },
     },
-    plugins: ['@typescript-eslint', 'prettier', 'import'],
+    plugins: ['prettier', 'import'],
     extends: [
-        'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:nuxt/recommended',
         'plugin:vue/vue3-recommended',
         'prettier',
     ],
     overrides: [
         {
-            files: ['*.ts', '*.tsx', '*.vue'],
+            files: [
+                '**/src/pages/**/*.{js,ts,vue}',
+                '**/src/components/**/*.{js,ts,vue}',
+                '**/src/composables/**/*.{js,ts,vue}',
+                '**/src/layouts/**/*.{js,ts,vue}',
+            ],
             rules: {
                 'no-undef': 'off',
             },
@@ -33,10 +37,10 @@ module.exports = {
     ],
     rules: {
         // js/ts
-        // 'no-console': ['warn', { allow: ['error'] }],
+        'no-console': 'off',
+        'no-unused-expressions': 'off',
         'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement'],
         camelcase: ['error', { properties: 'never' }],
-
         'no-var': 'error',
         'no-empty': ['error', { allowEmptyCatch: true }],
         'no-void': 'error',
@@ -45,7 +49,6 @@ module.exports = {
         'object-shorthand': ['error', 'always', { ignoreConstructors: false, avoidQuotes: true }],
         'block-scoped-var': 'error',
         'no-constant-condition': ['error', { checkLoops: false }],
-
         'no-redeclare': 'off',
         '@typescript-eslint/no-redeclare': 'error',
         '@typescript-eslint/ban-ts-comment': 'off',
@@ -55,7 +58,6 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
-        // '@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/no-unused-vars': [
             'error',
@@ -77,6 +79,7 @@ module.exports = {
         'vue/require-default-prop': 'off',
         'vue/require-explicit-emits': 'off',
         'vue/multi-word-component-names': 'off',
+        'vue/require-prop-types': 'off',
 
         // prettier
         'prettier/prettier': 'error',

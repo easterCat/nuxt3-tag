@@ -1,9 +1,9 @@
 import { copyText } from 'vue3-clipboard';
-import { ElMessage } from 'element-plus';
 
 export const useCopy = () => {
     const copy = (data: any) => {
-        copyText(data, undefined, (error: any, event: any) => {
+        const copyData = data ? data.trim() : '';
+        copyText(copyData, undefined, (error: any) => {
             if (error) {
                 console.log(error);
             } else {

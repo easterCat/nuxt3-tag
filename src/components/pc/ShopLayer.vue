@@ -5,30 +5,24 @@
                 <div class="shop-card-header">
                     <span>
                         <PcAnimationButton
-                            :buttonStyle="1"
-                            buttonColor="245, 108, 108"
-                            buttonAngel="145deg"
-                            buttonWidth="120px"
-                            buttonText="清空购物车"
-                            buttonSize="large"
+                            :button-style="1"
+                            class="btn-accent"
+                            button-text="清空购物车"
+                            button-size="large"
                             @submit="clearShop"
                         ></PcAnimationButton>
                         <PcAnimationButton
-                            :buttonStyle="1"
-                            buttonColor="245, 108, 108"
-                            buttonAngel="145deg"
-                            buttonWidth="110px"
-                            buttonText="复制标签"
-                            buttonSize="large"
+                            :button-style="1"
+                            class="btn-accent"
+                            button-text="复制标签"
+                            button-size="large"
                             @submit="copyShop"
                         ></PcAnimationButton>
                         <PcAnimationButton
-                            :buttonStyle="1"
-                            buttonColor="245, 108, 108"
-                            buttonAngel="145deg"
-                            buttonWidth="110px"
-                            buttonText="新增标签"
-                            buttonSize="large"
+                            :button-style="1"
+                            class="btn-accent"
+                            button-text="新增标签"
+                            button-size="large"
                             @submit="createNewShopItem"
                         ></PcAnimationButton>
                     </span>
@@ -38,7 +32,7 @@
                     <draggable
                         v-model="shopList"
                         :component-data="{ name: 'list' }"
-                        :dragOptions="dragOptions"
+                        :drag-options="dragOptions"
                         :item-key="
                             (e:any) => {
                                 createKey(e);
@@ -72,7 +66,6 @@
 </template>
 
 <script lang="ts" setup>
-import { Ref, ref } from 'vue';
 import draggable from 'vuedraggable';
 import { uuid } from 'vue-uuid';
 
@@ -137,11 +130,6 @@ header {
         padding: 0 20px;
     }
 }
-
-:deep(.el-menu) {
-    height: 72px;
-}
-
 .shop-card {
     position: fixed;
     left: 0;
@@ -184,10 +172,16 @@ header {
         background: linear-gradient(145deg, rgb(233, 233, 233) 0%, rgba(233, 233, 233, 0.7) 100%);
         margin-right: 16px;
         margin-bottom: 16px;
-        border-radius: 4px;
+        border-radius: 10px;
         box-shadow: rgba(17, 17, 26, 0.15) 0px 3px 8px;
         cursor: pointer;
         font-weight: bold;
+
+        > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         svg {
             font-size: 14px;
