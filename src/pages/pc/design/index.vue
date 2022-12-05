@@ -1,225 +1,183 @@
 <template>
-    <NuxtLayout>
-        <div class="design-page page" :class="{ white: radio === '2' }">
-            <div class="header">
-                <div class="back">
-                    <i-ep-arrow-left-bold @click="goBack"></i-ep-arrow-left-bold>
-                    <el-tooltip
-                        class="box-item"
-                        effect="dark"
-                        content="返回首页"
-                        placement="bottom"
-                    >
-                        <i-ep-home-filled @click="goHome"></i-ep-home-filled>
-                    </el-tooltip>
-                </div>
-                <div class="header-center">
-                    <el-tooltip
-                        class="box-item"
-                        effect="dark"
-                        content="导入标签"
-                        placement="bottom"
-                    >
-                        <i-ep-shopping-trolley @click="importShop" />
-                    </el-tooltip>
-                    <el-tooltip
-                        class="box-item"
-                        effect="dark"
-                        content="新建标签"
-                        placement="bottom"
-                    >
-                        <i-ep-plus @click="createNewShopItem" />
-                    </el-tooltip>
-                    <el-tooltip
-                        class="box-item"
-                        effect="dark"
-                        content="复制标签"
-                        placement="bottom"
-                    >
-                        <i-ep-copy-document @click="copyShop" />
-                    </el-tooltip>
-                    <el-tooltip
-                        class="box-item"
-                        effect="dark"
-                        content="翻译标签"
-                        placement="bottom"
-                    >
-                        <i-ep-guide @click="translatePrompt" />
-                    </el-tooltip>
-                    <el-tooltip
-                        class="box-item"
-                        effect="dark"
-                        content="清空标签"
-                        placement="bottom"
-                    >
-                        <i-ep-delete @click="clearShop" />
-                    </el-tooltip>
-                </div>
-                <div class="header-right">
-                    <el-radio-group v-model="radio" class="ml-4">
-                        <el-radio label="1" size="large">深色</el-radio>
-                        <el-radio label="2" size="large">浅色</el-radio>
-                    </el-radio-group>
-                </div>
+    <div class="design-page page" :class="{ white: radio === '2' }">
+        <div class="header">
+            <div class="back">
+                <i-ep-arrow-left-bold @click="goBack"></i-ep-arrow-left-bold>
+                <i-ep-home-filled @click="goHome"></i-ep-home-filled>
             </div>
-            <div class="body">
-                <div class="left">
-                    <div class="left-layer1">
-                        <div class="layer-top">数据来源</div>
-                        <div class="layer-bottom">
-                            <div
-                                class="left-menu"
-                                :class="{ 'item-active': itemActive === 1 }"
-                                @click="changeItem(1)"
-                            >
-                                常规标签
-                            </div>
-                            <div
-                                class="left-menu"
-                                :class="{ 'item-active': itemActive === 2 }"
-                                @click="changeItem(2)"
-                            >
-                                Gelbooru标签
-                            </div>
-                            <div
-                                class="left-menu"
-                                :class="{ 'item-active': itemActive === 3 }"
-                                @click="changeItem(3)"
-                            >
-                                EH标签(500个)
-                            </div>
-                            <div
-                                class="left-menu"
-                                :class="{ 'item-active': itemActive === 4 }"
-                                @click="changeItem(4)"
-                            >
-                                EH标签(31000个)
-                            </div>
+            <div class="header-center">
+                <i-ep-shopping-trolley @click="importShop" />
+                <i-ep-plus @click="createNewShopItem" />
+                <i-ep-copy-document @click="copyShop" />
+                <i-ep-guide @click="translatePrompt" />
+                <i-ep-delete @click="clearShop" />
+            </div>
+            <div class="header-right">
+                <el-radio-group v-model="radio" class="ml-4">
+                    <el-radio label="1" size="large">深色</el-radio>
+                    <el-radio label="2" size="large">浅色</el-radio>
+                </el-radio-group>
+            </div>
+        </div>
+        <div class="body">
+            <div class="left">
+                <div class="left-layer1">
+                    <div class="layer-top">数据来源</div>
+                    <div class="layer-bottom">
+                        <div
+                            class="left-menu"
+                            :class="{ 'item-active': itemActive === 1 }"
+                            @click="changeItem(1)"
+                        >
+                            常规标签
                         </div>
-                        <div class="layer-top">标签类别</div>
-                        <div class="type-list" v-if="itemActive === 1">
-                            <div
-                                v-for="(m, mIndex) in tagsMenus"
-                                class="type-item"
-                                :class="{
-                                    'type-item-active ': mIndex === typeActive,
-                                }"
-                                :key="mIndex"
-                                @click="changeTypeItem(mIndex)"
-                            >
-                                {{ m?.name }}
-                            </div>
+                        <div
+                            class="left-menu"
+                            :class="{ 'item-active': itemActive === 2 }"
+                            @click="changeItem(2)"
+                        >
+                            Gelbooru标签
                         </div>
-                        <div class="type-list" v-if="itemActive === 2">
-                            <div
-                                v-for="(m, mIndex) in category"
-                                class="type-item"
-                                :class="{
-                                    'type-item-active ': mIndex === typeActive,
-                                }"
-                                :key="mIndex"
-                                @click="changeTypeItem(mIndex, m?.id)"
-                            >
-                                {{ m?.name }}({{ m?.level }})
-                            </div>
+                        <div
+                            class="left-menu"
+                            :class="{ 'item-active': itemActive === 3 }"
+                            @click="changeItem(3)"
+                        >
+                            EH标签(500个)
+                        </div>
+                        <div
+                            class="left-menu"
+                            :class="{ 'item-active': itemActive === 4 }"
+                            @click="changeItem(4)"
+                        >
+                            EH标签(31000个)
+                        </div>
+                    </div>
+                    <div class="layer-top">标签类别</div>
+                    <div v-if="itemActive === 1" class="type-list">
+                        <div
+                            v-for="(m, mIndex) in tagsMenus"
+                            :key="mIndex"
+                            class="type-item"
+                            :class="{
+                                'type-item-active ': mIndex === typeActive,
+                            }"
+                            @click="changeTypeItem(mIndex)"
+                        >
+                            {{ m?.name }}
+                        </div>
+                    </div>
+                    <div v-if="itemActive === 2" class="type-list">
+                        <div
+                            v-for="(m, mIndex) in category"
+                            :key="mIndex"
+                            class="type-item"
+                            :class="{
+                                'type-item-active ': mIndex === typeActive,
+                            }"
+                            @click="changeTypeItem(mIndex, m?.id)"
+                        >
+                            {{ m?.name }}({{ m?.level }})
                         </div>
                     </div>
                 </div>
-                <div class="center">
-                    <div class="shop-card-con">
-                        <draggable
-                            v-model="shopList"
-                            :component-data="{ name: 'list' }"
-                            :dragOptions="dragOptions"
-                            :item-key="
+            </div>
+            <div class="center">
+                <div class="shop-card-con">
+                    <draggable
+                        v-model="shopList"
+                        :component-data="{ name: 'list' }"
+                        :drag-options="dragOptions"
+                        :item-key="
                             (e:any) => {
                                 createKey(e);
                             }
                         "
-                        >
-                            <template #item="{ element }">
-                                <div class="shop-item">
-                                    <div>
-                                        <span>{{ element.text }}</span>
-                                        <span class="tran-text">{{ element.translateText }}</span>
-                                        <i-ep-plus
-                                            class="add"
-                                            @click="addOneCircle(element.text)"
-                                        ></i-ep-plus>
-                                        <i-ep-minus
-                                            class="minus"
-                                            @click="removeOneCircle(element.text)"
-                                        ></i-ep-minus>
-                                        <i-ep-edit-pen
-                                            class="remove"
-                                            @click="renameShopName(element.text)"
-                                        ></i-ep-edit-pen>
-                                        <i-ep-delete-filled
-                                            class="remove"
-                                            @click="removeShopByName(element.text)"
-                                        ></i-ep-delete-filled>
-                                    </div>
-                                </div>
-                            </template>
-                        </draggable>
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="tag-list">
-                        <template v-if="itemActive === 1">
-                            <div class="tag-item" v-for="(o, oIndex) in tagsLists" :key="oIndex">
-                                <div class="text-con">
-                                    <p class="zh">{{ o?.zh }} {{ o?.en }}</p>
-                                </div>
+                    >
+                        <template #item="{ element }">
+                            <div class="shop-item">
                                 <div>
-                                    <el-button size="small" circle @click="addShop(o?.en)">
-                                        <slot name="icon">
-                                            <i-ep-shopping-trolley></i-ep-shopping-trolley>
-                                        </slot>
-                                    </el-button>
-                                    <el-button size="small" circle @click="copy(o?.en)">
-                                        <slot name="icon">
-                                            <i-ep-document-copy></i-ep-document-copy>
-                                        </slot>
-                                    </el-button>
+                                    <span>{{ element.text }}</span>
+                                    <span class="tran-text">
+                                        {{ element.translateText }}
+                                    </span>
+                                    <i-ep-plus
+                                        class="add"
+                                        @click="addOneCircle(element.text)"
+                                    ></i-ep-plus>
+                                    <i-ep-minus
+                                        class="minus"
+                                        @click="removeOneCircle(element.text)"
+                                    ></i-ep-minus>
+                                    <i-ep-edit-pen
+                                        class="remove"
+                                        @click="renameShopName(element.text)"
+                                    ></i-ep-edit-pen>
+                                    <i-ep-delete-filled
+                                        class="remove"
+                                        @click="removeShopByName(element.text)"
+                                    ></i-ep-delete-filled>
                                 </div>
                             </div>
                         </template>
-                        <template v-if="itemActive === 2">
-                            <div class="tag-item" v-for="(o, oIndex) in gtags" :key="oIndex">
-                                <div class="text-con">
-                                    <p class="zh">{{ o?.t_name }} {{ o?.name }}</p>
-                                </div>
-                                <div>
-                                    <el-button size="small" circle @click="addShop(o?.en)">
-                                        <slot name="icon">
-                                            <i-ep-shopping-trolley></i-ep-shopping-trolley>
-                                        </slot>
-                                    </el-button>
-                                    <el-button size="small" circle @click="copy(o?.en)">
-                                        <slot name="icon">
-                                            <i-ep-document-copy></i-ep-document-copy>
-                                        </slot>
-                                    </el-button>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
+                    </draggable>
                 </div>
             </div>
-            <app-animate>
-                <div class="import-wrapper" v-if="showImport">
-                    <div class="import-layer">
-                        <textarea v-model="importText" type="text" />
-                    </div>
-                    <div class="import-button">
-                        <button @click="() => (showImport = false)">取消</button>
-                        <button @click="confirmImport">确定</button>
-                    </div>
+            <div class="right">
+                <div class="tag-list">
+                    <template v-if="itemActive === 1">
+                        <div v-for="(o, oIndex) in tagsLists" :key="oIndex" class="tag-item">
+                            <div class="text-con">
+                                <p class="zh">{{ o?.zh }} {{ o?.en }}</p>
+                            </div>
+                            <div>
+                                <el-button size="small" circle @click="addShop(o?.en)">
+                                    <slot name="icon">
+                                        <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                                    </slot>
+                                </el-button>
+                                <el-button size="small" circle @click="copy(o?.en)">
+                                    <slot name="icon">
+                                        <i-ep-document-copy></i-ep-document-copy>
+                                    </slot>
+                                </el-button>
+                            </div>
+                        </div>
+                    </template>
+                    <template v-if="itemActive === 2">
+                        <div v-for="(o, oIndex) in gtags" :key="oIndex" class="tag-item">
+                            <div class="text-con">
+                                <p class="zh">{{ o?.t_name }} {{ o?.name }}</p>
+                            </div>
+                            <div>
+                                <el-button size="small" circle @click="addShop(o?.en)">
+                                    <slot name="icon">
+                                        <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                                    </slot>
+                                </el-button>
+                                <el-button size="small" circle @click="copy(o?.en)">
+                                    <slot name="icon">
+                                        <i-ep-document-copy></i-ep-document-copy>
+                                    </slot>
+                                </el-button>
+                            </div>
+                        </div>
+                    </template>
                 </div>
-            </app-animate>
+            </div>
         </div>
-    </NuxtLayout>
+        <app-animate>
+            <div v-if="showImport" class="import-wrapper">
+                <div class="import-layer">
+                    <textarea v-model="importText" type="text" />
+                </div>
+                <div class="import-button">
+                    <button @click="() => (showImport = false)">取消</button>
+                    <button @click="confirmImport">确定</button>
+                </div>
+            </div>
+        </app-animate>
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -242,6 +200,7 @@ const dragOptions = reactive({
     ghostClass: 'ghost',
 });
 const { GelbooruApi, ShopApi } = useApi();
+const route = useRoute();
 const router = useRouter();
 const radio = ref('1');
 const importText = ref('');
@@ -253,6 +212,7 @@ const {
     addShop,
     renameShopName,
     shopList,
+    shop,
     onlySetShop,
     initShop,
     setShop,
@@ -269,6 +229,7 @@ const category: Ref<any[]> = ref<any[]>([]);
 const gtags: Ref<any[]> = ref<any[]>([]);
 
 watch(shopList, (newValue) => {
+    if (route.name !== 'pc-design') return;
     onlySetShop(newValue.map((i: any) => i.text).join(', '));
 });
 
@@ -289,12 +250,11 @@ const confirmImport = () => {
     showImport.value = false;
 };
 
-const translatePrompt = () => {
-    shopList.value.forEach((item: any, index: number) => {
-        setTimeout(async () => {
-            const result = await ShopApi.translate({ text: item.text, type: 1 });
-            shopList.value[index] = { text: item.text, translateText: result.data.translateText };
-        }, index * 100);
+const translatePrompt = async () => {
+    const result = await ShopApi.translate({ text: shop.value, type: 1 });
+    const translateText = result?.data?.translateText;
+    translateText.split('，').forEach((text: any, tIndex: number) => {
+        shopList.value[tIndex].translateText = text;
     });
 };
 
@@ -317,7 +277,7 @@ const changeTypeItem = async (active: number, id?: number) => {
         typeActive.value = active;
     } else if (itemActive.value === 2) {
         const result = await GelbooruApi.getTagsById({
-            token: token,
+            token,
             page: 1,
             limit: 100,
             category_id: id,
@@ -341,7 +301,9 @@ onMounted(() => {
     filter: invert(1);
 }
 .design-page {
-    min-height: 100vh;
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-y: scroll;
 
     .header {
         height: 50px;
@@ -445,15 +407,20 @@ onMounted(() => {
         background: rgb(192, 199, 219);
         margin-right: 16px;
         margin-bottom: 20px;
-        border-radius: 4px;
+        border-radius: 10px;
         box-shadow: rgba(17, 17, 26, 0.15) 0px 3px 8px;
         cursor: pointer;
         font-weight: bold;
 
+        > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         svg {
             font-size: 14px;
             margin-left: 8px;
-            transform: translateY(3px);
         }
 
         .tran-text {
@@ -566,7 +533,7 @@ onMounted(() => {
         width: 550px;
         height: 350px;
         background: rgb(188, 191, 211);
-        border-radius: 4px;
+        border-radius: 10px;
         overflow-x: hidden;
         overflow-y: auto;
         box-shadow: rgba(188, 191, 211, 0.1) 0px 0px 3px 6px;
@@ -593,7 +560,7 @@ onMounted(() => {
             background: rgb(188, 191, 211);
             color: rgb(24, 29, 40);
             padding: 8px 24px;
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
         }
 

@@ -4,39 +4,54 @@ import IconsResolver from 'unplugin-icons/resolver';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import';
+import Inspect from 'vite-plugin-inspect';
+
+const ssrStatus = false;
 
 export default defineNuxtConfig({
-    ssr: false,
+    ssr: ssrStatus,
     sourcemap: false,
     srcDir: 'src/',
     css: [
         '@/assets/scss/index.scss',
+        '@/assets/scss/page.scss',
         '@/assets/scss/layout.scss',
         '@/assets/scss/flex.scss',
-        '@/assets/scss/page.scss',
         '@/assets/scss/box.scss',
         '@/assets/scss/media.scss',
     ],
-    modules: ['@nuxt/image-edge'],
+    modules: ['@nuxt/image-edge', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', 'nuxt-icon'],
+    colorMode: {
+        preference: 'Sunset',
+        dataValue: 'theme',
+    },
+    image: {
+        dir: 'assets/imgs',
+    },
     app: {
-        baseURL: '/stable-diffution-utils-nuxt',
-        pageTransition: {
-            name: 'fade',
-            mode: 'out-in',
-        },
-        layoutTransition: {
-            name: 'fade',
-            mode: 'out-in',
-        },
+        baseURL: '/nuxt3-tag',
         head: {
             charset: 'utf-8',
             viewport:
                 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no',
             title: 'AI绘画的辅助工具',
+            link: [
+                {
+                    rel: 'icon',
+                    type: 'image/x-icon',
+                    href: '/nuxt3-tag/dute_favicon_32x32.ico',
+                },
+            ],
             meta: [
                 { name: 'apple-mobile-web-app-capable', content: 'yes' },
                 { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
                 { name: 'description', content: 'AI绘画的辅助工具.' },
+                { name: 'referrer', content: 'never' },
+                { name: 'msapplication-TileColor"', content: '#ffffff' },
+                { name: 'theme-color"', content: '#ffffff' },
+            ],
+            script: [
+                { src: 'https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js', defer: true },
             ],
         },
     },
@@ -47,22 +62,11 @@ export default defineNuxtConfig({
             GELBOORU_TOKEN: process.env.GELBOORU_TOKEN,
         },
     },
-    nitro: {
-        // nuxt3当前不支持vite的server
-        // devProxy: process.env.VUE_APP_OPEN_PROXY
-        //     ? {
-        //           '/stable-diffution-utils-nuxt/api': {
-        //               target: process.env.FLASK_BASE_API,
-        //               changeOrigin: true,
-        //           },
-        //       }
-        //     : {},
-    },
     vite: {
         css: {
             preprocessorOptions: {
                 scss: {
-                    additionalData: '@use "@/assets/scss/colors.scss" as *;',
+                    additionalData: `@use "~/assets/scss/element.theme.scss" as *;`,
                 },
             },
         },
@@ -70,9 +74,7 @@ export default defineNuxtConfig({
             rollupOptions: {
                 output: {
                     manualChunks(id: any): any {
-                        // 通过analyze分析得出entry中的大文件，进行抽离
-
-                        // element-plus
+                        // element-plus 通过analyze分析得出entry中的大文件，进行抽离
                         if (id.includes('node_modules/element-plus')) {
                             return 'element-plus';
                         }
@@ -87,10 +89,10 @@ export default defineNuxtConfig({
                             return 'sortablejs';
                         }
 
-                        // lodash - es;
-                        // if (id.includes('node_modules/lodash-es')) {
-                        //     return 'lodash-es';
-                        // }
+                        // lodash
+                        if (id.includes('node_modules/lodash')) {
+                            return 'lodash';
+                        }
 
                         // default
                         if (id.includes('node_modules')) {
@@ -110,14 +112,18 @@ export default defineNuxtConfig({
                         libraryName: 'element-plus',
                         esModule: true,
                         resolveStyle: (name) => {
-                            return `element-plus/theme-chalk/${name}.css`;
+                            if (!name.includes('id-injection-key')) {
+                                return `element-plus/theme-chalk/${name}.css`;
+                            } else {
+                                return '';
+                            }
                         },
                     },
                 ],
             }),
             AutoImport({
                 resolvers: [
-                    ElementPlusResolver(),
+                    ElementPlusResolver({ ssr: ssrStatus }),
                     IconsResolver({
                         prefix: 'Icon',
                     }),
@@ -126,39 +132,18 @@ export default defineNuxtConfig({
             }),
             Components({
                 resolvers: [
+                    ElementPlusResolver({ ssr: ssrStatus }),
                     IconsResolver({
                         enabledCollections: ['ep'],
                     }),
-                    ElementPlusResolver(),
                 ],
                 dts: './types/components.d.ts',
             }),
             Icons({
                 autoInstall: true,
             }),
+            Inspect(),
         ],
     },
-    postcss: {
-        config: true,
-        plugins: {
-            autoprefixer: {}, // 用来给不同的浏览器自动添加相应前缀，如-webkit-，-moz-等等
-            'postcss-px-to-viewport-7039': {
-                unitToConvert: 'px', // 需要转换的单位，默认为"px"
-                viewportWidth: 375, // 设计稿的视口宽度
-                unitPrecision: 3, // 单位转换后保留的精度
-                propList: ['*'], // 能转化为vw的属性列表
-                viewportUnit: 'vw', // 希望使用的视口单位
-                fontViewportUnit: 'vw', // 字体使用的视口单位
-                selectorBlackList: ['.ignore'], // 需要忽略的CSS选择器，不会转为视口单位，使用原有的px等单位。
-                minPixelValue: 1, // 设置最小的转换数值，如果为1的话，只有大于1的值会被转换
-                mediaQuery: false, // 媒体查询里的单位是否需要转换单位
-                replace: true, //  是否直接更换属性值，而不添加备用属性
-                exclude: [/[\\/]pages[\\/]pc[\\/]/, /[\\/]components[\\/]pc[\\/]/], // 忽略某些文件夹下的文件或特定文件，例如 'node_modules' 下的文件
-                include: [/[\\/]pages[\\/]mobile[\\/]/, /[\\/]components[\\/]mobile[\\/]/], // 如果设置了include，那将只有匹配到的文件才会被转换
-                landscape: true, // 是否添加根据 landscapeWidth 生成的媒体查询条件 @media (orientation: landscape)
-                landscapeUnit: 'vw', // 横屏时使用的单位
-                landscapeWidth: 1920, // 横屏时使用的视口宽度
-            },
-        },
-    },
+    postcss: require('./postcss.config.js'),
 });

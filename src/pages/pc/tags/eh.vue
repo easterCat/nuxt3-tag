@@ -1,14 +1,12 @@
 <template>
-    <NuxtLayout>
-        <div class="tags-page page">
-            <AppHeader />
-            <div class="content">
-                <AppBanner placeholder="搜索标签" @searchChange="searchChange" />
-                <EHentai :searchText="searchText1"></EHentai>
-                <EHentaiMore :searchText="searchText2"></EHentaiMore>
-            </div>
+    <div class="eh-tags-page page">
+        <AppHeader />
+        <div class="content">
+            <AppBanner placeholder="搜索标签" @search-change="searchChange" />
+            <EHentai :search-text="searchText1"></EHentai>
+            <EHentaiMore :search-text="searchText2"></EHentaiMore>
         </div>
-    </NuxtLayout>
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -23,13 +21,13 @@ const searchChange = (val: any) => {
     searchText1.value = val;
     searchText2.value = val;
 };
-
-onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
-.tags-page {
-    padding-bottom: 130px;
+.eh-tags-page {
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-y: scroll;
 }
 
 .type-list .animation-button {
@@ -55,7 +53,7 @@ onMounted(() => {});
 
     .tag-item {
         padding: 8px 20px;
-        background: white;
+        background: #fafaf8;
         box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 8px;
         border-radius: 10px;
         margin-bottom: 15px;

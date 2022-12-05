@@ -1,7 +1,7 @@
 <template>
     <div class="banner-con">
         <div class="banner-image">
-            <img src="@/assets/imgs/banner/banner.jpeg" alt="" />
+            <img src="@/assets/imgs/banner/sYw7uX71Xe.jpeg" alt="" />
         </div>
         <app-animate name="fadeIn">
             <div class="banner-message">完全基于Github Page的静态资源网站,记录使用</div>
@@ -9,8 +9,8 @@
         <app-animate name="fadeIn">
             <div class="banner-search">
                 <el-input
-                    class="input-style"
                     v-model="input"
+                    class="input-style"
                     size="large"
                     :placeholder="placeholder"
                     :prefix-icon="Search"
@@ -28,7 +28,7 @@
 import { ref } from 'vue';
 import { Search } from '@element-plus/icons-vue';
 
-const props = defineProps({
+defineProps({
     placeholder: {
         type: String,
         default: '',
@@ -37,7 +37,7 @@ const props = defineProps({
 const emit = defineEmits(['searchChange']);
 const input = ref('');
 
-watch(input, (newInput, oldInput) => {
+watch(input, (newInput) => {
     emit('searchChange', newInput);
 });
 </script>
@@ -58,7 +58,7 @@ watch(input, (newInput, oldInput) => {
 
     .banner-image {
         width: 100%;
-        height: 344px;
+        height: 700px;
         object-fit: cover;
         position: absolute;
         left: 0;
@@ -66,11 +66,12 @@ watch(input, (newInput, oldInput) => {
         bottom: 0;
         top: 0;
         z-index: -1;
+        transform: translateY(-130px);
 
         > img {
             width: 100%;
             height: 100%;
-            filter: blur(6px);
+            filter: blur(8px);
         }
     }
 
@@ -95,5 +96,9 @@ watch(input, (newInput, oldInput) => {
         margin: 16px;
         color: #fff;
     }
+}
+:deep(.el-input__wrapper) {
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.7);
 }
 </style>

@@ -1,20 +1,22 @@
 <template>
     <div class="page-fix-menu">
-        <el-button type="success" circle @click="linkButtonClick">
-            <slot name="icon"><i-ep-link></i-ep-link></slot>
-        </el-button>
+        <button class="hover-anime-btn btn btn-sm btn-primary btn-circle" @click="linkButtonClick">
+            <i-ep-link></i-ep-link>
+        </button>
 
-        <el-drawer
-            v-model="drawer"
-            size="70%"
-            title="常用网站"
-            :direction="direction"
-            :before-close="handleClose"
-        >
-            <div>
-                <pc-link-list></pc-link-list>
-            </div>
-        </el-drawer>
+        <client-only>
+            <el-drawer
+                v-model="drawer"
+                size="70%"
+                title="常用网站"
+                :direction="direction"
+                :before-close="handleClose"
+            >
+                <div>
+                    <pc-link-list></pc-link-list>
+                </div>
+            </el-drawer>
+        </client-only>
     </div>
 </template>
 
@@ -44,6 +46,6 @@ const handleClose = (done: any) => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 70px;
+    height: 40px;
 }
 </style>
