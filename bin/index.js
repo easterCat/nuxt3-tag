@@ -7,8 +7,8 @@ walkSync(distPath, function (filePath, stat) {
     if (filePath.includes(".html")) {
         let testHtml = fs.readFileSync(filePath, "utf8");
         if (testHtml.includes('href="/')) {
-            testHtml = testHtml.replace(/href="\//g, 'href="/stable-diffution-utils-nuxt/');
-            testHtml = testHtml.replace(/src="\//g, 'src="/stable-diffution-utils-nuxt/');
+            testHtml = testHtml.replace(/href="\//g, 'href="/nuxt3-tag/');
+            testHtml = testHtml.replace(/src="\//g, 'src="/nuxt3-tag/');
             fs.writeFileSync(filePath, testHtml, "utf8");
         }
     }

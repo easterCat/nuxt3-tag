@@ -88,7 +88,7 @@ const imageList: Ref<ImageItem[]> = ref([]);
 
 const initList = async () => {
     TemplateApi.setIp();
-    const initPageIndex = Math.ceil(Math.random() * 70);
+    const initPageIndex = Math.ceil(Math.random() * 80);
     const result = await TemplateApi.getTemplates({
         pageIndex: initPageIndex ? initPageIndex : 1,
         pageSize: 50,

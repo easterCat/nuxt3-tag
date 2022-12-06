@@ -4,6 +4,7 @@
         <div class="content">
             <pc-link-list ref="childRef"></pc-link-list>
         </div>
+        <AppFooter />
     </div>
 </template>
 

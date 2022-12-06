@@ -26,10 +26,10 @@ pnpm install --shamefully-hoist
 
 Start the development server on
 
-- Local: <http://localhost:3000/stable-diffution-utils-nuxt/>
-- Network: <http://172.18.234.34:3000/stable-diffution-utils-nuxt/>
+- Local: <http://localhost:3000/nuxt3-tag/>
+- Network: <http://172.18.234.34:3000/nuxt3-tag/>
 
-> 为了使用 github page 的二级页面, 需要变更 baseURL: '/stable-diffution-utils-nuxt'
+> 为了使用 github page 的二级页面, 需要变更 baseURL: '/nuxt3-tag'
 
 ```bash
 yarn dev
@@ -45,7 +45,7 @@ yarn generate
 
 > 将打包出的 dist 发布到 github page 即可
 
-- github page <https://eastercat.github.io/stable-diffution-utils-nuxt/pc/home>
+- github page <https://eastercat.github.io/nuxt3-tag/pc/home>
 - net page <http://www.ptg.life/stable>
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.

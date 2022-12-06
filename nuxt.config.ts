@@ -29,8 +29,7 @@ export default defineNuxtConfig({
         dir: 'assets/imgs',
     },
     app: {
-        // 基于github page的二级页面需要补充路径
-        baseURL: '/stable-diffution-utils-nuxt',
+        baseURL: '/nuxt3-tag',
         head: {
             charset: 'utf-8',
             viewport:
@@ -40,7 +39,7 @@ export default defineNuxtConfig({
                 {
                     rel: 'icon',
                     type: 'image/x-icon',
-                    href: '/stable-diffution-utils-nuxt/dute_favicon_32x32.ico',
+                    href: '/nuxt3-tag/dute_favicon_32x32.ico',
                 },
             ],
             meta: [
@@ -51,7 +50,9 @@ export default defineNuxtConfig({
                 { name: 'msapplication-TileColor"', content: '#ffffff' },
                 { name: 'theme-color"', content: '#ffffff' },
             ],
-            script: [{ src: 'https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js' }],
+            script: [
+                { src: 'https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js', defer: true },
+            ],
         },
     },
     runtimeConfig: {

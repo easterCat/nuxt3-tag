@@ -148,7 +148,7 @@ let currentTableData = reactive([]);
 let tableData = reactive([]);
 let nameList = reactive({ data: [] });
 
-const worker = new Worker('/stable-diffution-utils-nuxt/worker.js');
+const worker = new Worker('/nuxt3-tag/worker.js');
 
 worker.onmessage = function (e) {
     const { type, data } = e.data;

@@ -2,10 +2,7 @@
     <header class="fix-header header bg-base-100">
         <div class="header-menu">
             <div class="header-icon">
-                <nuxt-img
-                    src="https://image.lexica.art/md/9ce846a3-21f0-4f35-bf40-61d5c918860a"
-                    loading="lazy"
-                />
+                <nuxt-img src="https://image.lexica.art/md/9ce846a3-21f0-4f35-bf40-61d5c918860a" />
             </div>
             <div v-if="screenSize === 'large'" class="my-menu">
                 <span

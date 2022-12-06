@@ -116,7 +116,6 @@ const currentList = computed(() => {
         pageIndex.value > 3 ? pageIndex.value - 3 : pageIndex.value,
         pageIndex.value + 3,
     );
-    console.log('arr :>> ', arr);
     return arr;
 });
 

@@ -21,6 +21,7 @@
             </ul>
         </div>
         <div class="link-right">
+            <div class="right-linear"></div>
             <div class="part-list">
                 <template v-for="(typeItem, tIndex) in types" :key="typeItem">
                     <div id="media" class="part" :data-title="typeItem" :data-index="tIndex">
@@ -35,7 +36,7 @@
                             >
                                 <a :href="link?.href" target="_blank">
                                     <h3>
-                                        <img :src="link?.icon ?? none" :alt="link?.name" />
+                                        <img :src="link?.icon ?? none" />
                                         <span>{{ link.name }}</span>
                                         <i v-if="link?.hot" class="hot-link">
                                             <el-icon color="red">
@@ -263,7 +264,7 @@ onMounted(() => {
         position: sticky;
         top: 102px;
         width: 290px;
-        height: calc(100vh - 132px);
+        height: calc(100vh - 112px);
         border-radius: 10px;
 
         ul {
@@ -286,7 +287,7 @@ onMounted(() => {
         }
 
         li:hover {
-            background-color: hsl(var(--p) / 0.5);
+            background-color: hsl(var(--p) / 0.4);
             color: hsl(var(--pc) / 1);
             transition: all 0.3s ease-in-out;
         }
@@ -298,12 +299,14 @@ onMounted(() => {
         }
     }
     .link-right {
+        position: relative;
         flex: 1;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        padding: 0 30px 20px 30px;
-        height: calc(100vh - 132px);
+        padding: 0 30px 20px 0px;
+        margin-left: 30px;
+        height: calc(100vh - 112px);
         overflow-x: hidden;
         overflow-y: auto;
     }
@@ -323,9 +326,13 @@ onMounted(() => {
 
     .part h2 {
         padding: 20px 10px 15px 10px;
-        border-bottom: 1px solid #f1f4f9;
         line-height: 16px;
     }
+
+    .part h2:nth-child(1) {
+        padding: 8px 10px 15px 10px;
+    }
+
     .part h2 strong {
         color: #3c3c3c;
         font-size: 16px;
