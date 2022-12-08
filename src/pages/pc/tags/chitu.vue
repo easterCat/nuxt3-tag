@@ -29,53 +29,173 @@
                 </template>
             </pc-area-title>
 
-            <div class="tag-list">
-                <div
-                    v-for="(o, oIndex) in tagsLists"
-                    :key="oIndex"
-                    class="tag-item-img ll-media bg-base-100"
-                    :data-index="oIndex"
-                >
-                    <div v-if="showImage && tagActive !== 5 && tagActive !== 6" class="image-con">
-                        <nuxt-img :src="o?.fileUrl ?? ''" loading="lazy" @click="preview(o)" />
-                    </div>
-                    <div class="text-con">
-                        <el-tooltip
-                            class="box-item"
-                            effect="dark"
-                            :content="o?.promptEN"
-                            placement="top"
+            <template v-if="index">
+                <div class="tag-list">
+                    <div
+                        v-for="(o, oIndex) in tagsLists"
+                        class="tag-item-img ll-media bg-base-100"
+                        :data-index="oIndex"
+                        :key="oIndex"
+                    >
+                        <div
+                            v-if="showImage && tagActive !== 5 && tagActive !== 6"
+                            class="image-con"
                         >
-                            <p v-if="o?.title" class="en">
-                                {{
-                                    o?.title.length > 24 ? o?.title.slice(0, 24) + '...' : o?.title
-                                }}
-                            </p>
-                            <p v-else class="en">
-                                {{
-                                    o?.promptEN.length > 24
-                                        ? o?.promptEN.slice(0, 24) + '...'
-                                        : o?.promptEN
-                                }}
-                            </p>
-                        </el-tooltip>
-                    </div>
-                    <div class="button-con">
-                        <button
-                            class="btn btn-sm btn-circle btn-accent m-r-10"
-                            @click="addShop(o?.promptEN)"
-                        >
-                            <i-ep-shopping-trolley></i-ep-shopping-trolley>
-                        </button>
-                        <button
-                            class="btn btn-sm btn-circle btn-secondary"
-                            @click="copy(o?.promptEN)"
-                        >
-                            <i-ep-document-copy></i-ep-document-copy>
-                        </button>
+                            <nuxt-img :src="o?.fileUrl ?? ''" loading="lazy" @click="preview(o)" />
+                        </div>
+                        <div class="text-con">
+                            <el-tooltip
+                                class="box-item"
+                                effect="dark"
+                                :content="o?.promptEN"
+                                placement="top"
+                            >
+                                <p v-if="o?.title" class="en">
+                                    {{
+                                        o?.title.length > 24
+                                            ? o?.title.slice(0, 24) + '...'
+                                            : o?.title
+                                    }}
+                                </p>
+                                <p v-else class="en">
+                                    {{
+                                        o?.promptEN.length > 24
+                                            ? o?.promptEN.slice(0, 24) + '...'
+                                            : o?.promptEN
+                                    }}
+                                </p>
+                            </el-tooltip>
+                        </div>
+                        <div class="button-con">
+                            <button
+                                class="btn btn-sm btn-circle btn-accent m-r-10"
+                                @click="addShop(o?.promptEN)"
+                            >
+                                <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                            </button>
+                            <button
+                                class="btn btn-sm btn-circle btn-secondary"
+                                @click="copy(o?.promptEN)"
+                            >
+                                <i-ep-document-copy></i-ep-document-copy>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </template>
+            <template v-if="tagActive">
+                <div class="tag-list">
+                    <div
+                        v-for="(o, oIndex) in tagsLists"
+                        class="tag-item-img ll-media bg-base-100"
+                        :data-index="oIndex"
+                        :key="oIndex"
+                    >
+                        <div
+                            v-if="showImage && tagActive !== 5 && tagActive !== 6"
+                            class="image-con"
+                        >
+                            <nuxt-img
+                                v-if="o?.fileUrl"
+                                :src="o?.fileUrl"
+                                loading="lazy"
+                                @click="preview(o)"
+                            />
+                        </div>
+                        <div class="text-con">
+                            <el-tooltip
+                                class="box-item"
+                                effect="dark"
+                                :content="o?.promptEN"
+                                placement="top"
+                            >
+                                <p v-if="o?.title" class="en">
+                                    {{
+                                        o?.title.length > 24
+                                            ? o?.title.slice(0, 24) + '...'
+                                            : o?.title
+                                    }}
+                                </p>
+                                <p v-else class="en">
+                                    {{
+                                        o?.promptEN.length > 24
+                                            ? o?.promptEN.slice(0, 24) + '...'
+                                            : o?.promptEN
+                                    }}
+                                </p>
+                            </el-tooltip>
+                        </div>
+                        <div class="button-con">
+                            <button
+                                class="btn btn-sm btn-circle btn-accent m-r-10"
+                                @click="addShop(o?.promptEN)"
+                            >
+                                <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                            </button>
+                            <button
+                                class="btn btn-sm btn-circle btn-secondary"
+                                @click="copy(o?.promptEN)"
+                            >
+                                <i-ep-document-copy></i-ep-document-copy>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template v-else>
+                <div class="tag-list">
+                    <div
+                        v-for="(o, oIndex) in tagsLists"
+                        class="tag-item-img ll-media bg-base-100"
+                        :data-index="oIndex"
+                        :key="oIndex"
+                    >
+                        <div
+                            v-if="showImage && tagActive !== 5 && tagActive !== 6"
+                            class="image-con"
+                        >
+                            <nuxt-img v-if="o?.file1" :src="o?.file1" @click="preview(o)" />
+                        </div>
+                        <div class="text-con">
+                            <el-tooltip
+                                class="box-item"
+                                effect="dark"
+                                :content="o?.prompt"
+                                placement="top"
+                            >
+                                <p v-if="o?.title" class="en">
+                                    {{
+                                        o?.title.length > 24
+                                            ? o?.title.slice(0, 24) + '...'
+                                            : o?.title
+                                    }}
+                                </p>
+                                <p v-else class="en">
+                                    {{
+                                        o?.prompt.length > 24
+                                            ? o?.prompt.slice(0, 24) + '...'
+                                            : o?.prompt
+                                    }}
+                                </p>
+                            </el-tooltip>
+                        </div>
+                        <div class="button-con">
+                            <button
+                                class="btn btn-sm btn-circle btn-accent m-r-10"
+                                @click="addShop(o?.prompt)"
+                            >
+                                <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                            </button>
+                            <button
+                                class="btn btn-sm btn-circle btn-secondary"
+                                @click="copy(o?.prompt)"
+                            >
+                                <i-ep-document-copy></i-ep-document-copy>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </template>
         </div>
         <PcTemplateDetail
             v-model="showPreview"
@@ -90,6 +210,7 @@ import { throttle } from 'lodash';
 
 const { copy } = useCopy();
 const { addShop } = useShop();
+const { TemplateApi } = useApi();
 
 const tagsMenus = reactive([
     { name: '参考图', file: import('@/assets/json/NovelAI_cankaotu.json') },
@@ -106,64 +227,96 @@ const showImage: Ref<boolean> = ref<boolean>(true);
 const searchText: Ref<string> = ref<string>('');
 const currentTemplate: any = ref({});
 const showPreview = ref(false);
+const pageIndex = ref(1);
+const pageSize = ref(50);
+const scrollContainer: Ref<HTMLElement> = ref(window.document.body);
 
 let json: any[] = [];
 let index = 0;
-const pageSize = 50;
+
+const loadTemplates = async () => {
+    const result = await TemplateApi.getTemplatesChitu({
+        pageIndex: pageIndex.value,
+        pageSize: pageSize.value,
+    });
+    tagsLists.value = [...tagsLists.value, ...(result?.templates ? result.templates : [])];
+};
 
 const preview = (o: any) => {
-    currentTemplate.value = {
-        author: o.author,
-        n_prompt: o.detagEN,
-        preview: o.fileUrl2,
-        model: o.model,
-        prompt: o.promptEN,
-        prompt_zh: o.promptZH,
-        name: o.title,
-        desc: o.parameter,
-    };
-    showPreview.value = true;
+    if (tagActive.value) {
+        currentTemplate.value = {
+            author: o.author,
+            n_prompt: o.n_prompt,
+            preview: o.file1,
+            model: o.model,
+            prompt: o.prompt,
+            prompt_zh: o.prompt_zh,
+            name: o.name,
+            desc: o.desc,
+        };
+        showPreview.value = true;
+    } else {
+        currentTemplate.value = {
+            author: o.author,
+            n_prompt: o.detagEN,
+            preview: o.file1,
+            model: o.model,
+            prompt: o.promptEN,
+            prompt_zh: o.promptZH,
+            name: o.title,
+            desc: o.parameter,
+        };
+        showPreview.value = true;
+    }
 };
 
 const menuItemClick = async (key: number) => {
     index = 0;
-    tagActive.value = key;
-    tagsLists.value = [];
-    json = (await tagsMenus[key].file).default;
-    setList();
+    pageIndex.value = 1;
+    if (tagActive.value) {
+        tagActive.value = key;
+        tagsLists.value = [];
+        json = (await tagsMenus[key].file).default;
+        setList();
+    } else {
+        loadTemplates();
+    }
 };
 
 const searchChange = (val: any) => {
     searchText.value = val;
 };
 
-const scrollLoading = async () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+const scrollLoading = () => {
+    const scrollTop = scrollContainer.value.scrollTop;
+    const scrollHeight = scrollContainer.value.scrollHeight;
     const windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
-
     if (scrollHeight - (scrollTop + windowHeight) <= 100) {
         console.log('触底');
-        index++;
-        setList();
+        if (tagActive.value) {
+            index++;
+            setList();
+        } else {
+            pageIndex.value++;
+            loadTemplates();
+        }
     }
 };
 
 const setList = () => {
-    tagsLists.value = tagsLists.value.concat(json.slice(index * pageSize, (index + 1) * pageSize));
+    tagsLists.value = tagsLists.value.concat(json.slice(index * 50, (index + 1) * 50));
 };
 
 const throttleScrollLoading = throttle(scrollLoading, 1500);
 
 onMounted(async () => {
-    index = 0;
-    json = (await tagsMenus[0].file).default;
-    setList();
-    window.addEventListener('scroll', throttleScrollLoading);
+    loadTemplates();
+    scrollContainer.value = document.querySelector('.chitu-tags-page') as HTMLElement;
+    scrollContainer.value.addEventListener('scroll', throttleScrollLoading);
 });
 
 onUnmounted(() => {
-    window.removeEventListener('scroll', throttleScrollLoading);
+    scrollContainer.value.removeEventListener('scroll', throttleScrollLoading);
 });
 </script>
 

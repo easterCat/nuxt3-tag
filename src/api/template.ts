@@ -18,6 +18,13 @@ class TemplateApi extends Request {
         }
     }
 
+    async getTemplatesChitu(params: any) {
+        const url = `/get_templates_chitu`;
+        const result = await this.get(url, params);
+        const { data } = toRaw(result);
+        return { templates: data.list, total: data.total };
+    }
+
     async setIp() {
         const url = `/set_ip`;
         const result = await this.get(url);

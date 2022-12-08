@@ -4,10 +4,10 @@ module.exports = {
         themes: [
             {
                 Sunset: {
-                    primary: '#ee3465',
-                    secondary: '#5ebfda',
-                    accent: '#a5408b',
-                    neutral: '#f3bcc0',
+                    primary: '#2b473e',
+                    secondary: '#f4f1eb',
+                    accent: '#b0d084',
+                    neutral: '#6d8c50',
                     'base-100': '#FFFFFF',
                     'base-200': '#eff0f7',
                 },

@@ -4,7 +4,7 @@
             <div class="image-con">
                 <ul class="image-list">
                     <li
-                        v-for="(image, iIndex) in datas"
+                        v-for="(image, iIndex) in waterFallOption.images"
                         :key="iIndex"
                         ref="domRefs"
                         class="image-item"
@@ -20,7 +20,6 @@
                                 :alt="image?.prompt"
                                 :class="{ 'image-blur': !!flur }"
                             />
-                            <!-- <h3 class="tips">{{ iIndex }}</h3> -->
                             <Transition name="fade-q">
                                 <div v-if="hoverIndex === iIndex" class="item-wrapper">
                                     <div class="icon-con">
@@ -98,37 +97,11 @@ interface WaterFallOption {
     columnNumber: number;
 }
 
-const props = defineProps(['datas', 'flur', 'loading', 'searchText']);
-const emits = defineEmits(['load', 'preview', 'favorite']);
-
+const { $store }: any = useNuxtApp();
 const route = useRoute();
 
-watch(
-    () => props.datas,
-    (val) => {
-        if (route.name !== 'pc-home') return;
-        if (val && val.length > 0) {
-            if (val.length <= 50) {
-                waterFallOption.beginIndex = 0;
-                waterFallOption.loadedCount = 0;
-            }
-            waterFallOption.images = val;
-            waterFallOption.imagesLen = val.length;
-            preload();
-        }
-    },
-);
-
-watch(
-    () => props.searchText,
-    (val) => {
-        if (route.name !== 'pc-home') return;
-        if (val) {
-            pageIndex.value = 1;
-            pageSize.value = 50;
-        }
-    },
-);
+const props = defineProps(['datas', 'flur', 'loading', 'searchText']);
+const emits = defineEmits(['load', 'preview', 'favorite']);
 
 const waterFallOption: WaterFallOption = reactive({
     images: [],
@@ -138,6 +111,32 @@ const waterFallOption: WaterFallOption = reactive({
     colsHeightArr: [],
     columnNumber: 5,
 });
+
+watch(
+    () => props.datas,
+    (val) => {
+        console.log('val :>> ', val);
+        if (route.name !== 'pc-home') return;
+        if (val && val.length > 0) {
+            if (val.length <= 50) {
+                waterFallOption.beginIndex = 0;
+                waterFallOption.loadedCount = 0;
+            }
+            waterFallOption.images = val;
+            waterFallOption.imagesLen = val.length;
+            preload();
+        } else {
+            waterFallOption.images = [];
+            waterFallOption.imagesLen = 0;
+            waterFallOption.beginIndex = 0;
+            waterFallOption.loadedCount = 0;
+            waterFallOption.colsHeightArr = [];
+            pageIndex.value = 1;
+            pageSize.value = 50;
+        }
+    },
+);
+
 const domRefs: Ref<any[]> = ref([]);
 const colWidth: Ref<number> = ref(0);
 const viewHeight: Ref<number> = ref(0);
@@ -146,7 +145,7 @@ const scrollContainer: Ref<HTMLElement> = ref(window.document.body);
 const hoverIndex: Ref<number | null> = ref(null);
 const pageIndex = ref(1);
 const pageSize = ref(50);
-const { $store }: any = useNuxtApp();
+
 const ip = ref('');
 const imageList: Ref<ImageItem[]> = ref([]);
 
@@ -380,7 +379,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-    parent.removeEventListener('scroll', debounceScroll);
+    scrollContainer.value.removeEventListener('scroll', debounceScroll);
     window.removeEventListener('resize', debounceResize);
 });
 </script>

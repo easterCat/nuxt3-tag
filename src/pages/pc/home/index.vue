@@ -103,6 +103,7 @@ const showDetail = (tem: any) => {
 
 const searchChange = debounce(async (val: any) => {
     if (val === searchText.value) return;
+    imageList.value = [];
     searchText.value = val;
     loadingStatus.value = true;
     const result: any = await TemplateApi.getTemplates({
@@ -111,8 +112,7 @@ const searchChange = debounce(async (val: any) => {
         searchTag: searchText.value,
     });
     loadingStatus.value = false;
-    if (!result?.templates || result?.templates.length === 0) return;
-    imageList.value = result?.templates ? result?.templates : [];
+    imageList.value = result?.templates && result?.templates.length !== 0 ? result?.templates : [];
 }, 1200);
 
 const likeTemplate = async (id: number) => {

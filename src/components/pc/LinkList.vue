@@ -273,17 +273,19 @@ onMounted(() => {
             overflow-x: hidden;
             overflow: auto;
             border-radius: 10px;
+            padding: 10px;
         }
 
         li {
             display: block;
             width: auto;
             padding: 0 14px;
-            height: 36px;
-            line-height: 36px;
+            height: 40px;
+            line-height: 40px;
             cursor: pointer;
             font-size: 15px;
             text-align: center;
+            border-radius: 10px;
         }
 
         li:hover {

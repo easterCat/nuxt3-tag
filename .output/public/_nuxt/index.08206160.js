@@ -1,1 +1,0 @@
-import{I as a,aS as e,J as s,K as p}from"./entry.ac71e7d2.js";import"./lodash.ea4d81e6.js";const t={class:"index-page"},d=a({__name:"index",setup:a=>(e().replace({path:"/pc/home"}),(a,e)=>(s(),p("div",t)))});export{d as default};
