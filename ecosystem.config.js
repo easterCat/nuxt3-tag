@@ -9,7 +9,7 @@ module.exports = {
             max_memory_restart: 8,
             watch: true,
             ignore_watch: ['node_modules', 'logs', 'bin', 'types'],
-            restart_delay: '30s',
+            restart_delay: 20,
         },
     ],
 };
