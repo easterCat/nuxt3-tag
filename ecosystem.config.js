@@ -3,13 +3,12 @@ module.exports = {
     apps: [
         {
             name: 'nuxt3-tag',
-            script: 'node .output/server/index.mjs',
-            exec_mode: 'cluster',
+            script: '.output/server/index.mjs',
             instances: '1',
-            max_memory_restart: 8,
+            exec_mode: 'cluster',
             watch: true,
             ignore_watch: ['node_modules', 'logs', 'bin', 'types'],
-            restart_delay: 20,
+            restart_delay: 10000,
         },
     ],
 };
