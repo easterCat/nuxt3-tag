@@ -33,15 +33,19 @@
                 <div class="tag-list">
                     <div
                         v-for="(o, oIndex) in tagsLists"
+                        :key="oIndex"
                         class="tag-item-img ll-media bg-base-100"
                         :data-index="oIndex"
-                        :key="oIndex"
                     >
                         <div
                             v-if="showImage && tagActive !== 5 && tagActive !== 6"
                             class="image-con"
                         >
-                            <nuxt-img :src="o?.fileUrl ?? ''" loading="lazy" @click="preview(o)" />
+                            <nuxt-img
+                                :src="o?.minify_preview ?? ''"
+                                loading="lazy"
+                                @click="preview(o)"
+                            />
                         </div>
                         <div class="text-con">
                             <el-tooltip
@@ -247,7 +251,7 @@ const preview = (o: any) => {
         currentTemplate.value = {
             author: o.author,
             n_prompt: o.n_prompt,
-            preview: o.file1,
+            preview: o.preview,
             model: o.model,
             prompt: o.prompt,
             prompt_zh: o.prompt_zh,
@@ -257,14 +261,15 @@ const preview = (o: any) => {
         showPreview.value = true;
     } else {
         currentTemplate.value = {
+            name: o.name,
             author: o.author,
-            n_prompt: o.detagEN,
-            preview: o.file1,
+            preview: o.preview,
+            prompt: o.prompt,
+            prompt_zh: o.prompt_zh,
+            n_prompt: o.n_prompt,
             model: o.model,
-            prompt: o.promptEN,
-            prompt_zh: o.promptZH,
-            name: o.title,
-            desc: o.parameter,
+            desc: o.desc,
+            like: o.like,
         };
         showPreview.value = true;
     }
