@@ -34,11 +34,19 @@
                 </span>
                 <span
                     class="menu-item"
-                    :class="{ 'item-active': activeEvent('template') }"
-                    @click="handleNavClick('template')"
+                    :class="{ 'item-active': activeEvent('template/sfw') }"
+                    @click="handleNavClick('template/sfw')"
                 >
                     <i-ep-files></i-ep-files>
-                    模版
+                    SFW模版
+                </span>
+                <span
+                    class="menu-item"
+                    :class="{ 'item-active': activeEvent('template/nsfw') }"
+                    @click="handleNavClick('template/nsfw')"
+                >
+                    <i-ep-files></i-ep-files>
+                    NSFW模版
                 </span>
                 <span
                     class="menu-item"

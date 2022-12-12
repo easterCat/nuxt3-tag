@@ -18,6 +18,13 @@ class TemplateApi extends Request {
         }
     }
 
+    async getTemplatesNoval(params: any) {
+        const url = `/get_templates_noval`;
+        const result = await this.get(url, params);
+        const { data } = toRaw(result);
+        return { templates: data.list, total: data.total };
+    }
+
     async getTemplatesChitu(params: any) {
         const url = `/get_templates_chitu`;
         const result = await this.get(url, params);

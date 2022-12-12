@@ -104,7 +104,7 @@ nuxtApp.vueApp.provide(ID_INJECTION_KEY, {
 const openImageFlur = ref(true);
 const loading = ref(false);
 const pageIndex = ref(1);
-const pageSize = ref(50);
+const pageSize = ref(36);
 const totalPage = ref(0);
 const total = ref(0);
 const showPreview = ref(false);
