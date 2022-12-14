@@ -1,33 +1,28 @@
 <template>
     <div class="utils-page page">
         <AppHeader />
-        <div class="content">
-            <div class="max-width-limit">
-                <app-animate name="fadeIn">
+        <AppAnimate>
+            <div class="content">
+                <div class="max-width-limit">
                     <pc-area-title title="按类别浏览"></pc-area-title>
-                </app-animate>
 
-                <div class="menu-list">
-                    <template v-for="(menu, mIndex) in menuList" :key="mIndex">
-                        <app-animate name="fadeIn">
-                            <div
-                                :key="mIndex"
-                                class="menu-item"
-                                :class="{ 'menu-item-active': mIndex === menuActive }"
-                                @click="menuClick(menu, mIndex)"
-                            >
-                                <nuxt-img :src="menu?.bg" loading="lazy" />
-                                <span>{{ menu?.name }}</span>
-                            </div>
-                        </app-animate>
-                    </template>
-                </div>
-                <app-animate name="fadeIn">
+                    <div class="menu-list">
+                        <div
+                            v-for="(menu, mIndex) in menuList"
+                            :key="mIndex"
+                            class="menu-item"
+                            :class="{ 'menu-item-active': mIndex === menuActive }"
+                            @click="menuClick(menu, mIndex)"
+                        >
+                            <nuxt-img :src="menu?.bg" loading="lazy" />
+                            <span>{{ menu?.name }}</span>
+                        </div>
+                    </div>
                     <pc-area-title title="当前工具"></pc-area-title>
-                </app-animate>
-                <PromptBeautiful></PromptBeautiful>
+                    <PromptBeautiful></PromptBeautiful>
+                </div>
             </div>
-        </div>
+        </AppAnimate>
     </div>
 </template>
 

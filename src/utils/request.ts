@@ -1,9 +1,17 @@
 import { uuid } from 'vue-uuid';
+import { useIndexStore } from '../store';
+
+interface resultJson {
+    code: number;
+    msg: string;
+    data: any;
+}
 
 const fetch = (url: string, options?: any, from?: string): Promise<any> => {
     const config = useRuntimeConfig();
     const api = config.public.FLASK_BASE_API;
     const dataFrom = config.public.API_DATA_FROM;
+    const indexStore = useIndexStore();
 
     let reqUrl = '';
     if (dataFrom === 'github' || from === 'github') {
@@ -16,9 +24,25 @@ const fetch = (url: string, options?: any, from?: string): Promise<any> => {
     return new Promise(async (resolve, reject) => {
         // 不设置key，始终拿到的都是第一个请求的值，参数一样则不会进行第二次请求
         try {
-            const result = await $fetch(reqUrl, { ...options, key: uuid.v4() });
+            const op = { ...options, key: uuid.v4() };
+            if (indexStore.access_token && from !== 'github') {
+                if (reqUrl.includes('refresh')) {
+                    op.headers = {
+                        Authorization: `Bearer ${indexStore.refresh_token}`,
+                    };
+                } else {
+                    op.headers = {
+                        Authorization: `Bearer ${indexStore.access_token}`,
+                    };
+                }
+            }
+            const result: resultJson = await $fetch(reqUrl, op);
             if (result) {
-                resolve(result);
+                if (result?.code === 20001) {
+                    await indexStore.refresh();
+                } else {
+                    resolve(result);
+                }
             } else {
                 reject(`${reqUrl} => 数据获取失败`);
             }
