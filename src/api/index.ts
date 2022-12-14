@@ -6,6 +6,7 @@ import ShopApi from '~~/src/api/shop';
 import DefaultTagsApi from '~~/src/api/defaultTags';
 import LinkApi from '~~/src/api/link';
 import TemplateApi from '~~/src/api/template';
+import AuthApi from '~~/src/api/auth';
 
 export default {
     EhtagsApi,
@@ -16,4 +17,5 @@ export default {
     DefaultTagsApi,
     LinkApi,
     TemplateApi,
+    AuthApi,
 };

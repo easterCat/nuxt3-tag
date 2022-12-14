@@ -1,119 +1,140 @@
 <template>
     <header class="fix-header header bg-base-100">
-        <div class="header-menu">
-            <div class="header-icon">
-                <nuxt-img src="https://image.lexica.art/md/9ce846a3-21f0-4f35-bf40-61d5c918860a" />
-            </div>
-            <div v-if="screenSize === 'large'" class="my-menu">
-                <span
-                    class="menu-item"
-                    :class="{ 'item-active': activeEvent('home') }"
-                    @click="handleNavClick('home')"
-                >
-                    <i-ep-house></i-ep-house>
-                    首页
-                </span>
-                <span
-                    class="menu-item"
-                    :class="{ 'item-active': activeEvent('tags') }"
-                    @mouseenter="hoverTagMenu"
-                    @mouseleave="leaveTagMenu"
-                >
-                    <i-ep-collection-tag></i-ep-collection-tag>
-                    标签
-                    <transition name="slide">
-                        <div v-if="hoverMenu" class="menu-item-select">
-                            <div class="hover-con bg-base-100">
-                                <span @click="handleNavClick('tags')">常规标签</span>
-                                <span @click="handleNavClick('tags/chitu')">词图标签</span>
-                                <span @click="handleNavClick('tags/gelbooru')">Gelbooru(H)</span>
-                                <span @click="handleNavClick('tags/eh')">EHentai(H)</span>
-                            </div>
-                        </div>
-                    </transition>
-                </span>
-                <span
-                    class="menu-item"
-                    :class="{ 'item-active': activeEvent('template/sfw') }"
-                    @click="handleNavClick('template/sfw')"
-                >
-                    <i-ep-files></i-ep-files>
-                    SFW模版
-                </span>
-                <span
-                    class="menu-item"
-                    :class="{ 'item-active': activeEvent('template/nsfw') }"
-                    @click="handleNavClick('template/nsfw')"
-                >
-                    <i-ep-files></i-ep-files>
-                    NSFW模版
-                </span>
-                <span
-                    class="menu-item"
-                    :class="{ 'item-active': activeEvent('utils') }"
-                    @click="handleNavClick('utils')"
-                >
-                    <i-ep-guide></i-ep-guide>
-                    工具
-                </span>
-                <span
-                    class="menu-item"
-                    :class="{ 'item-active': activeEvent('links') }"
-                    @click="handleNavClick('links')"
-                >
-                    <i-ep-link></i-ep-link>
-                    收录
-                </span>
-            </div>
-        </div>
-        <div class="user-info">
-            <div v-if="screenSize === 'large' || screenSize === 'medium'" class="user-name">
-                <div>
-                    <el-avatar
-                        src="https://image.lexica.art/md/26ef6676-a7e3-4560-8cb8-4355e017dc2b"
+        <div class="header-con">
+            <div class="header-menu">
+                <div class="header-icon">
+                    <nuxt-img
+                        src="https://image.lexica.art/md/9ce846a3-21f0-4f35-bf40-61d5c918860a"
                     />
                 </div>
-                <span>Welcome!</span>
+                <div v-if="screenSize === 'large'" class="my-menu">
+                    <span
+                        class="menu-item"
+                        :class="{ 'item-active': activeEvent('home') }"
+                        @click="handleNavClick('home')"
+                    >
+                        <i-ep-house></i-ep-house>
+                        首页
+                    </span>
+                    <span
+                        class="menu-item"
+                        :class="{ 'item-active': activeEvent('tags') }"
+                        @mouseenter="hoverTagMenu"
+                        @mouseleave="leaveTagMenu"
+                    >
+                        <i-ep-collection-tag></i-ep-collection-tag>
+                        标签
+                        <transition name="slide">
+                            <div v-if="hoverMenu" class="menu-item-select">
+                                <div class="hover-con bg-base-100">
+                                    <span @click="handleNavClick('tags')">常规标签</span>
+                                    <span @click="handleNavClick('tags/chitu')">词图标签</span>
+                                    <span @click="handleNavClick('tags/gelbooru')">
+                                        Gelbooru(H)
+                                    </span>
+                                    <span @click="handleNavClick('tags/eh')">EHentai(H)</span>
+                                </div>
+                            </div>
+                        </transition>
+                    </span>
+                    <span
+                        class="menu-item"
+                        :class="{ 'item-active': activeEvent('template/sfw') }"
+                        @click="handleNavClick('template/sfw')"
+                    >
+                        <i-ep-files></i-ep-files>
+                        SFW模版
+                    </span>
+                    <span
+                        class="menu-item"
+                        :class="{ 'item-active': activeEvent('template/nsfw') }"
+                        @click="handleNavClick('template/nsfw')"
+                    >
+                        <i-ep-files></i-ep-files>
+                        NSFW模版
+                    </span>
+                    <span
+                        class="menu-item"
+                        :class="{ 'item-active': activeEvent('utils') }"
+                        @click="handleNavClick('utils')"
+                    >
+                        <i-ep-guide></i-ep-guide>
+                        工具
+                    </span>
+                    <span
+                        class="menu-item"
+                        :class="{ 'item-active': activeEvent('links') }"
+                        @click="handleNavClick('links')"
+                    >
+                        <i-ep-link></i-ep-link>
+                        收录
+                    </span>
+                </div>
             </div>
-            <div class="user-util">
-                <div v-if="!shopStatus">
-                    <button
-                        class="hover-anime-btn btn btn-sm btn-primary btn-circle"
-                        @click="shopEvent"
+            <div class="user-info">
+                <div class="dropdown">
+                    <label tabindex="0" class="m-1">
+                        <div
+                            v-if="screenSize === 'large' || screenSize === 'medium'"
+                            class="user-name"
+                        >
+                            <el-avatar
+                                src="https://image.lexica.art/md/26ef6676-a7e3-4560-8cb8-4355e017dc2b"
+                            />
+                            <span>{{ indexStore?.nickname || 'Welcome!' }}</span>
+                        </div>
+                    </label>
+                    <ul
+                        tabindex="0"
+                        class="p-2 shadow dropdown-content menu bg-base-100 rounded-box w-52"
                     >
-                        <Icon name="clarity:shopping-cart-solid" size="16" />
-                    </button>
+                        <li><a>修改信息</a></li>
+                        <li @click="logout">
+                            <a>{{ indexStore?.nickname ? '账号登出' : '账号登录' }}</a>
+                        </li>
+                    </ul>
                 </div>
-                <div v-else>
-                    <button
-                        class="hover-anime-btn btn btn-sm btn-primary btn-circle"
-                        @click="shopEvent"
-                    >
-                        <Icon name="clarity:shopping-cart-solid-badged" size="16" />
-                    </button>
+
+                <div class="user-util">
+                    <div v-if="!shopStatus">
+                        <button
+                            class="hover-anime-btn btn btn-sm btn-primary btn-circle"
+                            @click="shopEvent"
+                        >
+                            <Icon name="clarity:shopping-cart-solid" size="16" />
+                        </button>
+                    </div>
+                    <div v-else>
+                        <button
+                            class="hover-anime-btn btn btn-sm btn-primary btn-circle"
+                            @click="shopEvent"
+                        >
+                            <Icon name="clarity:shopping-cart-solid-badged" size="16" />
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="hover-anime-btn btn btn-sm btn-secondary btn-circle"
+                            @click="handleNavClick('design')"
+                        >
+                            <Icon name="ant-design:sketch-outlined" size="20" />
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="hover-anime-btn btn btn-sm btn-accent btn-circle"
+                            @click="() => (drawer = !drawer)"
+                        >
+                            <Icon name="ant-design:skin-outlined" size="16" />
+                        </button>
+                    </div>
+                    <div class="user-menu">
+                        <Transition name="fade">
+                            <span v-if="openMenu"><i-ep-expand></i-ep-expand></span>
+                            <span v-else><i-ep-fold></i-ep-fold></span>
+                        </Transition>
+                    </div>
                 </div>
-                <div>
-                    <button
-                        class="hover-anime-btn btn btn-sm btn-secondary btn-circle"
-                        @click="handleNavClick('design')"
-                    >
-                        <Icon name="ant-design:sketch-outlined" size="20" />
-                    </button>
-                </div>
-                <div>
-                    <button
-                        class="hover-anime-btn btn btn-sm btn-accent btn-circle"
-                        @click="() => (drawer = !drawer)"
-                    >
-                        <Icon name="ant-design:skin-outlined" size="16" />
-                    </button>
-                </div>
-            </div>
-            <div class="user-menu">
-                <Transition name="fade">
-                    <span v-if="openMenu"><i-ep-expand></i-ep-expand></span>
-                    <span v-else><i-ep-fold></i-ep-fold></span>
-                </Transition>
             </div>
         </div>
         <client-only>
@@ -147,6 +168,7 @@
 import { Ref, ref } from 'vue';
 import { throttle } from 'lodash';
 import { Icon } from '#components';
+import { useIndexStore } from '@/store/index';
 
 const colorMode = useColorMode();
 const themes = [
@@ -182,10 +204,13 @@ const themes = [
     'Sunset',
 ];
 
-// large medium small
-const screenSize = ref('large');
+const indexStore = useIndexStore();
+console.log(indexStore);
+const { AuthApi } = useApi();
 const router = useRouter();
 const route = useRoute();
+// large medium small
+const screenSize = ref('large');
 const path: Ref<string> = ref(route.path);
 const activeIndex: Ref<string> = ref(path.value ?? '/home');
 const shopStatus: Ref<boolean> = ref(false);
@@ -198,6 +223,27 @@ const { shopList } = useShop();
 watch(shopList, (newValue) => {
     shopStatus.value = !!newValue.length;
 });
+
+const logout = async () => {
+    if (!indexStore?.nickname) {
+        return router.push({ path: 'login' });
+    }
+    const result = await AuthApi.logout();
+    const { code, data, msg } = result;
+    if (code === 200 && data) {
+        return ElMessage({
+            type: 'success',
+            message: '账号登出成功!ByeBye',
+            showClose: true,
+        });
+    } else {
+        return ElMessage({
+            type: 'warning',
+            message: msg,
+            showClose: true,
+        });
+    }
+};
 
 const activeEvent = (r: string) => {
     return route.path.includes(`pc/${r}`);
@@ -300,12 +346,17 @@ header {
     z-index: 1001;
     width: 100%;
     box-shadow: rgba(17, 17, 26, 0.05) 0px 6px 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    .header-con {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 72px;
+    }
 
     .header-menu {
-        flex: 1;
+        width: auto;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -423,14 +474,15 @@ header {
     }
 
     .user-info {
-        width: 360px;
+        width: auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 20px;
+        height: 72px;
     }
 
     .user-name {
+        width: auto;
         display: flex;
         justify-content: space-between;
         align-items: center;

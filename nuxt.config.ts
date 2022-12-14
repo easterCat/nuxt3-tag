@@ -14,13 +14,19 @@ export default defineNuxtConfig({
     srcDir: 'src/',
     css: [
         '@/assets/scss/index.scss',
-        '@/assets/scss/page.scss',
+        '@/assets/scss/animate.scss',
         '@/assets/scss/layout.scss',
         '@/assets/scss/flex.scss',
         '@/assets/scss/box.scss',
         '@/assets/scss/media.scss',
     ],
-    modules: ['@nuxt/image-edge', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', 'nuxt-icon'],
+    modules: [
+        '@nuxt/image-edge',
+        '@nuxtjs/tailwindcss',
+        '@nuxtjs/color-mode',
+        'nuxt-icon',
+        '@pinia/nuxt',
+    ],
     colorMode: {
         preference: 'Sunset',
         dataValue: 'theme',

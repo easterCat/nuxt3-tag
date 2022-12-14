@@ -32,7 +32,7 @@
     list-style: none;
     width: 20px;
     height: 20px;
-    background-color: hsl(var(--s) / 0.5);
+    background-color: hsl(var(--n) / 0.5);
     animation: animate 25s linear infinite;
     bottom: -150px;
 }

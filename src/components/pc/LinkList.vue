@@ -75,6 +75,9 @@
                     <el-form-item label="链接">
                         <el-input v-model="href" />
                     </el-form-item>
+                    <el-form-item label="Icon">
+                        <el-input v-model="icon" />
+                    </el-form-item>
                     <el-form-item label="类别">
                         <el-input v-model="type" />
                     </el-form-item>
@@ -142,16 +145,13 @@ const name = ref('');
 const href = ref('');
 const type = ref('');
 const hot = ref(false);
+const icon = ref('');
 const id: Ref<number | null> = ref(null);
 
 const refresh = async () => {
     const { links }: any = await LinkApi.getLinks();
     linkList.value = links;
 };
-
-// defineExpose({
-//     refresh,
-// });
 
 const changeType = (index: number) => {
     typeActive.value = index;
@@ -181,6 +181,7 @@ const add = async () => {
         href: href.value,
         type: type.value,
         hot: hot.value,
+        icon: hot.icon,
     });
     if (result.code === 200) {
         handleDialogClose();
@@ -202,6 +203,7 @@ const update = async () => {
         type: type.value,
         hot: hot.value,
         id: id.value,
+        icon: icon.value,
     });
     if (result.code === 200) {
         handleDialogClose();
@@ -235,6 +237,7 @@ const editLink = (data: any) => {
     href.value = data.href;
     type.value = data.link || data.link_type;
     hot.value = data.hot;
+    icon.value = data.icon;
     id.value = data.id;
     showDialog.value = true;
     operation.value = 'edit';
