@@ -167,8 +167,8 @@ const login = async () => {
         nickname: nickname.value,
     });
     const { code, data, msg } = result;
-    console.log('indexStore.setUserInfo :>> ', indexStore.setUserInfo);
-    indexStore.setUserInfo(data?.login);
+    indexStore.setUserInfo(data?.user);
+    indexStore.setToken(data?.access_token, data?.refresh_token);
     if (code === 200 && data) {
         router.push({
             path: '/pc/home',

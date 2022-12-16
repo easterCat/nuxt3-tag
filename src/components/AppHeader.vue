@@ -81,7 +81,7 @@
                             <el-avatar
                                 src="https://image.lexica.art/md/26ef6676-a7e3-4560-8cb8-4355e017dc2b"
                             />
-                            <span>{{ indexStore?.nickname || 'Welcome!' }}</span>
+                            <span>{{ indexStore?.username || 'Welcome!' }}</span>
                         </div>
                     </label>
                     <ul
@@ -90,7 +90,7 @@
                     >
                         <li><a>修改信息</a></li>
                         <li @click="logout">
-                            <a>{{ indexStore?.nickname ? '账号登出' : '账号登录' }}</a>
+                            <a>{{ indexStore?.username ? '账号登出' : '账号登录' }}</a>
                         </li>
                     </ul>
                 </div>
@@ -205,7 +205,6 @@ const themes = [
 ];
 
 const indexStore = useIndexStore();
-console.log(indexStore);
 const { AuthApi } = useApi();
 const router = useRouter();
 const route = useRoute();
@@ -225,7 +224,9 @@ watch(shopList, (newValue) => {
 });
 
 const logout = async () => {
-    if (!indexStore?.nickname) {
+    if (!indexStore?.username) {
+        indexStore.clearToken();
+        indexStore.clearUserInfo();
         return router.push({ path: 'login' });
     }
     const result = await AuthApi.logout();

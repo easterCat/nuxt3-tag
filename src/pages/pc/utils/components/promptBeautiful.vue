@@ -1,6 +1,6 @@
 <template>
     <div class="tranfer-con">
-        <app-animate name="fadeIn">
+        <AppAnimate>
             <div class="button-con">
                 <button class="btn btn-accent m-r-10 m-b-10" @click="promptFormat">格式化</button>
                 <button class="btn btn-accent m-r-10 m-b-10" @click="clearPrompt">清空</button>
@@ -22,10 +22,10 @@
                     去除下划线(用于danbooru)
                 </button>
             </div>
-        </app-animate>
+        </AppAnimate>
         <el-row :gutter="20">
             <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                <app-animate name="fadeIn">
+                <AppAnimate>
                     <el-input
                         v-model="textArea"
                         type="textarea"
@@ -36,10 +36,10 @@
                         show-word-limit
                         maxlength="3000"
                     />
-                </app-animate>
+                </AppAnimate>
             </el-col>
             <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                <app-animate name="fadeIn">
+                <AppAnimate>
                     <el-input
                         v-model="formatTextArea"
                         type="textarea"
@@ -51,7 +51,7 @@
                         maxlength="3000"
                         @click="copyFormatPrompt"
                     />
-                </app-animate>
+                </AppAnimate>
             </el-col>
         </el-row>
 
@@ -63,21 +63,20 @@
                 </button>
             </div>
             <template v-for="(tag, tIndex) in promptList" :key="tIndex">
-                <app-animate name="fadeIn">
+                <AppAnimate>
                     <button
                         class="btn btn-sm btn-secondary m-r-10 m-b-10"
                         @close="removeTag(tIndex)"
                     >
                         {{ tag }}
                     </button>
-                </app-animate>
+                </AppAnimate>
             </template>
         </div>
 
         <div v-else class="tags-con">
             <p class="no-data">暂无列表</p>
         </div>
-
         <pc-area-title title="Prompt记录">
             <template #titleSide>
                 <span class="title-side">总数:{{ promptHistoryLength }}条</span>
@@ -85,15 +84,15 @@
         </pc-area-title>
 
         <div v-if="promptHistory && promptHistory?.length" class="history-con">
-            <app-animate name="fadeIn">
+            <AppAnimate>
                 <div class="button-con">
                     <button class="btn btn-md btn-accent m-b-15" @click="clearHistory">
                         清空历史
                     </button>
                 </div>
-            </app-animate>
+            </AppAnimate>
             <template v-for="(history, hIndex) in promptHistory" :key="hIndex">
-                <app-animate name="fadeIn">
+                <AppAnimate>
                     <div class="history-item">
                         <p style="font-weight: bold; margin-bottom: 4px">
                             <i-ep-opportunity
@@ -126,7 +125,7 @@
                             </button>
                         </div>
                     </div>
-                </app-animate>
+                </AppAnimate>
             </template>
         </div>
         <div v-else class="tags-con">

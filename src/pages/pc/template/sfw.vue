@@ -6,22 +6,24 @@
             <div class="banner-con">
                 <AppBanner placeholder="请输入关键标签"></AppBanner>
             </div>
-            <div class="control-blur-btns">
-                <button
-                    class="btn btn-sm m-r-10"
-                    :class="[openImageFlur ? 'btn-accent' : 'btn-secondary']"
-                    @click="() => (openImageFlur = true)"
-                >
-                    模糊
-                </button>
-                <button
-                    class="btn btn-sm"
-                    :class="[!openImageFlur ? 'btn-accent' : 'btn-secondary']"
-                    @click="() => (openImageFlur = false)"
-                >
-                    原图
-                </button>
-            </div>
+            <AppAnimate>
+                <div class="control-blur-btns">
+                    <button
+                        class="btn btn-sm m-r-10"
+                        :class="[openImageFlur ? 'btn-accent' : 'btn-secondary']"
+                        @click="() => (openImageFlur = true)"
+                    >
+                        模糊
+                    </button>
+                    <button
+                        class="btn btn-sm"
+                        :class="[!openImageFlur ? 'btn-accent' : 'btn-secondary']"
+                        @click="() => (openImageFlur = false)"
+                    >
+                        原图
+                    </button>
+                </div>
+            </AppAnimate>
             <el-row class="list-con" :gutter="20">
                 <el-col
                     v-for="(tem, tIndex) in templatesList"
