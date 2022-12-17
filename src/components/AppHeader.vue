@@ -230,8 +230,10 @@ const logout = async () => {
         return router.push({ path: 'login' });
     }
     const result = await AuthApi.logout();
-    const { code, data, msg } = result;
-    if (code === 200 && data) {
+    const { code, msg } = result;
+    if ((code === 200 || code === 20003) && msg) {
+        indexStore.clearToken();
+        indexStore.clearUserInfo();
         return ElMessage({
             type: 'success',
             message: '账号登出成功!ByeBye',
@@ -531,7 +533,7 @@ header {
     }
 
     .hover-anime-btn:hover {
-        animation: 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0s infinite pulse;
+        animation: 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) 0s infinite pulse;
     }
 }
 
@@ -541,7 +543,7 @@ header {
     }
 
     50% {
-        transform: scale3d(1.1, 1.05, 1.05);
+        transform: scale3d(1.1, 1.1, 1.1);
     }
 
     100% {
