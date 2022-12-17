@@ -34,9 +34,12 @@ export const useIndexStore = defineStore({
             localStorage.setItem('refresh_token', JSON.stringify(this.refresh_token));
         },
         clearUserInfo() {
+            this.userInfo = { nickname: '', username: '' };
             localStorage.removeItem('user');
         },
         clearToken() {
+            this.access_token = '';
+            this.refresh_token = '';
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
         },
