@@ -1,65 +1,73 @@
 <template>
     <div class="link-con">
-        <div class="link-left bg-base-100">
-            <ul>
-                <li
-                    v-for="(item, index) in types"
-                    :key="index"
-                    v-scroll-to="{
+        <AppAnimate>
+            <div class="link-left bg-base-100">
+                <ul>
+                    <li
+                        v-for="(item, index) in types"
+                        :key="index"
+                        v-scroll-to="{
                         target: `.part:nth-child(${index + 1}) > h2`,
                         container: '.link-right',
                         behavior: 'smooth',
                         cb: (findIndex:number) => changeType(findIndex||findIndex===0 ? findIndex : index),
                     }"
-                    :class="{ active: typeActive === index }"
-                >
-                    {{ item }}
-                </li>
-                <template v-if="showAddBtn">
-                    <button class="btn-primary btn-block btn" @click="addNewLink">新增链接</button>
-                </template>
-            </ul>
-        </div>
-        <div class="link-right">
-            <div class="right-linear"></div>
-            <div class="part-list">
-                <template v-for="(typeItem, tIndex) in types" :key="typeItem">
-                    <div id="media" class="part" :data-title="typeItem" :data-index="tIndex">
-                        <h2 class="">
-                            <strong>{{ typeItem }}</strong>
-                        </h2>
-                        <div class="row">
-                            <div
-                                v-for="(link, lIndex) in filterList(typeItem)"
-                                :key="lIndex"
-                                class="item bg-base-100"
-                            >
-                                <a :href="link?.href" target="_blank">
-                                    <h3>
-                                        <img :src="link?.icon ?? none" />
-                                        <span>{{ link.name }}</span>
-                                        <i v-if="link?.hot" class="hot-link">
-                                            <el-icon color="red">
-                                                <i-ep-flag></i-ep-flag>
-                                            </el-icon>
-                                        </i>
-                                    </h3>
-                                    <p>{{ link?.desc ? link?.desc : '暂无描述' }}</p>
-                                </a>
-                                <div class="opeartion">
-                                    <span v-if="showEditBtn" class="icon">
-                                        <i-ep-edit @click="editLink(link)"></i-ep-edit>
-                                    </span>
-                                    <span v-if="showEditBtn" class="icon">
-                                        <i-ep-delete @click="deleteLink(link?.id)"></i-ep-delete>
-                                    </span>
+                        :class="{ active: typeActive === index }"
+                    >
+                        {{ item }}
+                    </li>
+                    <template v-if="showAddBtn">
+                        <button class="btn-primary btn-block btn" @click="addNewLink">
+                            新增链接
+                        </button>
+                    </template>
+                </ul>
+            </div>
+        </AppAnimate>
+        <AppAnimate>
+            <div class="link-right">
+                <div class="right-linear"></div>
+                <div class="part-list">
+                    <template v-for="(typeItem, tIndex) in types" :key="typeItem">
+                        <div id="media" class="part" :data-title="typeItem" :data-index="tIndex">
+                            <h2 class="">
+                                <strong>{{ typeItem }}</strong>
+                            </h2>
+                            <div class="row">
+                                <div
+                                    v-for="(link, lIndex) in filterList(typeItem)"
+                                    :key="lIndex"
+                                    class="item bg-base-100"
+                                >
+                                    <a :href="link?.href" target="_blank">
+                                        <h3>
+                                            <img :src="link?.icon ?? none" />
+                                            <span>{{ link.name }}</span>
+                                            <i v-if="link?.hot" class="hot-link">
+                                                <el-icon color="red">
+                                                    <i-ep-flag></i-ep-flag>
+                                                </el-icon>
+                                            </i>
+                                        </h3>
+                                        <p>{{ link?.desc ? link?.desc : '暂无描述' }}</p>
+                                    </a>
+                                    <div class="opeartion">
+                                        <span v-if="showEditBtn" class="icon">
+                                            <i-ep-edit @click="editLink(link)"></i-ep-edit>
+                                        </span>
+                                        <span v-if="showEditBtn" class="icon">
+                                            <i-ep-delete
+                                                @click="deleteLink(link?.id)"
+                                            ></i-ep-delete>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </template>
+                    </template>
+                </div>
             </div>
-        </div>
+        </AppAnimate>
         <el-dialog
             v-model="showDialog"
             :title="operation === 'add' ? '新增' : '编辑'"

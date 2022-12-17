@@ -1,57 +1,52 @@
 <template>
     <div class="tranfer-con">
-        <AppAnimate>
-            <div class="button-con">
-                <button class="btn btn-accent m-r-10 m-b-10" @click="promptFormat">格式化</button>
-                <button class="btn btn-accent m-r-10 m-b-10" @click="clearPrompt">清空</button>
-                <button class="btn btn-accent m-r-10 m-b-10" @click="mediumToCircle">
-                    大括号转圆括号
-                </button>
-                <button class="btn btn-accent m-r-10 m-b-10" @click="circleToMedium">
-                    圆括号转大括号
-                </button>
-                <button class="btn btn-accent m-r-10 m-b-10" @click="addHighQualityPrompt">
-                    起手式
-                </button>
-                <button class="btn btn-accent m-r-10 m-b-10" @click="shopImport">购物车导入</button>
-                <button class="btn btn-accent m-r-10 m-b-10" @click="exportShop">导出购物车</button>
-                <button class="btn btn-secondary m-r-10 m-b-10" @click="tagsAddComma">
-                    空格加逗号(用于danbooru)
-                </button>
-                <button class="btn btn-secondary m-b-10" @click="promotRemoveLine">
-                    去除下划线(用于danbooru)
-                </button>
-            </div>
-        </AppAnimate>
+        <div class="button-con">
+            <button class="btn btn-accent m-r-10 m-b-10" @click="promptFormat">格式化</button>
+            <button class="btn btn-accent m-r-10 m-b-10" @click="clearPrompt">清空</button>
+            <button class="btn btn-accent m-r-10 m-b-10" @click="mediumToCircle">
+                大括号转圆括号
+            </button>
+            <button class="btn btn-accent m-r-10 m-b-10" @click="circleToMedium">
+                圆括号转大括号
+            </button>
+            <button class="btn btn-accent m-r-10 m-b-10" @click="addHighQualityPrompt">
+                起手式
+            </button>
+            <button class="btn btn-accent m-r-10 m-b-10" @click="shopImport">购物车导入</button>
+            <button class="btn btn-accent m-r-10 m-b-10" @click="exportShop">导出购物车</button>
+            <button class="btn btn-secondary m-r-10 m-b-10" @click="tagsAddComma">
+                空格加逗号(用于danbooru)
+            </button>
+            <button class="btn btn-secondary m-b-10" @click="promotRemoveLine">
+                去除下划线(用于danbooru)
+            </button>
+        </div>
+
         <el-row :gutter="20">
             <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                <AppAnimate>
-                    <el-input
-                        v-model="textArea"
-                        type="textarea"
-                        placeholder="请输入promit"
-                        :rows="12"
-                        clearable
-                        :autosize="{ minRows: 12 }"
-                        show-word-limit
-                        maxlength="3000"
-                    />
-                </AppAnimate>
+                <el-input
+                    v-model="textArea"
+                    type="textarea"
+                    placeholder="请输入promit"
+                    :rows="12"
+                    clearable
+                    :autosize="{ minRows: 12 }"
+                    show-word-limit
+                    maxlength="3000"
+                />
             </el-col>
             <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                <AppAnimate>
-                    <el-input
-                        v-model="formatTextArea"
-                        type="textarea"
-                        placeholder="输出prompt"
-                        :rows="12"
-                        :autosize="{ minRows: 12 }"
-                        readonly
-                        show-word-limit
-                        maxlength="3000"
-                        @click="copyFormatPrompt"
-                    />
-                </AppAnimate>
+                <el-input
+                    v-model="formatTextArea"
+                    type="textarea"
+                    placeholder="输出prompt"
+                    :rows="12"
+                    :autosize="{ minRows: 12 }"
+                    readonly
+                    show-word-limit
+                    maxlength="3000"
+                    @click="copyFormatPrompt"
+                />
             </el-col>
         </el-row>
 
@@ -63,14 +58,9 @@
                 </button>
             </div>
             <template v-for="(tag, tIndex) in promptList" :key="tIndex">
-                <AppAnimate>
-                    <button
-                        class="btn btn-sm btn-secondary m-r-10 m-b-10"
-                        @close="removeTag(tIndex)"
-                    >
-                        {{ tag }}
-                    </button>
-                </AppAnimate>
+                <button class="btn btn-sm btn-secondary m-r-10 m-b-10" @close="removeTag(tIndex)">
+                    {{ tag }}
+                </button>
             </template>
         </div>
 
@@ -84,48 +74,40 @@
         </pc-area-title>
 
         <div v-if="promptHistory && promptHistory?.length" class="history-con">
-            <AppAnimate>
-                <div class="button-con">
-                    <button class="btn btn-md btn-accent m-b-15" @click="clearHistory">
-                        清空历史
-                    </button>
-                </div>
-            </AppAnimate>
+            <div class="button-con">
+                <button class="btn btn-md btn-accent m-b-15" @click="clearHistory">清空历史</button>
+            </div>
+
             <template v-for="(history, hIndex) in promptHistory" :key="hIndex">
-                <AppAnimate>
-                    <div class="history-item">
-                        <p style="font-weight: bold; margin-bottom: 4px">
-                            <i-ep-opportunity
-                                v-if="hIndex === 0"
-                                style="color: #67c23a; font-size: 12px"
-                            ></i-ep-opportunity>
-                            <span>{{ history?.time }}</span>
-                        </p>
-                        <p>{{ history?.prompt }}</p>
-                        <div class="history-button">
-                            <button
-                                class="btn btn-sm btn-primary m-r-10"
-                                @click="setHistory(history?.prompt)"
-                            >
-                                <slot name="icon"><i-ep-check class="m-r-4"></i-ep-check></slot>
-                                选择
-                            </button>
-                            <button
-                                class="btn btn-sm btn-accent m-r-10"
-                                @click="copy(history?.prompt)"
-                            >
-                                <slot name="icon">
-                                    <i-ep-document-copy class="m-r-4"></i-ep-document-copy>
-                                </slot>
-                                复制
-                            </button>
-                            <button class="btn btn-sm btn-secondary" @click="removeHistory(hIndex)">
-                                <slot name="icon"><i-ep-delete class="m-r-4"></i-ep-delete></slot>
-                                删除
-                            </button>
-                        </div>
+                <div class="history-item">
+                    <p style="font-weight: bold; margin-bottom: 4px">
+                        <i-ep-opportunity
+                            v-if="hIndex === 0"
+                            style="color: #67c23a; font-size: 12px"
+                        ></i-ep-opportunity>
+                        <span>{{ history?.time }}</span>
+                    </p>
+                    <p>{{ history?.prompt }}</p>
+                    <div class="history-button">
+                        <button
+                            class="btn btn-sm btn-primary m-r-10"
+                            @click="setHistory(history?.prompt)"
+                        >
+                            <slot name="icon"><i-ep-check class="m-r-4"></i-ep-check></slot>
+                            选择
+                        </button>
+                        <button class="btn btn-sm btn-accent m-r-10" @click="copy(history?.prompt)">
+                            <slot name="icon">
+                                <i-ep-document-copy class="m-r-4"></i-ep-document-copy>
+                            </slot>
+                            复制
+                        </button>
+                        <button class="btn btn-sm btn-secondary" @click="removeHistory(hIndex)">
+                            <slot name="icon"><i-ep-delete class="m-r-4"></i-ep-delete></slot>
+                            删除
+                        </button>
                     </div>
-                </AppAnimate>
+                </div>
             </template>
         </div>
         <div v-else class="tags-con">

@@ -36,6 +36,7 @@ export default defineNuxtConfig({
     },
     app: {
         baseURL: '/nuxt3-tag',
+        // layoutTransition: { name: 'layout', mode: 'out-in' },
         head: {
             charset: 'utf-8',
             viewport:

@@ -1,43 +1,47 @@
 <template>
     <div class="home-page page">
         <AppHeader />
+        <AppAnimate>
+            <div class="content">
+                <div class="banner-con">
+                    <AppBanner
+                        placeholder="请输入关键标签"
+                        @search-change="searchChange"
+                    ></AppBanner>
+                </div>
+                <div class="control-blur-btns">
+                    <button
+                        class="btn btn-sm m-r-10"
+                        :class="[openImageFlur ? 'btn-accent' : 'btn-secondary']"
+                        @click="() => (openImageFlur = true)"
+                    >
+                        模糊
+                    </button>
+                    <button
+                        class="btn btn-sm"
+                        :class="[!openImageFlur ? 'btn-accent' : 'btn-secondary']"
+                        @click="() => (openImageFlur = false)"
+                    >
+                        原图
+                    </button>
+                </div>
 
-        <div class="content">
-            <div class="banner-con">
-                <AppBanner placeholder="请输入关键标签" @search-change="searchChange"></AppBanner>
+                <common-water-fall
+                    :datas="imageList"
+                    :flur="openImageFlur"
+                    :loading="loadingStatus"
+                    :search-text="searchText"
+                    @load="scrollLoad"
+                    @preview="showDetail"
+                    @favorite="likeTemplate"
+                ></common-water-fall>
             </div>
-            <div class="control-blur-btns">
-                <button
-                    class="btn btn-sm m-r-10"
-                    :class="[openImageFlur ? 'btn-accent' : 'btn-secondary']"
-                    @click="() => (openImageFlur = true)"
-                >
-                    模糊
-                </button>
-                <button
-                    class="btn btn-sm"
-                    :class="[!openImageFlur ? 'btn-accent' : 'btn-secondary']"
-                    @click="() => (openImageFlur = false)"
-                >
-                    原图
-                </button>
-            </div>
 
-            <common-water-fall
-                :datas="imageList"
-                :flur="openImageFlur"
-                :loading="loadingStatus"
-                :search-text="searchText"
-                @load="scrollLoad"
-                @preview="showDetail"
-                @favorite="likeTemplate"
-            ></common-water-fall>
-        </div>
-
-        <PcTemplateDetail
-            v-model="showPreview"
-            :current-template="currentTemplate"
-        ></PcTemplateDetail>
+            <PcTemplateDetail
+                v-model="showPreview"
+                :current-template="currentTemplate"
+            ></PcTemplateDetail>
+        </AppAnimate>
     </div>
 </template>
 

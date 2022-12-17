@@ -3,10 +3,10 @@
         <div class="banner-image">
             <img src="@/assets/imgs/banner/sYw7uX71Xe.jpeg" alt="" />
         </div>
-        <app-animate name="fadeIn">
+        <AppAnimate>
             <div class="banner-message">完全基于Github Page的静态资源网站,记录使用</div>
-        </app-animate>
-        <app-animate name="fadeIn">
+        </AppAnimate>
+        <AppAnimate>
             <div class="banner-search">
                 <el-input
                     v-model="input"
@@ -17,10 +17,10 @@
                     clearable
                 />
             </div>
-        </app-animate>
-        <app-animate name="fadeIn">
+        </AppAnimate>
+        <AppAnimate>
             <div class="banner-tips">基于nuxt3,vue3,element plus</div>
-        </app-animate>
+        </AppAnimate>
     </div>
 </template>
 
