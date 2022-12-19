@@ -45,8 +45,8 @@ yarn generate
 
 > 将打包出的 dist 发布到 github page 即可
 
-- github page <https://eastercat.github.io/nuxt3-tag/pc/home>
-- net page <http://www.ptg.life/stable>
+- github页面 <https://eastercat.github.io/nuxt3-tag/pc/home>
+- 体验地址 <https://www.ptg.life>
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
 
