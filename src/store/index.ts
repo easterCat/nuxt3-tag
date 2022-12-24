@@ -6,7 +6,7 @@ export const useIndexStore = defineStore({
         return {
             userInfo: localStorage.getItem('user')
                 ? JSON.parse(localStorage.getItem('user') as string)
-                : { nickname: '', username: '' },
+                : { nickname: '', username: '', id: '', email: '', role_id: '' },
             access_token: localStorage.getItem('access_token')
                 ? JSON.parse(localStorage.getItem('access_token') as string)
                 : '',
@@ -20,6 +20,9 @@ export const useIndexStore = defineStore({
         nickname: (state) => state.userInfo.nickname,
         username: (state) =>
             state.userInfo.nickname ? state.userInfo.nickname : state.userInfo.username,
+        userId: (state) => state.userInfo.id,
+        email: (state) => state.userInfo.email,
+        roleId: (state) => state.userInfo.role_id,
     },
 
     actions: {
@@ -34,7 +37,7 @@ export const useIndexStore = defineStore({
             localStorage.setItem('refresh_token', JSON.stringify(this.refresh_token));
         },
         clearUserInfo() {
-            this.userInfo = { nickname: '', username: '' };
+            this.userInfo = { nickname: '', username: '', id: '', email: '', role_id: '' };
             localStorage.removeItem('user');
         },
         clearToken() {

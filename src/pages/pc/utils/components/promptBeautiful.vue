@@ -14,10 +14,10 @@
             </button>
             <button class="btn btn-accent m-r-10 m-b-10" @click="shopImport">购物车导入</button>
             <button class="btn btn-accent m-r-10 m-b-10" @click="exportShop">导出购物车</button>
-            <button class="btn btn-secondary m-r-10 m-b-10" @click="tagsAddComma">
+            <button class="btn btn-accent m-r-10 m-b-10" @click="tagsAddComma">
                 空格加逗号(用于danbooru)
             </button>
-            <button class="btn btn-secondary m-b-10" @click="promotRemoveLine">
+            <button class="btn btn-accent m-b-10" @click="promotRemoveLine">
                 去除下划线(用于danbooru)
             </button>
         </div>
@@ -152,7 +152,7 @@ const promptFormat = () => {
 };
 
 const tagsAddComma = () => {
-    formatTextArea.value = textArea.value.replace(/\s+/g, ', ');
+    formatTextArea.value = textArea.value.replace(/\s+/g, ', ').replace(/\s*(，+|,+)\s*/g, ', ');
     promptList.value = formatTextArea.value
         .split(',')
         .filter((i: any) => !!i)
@@ -161,7 +161,7 @@ const tagsAddComma = () => {
 };
 
 const promotRemoveLine = () => {
-    formatTextArea.value = textArea.value.replace(/[-_]+/g, ' ');
+    formatTextArea.value = textArea.value.replace(/[-_]+/g, ' ').replace(/\s*(，+|,+)\s*/g, ', ');
     promptList.value = formatTextArea.value
         .split(',')
         .filter((i: any) => !!i)
@@ -170,7 +170,10 @@ const promotRemoveLine = () => {
 };
 
 const mediumToCircle = () => {
-    formatTextArea.value = textArea.value.replace(/\{/g, '(').replace(/\}/g, ')');
+    formatTextArea.value = textArea.value
+        .replace(/\{/g, '(')
+        .replace(/\}/g, ')')
+        .replace(/\s*(，+|,+)\s*/g, ', ');
     promptList.value = formatTextArea.value
         .split(/,/g)
         .filter((i: any) => !!i)
@@ -179,7 +182,10 @@ const mediumToCircle = () => {
 };
 
 const circleToMedium = () => {
-    formatTextArea.value = textArea.value.replace(/\(/g, '{').replace(/\)/g, '}');
+    formatTextArea.value = textArea.value
+        .replace(/\(/g, '{')
+        .replace(/\)/g, '}')
+        .replace(/\s*(，+|,+)\s*/g, ', ');
     promptList.value = formatTextArea.value
         .split(/,/g)
         .filter((i: any) => !!i)
@@ -337,9 +343,9 @@ const removeAllHistory = () => {
 
 .history-item {
     padding: 20px;
-    --tw-bg-opacity: 0.7;
-    background-color: hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity));
-    color: gray;
+    --tw-bg-opacity: 0.15;
+    background-color: hsl(var(--p) / var(--tw-bg-opacity));
+    box-shadow: hsl(var(--p) / 0.05) 0px 7px 29px 0px;
     border-radius: 10px;
     margin-bottom: 12px;
 

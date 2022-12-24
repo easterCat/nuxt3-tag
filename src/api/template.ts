@@ -42,7 +42,7 @@ class TemplateApi extends Request {
     }
 
     async likeTemplateById(body: any) {
-        const url = `/like_template_by_id`;
+        const url = `/template/favorite/${body.id}`;
         const result = await this.post(url, body);
         const { data } = toRaw(result);
         return { like: data.like };

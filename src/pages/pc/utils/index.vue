@@ -1,28 +1,28 @@
 <template>
     <div class="utils-page page">
         <AppHeader />
-        <AppAnimate>
-            <div class="content">
-                <div class="max-width-limit">
-                    <pc-area-title title="按类别浏览"></pc-area-title>
+        <div class="content" v-animate-css="{ direction: 'modifySlideInUp' }">
+            <div class="max-width-limit">
+                <pc-area-title title="按类别浏览"></pc-area-title>
 
-                    <div class="menu-list">
-                        <div
-                            v-for="(menu, mIndex) in menuList"
-                            :key="mIndex"
-                            class="menu-item"
-                            :class="{ 'menu-item-active': mIndex === menuActive }"
-                            @click="menuClick(menu, mIndex)"
-                        >
-                            <nuxt-img :src="menu?.bg" loading="lazy" />
-                            <span>{{ menu?.name }}</span>
-                        </div>
+                <div class="menu-list">
+                    <div
+                        v-for="(menu, mIndex) in menuList"
+                        :key="mIndex"
+                        class="menu-item"
+                        :class="{ 'menu-item-active': mIndex === menuActive }"
+                        @click="menuClick(menu, mIndex)"
+                    >
+                        <nuxt-img :src="menu?.bg" loading="lazy" />
+                        <span>{{ menu?.name }}</span>
                     </div>
-                    <pc-area-title title="当前工具"></pc-area-title>
-                    <PromptBeautiful></PromptBeautiful>
                 </div>
+                <pc-area-title title="当前工具"></pc-area-title>
+                <PromptBeautiful
+                    v-animate-css="{ direction: 'modifySlideInUp', delay: 60 }"
+                ></PromptBeautiful>
             </div>
-        </AppAnimate>
+        </div>
     </div>
 </template>
 

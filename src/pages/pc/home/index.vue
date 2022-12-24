@@ -48,6 +48,7 @@
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
 import { debounce } from 'lodash';
+import { useIndexStore } from '@/store/index';
 
 interface ImageItem {
     name: string;
@@ -78,6 +79,7 @@ interface ImageItem {
     _error?: boolean;
 }
 
+const indexStore = useIndexStore();
 const { TemplateApi } = useApi();
 const openImageFlur = ref(true);
 const { $store }: any = useNuxtApp();
@@ -120,7 +122,7 @@ const searchChange = debounce(async (val: any) => {
 }, 1200);
 
 const likeTemplate = async (id: number) => {
-    const result: any = await TemplateApi.likeTemplateById({ id });
+    const result: any = await TemplateApi.likeTemplateById({ id, userId: indexStore?.userId });
     if (result.like) {
         console.log(' 喜爱成功:>> ');
     }

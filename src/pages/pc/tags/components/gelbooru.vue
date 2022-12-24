@@ -142,8 +142,8 @@ onMounted(() => {
 <style lang="scss" scoped>
 .title-side {
     margin-left: 10px;
-    --el-switch-on-color: #13ce66;
-    --el-switch-off-color: #ff4949;
+    --el-switch-on-color: hsl(var(--a) / 1);
+    --el-switch-off-color: hsl(var(--s) / 1);
 }
 
 .eh-title-side-tip {

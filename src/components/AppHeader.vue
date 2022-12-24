@@ -1,5 +1,5 @@
 <template>
-    <header class="fix-header header bg-base-100">
+    <header class="fix-header header bg-base-30">
         <div class="header-con">
             <div class="header-menu">
                 <div class="header-icon">
@@ -26,13 +26,44 @@
                         标签
                         <transition name="slide">
                             <div v-if="hoverMenu" class="menu-item-select">
-                                <div class="hover-con bg-base-100">
-                                    <span @click="handleNavClick('tags')">常规标签</span>
-                                    <span @click="handleNavClick('tags/chitu')">词图标签</span>
-                                    <span @click="handleNavClick('tags/gelbooru')">
-                                        Gelbooru(H)
+                                <div class="hover-con">
+                                    <span
+                                        @click="handleNavClick('tags')"
+                                        v-animate-css="{ direction: 'modifySlideInDown' }"
+                                    >
+                                        <img src="@/assets/imgs/header-drop/01.webp" alt="" />
+                                        <span>常规标签</span>
                                     </span>
-                                    <span @click="handleNavClick('tags/eh')">EHentai(H)</span>
+                                    <span
+                                        @click="handleNavClick('tags/chitu')"
+                                        v-animate-css="{
+                                            direction: 'modifySlideInDown',
+                                            delay: 60,
+                                        }"
+                                    >
+                                        <img src="@/assets/imgs/header-drop/02.webp" alt="" />
+                                        <span>词图标签</span>
+                                    </span>
+                                    <span
+                                        @click="handleNavClick('tags/gelbooru')"
+                                        v-animate-css="{
+                                            direction: 'modifySlideInDown',
+                                            delay: 120,
+                                        }"
+                                    >
+                                        <img src="@/assets/imgs/header-drop/03.webp" alt="" />
+                                        <span>Gelbooru(H)</span>
+                                    </span>
+                                    <span
+                                        @click="handleNavClick('tags/eh')"
+                                        v-animate-css="{
+                                            direction: 'modifySlideInDown',
+                                            delay: 180,
+                                        }"
+                                    >
+                                        <img src="@/assets/imgs/header-drop/04.webp" alt="" />
+                                        <span>EHentai(H)</span>
+                                    </span>
                                 </div>
                             </div>
                         </transition>
@@ -88,7 +119,7 @@
                         tabindex="0"
                         class="p-2 shadow dropdown-content menu bg-base-100 rounded-box w-52"
                     >
-                        <li><a>修改信息</a></li>
+                        <li @click="router.push({ path: '/pc/profile' })"><a>用户中心</a></li>
                         <li @click="logout">
                             <a>{{ indexStore?.username ? '账号登出' : '账号登录' }}</a>
                         </li>
@@ -227,7 +258,7 @@ const logout = async () => {
     if (!indexStore?.username) {
         indexStore.clearToken();
         indexStore.clearUserInfo();
-        return router.push({ path: 'login' });
+        return router.push({ path: '/pc/login' });
     }
     const result = await AuthApi.logout();
     const { code, msg } = result;
@@ -343,12 +374,17 @@ onBeforeUnmount(() => {
     }
 }
 
+.bg-base-30 {
+    --tw-bg-opacity: 0.3;
+    background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+}
+
 header {
     position: sticky;
     top: 0px;
     z-index: 1001;
     width: 100%;
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 6px 12px;
+    box-shadow: hsl(var(--p) / 0.2) 0px 48px 100px 0px;
 
     .header-con {
         width: 100%;
@@ -372,12 +408,18 @@ header {
         margin-right: 36px;
         border-radius: 10px;
         overflow: hidden;
+        animation-name: wobbleHorizontal;
+        animation-duration: 28s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+
         img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
     }
+
     .my-menu {
         display: flex;
         justify-content: flex-start;
@@ -390,11 +432,10 @@ header {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        height: 42px;
+        height: 72px;
         padding: 0 24px;
         margin: 0 6px;
         font-size: 14px;
-        border-radius: 10px;
         cursor: pointer;
 
         > svg {
@@ -405,55 +446,70 @@ header {
 
     .menu-item-select {
         position: absolute;
-        bottom: -195px;
+        top: 70px;
         left: 0px;
-        width: 400px;
-        height: 200px;
+        right: 0px;
+        width: 800px;
+        height: 140px;
+        padding-top: 22px;
 
         .hover-con {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            flex-wrap: wrap;
             border-radius: 10px;
-            width: 170px;
-            height: 210px;
-            padding: 10px;
-            transform: translateY(25px);
-            border-color: hsl(var(--p) / 1);
-            box-shadow: 0 3.67px 38.7px rgb(0 0 0 / 11%);
+            width: 800px;
+            height: 120px;
 
-            span {
-                width: 150px;
-                height: 42px;
-                line-height: 42px;
+            > span {
+                position: relative;
+                width: 180px;
+                height: 120px;
+                line-height: 120px;
                 text-align: center;
                 font-size: 14px;
                 border-radius: 10px;
-                --tw-border-opacity: 1;
-                border-color: hsl(var(--p) / var(--tw-border-opacity));
-                --tw-bg-opacity: 1;
-                background-color: hsl(var(--p) / var(--tw-bg-opacity));
-                --tw-text-opacity: 1;
-                color: hsl(var(--pc) / var(--tw-text-opacity));
+                overflow: hidden;
+
+                > span {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    width: auto;
+                    height: 30px;
+                    line-height: 30px;
+                    --tw-text-opacity: 1;
+                    color: hsl(var(--pc) / var(--tw-text-opacity));
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    filter: blur(4px) grayscale(20%);
+                }
             }
         }
     }
 
-    .menu-item:last-child {
-        &::after {
-            display: none;
-        }
-    }
-
     .menu-item:hover {
-        --tw-border-opacity: 1;
-        border-color: hsl(var(--p) / var(--tw-border-opacity));
-        --tw-bg-opacity: 1;
-        background-color: hsl(var(--p) / var(--tw-bg-opacity));
         --tw-text-opacity: 1;
         color: hsl(var(--pc) / var(--tw-text-opacity));
-        transition: background 0.3s ease;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 14px;
+            bottom: 0;
+            width: calc(100% - 20px);
+            height: 2px;
+            --tw-border-opacity: 1;
+            background: hsl(var(--p) / var(--tw-border-opacity));
+            animation-duration: 0.4s;
+            animation-name: slideIn;
+            animation-iteration-count: 1;
+        }
 
         > svg {
             --tw-text-opacity: 1;
@@ -462,13 +518,22 @@ header {
     }
 
     .item-active {
-        --tw-border-opacity: 1;
-        border-color: hsl(var(--p) / var(--tw-border-opacity));
-        --tw-bg-opacity: 1;
-        background-color: hsl(var(--p) / var(--tw-bg-opacity));
         --tw-text-opacity: 1;
         color: hsl(var(--pc) / var(--tw-text-opacity));
-        transition: background 0.3s ease;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 14px;
+            bottom: 0;
+            width: calc(100% - 20px);
+            height: 2px;
+            --tw-border-opacity: 1;
+            background: hsl(var(--p) / var(--tw-border-opacity));
+            animation-duration: 0.4s;
+            animation-name: slideIn;
+            animation-iteration-count: 1;
+        }
 
         > svg {
             --tw-text-opacity: 1;
@@ -534,20 +599,6 @@ header {
 
     .hover-anime-btn:hover {
         animation: 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) 0s infinite pulse;
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scaleX(1);
-    }
-
-    50% {
-        transform: scale3d(1.1, 1.1, 1.1);
-    }
-
-    100% {
-        transform: scaleX(1);
     }
 }
 </style>

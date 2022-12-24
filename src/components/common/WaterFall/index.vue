@@ -22,7 +22,10 @@
                             />
                             <Transition name="fade-q">
                                 <div v-if="hoverIndex === iIndex" class="item-wrapper">
-                                    <div class="icon-con">
+                                    <div
+                                        class="icon-con"
+                                        v-animate-css="{ direction: 'modifySlideInDown' }"
+                                    >
                                         <span v-if="hoverIndex === iIndex">
                                             <i-ep-search></i-ep-search>
                                         </span>
@@ -36,7 +39,10 @@
                                             <i-ep-more @click="preview(image)"></i-ep-more>
                                         </span>
                                     </div>
-                                    <div class="text-con">
+                                    <div
+                                        class="text-con"
+                                        v-animate-css="{ direction: 'modifySlideInUp' }"
+                                    >
                                         <p>{{ image?.name }}</p>
                                         <p>{{ image?.prompt }}</p>
                                     </div>
@@ -452,8 +458,6 @@ onUnmounted(() => {
             align-items: center;
             padding: 10px;
             color: #fff;
-            animation-duration: 0.4s;
-            animation-name: slideInDown;
 
             span:nth-child(1) {
                 font-size: 18px;
@@ -475,8 +479,6 @@ onUnmounted(() => {
             padding: 0 10px;
             width: 100%;
             height: 45px;
-            animation-duration: 0.4s;
-            animation-name: slideInUp;
 
             > p:nth-child(1) {
                 width: 100%;
@@ -544,49 +546,5 @@ onUnmounted(() => {
     bottom: 0px;
     -webkit-animation-delay: -1s;
     animation-delay: -1s;
-}
-
-@keyframes rotate {
-    100% {
-        transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-@keyframes bounce {
-    0%,
-    100% {
-        transform: scale(0);
-        -webkit-transform: scale(0);
-    }
-    50% {
-        transform: scale(1);
-        -webkit-transform: scale(1);
-        opacity: 50;
-    }
-}
-
-@keyframes slideInDown {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0px);
-        opacity: 100;
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0px);
-        opacity: 100;
-    }
 }
 </style>

@@ -28,7 +28,7 @@
                                     class="w-full input input-bordered"
                                 />
                             </div>
-                            <div class="item-3">
+                            <!-- <div class="item-3">
                                 <label class="label">
                                     <span class="label-text">昵称</span>
                                 </label>
@@ -49,10 +49,10 @@
                                     placeholder="请输入昵称"
                                     class="w-full input input-bordered"
                                 />
-                            </div>
+                            </div> -->
                         </div>
                         <div class="item-5">
-                            <button class="btn btn-block" @click="login">登录</button>
+                            <button class="btn btn-accent btn-block" @click="login">登录</button>
                         </div>
                         <a class="link link-primary" @click="changeStatus('register')">
                             没有账号,去注册
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                         <div class="item-5">
-                            <button class="btn btn-block" @click="register">注册</button>
+                            <button class="btn btn-accent btn-block" @click="register">注册</button>
                         </div>
                         <a class="link link-primary" @click="changeStatus('login')">
                             已有账号,去登录
@@ -163,8 +163,8 @@ const login = async () => {
     const result = await AuthApi.login({
         username: username.value,
         password: password.value,
-        email: email.value,
-        nickname: nickname.value,
+        // email: email.value,
+        // nickname: nickname.value,
     });
     const { code, data, msg } = result;
     indexStore.setUserInfo(data?.user);
@@ -215,7 +215,7 @@ const login = async () => {
         justify-content: center;
         align-items: center;
         background: transparent;
-        background: hsl(var(--a) / 0.5);
+        background: hsl(var(--a) / 0.2);
         width: 800px;
         height: 680px;
         border-radius: 12px;
@@ -229,7 +229,7 @@ const login = async () => {
         display: flex;
         justify-content: center;
         align-items: center;
-        background: hsl(var(--s) / 0.5);
+        background: hsl(var(--s) / 0.3);
         width: 700px;
         height: 600px;
         border-radius: 12px;
@@ -245,7 +245,7 @@ const login = async () => {
         height: 460px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
     }
 
@@ -284,50 +284,16 @@ const login = async () => {
     }
 
     .item-5 {
+        margin-top: 30px;
         width: 100%;
         animation-delay: 0s;
         animation-name: slide-up;
         animation-duration: 1.4s;
         animation-fill-mode: cubic-bezier(0.42, 0, 0.58, 1);
     }
-}
 
-@keyframes move {
-    0% {
-        transform: translate3D(40px, 40px, 0);
-        opacity: 0;
-    }
-
-    60% {
-        transform: translate3D(-10px, -10px, 0);
-        opacity: 0.7;
-    }
-
-    100% {
-        transform: translate3D(0, 0, 0);
-        opacity: 1;
-    }
-}
-
-@keyframes slide-up {
-    0% {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-
-    30% {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-
-    60% {
-        transform: translateY(-5px);
-        opacity: 0.9;
-    }
-
-    100% {
-        transform: translateY(0px);
-        opacity: 1;
+    .link {
+        margin-top: 30px;
     }
 }
 </style>

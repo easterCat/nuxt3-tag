@@ -11,7 +11,7 @@
                     :index="mIndex + ''"
                     :button-style="1"
                     button-size="larger"
-                    :class="[mIndex === tagActive ? 'btn-accent' : 'btn-secondary']"
+                    :class="[mIndex === tagActive ? 'btn-accent' : 'btn-primary-30']"
                     :button-text="m?.name"
                     @submit="menuItemClick(mIndex)"
                 ></PcAnimationButton>
@@ -338,14 +338,18 @@ onUnmounted(() => {
 
 .title-side {
     margin-left: 10px;
-    --el-switch-on-color: #13ce66;
-    --el-switch-off-color: #ff4949;
+    --el-switch-on-color: hsl(var(--a) / 1);
+    --el-switch-off-color: hsl(var(--s) / 1);
 }
 
 .eh-title-side-tip {
     font-size: 12px;
     color: rgb(138, 138, 138);
     margin-left: 10px;
+}
+
+.btn-primary-30 {
+    background-color: hsl(var(--s) / 0.2);
 }
 
 .tag-list {

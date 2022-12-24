@@ -1,73 +1,65 @@
 <template>
     <div class="link-con">
-        <AppAnimate>
-            <div class="link-left bg-base-100">
-                <ul>
-                    <li
-                        v-for="(item, index) in types"
-                        :key="index"
-                        v-scroll-to="{
+        <div class="link-left bg-base-100" v-animate-css="{ direction: 'modifySlideInLeft' }">
+            <ul>
+                <li
+                    v-for="(item, index) in types"
+                    :key="index"
+                    v-scroll-to="{
                         target: `.part:nth-child(${index + 1}) > h2`,
                         container: '.link-right',
                         behavior: 'smooth',
                         cb: (findIndex:number) => changeType(findIndex||findIndex===0 ? findIndex : index),
                     }"
-                        :class="{ active: typeActive === index }"
-                    >
-                        {{ item }}
-                    </li>
-                    <template v-if="showAddBtn">
-                        <button class="btn-primary btn-block btn" @click="addNewLink">
-                            新增链接
-                        </button>
-                    </template>
-                </ul>
-            </div>
-        </AppAnimate>
-        <AppAnimate>
-            <div class="link-right">
-                <div class="right-linear"></div>
-                <div class="part-list">
-                    <template v-for="(typeItem, tIndex) in types" :key="typeItem">
-                        <div id="media" class="part" :data-title="typeItem" :data-index="tIndex">
-                            <h2 class="">
-                                <strong>{{ typeItem }}</strong>
-                            </h2>
-                            <div class="row">
-                                <div
-                                    v-for="(link, lIndex) in filterList(typeItem)"
-                                    :key="lIndex"
-                                    class="item bg-base-100"
-                                >
-                                    <a :href="link?.href" target="_blank">
-                                        <h3>
-                                            <img :src="link?.icon ?? none" />
-                                            <span>{{ link.name }}</span>
-                                            <i v-if="link?.hot" class="hot-link">
-                                                <el-icon color="red">
-                                                    <i-ep-flag></i-ep-flag>
-                                                </el-icon>
-                                            </i>
-                                        </h3>
-                                        <p>{{ link?.desc ? link?.desc : '暂无描述' }}</p>
-                                    </a>
-                                    <div class="opeartion">
-                                        <span v-if="showEditBtn" class="icon">
-                                            <i-ep-edit @click="editLink(link)"></i-ep-edit>
-                                        </span>
-                                        <span v-if="showEditBtn" class="icon">
-                                            <i-ep-delete
-                                                @click="deleteLink(link?.id)"
-                                            ></i-ep-delete>
-                                        </span>
-                                    </div>
+                    :class="{ active: typeActive === index }"
+                >
+                    {{ item }}
+                </li>
+                <template v-if="showAddBtn">
+                    <button class="btn-primary btn-block btn" @click="addNewLink">新增链接</button>
+                </template>
+            </ul>
+        </div>
+        <div class="link-right" v-animate-css="{ direction: 'modifySlideInRight' }">
+            <div class="right-linear"></div>
+            <div class="part-list">
+                <template v-for="(typeItem, tIndex) in types" :key="typeItem">
+                    <div id="media" class="part" :data-title="typeItem" :data-index="tIndex">
+                        <h2 class="">
+                            <strong>{{ typeItem }}</strong>
+                        </h2>
+                        <div class="row">
+                            <div
+                                v-for="(link, lIndex) in filterList(typeItem)"
+                                :key="lIndex"
+                                class="item bg-base-100"
+                            >
+                                <a :href="link?.href" target="_blank">
+                                    <h3>
+                                        <img :src="link?.icon ?? none" />
+                                        <span>{{ link.name }}</span>
+                                        <i v-if="link?.hot" class="hot-link">
+                                            <el-icon color="red">
+                                                <i-ep-flag></i-ep-flag>
+                                            </el-icon>
+                                        </i>
+                                    </h3>
+                                    <p>{{ link?.desc ? link?.desc : '暂无描述' }}</p>
+                                </a>
+                                <div class="opeartion">
+                                    <span v-if="showEditBtn" class="icon">
+                                        <i-ep-edit @click="editLink(link)"></i-ep-edit>
+                                    </span>
+                                    <span v-if="showEditBtn" class="icon">
+                                        <i-ep-delete @click="deleteLink(link?.id)"></i-ep-delete>
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                    </template>
-                </div>
+                    </div>
+                </template>
             </div>
-        </AppAnimate>
+        </div>
         <el-dialog
             v-model="showDialog"
             :title="operation === 'add' ? '新增' : '编辑'"
@@ -110,6 +102,7 @@ import { onMounted, Ref } from 'vue';
 import { ID_INJECTION_KEY } from 'element-plus';
 import type { FormInstance } from 'element-plus';
 import none from '~/assets/imgs/none.png';
+import { useIndexStore } from '@/store/index';
 
 export interface API {
     refresh: any;
@@ -135,6 +128,7 @@ defineEmits(['editEvent', 'deleteEvent']);
 defineProps({
     filter: String,
 });
+const indexStore = useIndexStore();
 const showEditBtn = ref(false);
 const { LinkApi } = useApi();
 const { links }: any = await LinkApi.getLinks();
@@ -189,7 +183,7 @@ const add = async () => {
         href: href.value,
         type: type.value,
         hot: hot.value,
-        icon: hot.icon,
+        icon: icon.value,
     });
     if (result.code === 200) {
         handleDialogClose();
@@ -260,9 +254,10 @@ const filterList = (fil: any) => {
 };
 
 onMounted(() => {
-    const edit = localStorage.getItem('edit');
-    if (edit) showEditBtn.value = true;
-    if (edit) showAddBtn.value = true;
+    if (indexStore.roleId + '' === '1') {
+        showAddBtn.value = true;
+        showEditBtn.value = true;
+    }
 });
 </script>
 
@@ -306,9 +301,10 @@ onMounted(() => {
         }
 
         .active {
-            background-color: hsl(var(--p) / 1);
+            background-color: hsl(var(--p) / 0.7);
             color: hsl(var(--pc) / 1);
             transition: all 0.3s ease-in-out;
+            box-shadow: hsl(var(--p) / 0.3) 0px 8px 24px;
         }
     }
     .link-right {
@@ -347,9 +343,9 @@ onMounted(() => {
     }
 
     .part h2 strong {
-        color: #3c3c3c;
         font-size: 16px;
         position: relative;
+        font-weight: bold;
     }
     .part h2 a {
         display: inline-block;
@@ -384,9 +380,9 @@ onMounted(() => {
     }
 
     .item:hover {
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 20px;
         transform: translateY(-1px) scale(1.02);
         transition: all 0.3s ease-in-out;
+        box-shadow: hsl(var(--p) / 0.2) 0px 7px 29px 0px;
     }
 
     .part .item a {
@@ -465,19 +461,5 @@ onMounted(() => {
     font-size: 12px;
     --tw-text-opacity: 1;
     color: hsl(var(--p) / var(--tw-text-opacity));
-}
-
-@keyframes heart {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transform: scale(1);
-    }
 }
 </style>

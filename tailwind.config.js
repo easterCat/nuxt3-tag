@@ -4,12 +4,12 @@ module.exports = {
         themes: [
             {
                 Sunset: {
-                    primary: '#363234',
-                    secondary: '#f2ece4',
-                    accent: '#e7dccc',
-                    neutral: '#5c3f5a',
-                    'base-100': '#FFFFFF',
-                    'base-200': '#eff0f7',
+                    primary: '#7d6df8',
+                    secondary: '#EDE9D0',
+                    accent: '#f1774d',
+                    neutral: '#620000',
+                    'base-100': '#000000',
+                    'base-200': '#121032',
                 },
             },
             'light',

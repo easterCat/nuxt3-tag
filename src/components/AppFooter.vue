@@ -112,17 +112,4 @@
     animation-duration: 11s;
 }
 
-@keyframes animate {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-        border-radius: 0;
-    }
-
-    100% {
-        transform: translateY(-800px) rotate(720deg);
-        opacity: 0;
-        border-radius: 50%;
-    }
-}
 </style>

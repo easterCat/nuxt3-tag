@@ -1,0 +1,59 @@
+@keyframes modifySlideInUp {
+    from {
+        transform: translate3d(0, 50px, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 100;
+    }
+}
+.animate__modifySlideInUp {
+    animation-name: modifySlideInUp;
+}
+
+@keyframes modifySlideInDown {
+    from {
+        transform: translate3d(0, -50px, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 100;
+    }
+}
+.animate__modifySlideInDown {
+    animation-name: modifySlideInDown;
+}
+
+@keyframes modifySlideInLeft {
+    from {
+        transform: translate3d(-50px, 0, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 100;
+    }
+}
+.animate__modifySlideInLeft {
+    animation-name: modifySlideInLeft;
+}
+
+@keyframes modifySlideInRight {
+    from {
+        transform: translate3d(50px, 0, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 100;
+    }
+}
+.animate__modifySlideInRight {
+    animation-name: modifySlideInRight;
+}

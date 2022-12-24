@@ -1,99 +1,96 @@
 <template>
     <div class="template-page page">
         <AppHeader />
-        <AppAnimate>
-            <div class="content">
-                <div class="banner-con">
-                    <AppBanner placeholder="请输入关键标签"></AppBanner>
-                </div>
-                <div class="control-blur-btns">
-                    <button
-                        class="btn btn-sm m-r-10"
-                        :class="[openImageFlur ? 'btn-accent' : 'btn-secondary']"
-                        @click="() => (openImageFlur = true)"
-                    >
-                        模糊
-                    </button>
-                    <button
-                        class="btn btn-sm"
-                        :class="[!openImageFlur ? 'btn-accent' : 'btn-secondary']"
-                        @click="() => (openImageFlur = false)"
-                    >
-                        原图
-                    </button>
-                </div>
-
-                <el-row class="list-con" :gutter="20">
-                    <el-col
-                        v-for="(tem, tIndex) in templatesList"
-                        :key="tIndex"
-                        :xs="24"
-                        :sm="12"
-                        :md="6"
-                        :lg="4"
-                        :xl="4"
-                    >
-                        <AppAnimate>
-                            <div v-if="tem" class="shadow-xl card card-compact bg-base-100">
-                                <figure>
-                                    <nuxt-img
-                                        class="image"
-                                        :src="tem?.minify_preview"
-                                        loading="lazy"
-                                        :class="{ 'image-blur': !!openImageFlur }"
-                                    />
-                                </figure>
-                                <div class="card-body">
-                                    <h2 class="card-title">
-                                        {{ tem?.name }}
-                                    </h2>
-                                    <p>{{ tem?.author }}</p>
-                                    <div class="justify-end card-actions">
-                                        <button
-                                            class="btn btn-primary btn-sm"
-                                            @click="cardClick(tem)"
-                                        >
-                                            模板详情
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </AppAnimate>
-                    </el-col>
-                </el-row>
-
-                <div class="demo-pagination-block">
-                    <div v-if="totalPage && totalPage > 0" class="btn-group">
-                        <button class="btn btn-outline" @click="firstPage">首页</button>
-                        <button class="btn btn-outline" @click="prevPage">上一页</button>
-                        <button
-                            v-for="(item, index) in currentList"
-                            :key="index"
-                            class="btn"
-                            :class="{ 'btn-active': item === pageIndex }"
-                            @click="currentPage(item)"
-                        >
-                            {{ item }}
-                        </button>
-                        <button v-if="pageIndex < totalPage - 3" class="btn">...</button>
-                        <button
-                            class="btn"
-                            :class="{ 'btn-active': totalPage === pageIndex }"
-                            @click="currentPage(totalPage)"
-                        >
-                            {{ totalPage }}
-                        </button>
-                        <button class="btn btn-outline" @click="nextPage">下一页</button>
-                        <button class="btn btn-outline" @click="endPage">尾页</button>
-                    </div>
-                </div>
+        <div class="content">
+            <div class="banner-con">
+                <AppBanner placeholder="请输入关键标签"></AppBanner>
+            </div>
+            <div class="control-blur-btns" v-animate-css="{ direction: 'modifySlideInUp' }">
+                <button
+                    class="btn btn-sm m-r-10"
+                    :class="[openImageFlur ? 'btn-accent' : 'btn-secondary']"
+                    @click="() => (openImageFlur = true)"
+                >
+                    模糊
+                </button>
+                <button
+                    class="btn btn-sm"
+                    :class="[!openImageFlur ? 'btn-accent' : 'btn-secondary']"
+                    @click="() => (openImageFlur = false)"
+                >
+                    原图
+                </button>
             </div>
 
-            <PcTemplateDetail
-                v-model="showPreview"
-                :current-template="currentTemplate"
-            ></PcTemplateDetail>
-        </AppAnimate>
+            <el-row class="list-con" :gutter="20">
+                <el-col
+                    v-for="(tem, tIndex) in templatesList"
+                    :key="tIndex"
+                    :xs="24"
+                    :sm="12"
+                    :md="6"
+                    :lg="4"
+                    :xl="4"
+                    v-animate-css="{
+                        direction: 'modifySlideInUp',
+                        delay: tIndex * 50,
+                    }"
+                >
+                    <div v-if="tem" class="shadow-xl card card-compact bg-base-100">
+                        <figure>
+                            <nuxt-img
+                                class="image"
+                                :src="tem?.minify_preview"
+                                loading="lazy"
+                                :class="{ 'image-blur': !!openImageFlur }"
+                            />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                {{ tem?.name }}
+                            </h2>
+                            <p>{{ tem?.author }}</p>
+                            <div class="justify-end card-actions">
+                                <button class="btn btn-accent btn-sm" @click="cardClick(tem)">
+                                    模板详情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </el-col>
+            </el-row>
+
+            <div class="demo-pagination-block">
+                <div v-if="totalPage && totalPage > 0" class="btn-group">
+                    <button class="btn btn-outline" @click="firstPage">首页</button>
+                    <button class="btn btn-outline" @click="prevPage">上一页</button>
+                    <button
+                        v-for="(item, index) in currentList"
+                        :key="index"
+                        class="btn"
+                        :class="{ 'btn-active': item === pageIndex }"
+                        @click="currentPage(item)"
+                    >
+                        {{ item }}
+                    </button>
+                    <button v-if="pageIndex < totalPage - 3" class="btn">...</button>
+                    <button
+                        class="btn"
+                        :class="{ 'btn-active': totalPage === pageIndex }"
+                        @click="currentPage(totalPage)"
+                    >
+                        {{ totalPage }}
+                    </button>
+                    <button class="btn btn-outline" @click="nextPage">下一页</button>
+                    <button class="btn btn-outline" @click="endPage">尾页</button>
+                </div>
+            </div>
+        </div>
+
+        <PcTemplateDetail
+            v-model="showPreview"
+            :current-template="currentTemplate"
+        ></PcTemplateDetail>
     </div>
 </template>
 

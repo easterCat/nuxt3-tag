@@ -279,24 +279,6 @@ $basebtnpadding: 8px;
         inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
-@keyframes shiny-btn1 {
-    0% {
-        transform: scale(0) rotate(45deg);
-        opacity: 0;
-    }
-    80% {
-        transform: scale(0) rotate(45deg);
-        opacity: 0.5;
-    }
-    81% {
-        transform: scale(4) rotate(45deg);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(50) rotate(45deg);
-        opacity: 0;
-    }
-}
 
 /* 13 */
 .btn-13 {
