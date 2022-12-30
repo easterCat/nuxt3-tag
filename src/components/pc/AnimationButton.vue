@@ -279,7 +279,6 @@ $basebtnpadding: 8px;
         inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
-
 /* 13 */
 .btn-13 {
     border: none;

@@ -1,0 +1,1 @@
+const a=[{name:"图片解析",childs:[],component:"ImageAnalysis",bg:"https://image.lexica.art/md/6e21e7a1-93f4-42a7-8ffd-b2e8ec743771"},{name:"标签美化",childs:[{name:"Tags添加逗号",components:""}],component:"PromptBeautiful",bg:"https://image.lexica.art/md/2133ab7a-ace5-4b65-90e5-a74c4d2c872b"}];export{a as u};

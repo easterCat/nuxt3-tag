@@ -1,4 +1,17 @@
 export const utilMenus = [
+    {
+        name: '图片解析',
+        childs: [],
+        component: 'ImageAnalysis',
+        bg: 'https://image.lexica.art/md/6e21e7a1-93f4-42a7-8ffd-b2e8ec743771',
+    },
+    {
+        name: '标签美化',
+        childs: [{ name: 'Tags添加逗号', components: '' }],
+        component: 'PromptBeautiful',
+        bg: 'https://image.lexica.art/md/2133ab7a-ace5-4b65-90e5-a74c4d2c872b',
+    },
+
     // {
     //     name: "热门工具",
     //     childs: [],
@@ -24,24 +37,15 @@ export const utilMenus = [
     //     childs: [],
     //     bg: "https://image.lexica.art/md/7cb6a14b-1212-49ac-8444-b1585b0ee383",
     // },
-    {
-        name: '标签',
-        childs: [{ name: 'Tags添加逗号', components: '' }],
-        bg: 'https://image.lexica.art/md/2133ab7a-ace5-4b65-90e5-a74c4d2c872b',
-    },
-    {
-        name: '综合',
-        childs: [],
-        bg: 'https://image.lexica.art/md/6e21e7a1-93f4-42a7-8ffd-b2e8ec743771',
-    },
-    {
-        name: '生活',
-        childs: [],
-        bg: 'https://image.lexica.art/md/04afcc4c-a968-4ca5-beea-d6b7885c2e27',
-    },
-    {
-        name: '私人',
-        childs: [],
-        bg: 'https://image.lexica.art/md/04d63260-2814-4037-a62c-a8076ac57caf',
-    },
+
+    // {
+    //     name: '生活',
+    //     childs: [],
+    //     bg: 'https://image.lexica.art/md/04afcc4c-a968-4ca5-beea-d6b7885c2e27',
+    // },
+    // {
+    //     name: '私人',
+    //     childs: [],
+    //     bg: 'https://image.lexica.art/md/04d63260-2814-4037-a62c-a8076ac57caf',
+    // },
 ];

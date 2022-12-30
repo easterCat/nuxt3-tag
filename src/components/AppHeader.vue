@@ -26,45 +26,47 @@
                         标签
                         <transition name="slide">
                             <div v-if="hoverMenu" class="menu-item-select">
-                                <div class="hover-con">
-                                    <span
-                                        @click="handleNavClick('tags')"
-                                        v-animate-css="{ direction: 'modifySlideInDown' }"
-                                    >
-                                        <img src="@/assets/imgs/header-drop/01.webp" alt="" />
-                                        <span>常规标签</span>
-                                    </span>
-                                    <span
-                                        @click="handleNavClick('tags/chitu')"
-                                        v-animate-css="{
-                                            direction: 'modifySlideInDown',
-                                            delay: 60,
-                                        }"
-                                    >
-                                        <img src="@/assets/imgs/header-drop/02.webp" alt="" />
-                                        <span>词图标签</span>
-                                    </span>
-                                    <span
-                                        @click="handleNavClick('tags/gelbooru')"
-                                        v-animate-css="{
-                                            direction: 'modifySlideInDown',
-                                            delay: 120,
-                                        }"
-                                    >
-                                        <img src="@/assets/imgs/header-drop/03.webp" alt="" />
-                                        <span>Gelbooru(H)</span>
-                                    </span>
-                                    <span
-                                        @click="handleNavClick('tags/eh')"
-                                        v-animate-css="{
-                                            direction: 'modifySlideInDown',
-                                            delay: 180,
-                                        }"
-                                    >
-                                        <img src="@/assets/imgs/header-drop/04.webp" alt="" />
-                                        <span>EHentai(H)</span>
-                                    </span>
-                                </div>
+                                <ClientOnly>
+                                    <div class="hover-con">
+                                        <span
+                                            @click="handleNavClick('tags')"
+                                            v-animate-css="{ direction: 'modifySlideInDown' }"
+                                        >
+                                            <img src="@/assets/imgs/header-drop/01.webp" alt="" />
+                                            <span>常规标签</span>
+                                        </span>
+                                        <span
+                                            @click="handleNavClick('tags/chitu')"
+                                            v-animate-css="{
+                                                direction: 'modifySlideInDown',
+                                                delay: 60,
+                                            }"
+                                        >
+                                            <img src="@/assets/imgs/header-drop/02.webp" alt="" />
+                                            <span>词图标签</span>
+                                        </span>
+                                        <span
+                                            @click="handleNavClick('tags/gelbooru')"
+                                            v-animate-css="{
+                                                direction: 'modifySlideInDown',
+                                                delay: 120,
+                                            }"
+                                        >
+                                            <img src="@/assets/imgs/header-drop/03.webp" alt="" />
+                                            <span>Gelbooru(H)</span>
+                                        </span>
+                                        <span
+                                            @click="handleNavClick('tags/eh')"
+                                            v-animate-css="{
+                                                direction: 'modifySlideInDown',
+                                                delay: 180,
+                                            }"
+                                        >
+                                            <img src="@/assets/imgs/header-drop/04.webp" alt="" />
+                                            <span>EHentai(H)</span>
+                                        </span>
+                                    </div>
+                                </ClientOnly>
                             </div>
                         </transition>
                     </span>
@@ -168,7 +170,7 @@
                 </div>
             </div>
         </div>
-        <client-only>
+        <ClientOnly>
             <el-drawer v-model="drawer" title="主题" :with-header="false" size="50%">
                 <div class="m-b-20">daisyUI 主题</div>
                 <ul class="flex flex-wrap">
@@ -190,14 +192,14 @@
                     </li>
                 </ul>
             </el-drawer>
-        </client-only>
+        </ClientOnly>
         <PcShopLayer v-model="showShopLayer"></PcShopLayer>
     </header>
 </template>
 
 <script lang="ts" setup>
 import { Ref, ref } from 'vue';
-import { throttle } from 'lodash';
+import lodash from 'lodash';
 import { Icon } from '#components';
 import { useIndexStore } from '@/store/index';
 
@@ -235,7 +237,7 @@ const themes = [
     'Sunset',
 ];
 
-const indexStore = useIndexStore();
+let indexStore: any = null;
 const { AuthApi } = useApi();
 const router = useRouter();
 const route = useRoute();
@@ -312,9 +314,10 @@ const resize = () => {
     }
 };
 
-const throttleResize = throttle(resize, 1200);
+const throttleResize = lodash.throttle(resize, 1200);
 
 onMounted(() => {
+    indexStore = useIndexStore();
     resize();
     window.addEventListener('resize', throttleResize);
 });
@@ -379,7 +382,7 @@ onBeforeUnmount(() => {
     background-color: hsl(var(--b1) / var(--tw-bg-opacity));
 }
 
-header {
+.header {
     position: sticky;
     top: 0px;
     z-index: 1001;
@@ -494,8 +497,8 @@ header {
     }
 
     .menu-item:hover {
-        --tw-text-opacity: 1;
-        color: hsl(var(--pc) / var(--tw-text-opacity));
+        --tw-text-opacity: 0.8;
+        color: hsl(var(--nc) / var(--tw-text-opacity));
 
         &::after {
             content: '';
@@ -513,13 +516,13 @@ header {
 
         > svg {
             --tw-text-opacity: 1;
-            color: hsl(var(--pc) / var(--tw-text-opacity));
+            color: hsl(var(--nc) / var(--tw-text-opacity));
         }
     }
 
     .item-active {
         --tw-text-opacity: 1;
-        color: hsl(var(--pc) / var(--tw-text-opacity));
+        color: hsl(var(--nc) / var(--tw-text-opacity));
 
         &::after {
             content: '';
@@ -537,7 +540,7 @@ header {
 
         > svg {
             --tw-text-opacity: 1;
-            color: hsl(var(--pc) / var(--tw-text-opacity));
+            color: hsl(var(--nc) / var(--tw-text-opacity));
         }
     }
 
@@ -599,6 +602,19 @@ header {
 
     .hover-anime-btn:hover {
         animation: 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) 0s infinite pulse;
+    }
+}
+
+:deep(.el-overlay) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: all 0.5s linear;
+
+    .el-drawer {
+        background: hsl(var(--b2) / 1);
     }
 }
 </style>

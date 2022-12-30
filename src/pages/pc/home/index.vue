@@ -1,8 +1,14 @@
 <template>
     <div class="home-page page">
-        <AppHeader />
-        <AppAnimate>
-            <div class="content">
+        <ClientOnly><AppHeader /></ClientOnly>
+        <ClientOnly>
+            <div
+                class="content"
+                v-animate-css="{
+                    direction: 'modifySlideInUp',
+                    delay: 0,
+                }"
+            >
                 <div class="banner-con">
                     <AppBanner
                         placeholder="请输入关键标签"
@@ -12,14 +18,14 @@
                 <div class="control-blur-btns">
                     <button
                         class="btn btn-sm m-r-10"
-                        :class="[openImageFlur ? 'btn-accent' : 'btn-secondary']"
+                        :class="[openImageFlur ? 'btn-accent' : 'btn-s-30']"
                         @click="() => (openImageFlur = true)"
                     >
                         模糊
                     </button>
                     <button
                         class="btn btn-sm"
-                        :class="[!openImageFlur ? 'btn-accent' : 'btn-secondary']"
+                        :class="[!openImageFlur ? 'btn-accent' : 'btn-s-30']"
                         @click="() => (openImageFlur = false)"
                     >
                         原图
@@ -36,18 +42,18 @@
                     @favorite="likeTemplate"
                 ></common-water-fall>
             </div>
+        </ClientOnly>
 
-            <PcTemplateDetail
-                v-model="showPreview"
-                :current-template="currentTemplate"
-            ></PcTemplateDetail>
-        </AppAnimate>
+        <PcTemplateDetail
+            v-model="showPreview"
+            :current-template="currentTemplate"
+        ></PcTemplateDetail>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
-import { debounce } from 'lodash';
+import lodash from 'lodash';
 import { useIndexStore } from '@/store/index';
 
 interface ImageItem {
@@ -79,7 +85,7 @@ interface ImageItem {
     _error?: boolean;
 }
 
-const indexStore = useIndexStore();
+let indexStore: any = null;
 const { TemplateApi } = useApi();
 const openImageFlur = ref(true);
 const { $store }: any = useNuxtApp();
@@ -107,7 +113,7 @@ const showDetail = (tem: any) => {
     showPreview.value = true;
 };
 
-const searchChange = debounce(async (val: any) => {
+const searchChange = lodash.debounce(async (val: any) => {
     if (val === searchText.value) return;
     imageList.value = [];
     searchText.value = val;
@@ -142,6 +148,7 @@ const scrollLoad = async (page: any) => {
 };
 
 onMounted(() => {
+    indexStore = useIndexStore();
     ip.value = $store.get('ip');
     initList();
 });
@@ -163,6 +170,14 @@ onMounted(() => {
 
     .control-blur-btns {
         padding: 10px 8px 10px 10px;
+
+        .btn {
+            color: #fff;
+        }
+    }
+
+    .btn-s-30 {
+        background-color: hsl(var(--s) / 0.3);
     }
 }
 </style>

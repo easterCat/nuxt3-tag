@@ -3,16 +3,20 @@ import { defineStore } from 'pinia';
 export const useIndexStore = defineStore({
     id: 'index-store',
     state: () => {
+        const { $store } = useNuxtApp();
         return {
-            userInfo: localStorage.getItem('user')
-                ? JSON.parse(localStorage.getItem('user') as string)
-                : { nickname: '', username: '', id: '', email: '', role_id: '' },
-            access_token: localStorage.getItem('access_token')
-                ? JSON.parse(localStorage.getItem('access_token') as string)
-                : '',
-            refresh_token: localStorage.getItem('refresh_token')
-                ? JSON.parse(localStorage.getItem('refresh_token') as string)
-                : '',
+            userInfo:
+                $store && $store.get('user')
+                    ? JSON.parse($store.get('user') as string)
+                    : { nickname: '', username: '', id: '', email: '', role_id: '' },
+            access_token:
+                $store && $store.get('access_token')
+                    ? JSON.parse($store.get('access_token') as string)
+                    : '',
+            refresh_token:
+                $store && $store.get('refresh_token')
+                    ? JSON.parse($store.get('refresh_token') as string)
+                    : '',
         };
     },
 
@@ -27,32 +31,37 @@ export const useIndexStore = defineStore({
 
     actions: {
         setUserInfo(info: any) {
+            const { $store } = useNuxtApp();
             this.userInfo = { ...info };
-            localStorage.setItem('user', JSON.stringify(this.userInfo));
+            $store.set('user', JSON.stringify(this.userInfo));
         },
         setToken(access_token: string, refresh_token: string) {
+            const { $store } = useNuxtApp();
             this.access_token = access_token;
             this.refresh_token = refresh_token;
-            localStorage.setItem('access_token', JSON.stringify(this.access_token));
-            localStorage.setItem('refresh_token', JSON.stringify(this.refresh_token));
+            $store.set('access_token', JSON.stringify(this.access_token));
+            $store.set('refresh_token', JSON.stringify(this.refresh_token));
         },
         clearUserInfo() {
+            const { $store } = useNuxtApp();
             this.userInfo = { nickname: '', username: '', id: '', email: '', role_id: '' };
-            localStorage.removeItem('user');
+            $store.remove('user');
         },
         clearToken() {
+            const { $store } = useNuxtApp();
             this.access_token = '';
             this.refresh_token = '';
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('refresh_token');
+            $store.remove('access_token');
+            $store.remove('refresh_token');
         },
         async refresh() {
+            const { $store } = useNuxtApp();
             const { AuthApi } = useApi();
             const result = await AuthApi.refresh();
             if (result.code === 200) {
                 const { access_token } = result.data;
                 this.access_token = access_token;
-                localStorage.setItem('access_token', JSON.stringify(access_token));
+                $store.set('access_token', JSON.stringify(access_token));
             }
         },
     },

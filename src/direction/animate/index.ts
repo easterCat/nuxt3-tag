@@ -9,13 +9,13 @@ interface Methods {
 // https://animate.style/
 const VueAnimateCss: Methods = {
     install: (app: any, options: any) => {
-        const animateCSSPath = options?.animateCSSPath || '';
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href =
-            animateCSSPath ||
-            'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css';
-        document.getElementsByTagName('head')[0].appendChild(link);
+        // const animateCSSPath = options?.animateCSSPath || '';
+        // const link = document.createElement('link');
+        // link.rel = 'stylesheet';
+        // link.href =
+        //     animateCSSPath ||
+        //     'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css';
+        // document.getElementsByTagName('head')[0].appendChild(link);
 
         app.directive('animate-css', {
             mounted(el: any, binding: any) {

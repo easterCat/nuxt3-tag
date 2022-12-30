@@ -6,11 +6,19 @@
                 <i-ep-home-filled @click="goHome"></i-ep-home-filled>
             </div>
             <div class="header-center">
-                <i-ep-shopping-trolley @click="importShop" />
-                <i-ep-plus @click="createNewShopItem" />
-                <i-ep-copy-document @click="copyShop" />
-                <i-ep-guide @click="translatePrompt" />
-                <i-ep-delete @click="clearShop" />
+                <Icon size="20" name="material-symbols:shopping-cart" @click="importShop"></Icon>
+                <Icon
+                    size="24"
+                    name="material-symbols:new-label-rounded"
+                    @click="createNewShopItem"
+                ></Icon>
+                <Icon
+                    size="20"
+                    name="material-symbols:content-copy-rounded"
+                    @click="copyShop"
+                ></Icon>
+                <Icon size="19" name="majesticons:translate" @click="translatePrompt"></Icon>
+                <Icon size="20" name="material-symbols:delete" @click="clearShop" />
             </div>
             <div class="header-right">
                 <el-radio-group v-model="radio" class="ml-4">

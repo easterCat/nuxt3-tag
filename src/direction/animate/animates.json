@@ -75,5 +75,9 @@
     "slideOutDown",
     "slideOutLeft",
     "slideOutRight",
-    "slideOutUp"
+    "slideOutUp",
+    "modifySlideInDown",
+    "modifySlideInUp",
+    "modifySlideInRight",
+    "modifySlideInLeft"
 ]

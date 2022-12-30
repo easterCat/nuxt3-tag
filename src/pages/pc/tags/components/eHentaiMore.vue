@@ -26,28 +26,28 @@
             <div class="control-blur-btns">
                 <button
                     class="btn btn-sm m-r-10"
-                    :class="[imgShowType === 'hidden' ? 'btn-accent' : 'btn-secondary']"
+                    :class="[imgShowType === 'hidden' ? 'btn-accent' : 'btn-secondary-30']"
                     @click="() => (imgShowType = 'hidden')"
                 >
                     隐藏
                 </button>
                 <button
                     class="btn btn-sm m-r-10"
-                    :class="[imgShowType === 'flur' ? 'btn-accent' : 'btn-secondary']"
+                    :class="[imgShowType === 'flur' ? 'btn-accent' : 'btn-secondary-30']"
                     @click="() => (imgShowType = 'flur')"
                 >
                     模糊
                 </button>
                 <button
                     class="btn btn-sm m-r-10"
-                    :class="[imgShowType === 'show' ? 'btn-accent' : 'btn-secondary']"
+                    :class="[imgShowType === 'show' ? 'btn-accent' : 'btn-secondary-30']"
                     @click="() => (imgShowType = 'show')"
                 >
                     缩小
                 </button>
                 <button
                     class="btn btn-sm"
-                    :class="[imgShowType === 'default' ? 'btn-accent' : 'btn-secondary']"
+                    :class="[imgShowType === 'default' ? 'btn-accent' : 'btn-secondary-30']"
                     @click="() => (imgShowType = 'default')"
                 >
                     原图
@@ -241,6 +241,14 @@ const searchTag = debounce((val?: any) => {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    .btn {
+        color: #fff;
+    }
+}
+
+.btn-secondary-30 {
+    background-color: hsl(var(--s) / 0.3);
 }
 
 .eh-title-side-tip {

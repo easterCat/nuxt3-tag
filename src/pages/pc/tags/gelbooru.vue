@@ -1,6 +1,6 @@
 <template>
     <div class="gelbooru-tags-page page">
-        <AppHeader />
+        <ClientOnly><AppHeader /></ClientOnly>
         <div class="content">
             <AppBanner placeholder="搜索标签" @search-change="searchChange" />
             <Gelbooru :search-text="searchText"></Gelbooru>

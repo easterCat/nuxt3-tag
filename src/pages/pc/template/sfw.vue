@@ -1,65 +1,67 @@
 <template>
     <div class="template-page page">
-        <AppHeader />
+        <ClientOnly><AppHeader /></ClientOnly>
         <div class="content">
             <div class="banner-con">
                 <AppBanner placeholder="请输入关键标签"></AppBanner>
             </div>
-            <div class="control-blur-btns" v-animate-css="{ direction: 'modifySlideInUp' }">
-                <button
-                    class="btn btn-sm m-r-10"
-                    :class="[openImageFlur ? 'btn-accent' : 'btn-secondary']"
-                    @click="() => (openImageFlur = true)"
-                >
-                    模糊
-                </button>
-                <button
-                    class="btn btn-sm"
-                    :class="[!openImageFlur ? 'btn-accent' : 'btn-secondary']"
-                    @click="() => (openImageFlur = false)"
-                >
-                    原图
-                </button>
-            </div>
-
-            <el-row class="list-con" :gutter="20">
-                <el-col
-                    v-for="(tem, tIndex) in templatesList"
-                    :key="tIndex"
-                    :xs="24"
-                    :sm="12"
-                    :md="6"
-                    :lg="4"
-                    :xl="4"
-                    v-animate-css="{
-                        direction: 'modifySlideInUp',
-                        delay: tIndex * 50,
-                    }"
-                >
-                    <div v-if="tem" class="shadow-xl card card-compact bg-base-100">
-                        <figure>
-                            <nuxt-img
-                                class="image"
-                                :src="tem?.minify_preview"
-                                loading="lazy"
-                                :class="{ 'image-blur': !!openImageFlur }"
-                            />
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="card-title">
-                                {{ tem?.name }}
-                            </h2>
-                            <p>{{ tem?.author }}</p>
-                            <div class="justify-end card-actions">
-                                <button class="btn btn-accent btn-sm" @click="cardClick(tem)">
-                                    模板详情
-                                </button>
+            <ClientOnly>
+                <div class="control-blur-btns" v-animate-css="{ direction: 'modifySlideInUp' }">
+                    <button
+                        class="btn btn-sm m-r-10"
+                        :class="[openImageFlur ? 'btn-accent' : 'btn-secondary-30']"
+                        @click="() => (openImageFlur = true)"
+                    >
+                        模糊
+                    </button>
+                    <button
+                        class="btn btn-sm"
+                        :class="[!openImageFlur ? 'btn-accent' : 'btn-secondary-30']"
+                        @click="() => (openImageFlur = false)"
+                    >
+                        原图
+                    </button>
+                </div>
+            </ClientOnly>
+            <ClientOnly>
+                <el-row v-if="templatesList && templatesList.length" class="list-con" :gutter="20">
+                    <el-col
+                        v-for="(tem, tIndex) in templatesList"
+                        :key="tIndex"
+                        :xs="24"
+                        :sm="12"
+                        :md="6"
+                        :lg="4"
+                        :xl="4"
+                        v-animate-css="{
+                            direction: 'modifySlideInUp',
+                            delay: tIndex * 30,
+                        }"
+                    >
+                        <div v-if="tem" class="shadow-xl card card-compact bg-base-100">
+                            <figure>
+                                <nuxt-img
+                                    class="image"
+                                    :src="tem?.minify_preview"
+                                    loading="lazy"
+                                    :class="{ 'image-blur': !!openImageFlur }"
+                                />
+                            </figure>
+                            <div class="card-body">
+                                <h2 class="card-title">
+                                    {{ tem?.name }}
+                                </h2>
+                                <p>{{ tem?.author }}</p>
+                                <div class="justify-end card-actions">
+                                    <button class="btn btn-accent btn-sm" @click="cardClick(tem)">
+                                        模板详情
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </el-col>
-            </el-row>
-
+                    </el-col>
+                </el-row>
+            </ClientOnly>
             <div class="demo-pagination-block">
                 <div v-if="totalPage && totalPage > 0" class="btn-group">
                     <button class="btn btn-outline" @click="firstPage">首页</button>
@@ -83,6 +85,13 @@
                     </button>
                     <button class="btn btn-outline" @click="nextPage">下一页</button>
                     <button class="btn btn-outline" @click="endPage">尾页</button>
+                    <input
+                        :value="pageIndex"
+                        type="text"
+                        placeholder="go"
+                        class="w-24 max-w-xs input input-bordered"
+                        @keyup.enter="goTo"
+                    />
                 </div>
             </div>
         </div>
@@ -165,6 +174,10 @@ const endPage = () => {
     loadData();
 };
 
+const goTo = (e: any) => {
+    currentPage(Number(e.target.value));
+};
+
 const nextPage = () => {
     if (pageIndex.value >= totalPage.value) return;
     pageIndex.value = pageIndex.value + 1;
@@ -183,6 +196,13 @@ const nextPage = () => {
 
     .control-blur-btns {
         padding: 18px 0px 10px 2px;
+        .btn {
+            color: #fff;
+        }
+    }
+
+    .btn-secondary-30 {
+        background-color: hsl(var(--s) / 0.3);
     }
     .list-con {
         min-height: 50vh;

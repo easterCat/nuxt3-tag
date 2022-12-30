@@ -22,30 +22,34 @@
                             />
                             <Transition name="fade-q">
                                 <div v-if="hoverIndex === iIndex" class="item-wrapper">
-                                    <div
-                                        class="icon-con"
-                                        v-animate-css="{ direction: 'modifySlideInDown' }"
-                                    >
-                                        <span v-if="hoverIndex === iIndex">
-                                            <i-ep-search></i-ep-search>
-                                        </span>
-                                        <span>
-                                            <i-ep-star
-                                                :class="{
-                                                    liked: image?.like_address?.includes(ip),
-                                                }"
-                                                @click="favorite(image?.id, iIndex)"
-                                            ></i-ep-star>
-                                            <i-ep-more @click="preview(image)"></i-ep-more>
-                                        </span>
-                                    </div>
-                                    <div
-                                        class="text-con"
-                                        v-animate-css="{ direction: 'modifySlideInUp' }"
-                                    >
-                                        <p>{{ image?.name }}</p>
-                                        <p>{{ image?.prompt }}</p>
-                                    </div>
+                                    <ClientOnly>
+                                        <div
+                                            class="icon-con"
+                                            v-animate-css="{ direction: 'modifySlideInDown' }"
+                                        >
+                                            <span v-if="hoverIndex === iIndex">
+                                                <i-ep-search></i-ep-search>
+                                            </span>
+                                            <span>
+                                                <i-ep-star
+                                                    :class="{
+                                                        liked: image?.like_address?.includes(ip),
+                                                    }"
+                                                    @click="favorite(image?.id, iIndex)"
+                                                ></i-ep-star>
+                                                <i-ep-more @click="preview(image)"></i-ep-more>
+                                            </span>
+                                        </div>
+                                    </ClientOnly>
+                                    <ClientOnly>
+                                        <div
+                                            class="text-con"
+                                            v-animate-css="{ direction: 'modifySlideInUp' }"
+                                        >
+                                            <p>{{ image?.name }}</p>
+                                            <p>{{ image?.prompt }}</p>
+                                        </div>
+                                    </ClientOnly>
                                 </div>
                             </Transition>
                         </div>
@@ -63,7 +67,7 @@
 <script lang="ts" setup>
 // https://juejin.cn/post/7049942717442293773 瀑布流实现
 import { ref, toRaw, Ref } from 'vue';
-import { debounce } from 'lodash';
+import lodash from 'lodash';
 
 interface ImageItem {
     name: string;
@@ -370,9 +374,9 @@ const init = () => {
     preload();
 };
 
-const debounceScroll = debounce(scrollLoading, 1500);
+const debounceScroll = lodash.debounce(scrollLoading, 1500);
 
-const debounceResize = debounce(initResize, 800);
+const debounceResize = lodash.debounce(initResize, 800);
 
 onMounted(() => {
     ip.value = $store.get('ip');

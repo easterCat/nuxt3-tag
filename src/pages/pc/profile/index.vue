@@ -1,6 +1,6 @@
 <template>
     <div class="profile-page page">
-        <AppHeader />
+        <ClientOnly><AppHeader /></ClientOnly>
         <div class="content">
             <div class="banner-con">
                 <div class="banner-image">
@@ -10,14 +10,14 @@
             <div class="profile-con">
                 <div class="avatar-con">
                     <div class="avatar">
-                        <div class="w-24 mask mask-squircle">
+                        <div class="w-32 rounded-full">
                             <img src="https://placeimg.com/192/192/people" />
                         </div>
                     </div>
                 </div>
                 <div class="info-con">
                     <div class="left">
-                        <div class="stats shadow">
+                        <div class="shadow stats">
                             <div class="stat place-items-center">
                                 <div class="stat-title">关注</div>
                                 <div class="stat-value">999</div>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="center">
-                        <div class="stats shadow">
+                        <div class="shadow stats">
                             <div class="stat place-items-center">
                                 <div class="stat-title">昵称</div>
                                 <div class="stat-value">{{ indexStore.nickname }}</div>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="right">
-                        <div class="stats shadow">
+                        <div class="shadow stats">
                             <div class="stat place-items-center">
                                 <div class="stat-title">用户等级</div>
                                 <div class="stat-value">{{ userLevel() }}</div>
@@ -70,33 +70,35 @@
             </div>
             <div class="collect-con">
                 <el-row class="list-con" :gutter="20">
-                    <el-col
-                        v-for="(tem, tIndex) in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-                        :key="tIndex"
-                        :xs="24"
-                        :sm="12"
-                        :md="6"
-                        :lg="4"
-                        :xl="4"
-                        v-animate-css="{
-                            direction: 'modifySlideInUp',
-                            delay: tIndex * 50,
-                        }"
-                    >
-                        <div class="card card-compact bg-base-100 shadow-xl m-b-20">
-                            <figure>
-                                <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
-                            </figure>
-                            <div class="card-body">
-                                <h2 class="card-title">Shoes!</h2>
-                                <p>If a dog chews shoes whose shoes does he choose?</p>
-                                <div class="card-actions justify-end">
-                                    <button class="btn btn-sm btn-accent">模版详情</button>
-                                    <button class="btn btn-sm btn-secondary">取消收藏</button>
+                    <ClientOnly>
+                        <el-col
+                            v-for="(tem, tIndex) in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                            :key="tIndex"
+                            :xs="24"
+                            :sm="12"
+                            :md="6"
+                            :lg="4"
+                            :xl="4"
+                            v-animate-css="{
+                                direction: 'modifySlideInUp',
+                                delay: tIndex * 50,
+                            }"
+                        >
+                            <div class="shadow-xl card card-compact bg-base-100 m-b-20">
+                                <figure>
+                                    <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
+                                </figure>
+                                <div class="card-body">
+                                    <h2 class="card-title">Shoes!</h2>
+                                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                                    <div class="justify-end card-actions">
+                                        <button class="btn btn-sm btn-accent">模版详情</button>
+                                        <button class="btn btn-sm btn-secondary">取消收藏</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </el-col>
+                        </el-col>
+                    </ClientOnly>
                 </el-row>
             </div>
         </div>
@@ -176,7 +178,7 @@ const userLevel = () => {
 
     .avatar-con {
         height: 0px;
-        transform: translateY(-85px);
+        transform: translateY(-120px);
         background: #fff;
         z-index: 100;
     }

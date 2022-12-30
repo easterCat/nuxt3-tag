@@ -25,40 +25,50 @@
                             button-size="large"
                             @submit="createNewShopItem"
                         ></PcAnimationButton>
+                        <PcAnimationButton
+                            :button-style="1"
+                            class="btn-accent"
+                            button-text="生成图片"
+                            button-size="large"
+                            @submit="generateImage"
+                        ></PcAnimationButton>
                     </span>
                     <i-ep-close-bold @click="shopEvent"></i-ep-close-bold>
                 </div>
                 <div class="shop-card-con">
-                    <draggable
-                        v-model="shopList"
-                        :component-data="{ name: 'list' }"
-                        :drag-options="dragOptions"
-                        :item-key="
+                    <div class="left">
+                        <draggable
+                            v-model="shopList"
+                            :component-data="{ name: 'list' }"
+                            :drag-options="dragOptions"
+                            :item-key="
                             (e:any) => {
                                 createKey(e);
                             }
                         "
-                    >
-                        <template #item="{ element }">
-                            <div class="shop-item">
-                                <div>
-                                    <span>{{ element.text }}</span>
-                                    <i-ep-plus
-                                        class="add"
-                                        @click="addOneCircle(element.text)"
-                                    ></i-ep-plus>
-                                    <i-ep-minus
-                                        class="minus"
-                                        @click="removeOneCircle(element.text)"
-                                    ></i-ep-minus>
-                                    <i-ep-delete-filled
-                                        class="remove"
-                                        @click="removeShopByName(element.text)"
-                                    ></i-ep-delete-filled>
+                        >
+                            <template #item="{ element }">
+                                <div class="shop-item">
+                                    <div>
+                                        <span>{{ element.text }}</span>
+                                        <i-ep-plus
+                                            class="add"
+                                            @click="addOneCircle(element.text)"
+                                        ></i-ep-plus>
+                                        <i-ep-minus
+                                            class="minus"
+                                            @click="removeOneCircle(element.text)"
+                                        ></i-ep-minus>
+                                        <i-ep-delete-filled
+                                            class="remove"
+                                            @click="removeShopByName(element.text)"
+                                        ></i-ep-delete-filled>
+                                    </div>
                                 </div>
-                            </div>
-                        </template>
-                    </draggable>
+                            </template>
+                        </draggable>
+                    </div>
+                    <div v-if="gImage" class="right"><img :src="gImage" alt="" /></div>
                 </div>
             </div>
         </app-animate>
@@ -72,7 +82,6 @@ import { uuid } from 'vue-uuid';
 defineProps(['modelValue']);
 const $emit = defineEmits(['update:modelValue']);
 
-// data
 const dragOptions = reactive({
     animation: 400,
     group: 'people',
@@ -80,6 +89,7 @@ const dragOptions = reactive({
     ghostClass: 'ghost',
 });
 const {
+    shop,
     shopList,
     onlySetShop,
     initShop,
@@ -90,6 +100,7 @@ const {
     removeOneCircle,
     createNewShopItem,
 } = useShop();
+const gImage = ref('');
 
 watch(shopList, (newValue) => {
     onlySetShop(newValue.map((i: any) => i.text || '').join(', '));
@@ -101,6 +112,25 @@ const shopEvent = () => {
 
 const createKey = (e: any) => {
     return `${e}-${uuid.v4()}`;
+};
+
+const generateImage = async () => {
+    // const { NovalApi } = useApi();
+    // const result = await NovalApi.generate({
+    //     height: 768,
+    //     n_samples: 1,
+    //     prompt: shop.value,
+    //     sampler: 'k_euler_ancestral',
+    //     scale: 12,
+    //     seed: 2081400182,
+    //     steps: 28,
+    //     uc: 'lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry',
+    //     ucPreset: 0,
+    //     width: 512,
+    // });
+    // console.log(result);
+    // const data = result.split('data:')[1];
+    // gImage.value = data;
 };
 
 onMounted(() => {
@@ -154,11 +184,20 @@ header {
 
     .shop-card-con {
         margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
 
-        > div {
-            display: flex;
-            justify-content: flex-start;
-            flex-wrap: wrap;
+        .left {
+            flex: 1;
+            > div {
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+        }
+
+        .right {
+            flex: 1;
         }
     }
 

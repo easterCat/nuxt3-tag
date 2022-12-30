@@ -1,7 +1,7 @@
 <template>
     <div class="login-page page bg-base-100">
         <div class="content">
-            <img src="https://image.lexica.art/md/07c55f51-4c5f-4c6b-a06f-aebe364958f5" alt="" />
+            <!-- <img src="https://image.lexica.art/md/07c55f51-4c5f-4c6b-a06f-aebe364958f5" alt="" /> -->
             <div class="outer-con">
                 <div class="inner-con">
                     <div v-if="pageStatus === 'login'" class="login-con">
@@ -28,33 +28,11 @@
                                     class="w-full input input-bordered"
                                 />
                             </div>
-                            <!-- <div class="item-3">
-                                <label class="label">
-                                    <span class="label-text">昵称</span>
-                                </label>
-                                <input
-                                    v-model="nickname"
-                                    type="text"
-                                    placeholder="请输入昵称"
-                                    class="w-full input input-bordered"
-                                />
-                            </div>
-                            <div class="item-4">
-                                <label class="label">
-                                    <span class="label-text">邮箱</span>
-                                </label>
-                                <input
-                                    v-model="email"
-                                    type="text"
-                                    placeholder="请输入昵称"
-                                    class="w-full input input-bordered"
-                                />
-                            </div> -->
                         </div>
                         <div class="item-5">
                             <button class="btn btn-accent btn-block" @click="login">登录</button>
                         </div>
-                        <a class="link link-primary" @click="changeStatus('register')">
+                        <a class="link link-accent" @click="changeStatus('register')">
                             没有账号,去注册
                         </a>
                     </div>
@@ -108,7 +86,7 @@
                         <div class="item-5">
                             <button class="btn btn-accent btn-block" @click="register">注册</button>
                         </div>
-                        <a class="link link-primary" @click="changeStatus('login')">
+                        <a class="link link-accent" @click="changeStatus('login')">
                             已有账号,去登录
                         </a>
                     </div>
@@ -126,10 +104,10 @@ const router = useRouter();
 const indexStore = useIndexStore();
 
 const pageStatus = ref('login');
-const username = ref('liudehua001');
+const username = ref('admin');
 const password = ref('123456');
-const email = ref('liudehua001@qq.com');
-const nickname = ref('刘德华001');
+const email = ref('admin@qq.com');
+const nickname = ref('超级管理员');
 
 const changeStatus = (status: string) => {
     pageStatus.value = status;
@@ -163,8 +141,6 @@ const login = async () => {
     const result = await AuthApi.login({
         username: username.value,
         password: password.value,
-        // email: email.value,
-        // nickname: nickname.value,
     });
     const { code, data, msg } = result;
     indexStore.setUserInfo(data?.user);
@@ -215,7 +191,7 @@ const login = async () => {
         justify-content: center;
         align-items: center;
         background: transparent;
-        background: hsl(var(--a) / 0.2);
+        background: hsl(var(--a) / 0);
         width: 800px;
         height: 680px;
         border-radius: 12px;
@@ -229,7 +205,7 @@ const login = async () => {
         display: flex;
         justify-content: center;
         align-items: center;
-        background: hsl(var(--s) / 0.3);
+        background: hsl(var(--p) / 0);
         width: 700px;
         height: 600px;
         border-radius: 12px;

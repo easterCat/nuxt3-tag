@@ -1,0 +1,1 @@
+import{q as a}from"./pinia.7ac5f2a7.js";import{e as s,F as e,G as p}from"./element-plus.3e7898c2.js";import"./lodash.93025024.js";import"./dayjs.3bf4ac2a.js";const o={class:"index-page"},t=s({__name:"index",setup:s=>(a().replace({path:"/pc/home"}),(a,s)=>(e(),p("div",o)))});export{t as default};

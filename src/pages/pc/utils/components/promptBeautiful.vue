@@ -90,11 +90,11 @@
                     <p>{{ history?.prompt }}</p>
                     <div class="history-button">
                         <button
-                            class="btn btn-sm btn-primary m-r-10"
-                            @click="setHistory(history?.prompt)"
+                            class="btn btn-sm btn-secondary m-r-10"
+                            @click="removeHistory(hIndex)"
                         >
-                            <slot name="icon"><i-ep-check class="m-r-4"></i-ep-check></slot>
-                            选择
+                            <slot name="icon"><i-ep-delete class="m-r-4"></i-ep-delete></slot>
+                            删除
                         </button>
                         <button class="btn btn-sm btn-accent m-r-10" @click="copy(history?.prompt)">
                             <slot name="icon">
@@ -102,9 +102,12 @@
                             </slot>
                             复制
                         </button>
-                        <button class="btn btn-sm btn-secondary" @click="removeHistory(hIndex)">
-                            <slot name="icon"><i-ep-delete class="m-r-4"></i-ep-delete></slot>
-                            删除
+                        <button
+                            class="btn btn-sm btn-primary m-r-10"
+                            @click="setHistory(history?.prompt)"
+                        >
+                            <slot name="icon"><i-ep-check class="m-r-4"></i-ep-check></slot>
+                            选择
                         </button>
                     </div>
                 </div>
@@ -371,5 +374,9 @@ const removeAllHistory = () => {
     font-size: 18px;
     color: gray;
     margin-left: 10px;
+}
+
+:deep(.el-textarea) {
+    border: 1px solid hsl(var(--a) / 0.8);
 }
 </style>

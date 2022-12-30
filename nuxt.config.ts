@@ -1,25 +1,20 @@
 import AutoImport from 'unplugin-auto-import/vite';
-import Icons from 'unplugin-icons/vite';
-import IconsResolver from 'unplugin-icons/resolver';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
 import Inspect from 'vite-plugin-inspect';
 
-const ssrStatus = false;
+let ssrStatus = true;
+if (process.env.npm_lifecycle_event === 'generate') {
+    ssrStatus = false;
+}
 
 export default defineNuxtConfig({
     ssr: ssrStatus,
     sourcemap: false,
     srcDir: 'src/',
-    css: [
-        '@/assets/scss/index.scss',
-        '@/assets/scss/animate.scss',
-        '@/assets/scss/layout.scss',
-        '@/assets/scss/flex.scss',
-        '@/assets/scss/box.scss',
-        '@/assets/scss/media.scss',
-    ],
+    css: ['@/assets/scss/index.scss', '@/assets/scss/element.modify.scss'],
     modules: [
         '@nuxt/image-edge',
         '@nuxtjs/tailwindcss',
@@ -36,7 +31,6 @@ export default defineNuxtConfig({
     },
     app: {
         baseURL: '/nuxt3-tag',
-        // layoutTransition: { name: 'layout', mode: 'out-in' },
         head: {
             charset: 'utf-8',
             viewport:
@@ -47,6 +41,11 @@ export default defineNuxtConfig({
                     rel: 'icon',
                     type: 'image/x-icon',
                     href: '/nuxt3-tag/dute_favicon_32x32.ico',
+                },
+                {
+                    rel: 'stylesheet',
+                    type: 'text/css',
+                    href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css',
                 },
             ],
             meta: [
@@ -67,6 +66,7 @@ export default defineNuxtConfig({
             API_DATA_FROM: process.env.API_DATA_FROM,
             FLASK_BASE_API: process.env.FLASK_BASE_API,
             GELBOORU_TOKEN: process.env.GELBOORU_TOKEN,
+            IP_ADDRESS: process.env.IP_ADDRESS,
         },
     },
     vite: {
@@ -78,32 +78,28 @@ export default defineNuxtConfig({
             },
         },
         build: {
+            chunkSizeWarningLimit: 1600,
             rollupOptions: {
                 output: {
                     manualChunks(id: any): any {
-                        // element-plus 通过analyze分析得出entry中的大文件，进行抽离
-                        if (id.includes('node_modules/element-plus')) {
-                            return 'element-plus';
-                        }
+                        const chunks = [
+                            'element-plus',
+                            'store',
+                            'pinia',
+                            'uuid',
+                            'vue-uuid',
+                            'dayjs',
+                            'sortablejs',
+                            'lodash',
+                            'vuedraggable',
+                        ];
 
-                        // vuedraggable
-                        if (id.includes('node_modules/vuedraggable')) {
-                            return 'vuedraggable';
-                        }
-
-                        // sortablejs
-                        if (id.includes('node_modules/sortablejs')) {
-                            return 'sortablejs';
-                        }
-
-                        // lodash
-                        if (id.includes('node_modules/lodash')) {
-                            return 'lodash';
-                        }
-
-                        // default
-                        if (id.includes('node_modules')) {
-                            return 'vendor';
+                        if (id.includes('/node_modules/')) {
+                            for (const chunkName of chunks) {
+                                if (id.includes(chunkName)) {
+                                    return chunkName;
+                                }
+                            }
                         }
                     },
                 },
@@ -111,23 +107,6 @@ export default defineNuxtConfig({
             minify: 'terser',
         },
         plugins: [
-            // 解决自动导入message toast样式丢失问题
-            createStyleImportPlugin({
-                resolves: [ElementPlusResolve()],
-                libs: [
-                    {
-                        libraryName: 'element-plus',
-                        esModule: true,
-                        resolveStyle: (name) => {
-                            if (!name.includes('id-injection-key')) {
-                                return `element-plus/theme-chalk/${name}.css`;
-                            } else {
-                                return '';
-                            }
-                        },
-                    },
-                ],
-            }),
             AutoImport({
                 resolvers: [
                     ElementPlusResolver({ ssr: ssrStatus }),

@@ -1,20 +1,26 @@
 <template>
     <div class="tags-page page">
-        <AppHeader />
+        <ClientOnly><AppHeader /></ClientOnly>
         <div class="content">
             <AppBanner placeholder="搜索标签" @search-change="searchChange" />
             <pc-area-title title="标签类别"></pc-area-title>
             <div class="type-list">
-                <PcAnimationButton
-                    v-for="(m, mIndex) in tagsMenus"
-                    :key="mIndex"
-                    :index="mIndex + ''"
-                    :button-style="1"
-                    button-size="larger"
-                    :class="[mIndex === tagActive ? 'btn-accent' : 'btn-secondary']"
-                    :button-text="m?.name"
-                    @submit="menuItemClick(mIndex)"
-                ></PcAnimationButton>
+                <ClientOnly>
+                    <PcAnimationButton
+                        v-for="(m, mIndex) in tagsMenus"
+                        :key="mIndex"
+                        :index="mIndex + ''"
+                        :button-style="1"
+                        button-size="larger"
+                        :class="[mIndex === tagActive ? 'btn-accent' : 'btn-secondary']"
+                        :button-text="m?.name"
+                        v-animate-css="{
+                            direction: 'modifySlideInUp',
+                            delay: mIndex * 40,
+                        }"
+                        @submit="menuItemClick(mIndex)"
+                    ></PcAnimationButton>
+                </ClientOnly>
             </div>
             <pc-area-title title="标签列表">
                 <template #titleSide>
@@ -30,30 +36,40 @@
             </pc-area-title>
 
             <div class="tag-list">
-                <div v-for="(o, oIndex) in tagsLists" :key="oIndex" class="tag-item">
-                    <div v-if="showImage" class="image-con">
-                        <img
-                            src="https://image.lexica.art/md/6612175d-e172-4ae2-87a1-da2d4e7d2f6b"
-                        />
-                    </div>
+                <ClientOnly>
+                    <div
+                        v-for="(o, oIndex) in tagsLists"
+                        :key="oIndex"
+                        class="tag-item"
+                        v-animate-css="{
+                            direction: 'modifySlideInUp',
+                            delay: oIndex * 40,
+                        }"
+                    >
+                        <div v-if="showImage" class="image-con">
+                            <img
+                                src="https://image.lexica.art/md/6612175d-e172-4ae2-87a1-da2d4e7d2f6b"
+                            />
+                        </div>
 
-                    <div class="text-con">
-                        <p class="zh">{{ o?.zh }}</p>
-                        <p class="en">{{ o?.en }}</p>
+                        <div class="text-con">
+                            <p class="zh">{{ o?.zh }}</p>
+                            <p class="en">{{ o?.en }}</p>
+                        </div>
+                        <div>
+                            <el-button size="small" circle @click="addShop(o?.en)">
+                                <slot name="icon">
+                                    <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                                </slot>
+                            </el-button>
+                            <el-button size="small" circle @click="copy(o?.en)">
+                                <slot name="icon">
+                                    <i-ep-document-copy></i-ep-document-copy>
+                                </slot>
+                            </el-button>
+                        </div>
                     </div>
-                    <div>
-                        <el-button size="small" circle @click="addShop(o?.en)">
-                            <slot name="icon">
-                                <i-ep-shopping-trolley></i-ep-shopping-trolley>
-                            </slot>
-                        </el-button>
-                        <el-button size="small" circle @click="copy(o?.en)">
-                            <slot name="icon">
-                                <i-ep-document-copy></i-ep-document-copy>
-                            </slot>
-                        </el-button>
-                    </div>
-                </div>
+                </ClientOnly>
             </div>
         </div>
     </div>

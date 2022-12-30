@@ -1,5 +1,6 @@
 import { uuid } from 'vue-uuid';
 import { useIndexStore } from '../store';
+import { errorMessage } from '@/utils/message';
 
 interface resultJson {
     code: number;
@@ -40,6 +41,10 @@ const fetch = (url: string, options?: any, from?: string): Promise<any> => {
             if (result) {
                 if (result?.code === 20001) {
                     await indexStore.refresh();
+                } else if (result?.code === 20002 || result?.code === 20003) {
+                    errorMessage(result?.msg);
+                } else if (result?.code === 500) {
+                    errorMessage(result?.msg);
                 } else {
                     resolve(result);
                 }

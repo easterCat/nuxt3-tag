@@ -1,7 +1,9 @@
 <template>
     <div class="default-layout">
         <slot />
-        <PcFixMenu></PcFixMenu>
+        <ClientOnly>
+            <PcFixMenu></PcFixMenu>
+        </ClientOnly>
     </div>
 </template>
 

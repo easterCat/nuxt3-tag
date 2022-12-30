@@ -1,9 +1,9 @@
 <template>
     <div class="links-page page bg-base-100">
-        <AppHeader />
+        <ClientOnly><AppHeader /></ClientOnly>
         <AppAnimate>
             <div class="content">
-                <pc-link-list ref="childRef"></pc-link-list>
+                <pc-link-list :showLeftMenu="true"></pc-link-list>
             </div>
         </AppAnimate>
         <AppFooter />

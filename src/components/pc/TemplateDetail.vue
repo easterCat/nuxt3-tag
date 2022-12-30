@@ -92,7 +92,7 @@
                         </div>
                         <div class="button-con">
                             <button class="btn btn-secondary m-r-10" @click="close">关闭</button>
-                            <button class="btn btn-accent">导入购物车</button>
+                            <button class="btn btn-accent" @click="exportShop">导入购物车</button>
                         </div>
                     </div>
                 </div>
@@ -111,6 +111,7 @@ watch(
     },
 );
 
+const { setShop } = useShop();
 const emits = defineEmits(['update:modelValue']);
 const { copy } = useCopy();
 const close = () => {
@@ -131,6 +132,10 @@ const move = () => {
     };
     document.body.style.overflowY = ''; // 出现滚动条
     document.removeEventListener('touchmove', mo, false);
+};
+
+const exportShop = () => {
+    setShop(props.currentTemplate?.prompt);
 };
 
 onMounted(() => {

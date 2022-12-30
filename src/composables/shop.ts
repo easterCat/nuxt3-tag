@@ -1,4 +1,5 @@
 import { Action, ElMessageBox } from 'element-plus';
+import { notification, warnNotification } from '@/utils/nitification';
 
 // 大型项目中，建议使用pinia
 export const useShop = () => {
@@ -26,7 +27,7 @@ export const useShop = () => {
         shop.value = data;
         _shopToList();
         _setStore();
-        return message('初始化购物车');
+        return notification('初始化购物车');
     };
 
     const clearShop = () => {
@@ -37,7 +38,7 @@ export const useShop = () => {
                     shop.value = '';
                     shopList.value = [];
                     $store.remove(key);
-                    return message('清空购物车');
+                    return notification('清空购物车');
                 }
             },
         });
@@ -45,22 +46,22 @@ export const useShop = () => {
 
     const addShop = (data: any) => {
         if (!data) {
-            return warnMessage('错误数据');
+            return warnNotification('错误数据');
         }
         if (shop.value.includes(data)) {
-            return warnMessage('购物车已存在该标签');
+            return warnNotification('购物车已存在该标签');
         }
         shopList.value.push({ text: data });
         _listToShop();
         _setStore();
-        return message('添加购物车成功');
+        return notification('添加购物车成功');
     };
 
     const removeShop = (index: number) => {
         shopList.value.splice(index, 1);
         _listToShop();
         _setStore();
-        return message('删除成功');
+        return notification('删除成功');
     };
 
     const removeShopByName = (name: number) => {
@@ -70,7 +71,7 @@ export const useShop = () => {
         shopList.value.splice(findIndex, 1);
         _listToShop();
         _setStore();
-        return message('删除成功');
+        return notification('删除成功');
     };
 
     const renameShopName = (name: number) => {
@@ -163,19 +164,3 @@ export const useShop = () => {
         createNewShopItem,
     };
 };
-
-function message(msg: string) {
-    return ElMessage({
-        showClose: true,
-        message: msg,
-        type: 'success',
-    });
-}
-
-function warnMessage(msg: string) {
-    return ElMessage({
-        showClose: true,
-        message: msg,
-        type: 'warning',
-    });
-}

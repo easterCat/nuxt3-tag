@@ -7,6 +7,8 @@ import DefaultTagsApi from '~~/src/api/defaultTags';
 import LinkApi from '~~/src/api/link';
 import TemplateApi from '~~/src/api/template';
 import AuthApi from '~~/src/api/auth';
+import NovalApi from '~~/src/api/noval';
+import DanbooruApi from '~~/src/api/danbooru';
 
 export default {
     EhtagsApi,
@@ -18,4 +20,6 @@ export default {
     LinkApi,
     TemplateApi,
     AuthApi,
+    NovalApi,
+    DanbooruApi,
 };

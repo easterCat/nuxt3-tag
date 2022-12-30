@@ -1,20 +1,26 @@
 <template>
     <div class="chitu-tags-page page">
-        <AppHeader />
+        <ClientOnly><AppHeader /></ClientOnly>
         <div class="content">
             <AppBanner placeholder="搜索标签" @search-change="searchChange" />
             <pc-area-title title="标签类别"></pc-area-title>
             <div class="type-list">
-                <PcAnimationButton
-                    v-for="(m, mIndex) in tagsMenus"
-                    :key="mIndex"
-                    :index="mIndex + ''"
-                    :button-style="1"
-                    button-size="larger"
-                    :class="[mIndex === tagActive ? 'btn-accent' : 'btn-primary-30']"
-                    :button-text="m?.name"
-                    @submit="menuItemClick(mIndex)"
-                ></PcAnimationButton>
+                <ClientOnly>
+                    <PcAnimationButton
+                        v-for="(m, mIndex) in tagsMenus"
+                        :key="mIndex"
+                        :index="mIndex + ''"
+                        :button-style="1"
+                        button-size="larger"
+                        :class="[mIndex === tagActive ? 'btn-accent' : 'btn-primary-30']"
+                        :button-text="m?.name"
+                        v-animate-css="{
+                            direction: 'modifySlideInUp',
+                            delay: mIndex * 40,
+                        }"
+                        @submit="menuItemClick(mIndex)"
+                    ></PcAnimationButton>
+                </ClientOnly>
             </div>
             <pc-area-title title="标签列表">
                 <template #titleSide>
@@ -31,119 +37,131 @@
 
             <template v-if="index">
                 <div class="tag-list">
-                    <div
-                        v-for="(o, oIndex) in tagsLists"
-                        :key="oIndex"
-                        class="tag-item-img ll-media bg-base-100"
-                        :data-index="oIndex"
-                    >
+                    <ClientOnly>
                         <div
-                            v-if="showImage && tagActive !== 5 && tagActive !== 6"
-                            class="image-con"
+                            v-for="(o, oIndex) in tagsLists"
+                            :key="oIndex"
+                            class="tag-item-img ll-media bg-base-100"
+                            :data-index="oIndex"
+                            v-animate-css="{
+                                direction: 'modifySlideInUp',
+                                delay: oIndex * 40,
+                            }"
                         >
-                            <nuxt-img
-                                :src="o?.minify_preview ?? ''"
-                                loading="lazy"
-                                @click="preview(o)"
-                            />
-                        </div>
-                        <div class="text-con">
-                            <el-tooltip
-                                class="box-item"
-                                effect="dark"
-                                :content="o?.promptEN"
-                                placement="top"
+                            <div
+                                v-if="showImage && tagActive !== 5 && tagActive !== 6"
+                                class="image-con"
                             >
-                                <p v-if="o?.title" class="en">
-                                    {{
-                                        o?.title.length > 24
-                                            ? o?.title.slice(0, 24) + '...'
-                                            : o?.title
-                                    }}
-                                </p>
-                                <p v-else class="en">
-                                    {{
-                                        o?.promptEN.length > 24
-                                            ? o?.promptEN.slice(0, 24) + '...'
-                                            : o?.promptEN
-                                    }}
-                                </p>
-                            </el-tooltip>
+                                <nuxt-img
+                                    :src="o?.minify_preview ?? ''"
+                                    loading="lazy"
+                                    @click="preview(o)"
+                                />
+                            </div>
+                            <div class="text-con">
+                                <el-tooltip
+                                    class="box-item"
+                                    effect="dark"
+                                    :content="o?.promptEN"
+                                    placement="top"
+                                >
+                                    <p v-if="o?.title" class="en">
+                                        {{
+                                            o?.title.length > 24
+                                                ? o?.title.slice(0, 24) + '...'
+                                                : o?.title
+                                        }}
+                                    </p>
+                                    <p v-else class="en">
+                                        {{
+                                            o?.promptEN.length > 24
+                                                ? o?.promptEN.slice(0, 24) + '...'
+                                                : o?.promptEN
+                                        }}
+                                    </p>
+                                </el-tooltip>
+                            </div>
+                            <div class="button-con">
+                                <button
+                                    class="btn btn-sm btn-circle btn-accent m-r-10"
+                                    @click="addShop(o?.promptEN)"
+                                >
+                                    <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                                </button>
+                                <button
+                                    class="btn btn-sm btn-circle btn-secondary"
+                                    @click="copy(o?.promptEN)"
+                                >
+                                    <i-ep-document-copy></i-ep-document-copy>
+                                </button>
+                            </div>
                         </div>
-                        <div class="button-con">
-                            <button
-                                class="btn btn-sm btn-circle btn-accent m-r-10"
-                                @click="addShop(o?.promptEN)"
-                            >
-                                <i-ep-shopping-trolley></i-ep-shopping-trolley>
-                            </button>
-                            <button
-                                class="btn btn-sm btn-circle btn-secondary"
-                                @click="copy(o?.promptEN)"
-                            >
-                                <i-ep-document-copy></i-ep-document-copy>
-                            </button>
-                        </div>
-                    </div>
+                    </ClientOnly>
                 </div>
             </template>
             <template v-if="tagActive">
                 <div class="tag-list">
-                    <div
-                        v-for="(o, oIndex) in tagsLists"
-                        class="tag-item-img ll-media bg-base-100"
-                        :data-index="oIndex"
-                        :key="oIndex"
-                    >
+                    <ClientOnly>
                         <div
-                            v-if="showImage && tagActive !== 5 && tagActive !== 6"
-                            class="image-con"
+                            v-for="(o, oIndex) in tagsLists"
+                            class="tag-item-img ll-media bg-base-100"
+                            :data-index="oIndex"
+                            :key="oIndex"
+                            v-animate-css="{
+                                direction: 'modifySlideInUp',
+                                delay: oIndex * 40,
+                            }"
                         >
-                            <nuxt-img
-                                v-if="o?.fileUrl"
-                                :src="o?.fileUrl"
-                                loading="lazy"
-                                @click="preview(o)"
-                            />
-                        </div>
-                        <div class="text-con">
-                            <el-tooltip
-                                class="box-item"
-                                effect="dark"
-                                :content="o?.promptEN"
-                                placement="top"
+                            <div
+                                v-if="showImage && tagActive !== 5 && tagActive !== 6"
+                                class="image-con"
                             >
-                                <p v-if="o?.title" class="en">
-                                    {{
-                                        o?.title.length > 24
-                                            ? o?.title.slice(0, 24) + '...'
-                                            : o?.title
-                                    }}
-                                </p>
-                                <p v-else class="en">
-                                    {{
-                                        o?.promptEN.length > 24
-                                            ? o?.promptEN.slice(0, 24) + '...'
-                                            : o?.promptEN
-                                    }}
-                                </p>
-                            </el-tooltip>
+                                <nuxt-img
+                                    v-if="o?.fileUrl"
+                                    :src="o?.fileUrl"
+                                    loading="lazy"
+                                    @click="preview(o)"
+                                />
+                            </div>
+                            <div class="text-con">
+                                <el-tooltip
+                                    class="box-item"
+                                    effect="dark"
+                                    :content="o?.promptEN"
+                                    placement="top"
+                                >
+                                    <p v-if="o?.title" class="en">
+                                        {{
+                                            o?.title.length > 24
+                                                ? o?.title.slice(0, 24) + '...'
+                                                : o?.title
+                                        }}
+                                    </p>
+                                    <p v-else class="en">
+                                        {{
+                                            o?.promptEN.length > 24
+                                                ? o?.promptEN.slice(0, 24) + '...'
+                                                : o?.promptEN
+                                        }}
+                                    </p>
+                                </el-tooltip>
+                            </div>
+                            <div class="button-con">
+                                <button
+                                    class="btn btn-sm btn-circle btn-accent m-r-10"
+                                    @click="addShop(o?.promptEN)"
+                                >
+                                    <i-ep-shopping-trolley></i-ep-shopping-trolley>
+                                </button>
+                                <button
+                                    class="btn btn-sm btn-circle btn-secondary"
+                                    @click="copy(o?.promptEN)"
+                                >
+                                    <i-ep-document-copy></i-ep-document-copy>
+                                </button>
+                            </div>
                         </div>
-                        <div class="button-con">
-                            <button
-                                class="btn btn-sm btn-circle btn-accent m-r-10"
-                                @click="addShop(o?.promptEN)"
-                            >
-                                <i-ep-shopping-trolley></i-ep-shopping-trolley>
-                            </button>
-                            <button
-                                class="btn btn-sm btn-circle btn-secondary"
-                                @click="copy(o?.promptEN)"
-                            >
-                                <i-ep-document-copy></i-ep-document-copy>
-                            </button>
-                        </div>
-                    </div>
+                    </ClientOnly>
                 </div>
             </template>
             <template v-else>
@@ -210,20 +228,61 @@
 
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
-import { throttle } from 'lodash';
+import lodash from 'lodash';
 
 const { copy } = useCopy();
 const { addShop } = useShop();
 const { TemplateApi } = useApi();
 
+const getFileData = async (url: string): any[] => {
+    const result = await useFetch(url);
+    const data: any = result.data;
+    return JSON.parse(data._rawValue);
+};
+
 const tagsMenus = reactive([
-    { name: '参考图', file: import('@/assets/json/NovelAI_cankaotu.json') },
-    { name: '人物', file: import('@/assets/json/NovelAI_huageren.json') },
-    { name: '物体', file: import('@/assets/json/NovelAI_huagewuti.json') },
-    { name: '构图', file: import('@/assets/json/NovelAI_goutu.json') },
-    { name: '画风', file: import('@/assets/json/NovelAI_huafeng.json') },
-    { name: '正面词组', file: import('@/assets/json/NovelAI_zhengmiantag.json') },
-    { name: '负面词组', file: import('@/assets/json/NovelAI_fumiantag.json') },
+    {
+        name: '参考图',
+        file: getFileData(
+            'https://raw.githubusercontent.com/easterCat/nuxt-utils-assets/main/json/NovelAI_cankaotu.json',
+        ),
+    },
+    {
+        name: '人物',
+        file: getFileData(
+            'https://raw.githubusercontent.com/easterCat/nuxt-utils-assets/main/json/NovelAI_huageren.json',
+        ),
+    },
+    {
+        name: '物体',
+        file: getFileData(
+            'https://raw.githubusercontent.com/easterCat/nuxt-utils-assets/main/json/NovelAI_huagewuti.json',
+        ),
+    },
+    {
+        name: '构图',
+        file: getFileData(
+            'https://raw.githubusercontent.com/easterCat/nuxt-utils-assets/main/json/NovelAI_goutu.json',
+        ),
+    },
+    {
+        name: '画风',
+        file: getFileData(
+            'https://raw.githubusercontent.com/easterCat/nuxt-utils-assets/main/json/NovelAI_huafeng.json',
+        ),
+    },
+    {
+        name: '正面词组',
+        file: getFileData(
+            'https://raw.githubusercontent.com/easterCat/nuxt-utils-assets/main/json/NovelAI_zhengmiantag.json',
+        ),
+    },
+    {
+        name: '负面词组',
+        file: getFileData(
+            'https://raw.githubusercontent.com/easterCat/nuxt-utils-assets/main/json/NovelAI_fumiantag.json',
+        ),
+    },
 ]);
 const tagsLists: Ref<any[]> = ref<any[]>([]);
 const tagActive: Ref<number> = ref<number>(0);
@@ -278,10 +337,10 @@ const preview = (o: any) => {
 const menuItemClick = async (key: number) => {
     index = 0;
     pageIndex.value = 1;
-    if (tagActive.value) {
+    if (tagActive.value || tagActive.value === 0) {
         tagActive.value = key;
         tagsLists.value = [];
-        json = (await tagsMenus[key].file).default;
+        json = await tagsMenus[key].file;
         setList();
     } else {
         loadTemplates();
@@ -312,7 +371,7 @@ const setList = () => {
     tagsLists.value = tagsLists.value.concat(json.slice(index * 50, (index + 1) * 50));
 };
 
-const throttleScrollLoading = throttle(scrollLoading, 1500);
+const throttleScrollLoading = lodash.throttle(scrollLoading, 1500);
 
 onMounted(async () => {
     loadTemplates();

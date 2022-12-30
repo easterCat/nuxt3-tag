@@ -50,7 +50,7 @@ yarn generate
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
 
-## 生产部署服务端渲染(没用上)
+## 生产部署服务端渲染
 
 Build the application for production:
 
@@ -74,10 +74,6 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/prese
 - [nuxt 3](https://nuxt.com/)
 - [vuejs 3](https://cn.vuejs.org/guide/introduction.html#api-styles)
 - [学习有关 TypeScript 的所有知识](https://www.tslang.cn/docs/home.html)
-- [12 个精选 UI 配色、渐变配色、纯色配色网站（内附使用技巧）](https://zhuanlan.zhihu.com/p/139930130)
-- [纯色配色网站 palettemaker](https://palettemaker.com/)
-- [css 阴影大全 palettemaker](https://getcssscan.com/css-box-shadow-examples?ref=producthunt)
-- [UI 配色网站 pinterest](https://www.pinterest.com/search/pins/?q=Masonry%20ui&rs=typed)
 - [Jiumo Search 鸠摩搜索 - 文档搜索引擎](https://www.jiumodiary.com/)
 - [Element Plus 组件库相关技术揭秘：3. ESLint 核心原理剖析](https://juejin.cn/post/7153659360177029150)
 - [第 118 题：vue 渲染大量数据时应该怎么优化？ | 木易杨前端进阶](https://muyiy.cn/question/frame/118.html)
@@ -89,3 +85,18 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/prese
 - [移动端适配及 PC 端适配心得总结体会(一) (可能比较全](https://juejin.cn/post/6884042902587047943)
 - [这样封装列表 hooks,一天可以开发 20 个页面](https://juejin.cn/post/7165467345648320520)
 - [KZ-API 接口服务](https://kuizuo.cn/use-nuxt3-build-api-server/)
+- [在线正则表达式测试](https://tool.oschina.net/regex/#)
+
+### 设计网站
+
+- [12 个精选 UI 配色、渐变配色、纯色配色网站（内附使用技巧）](https://zhuanlan.zhihu.com/p/139930130)
+- [纯色配色网站 palettemaker](https://palettemaker.com/)
+- [css 阴影大全 palettemaker](https://getcssscan.com/css-box-shadow-examples?ref=producthunt)
+- [UI 配色网站 pinterest](https://www.pinterest.com/search/pins/?q=Masonry%20ui&rs=typed)
+- [Popular Material Design Color Palettes](https://material.colorion.co/popular)
+- [Trending Color Palettes - Coolors](https://coolors.co/palettes/trending)
+
+### 免费gpu使用
+
+- [naifuai的谷歌colab笔记地址](https://colab.research.google.com/drive/1_Ma71L6uGbtt6UQyA3FjqW2lcZ5Bjck-?authuser=0#scrollTo=uQBR9zXQGJrn)
+- [novelai的kaggle笔记地址](https://www.kaggle.com/code/inmine/novelai-with-webui-stable-diffusion-version)
