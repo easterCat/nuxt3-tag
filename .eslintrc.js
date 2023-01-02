@@ -38,9 +38,10 @@ module.exports = {
     rules: {
         // js/ts
         'no-console': 'off',
+        'no-unused-vars': 'off',
         'no-unused-expressions': 'off',
         'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement'],
-        camelcase: ['error', { properties: 'never' }],
+        camelcase: 'off',
         'no-var': 'error',
         'no-empty': ['error', { allowEmptyCatch: true }],
         'no-void': 'error',
@@ -52,6 +53,7 @@ module.exports = {
         'no-redeclare': 'off',
         '@typescript-eslint/no-redeclare': 'error',
         '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/no-unused': 'off',
         '@typescript-eslint/ban-types': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/no-empty-function': 'off',
@@ -59,20 +61,7 @@ module.exports = {
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
         '@typescript-eslint/no-var-requires': 'off',
-        '@typescript-eslint/no-unused-vars': [
-            'error',
-            {
-                argsIgnorePattern: '^_',
-                varsIgnorePattern: '^_',
-            },
-        ],
-        'no-unused-vars': [
-            'error',
-            {
-                argsIgnorePattern: '^_',
-                varsIgnorePattern: '^_',
-            },
-        ],
+        '@typescript-eslint/no-unused-vars': 'off',
 
         // vue
         'vue/no-v-html': 'off',

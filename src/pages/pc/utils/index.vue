@@ -2,7 +2,7 @@
     <div class="utils-page page">
         <ClientOnly><AppHeader /></ClientOnly>
         <ClientOnly>
-            <div class="content" v-animate-css="{ direction: 'modifySlideInUp' }">
+            <div v-animate-css="{ direction: 'modifySlideInUp' }" class="content">
                 <pc-area-title title="按类别浏览"></pc-area-title>
                 <div class="menu-list">
                     <div
@@ -20,7 +20,7 @@
                 <component
                     :is="menuView"
                     v-animate-css="{ direction: 'modifySlideInUp', delay: 100 }"
-                    @setPreview="setPreview"
+                    @set-preview="setPreview"
                 ></component>
             </div>
         </ClientOnly>
@@ -43,7 +43,7 @@ import PromptBeautiful from './components/promptBeautiful.vue';
 import ImageAnalysis from './components/imageAnalysis.vue';
 import { utilMenus } from '~/assets/json/utils.js';
 
-const components: any = { PromptBeautiful: PromptBeautiful, ImageAnalysis: ImageAnalysis };
+const components: any = { PromptBeautiful, ImageAnalysis };
 const menuView = shallowRef(ImageAnalysis);
 const initActive = 0;
 const menuActive = ref(initActive);

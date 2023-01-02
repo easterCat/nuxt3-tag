@@ -74,15 +74,15 @@
                         <el-col
                             v-for="(tem, tIndex) in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
                             :key="tIndex"
+                            v-animate-css="{
+                                direction: 'modifySlideInUp',
+                                delay: tIndex * 50,
+                            }"
                             :xs="24"
                             :sm="12"
                             :md="6"
                             :lg="4"
                             :xl="4"
-                            v-animate-css="{
-                                direction: 'modifySlideInUp',
-                                delay: tIndex * 50,
-                            }"
                         >
                             <div class="shadow-xl card card-compact bg-base-100 m-b-20">
                                 <figure>

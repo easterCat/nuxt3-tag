@@ -236,6 +236,7 @@ const uc = ref(
 
 onMounted(() => {
     getData();
+    shopImport();
     postUrl.value = sessionStorage.getItem('post_url') || '';
 });
 
@@ -264,6 +265,9 @@ const generateImage = async () => {
     const size = generateImageSize.value.split('*');
     const width = size[0];
     const height = size[1];
+    if (!postUrl.value.includes('/generate-stream')) {
+        postUrl.value = `${postUrl.value}/generate-stream`;
+    }
     const result = await NovalApi.generate({
         height,
         n_samples: generateNum.value,
@@ -279,7 +283,7 @@ const generateImage = async () => {
     });
     loading.value = false;
     const base64Reg = /(?<=data:)[A-Za-z0-9\/+=]+/g;
-    const arr = (result + '').match(base64Reg);
+    const arr = `${result}`.match(base64Reg);
     gImage.value = arr?.map((i: any) => {
         return `data:image/png;base64,${i}`;
     });
@@ -340,7 +344,7 @@ const removeHistory = (index: number) => {
     const arr = JSON.parse($store.get(key)) ?? [];
     arr.splice(index, 1);
     promptHistory.value = [...arr];
-    promptHistoryLength.value = 0;
+    promptHistoryLength.value = promptHistory.value.length;
     $store.set(key, JSON.stringify(promptHistory.value));
 };
 
@@ -357,6 +361,7 @@ const removeAllHistory = () => {
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 20px;
+    padding-bottom: 20px;
 
     .el-textarea {
         width: 100%;

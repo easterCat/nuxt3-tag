@@ -125,7 +125,7 @@ const register = async () => {
         pageStatus.value = 'login';
         return ElMessage({
             type: 'success',
-            message: '注册成功!欢迎您,' + data.register.username,
+            message: `注册成功!欢迎您,${data.register.username}`,
             showClose: true,
         });
     } else {

@@ -2,7 +2,7 @@
     <div class="draw-page page">
         <ClientOnly><AppHeader /></ClientOnly>
         <ClientOnly>
-            <div class="content" v-animate-css="{ direction: 'modifySlideInUp' }">
+            <div v-animate-css="{ direction: 'modifySlideInUp' }" class="content">
                 <PcAreaTitle title="生成图片"></PcAreaTitle>
                 <GenerateImage
                     v-animate-css="{ direction: 'modifySlideInUp', delay: 60 }"

@@ -3,8 +3,8 @@
         <ClientOnly>
             <div
                 v-if="showLeftMenu"
-                class="link-left bg-base-100"
                 v-animate-css="{ direction: 'modifySlideInLeft' }"
+                class="link-left bg-base-100"
             >
                 <ul>
                     <li
@@ -29,7 +29,7 @@
             </div>
         </ClientOnly>
         <ClientOnly>
-            <div class="link-right" v-animate-css="{ direction: 'modifySlideInRight' }">
+            <div v-animate-css="{ direction: 'modifySlideInRight' }" class="link-right">
                 <div class="right-linear"></div>
                 <div class="part-list">
                     <template v-for="(typeItem, tIndex) in types" :key="typeItem">
@@ -267,7 +267,7 @@ const filterList = (fil: any) => {
 };
 
 onMounted(() => {
-    if (indexStore.roleId + '' === '1') {
+    if (`${indexStore.roleId}` === '1') {
         showAddBtn.value = true;
         showEditBtn.value = true;
     }

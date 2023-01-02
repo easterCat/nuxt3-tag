@@ -9,15 +9,15 @@
                     <PcAnimationButton
                         v-for="(m, mIndex) in tagsMenus"
                         :key="mIndex"
+                        v-animate-css="{
+                            direction: 'modifySlideInUp',
+                            delay: mIndex * 40,
+                        }"
                         :index="mIndex + ''"
                         :button-style="1"
                         button-size="larger"
                         :class="[mIndex === tagActive ? 'btn-accent' : 'btn-primary-30']"
                         :button-text="m?.name"
-                        v-animate-css="{
-                            direction: 'modifySlideInUp',
-                            delay: mIndex * 40,
-                        }"
                         @submit="menuItemClick(mIndex)"
                     ></PcAnimationButton>
                 </ClientOnly>
@@ -41,19 +41,21 @@
                         <div
                             v-for="(o, oIndex) in tagsLists"
                             :key="oIndex"
-                            class="tag-item-img ll-media bg-base-100"
-                            :data-index="oIndex"
                             v-animate-css="{
                                 direction: 'modifySlideInUp',
                                 delay: oIndex * 40,
                             }"
+                            class="tag-item-img ll-media bg-base-100"
+                            :data-index="oIndex"
                         >
                             <div
                                 v-if="showImage && tagActive !== 5 && tagActive !== 6"
                                 class="image-con"
                             >
                                 <nuxt-img
-                                    :src="o?.minify_preview ?? ''"
+                                    v-if="o?.min_imgbb_url"
+                                    :src="o?.min_imgbb_url ?? ''"
+                                    :placeholder="[100, 50, 10]"
                                     loading="lazy"
                                     @click="preview(o)"
                                 />
@@ -104,13 +106,13 @@
                     <ClientOnly>
                         <div
                             v-for="(o, oIndex) in tagsLists"
-                            class="tag-item-img ll-media bg-base-100"
-                            :data-index="oIndex"
                             :key="oIndex"
                             v-animate-css="{
                                 direction: 'modifySlideInUp',
                                 delay: oIndex * 40,
                             }"
+                            class="tag-item-img ll-media bg-base-100"
+                            :data-index="oIndex"
                         >
                             <div
                                 v-if="showImage && tagActive !== 5 && tagActive !== 6"
@@ -119,6 +121,7 @@
                                 <nuxt-img
                                     v-if="o?.fileUrl"
                                     :src="o?.fileUrl"
+                                    :placeholder="[100, 50, 10]"
                                     loading="lazy"
                                     @click="preview(o)"
                                 />
@@ -168,15 +171,21 @@
                 <div class="tag-list">
                     <div
                         v-for="(o, oIndex) in tagsLists"
+                        :key="oIndex"
                         class="tag-item-img ll-media bg-base-100"
                         :data-index="oIndex"
-                        :key="oIndex"
                     >
                         <div
                             v-if="showImage && tagActive !== 5 && tagActive !== 6"
                             class="image-con"
                         >
-                            <nuxt-img v-if="o?.file1" :src="o?.file1" @click="preview(o)" />
+                            <nuxt-img
+                                v-if="o?.min_imgbb_url"
+                                :src="o?.min_imgbb_url ?? ''"
+                                :placeholder="[100, 50, 10]"
+                                loading="lazy"
+                                @click="preview(o)"
+                            />
                         </div>
                         <div class="text-con">
                             <el-tooltip
@@ -234,7 +243,7 @@ const { copy } = useCopy();
 const { addShop } = useShop();
 const { TemplateApi } = useApi();
 
-const getFileData = async (url: string): any[] => {
+const getFileData = async (url: string): Promise<any[]> => {
     const result = await useFetch(url);
     const data: any = result.data;
     return JSON.parse(data._rawValue);
@@ -292,7 +301,7 @@ const currentTemplate: any = ref({});
 const showPreview = ref(false);
 const pageIndex = ref(1);
 const pageSize = ref(50);
-const scrollContainer: Ref<HTMLElement> = ref(window.document.body);
+const scrollContainer = ref();
 
 let json: any[] = [];
 let index = 0;
@@ -322,7 +331,7 @@ const preview = (o: any) => {
         currentTemplate.value = {
             name: o.name,
             author: o.author,
-            preview: o.preview,
+            preview: o.imgbb_url ? o.imgbb_url : o.preview,
             prompt: o.prompt,
             prompt_zh: o.prompt_zh,
             n_prompt: o.n_prompt,
@@ -337,12 +346,14 @@ const preview = (o: any) => {
 const menuItemClick = async (key: number) => {
     index = 0;
     pageIndex.value = 1;
-    if (tagActive.value || tagActive.value === 0) {
+    if ((tagActive.value || tagActive.value === 0) && key) {
         tagActive.value = key;
         tagsLists.value = [];
         json = await tagsMenus[key].file;
         setList();
     } else {
+        tagActive.value = 0;
+        tagsLists.value = [];
         loadTemplates();
     }
 };

@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     ssr: ssrStatus,
     sourcemap: false,
     srcDir: 'src/',
-    css: ['@/assets/scss/index.scss', '@/assets/scss/element.modify.scss'],
+    css: ['@/design/index.scss'],
     modules: [
         '@nuxt/image-edge',
         '@nuxtjs/tailwindcss',
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
         css: {
             preprocessorOptions: {
                 scss: {
-                    additionalData: `@use "~/assets/scss/element.theme.scss" as *;`,
+                    additionalData: `@use "~/design/element/element.theme.scss" as *;`,
                 },
             },
         },

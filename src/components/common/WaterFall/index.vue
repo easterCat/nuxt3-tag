@@ -24,8 +24,8 @@
                                 <div v-if="hoverIndex === iIndex" class="item-wrapper">
                                     <ClientOnly>
                                         <div
-                                            class="icon-con"
                                             v-animate-css="{ direction: 'modifySlideInDown' }"
+                                            class="icon-con"
                                         >
                                             <span v-if="hoverIndex === iIndex">
                                                 <i-ep-search></i-ep-search>
@@ -43,8 +43,8 @@
                                     </ClientOnly>
                                     <ClientOnly>
                                         <div
-                                            class="text-con"
                                             v-animate-css="{ direction: 'modifySlideInUp' }"
+                                            class="text-con"
                                         >
                                             <p>{{ image?.name }}</p>
                                             <p>{{ image?.prompt }}</p>

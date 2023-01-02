@@ -305,7 +305,7 @@ const removeHistory = (index: number) => {
     const arr = JSON.parse($store.get(key)) ?? [];
     arr.splice(index, 1);
     promptHistory.value = [...arr];
-    promptHistoryLength.value = 0;
+    promptHistoryLength.value = promptHistory.value.length;
     $store.set(key, JSON.stringify(promptHistory.value));
 };
 
@@ -322,7 +322,7 @@ const removeAllHistory = () => {
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 20px;
-
+    padding-bottom: 20px;
     .el-textarea {
         width: 100%;
         margin-bottom: 20px;

@@ -6,7 +6,7 @@
                 <AppBanner placeholder="请输入关键标签"></AppBanner>
             </div>
             <ClientOnly>
-                <div class="control-blur-btns" v-animate-css="{ direction: 'modifySlideInUp' }">
+                <div v-animate-css="{ direction: 'modifySlideInUp' }" class="control-blur-btns">
                     <button
                         class="btn btn-sm m-r-10"
                         :class="[openImageFlur ? 'btn-accent' : 'btn-secondary-30']"
@@ -28,15 +28,15 @@
                     <el-col
                         v-for="(tem, tIndex) in templatesList"
                         :key="tIndex"
+                        v-animate-css="{
+                            direction: 'modifySlideInUp',
+                            delay: tIndex * 30,
+                        }"
                         :xs="24"
                         :sm="12"
                         :md="6"
                         :lg="4"
                         :xl="4"
-                        v-animate-css="{
-                            direction: 'modifySlideInUp',
-                            delay: tIndex * 30,
-                        }"
                     >
                         <div v-if="tem" class="shadow-xl card card-compact bg-base-100">
                             <figure>

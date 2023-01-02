@@ -3,7 +3,7 @@
         <ClientOnly><AppHeader /></ClientOnly>
         <AppAnimate>
             <div class="content">
-                <pc-link-list :showLeftMenu="true"></pc-link-list>
+                <pc-link-list :show-left-menu="true"></pc-link-list>
             </div>
         </AppAnimate>
         <AppFooter />

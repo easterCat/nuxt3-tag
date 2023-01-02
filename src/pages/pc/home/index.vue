@@ -3,11 +3,11 @@
         <ClientOnly><AppHeader /></ClientOnly>
         <ClientOnly>
             <div
-                class="content"
                 v-animate-css="{
                     direction: 'modifySlideInUp',
                     delay: 0,
                 }"
+                class="content"
             >
                 <div class="banner-con">
                     <AppBanner

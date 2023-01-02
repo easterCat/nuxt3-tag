@@ -92,10 +92,10 @@
 </template>
 
 <script setup lang="ts">
-import { errorNotification } from '@/utils/nitification';
 import { onMounted, Ref } from 'vue';
 
 import type { UploadProps, UploadUserFile, UploadFile, UploadFiles } from 'element-plus';
+import { errorNotification } from '@/utils/nitification';
 
 interface Promptitem {
     key?: string;
@@ -114,7 +114,7 @@ const { DanbooruApi } = useApi();
 const config = useRuntimeConfig();
 const { $store } = useNuxtApp();
 const { setShop } = useShop();
-const uploadImageApi = ref(config.public.FLASK_BASE_API + '/danbooru/upload');
+const uploadImageApi = ref(`${config.public.FLASK_BASE_API}/danbooru/upload`);
 const promptHistory: Ref<HistoryItem[]> = ref<HistoryItem[]>([]);
 const promptHistoryLength: Ref<number> = ref(0);
 const fileList = ref<UploadUserFile[]>([]);
@@ -144,11 +144,11 @@ const uploadSuccess = (response: any, uploadFile: UploadFile, uploadFiles: Uploa
 };
 
 const analysisImage = async () => {
-    if (loading.value) return;
-    loading.value = true;
     if (!curRawFile.value) {
         return errorNotification('请选择需要解析的图片');
     }
+    if (loading.value) return;
+    loading.value = true;
 
     const result = await DanbooruApi.analysisImage({
         name: curRawFile.value,
@@ -202,6 +202,7 @@ const handlePictureRemove = (uploadFile: UploadFile) => {
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 20px;
+    padding-bottom: 20px;
 
     .el-textarea {
         width: 100%;

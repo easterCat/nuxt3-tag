@@ -9,15 +9,15 @@
                     <PcAnimationButton
                         v-for="(m, mIndex) in tagsMenus"
                         :key="mIndex"
+                        v-animate-css="{
+                            direction: 'modifySlideInUp',
+                            delay: mIndex * 40,
+                        }"
                         :index="mIndex + ''"
                         :button-style="1"
                         button-size="larger"
                         :class="[mIndex === tagActive ? 'btn-accent' : 'btn-secondary']"
                         :button-text="m?.name"
-                        v-animate-css="{
-                            direction: 'modifySlideInUp',
-                            delay: mIndex * 40,
-                        }"
                         @submit="menuItemClick(mIndex)"
                     ></PcAnimationButton>
                 </ClientOnly>
@@ -40,11 +40,11 @@
                     <div
                         v-for="(o, oIndex) in tagsLists"
                         :key="oIndex"
-                        class="tag-item"
                         v-animate-css="{
                             direction: 'modifySlideInUp',
                             delay: oIndex * 40,
                         }"
+                        class="tag-item"
                     >
                         <div v-if="showImage" class="image-con">
                             <img

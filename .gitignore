@@ -1,5 +1,4 @@
 /node_modules
-/dist
 
 *.log*
 .nuxt
@@ -10,4 +9,3 @@
 # vscode
 .settings
 .history
-.vscode

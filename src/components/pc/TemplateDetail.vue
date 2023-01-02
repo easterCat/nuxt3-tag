@@ -241,6 +241,11 @@ onMounted(() => {
             max-height: calc(100% - 100px);
             display: flex;
             justify-content: center;
+
+            img {
+                min-width: 512px;
+                height: 100%;
+            }
         }
 
         .button-con {

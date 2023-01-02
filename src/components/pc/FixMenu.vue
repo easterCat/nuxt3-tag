@@ -16,7 +16,7 @@
                 :before-close="handleClose"
             >
                 <div>
-                    <pc-link-list :showLeftMenu="false"></pc-link-list>
+                    <pc-link-list :show-left-menu="false"></pc-link-list>
                 </div>
             </el-drawer>
         </ClientOnly>

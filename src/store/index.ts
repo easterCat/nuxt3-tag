@@ -35,10 +35,10 @@ export const useIndexStore = defineStore({
             this.userInfo = { ...info };
             $store.set('user', JSON.stringify(this.userInfo));
         },
-        setToken(access_token: string, refresh_token: string) {
+        setToken(accessToken: string, refreshToken: string) {
             const { $store } = useNuxtApp();
-            this.access_token = access_token;
-            this.refresh_token = refresh_token;
+            this.access_token = accessToken;
+            this.refresh_token = refreshToken;
             $store.set('access_token', JSON.stringify(this.access_token));
             $store.set('refresh_token', JSON.stringify(this.refresh_token));
         },

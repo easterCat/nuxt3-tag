@@ -29,38 +29,38 @@
                                 <ClientOnly>
                                     <div class="hover-con">
                                         <span
-                                            @click="handleNavClick('tags')"
                                             v-animate-css="{ direction: 'modifySlideInDown' }"
+                                            @click="handleNavClick('tags')"
                                         >
                                             <img src="@/assets/imgs/header-drop/01.webp" alt="" />
                                             <span>常规标签</span>
                                         </span>
                                         <span
-                                            @click="handleNavClick('tags/chitu')"
                                             v-animate-css="{
                                                 direction: 'modifySlideInDown',
                                                 delay: 60,
                                             }"
+                                            @click="handleNavClick('tags/chitu')"
                                         >
                                             <img src="@/assets/imgs/header-drop/02.webp" alt="" />
                                             <span>词图标签</span>
                                         </span>
                                         <span
-                                            @click="handleNavClick('tags/gelbooru')"
                                             v-animate-css="{
                                                 direction: 'modifySlideInDown',
                                                 delay: 120,
                                             }"
+                                            @click="handleNavClick('tags/gelbooru')"
                                         >
                                             <img src="@/assets/imgs/header-drop/03.webp" alt="" />
                                             <span>Gelbooru(H)</span>
                                         </span>
                                         <span
-                                            @click="handleNavClick('tags/eh')"
                                             v-animate-css="{
                                                 direction: 'modifySlideInDown',
                                                 delay: 180,
                                             }"
+                                            @click="handleNavClick('tags/eh')"
                                         >
                                             <img src="@/assets/imgs/header-drop/04.webp" alt="" />
                                             <span>EHentai(H)</span>
@@ -237,7 +237,7 @@ const themes = [
     'Sunset',
 ];
 
-let indexStore: any = null;
+const indexStore: any = useIndexStore();
 const { AuthApi } = useApi();
 const router = useRouter();
 const route = useRoute();
@@ -317,7 +317,7 @@ const resize = () => {
 const throttleResize = lodash.throttle(resize, 1200);
 
 onMounted(() => {
-    indexStore = useIndexStore();
+    // indexStore = useIndexStore();
     resize();
     window.addEventListener('resize', throttleResize);
 });
